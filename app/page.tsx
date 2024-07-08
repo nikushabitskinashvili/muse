@@ -7,7 +7,6 @@ import Link from "next/dist/client/link";
 export default function Home() {
   return (
     <main className={styles.main}>
-      <Input/>
     </main>
   );
 }
