@@ -1,0 +1,26 @@
+
+.container ul{
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    list-style: none;
+}
+
+.nav a{
+    text-decoration: none;
+    color: #FFF;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
+.nav a.active{
+    color: #1DD5E6;
+    text-decoration-line: underline;
+}
+
+.nav a:hover{
+    color: #1DD5E6;
+    text-decoration-line: underline;
+}
