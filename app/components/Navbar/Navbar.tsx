@@ -1,41 +1,39 @@
-import Link from "next/link";
-import styles from "./Navbar.module.scss";
-import { usePathname } from "next/navigation";
+'use client'
+import React, { useState } from 'react';
+import Styles from "./Navbar.module.scss";
+import Link from 'next/link';
 
 const Navbar = () => {
-    const pathname = usePathname();
+  const [activeLink, setActiveLink] = useState('/');
 
-    return (
-        <div className={styles.container}>
-            <ul className={styles.nav}>
-                <li >
-                    <Link className={pathname === "/" ? styles.active : ''} href={'/'}>
-                        Home
-                    </Link>
-                </li>
-                <li >
-                    <Link className={pathname === "/albom" ? styles.active : ''} href={'/albom'}>
-                        Albums
-                    </Link>
-                </li>
-                <li>
-                    <Link  className={pathname === "/artists" ? styles.active : ''} href={'/artists'}>
-                        Artists
-                    </Link>
-                </li>
-                <li >
-                    <Link className={pathname === "/playlist" ? styles.active : ''} href={'/playlist'}>
-                        Playlists
-                    </Link>
-                </li>
-                <li >
-                    <Link className={pathname === "/favourite" ? styles.active : ''} href={'/favourite'}>
-                        Favourites
-                    </Link>
-                </li>
-            </ul>
-        </div>
-    );
+  const navLinks = [
+    { title: "Home", href: "/" },
+    { title: "Albums", href: "/albums" },
+    { title: "Artists", href: "/artists" },
+    { title: "Playlists", href: "/playlists" },
+    { title: "Favorites", href: "/favorites" },
+  ];
+
+  const handleClick = (path: React.SetStateAction<string>) => {
+    setActiveLink(path);
+  };
+
+  return (
+    <div className={Styles.container}>
+      <ul className={Styles.nav}>
+        {navLinks.map((link, index) => (
+          <li key={index}>
+            <Link href={link.href}
+              onClick={() => handleClick(link.href)}
+              className={activeLink === link.href ? Styles.active : ''}
+            >
+              {link.title}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 };
 
 export default Navbar;
