@@ -4,8 +4,33 @@
     display: flex;
     align-items: center;
     gap: 32px;
-    list-style: none;
 }
 
+.nav ul{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 32px;
+}
+
+.container{
+    background-color: black;
+    width: 100%;
+}
+
+.wrapper{
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    justify-content: space-between;
+    max-width: 1172px;
+    width: 100%;
+    gap: 40px;
+    padding: 14px 0;
+}
+
+.navImg{
+    cursor: pointer;
+}
 
 
