@@ -1,4 +1,6 @@
 
+@import "/app/styles/colors.scss";
+
 .albumCard{
     display: flex;
     flex-direction: column;
@@ -14,8 +16,30 @@
     align-items: center;
 }
 
-.albumImage img{
+.albumImg{
     border-radius: 10px;
     max-width: 100%;
     max-height: 100%;
 }
+
+.albumCardContainer{
+    display: flex;
+    gap: 26px;
+}
+
+.albumTitle{
+    color: $textWhite;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.artistName{
+    color: rgba(255, 255, 255, 0.41);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
