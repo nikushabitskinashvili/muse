@@ -1,0 +1,188 @@
+@import "../../styles/colors.scss";
+//main button
+.container {
+    background-color: $textWhite;
+    border: none;
+    padding: 16px 24px;
+    color: $textBlack;
+    border-radius: 31px;
+    width: 345px;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+
+    &:hover {
+        background-color: $textLightGray;
+        
+    }
+
+    &:active {
+        background-color: $secondPrimaryPink;
+        color: $textWhite;
+    }
+}
+
+// play button 
+
+.play {
+    background-color: $cyanButton;
+    color: $textBlack;
+    border: none;
+    padding: 8px 32px;
+    border-radius: 35px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+
+    &:hover{
+        background-color: $cyanButtonHover;
+    }
+
+    &:active{
+        background-color: $cyanButtonClick;
+        color: $textBlackClicked;
+    }
+}
+
+.playPink{
+    background-color: $secondPrimaryPink;
+    color: $textWhite;
+
+    &:hover{
+        background-color: $playButtonPinkHover;
+        color: $textWhite;
+    }
+
+    &:active {
+        background-color: $playButtonPinkClick;
+        color: $textLightGray; 
+    }
+    &.icon {
+        color: $textWhite;
+    }
+}
+
+
+//shuffle button 
+
+
+.shuffle {
+    background: transparent;
+    display: inline-flex;
+    padding: 8px 31px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 35px;
+    border: 1px solid $textWhite;
+    color: $textWhite;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+
+    &:hover {
+        background-color: $textWhite;
+        color: $textBlack;
+    }
+    &:active {
+        background: transparent;
+        color: $textLightGray;
+    }
+}
+
+
+//create button
+
+.create {
+    color: $textWhite;
+    
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    display: inline-flex;
+    height: 40px;
+    padding: 8px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: none;
+    border-radius: 30px;
+    background: $secondPrimaryPink;
+
+    &:hover {
+        background-color: $playButtonPinkHover;
+    }
+
+    &:active{
+        background-color: $playButtonPinkClick;
+    }
+}
+
+// delete button
+
+.delete {
+    background-color: $secondPrimaryPink;
+    color: $textWhite;
+    display: flex;
+    width: 191px;
+    padding: 8px 70px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: none;
+    border-radius: 23px;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+
+    &:hover {
+        background-color: $playButtonPinkHover;
+    }
+
+    &:active {
+        background-color: $playButtonPinkClick;
+    }
+}
+
+
+//cancel button
+
+.cancel {
+    background: transparent;
+    color: $textWhite;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+
+    border: none;
+    display: flex;
+    width: 191px;
+    padding: 8px 70px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 23px;
+    border: 1px solid $textWhite;
+
+    &:hover {
+        background-color: $textWhite;
+        color: $textBlack;
+    }
+
+    &:active {
+        background: transparent;
+        color: $textLightGray;
+    }
+
+}
+
+

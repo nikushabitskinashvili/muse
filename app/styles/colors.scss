@@ -4,7 +4,12 @@ $primaryBackground: linear-gradient(88deg, #CD2461 2.09%, #314BD3 106.89%);
 $primaryPink: #CD2461;
 $primaryBlue: #314BD3;
 $secondPrimaryPink: #E82567;
+$playButtonPinkHover: #FF1A67;
+$playButtonPinkClick: #E82567D1;
 $primaryCyan: #3DDEED;
+$cyanButton: #1DD5E6;
+$cyanButtonHover: #00FFFF;
+$cyanButtonClick: #13ACAC99;
 
 
 //SECONDARY COLORS
@@ -17,10 +22,13 @@ $secondaryGray: #14072126;
 $secondaryLightGray: #FFFFFF33;
 
 
+
+
 //TEXT COLORS
 
 $textBlack: #050505;
+$textBlackClicked: #050505CC;
 $textSecondary: #9F9F9F;
 $textGray: #A8A8A8;
-$textLightGray: #FFFFFF99;
+$textLightGray: #FFFFFFB3;
 $textWhite: #FFFFFF;
