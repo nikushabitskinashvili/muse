@@ -1,6 +1,4 @@
 'use client';
-
-import { useEffect, useState } from "react";
 import styles from "./AlbumCard.module.scss";
 import Link from "next/link";
 
