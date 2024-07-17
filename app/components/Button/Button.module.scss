@@ -7,13 +7,14 @@
     color: $textBlack;
     border-radius: 31px;
     width: 345px;
+    font-family: Inter;
     font-size: 20px;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
 
     &:hover {
-        background-color: $textLightGray;
+        background-color: $mainButtonHover;
         
     }
 
@@ -31,6 +32,7 @@
     border: none;
     padding: 8px 32px;
     border-radius: 35px;
+    font-family: Inter;
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
@@ -81,6 +83,7 @@
     border-radius: 35px;
     border: 1px solid $textWhite;
     color: $textWhite;
+    font-family: Inter;
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
@@ -101,7 +104,7 @@
 
 .create {
     color: $textWhite;
-    
+    font-family: Inter;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
@@ -125,7 +128,7 @@
     }
 }
 
-// delete button
+//delete button
 
 .delete {
     background-color: $secondPrimaryPink;
@@ -138,6 +141,7 @@
     gap: 10px;
     border: none;
     border-radius: 23px;
+    font-family: Inter;
     font-size: 20px;
     font-style: normal;
     font-weight: 500;
