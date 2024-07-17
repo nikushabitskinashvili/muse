@@ -1,0 +1,20 @@
+@import 'app/styles/colors.scss';
+
+.defaultLink {
+    color: $textWhite;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    text-decoration: none;
+}
+
+.defaultLink:hover {
+    color: #3DDEED;
+    text-decoration-line: underline;
+}
+
+.active {
+    color: #3DDEED;
+    text-decoration-line: underline;
+}
