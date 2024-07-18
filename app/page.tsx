@@ -1,5 +1,4 @@
 'use client'
-import Image from "next/image";
 import styles from "./page.module.css";
 import Navbar from "@/app/components/Navbar/Navbar";
 import {PlaylistItem} from "@/app/components/PlaylistItem/PlaylistItem";
