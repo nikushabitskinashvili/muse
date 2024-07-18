@@ -1,0 +1,32 @@
+@import 'app/styles/colors.scss';
+
+.carouselSection{
+    padding: 20px 6.8%;
+}
+
+
+.sliderCard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 176px;
+    max-width: 100%;
+}
+
+
+.cardImage{
+    width: 100%;
+}
+
+.sliderCard h2{
+    color: $textWhite;
+    font-size: 16px;
+    line-height: 19.36px;
+    margin-top: 16px;
+    margin-bottom: 4px;
+}
+
+.sliderCard h3{
+    color: rgba(255, 255, 255, 0.41);
+}
