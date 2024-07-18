@@ -8,6 +8,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Image from "next/image";
 import { SwiperTitle } from "../Swiper-Title/SwiperTitle";
+import { ArtistCard } from "../ArtistCard/ArtistCard";
 
 export const Slider = ({ data, title }: { data: any; title: string }) => {
   const [swiperReady, setSwiperReady] = useState(false);
@@ -53,24 +54,14 @@ export const Slider = ({ data, title }: { data: any; title: string }) => {
             },
           }}
         >
-          {data.map((item: any) => {
+          {data.map((item: PopularAlbum) => {
             return (
               <SwiperSlide
                 style={conditionalStyles}
                 className={styles.sliderCard}
                 key={item.id}
               >
-                <Image
-                  src={item.img}
-                  width={176}
-                  height={171}
-                  alt={item.title}
-                  className={styles.cardImage}
-                />
-                <div>
-                  <h2>{item.title}</h2>
-                  <h3>{item.subTitle}</h3>
-                </div>
+                <ArtistCard title={title} item={item} />
               </SwiperSlide>
             );
           })}
