@@ -3,15 +3,21 @@ import Icon, {IconEnum} from "@/app/components/Icon/Icon";
 
 
 interface Props {
-    image: string,
-    title: string,
-    category: string,
+    image?: string,
+    title?: string,
+    category?: string,
     price: number,
-    img: IconEnum,
-    active: boolean,
+    img?: IconEnum,
+    active?: boolean,
+    icon: 'dots' | 'bin'
 }
 
+
 export const PlaylistItem = (props: Props) => {
+    let icon
+    if (props.icon === "dots") icon = IconEnum.DOTS;
+    else if (props.icon === "bin") icon = IconEnum.BIN
+
     return (
         <>
             <div className={styles.playlistItem}>
@@ -30,7 +36,7 @@ export const PlaylistItem = (props: Props) => {
                         <span className={styles.text}>{(props.price / 60).toFixed(2)}</span>
                     </div>
                     <img className={`${styles.icon} ${styles.heart}`} src={IconEnum.HEART} alt={''}/>
-                    <img className={styles.dots} src={IconEnum.DOTS} alt={''}/>
+                    <img className={styles.dots} src={icon} alt={''}/>
                 </div>
             </div>
         </>
