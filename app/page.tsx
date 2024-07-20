@@ -9,7 +9,8 @@ import {ArtistHero} from "@/app/components/ArtistHero/ArtistHero";
 export default function Home() {
     return (
         <main className={styles.main}>
-
+            <ArtistHero artistName={'Billie Eilish'} songsCount={5769} imgSrc={'images/artist.png'}/>
+            <PlaylistItem price={123} icon={'bin'}/>
         </main>
     );
 }

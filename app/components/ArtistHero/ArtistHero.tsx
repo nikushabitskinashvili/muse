@@ -1,5 +1,4 @@
 import styles from "./ArtistHero.module.scss"
-import {images} from "next/dist/build/webpack/config/blocks/images";
 
 interface Props {
     artistName: string,
@@ -10,7 +9,7 @@ interface Props {
 export const ArtistHero = (props: Props) => {
 
     const style ={
-        backgroundImage: `url(${props.imgSrc})`,
+        backgroundImage: `url(${props.imgSrc})`
     }
 
     return (

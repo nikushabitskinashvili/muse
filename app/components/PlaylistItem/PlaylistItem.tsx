@@ -41,6 +41,6 @@ export const PlaylistItem = (props: Props) => {
                     <img className={styles.dots} src={icon} alt={''}/>
                 </div>
             </div>
-        </>
+            </>
     )
 }

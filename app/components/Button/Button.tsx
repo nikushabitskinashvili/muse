@@ -15,7 +15,7 @@ type Props = {
 
 }
 
-export default (props : Props) => {
+export const Button = (props : Props) => {
     const classes = [];
     if(props.className == 'container') classes.push(styles.container)
     else if(props.className == 'play') classes.push(styles.play)
