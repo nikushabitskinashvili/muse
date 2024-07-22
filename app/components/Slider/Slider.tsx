@@ -6,11 +6,16 @@ import styles from "./Slider.module.scss";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import Image from "next/image";
 import { SwiperTitle } from "../Swiper-Title/SwiperTitle";
 import { ArtistCard } from "../ArtistCard/ArtistCard";
 
-export const Slider = ({ data, title }: { data: any; title: string }) => {
+export const Slider = ({
+  data,
+  title,
+}: {
+  data: PopularAlbum[];
+  title: string;
+}) => {
   const [swiperReady, setSwiperReady] = useState(false);
   const [swiper, setSwiper] = useState(null);
 
@@ -37,24 +42,20 @@ export const Slider = ({ data, title }: { data: any; title: string }) => {
           modules={[Mousewheel, Keyboard]}
           breakpoints={{
             0: {
-              slidesPerView: 2,
+              slidesPerView: 1,
               spaceBetween: 10,
             },
-            640: {
-              slidesPerView: 4,
+            667: {
+              slidesPerView: 2,
               spaceBetween: 15,
             },
-            1080: {
+            1024: {
               slidesPerView: 5,
-              spaceBetween: 20,
-            },
-            1700: {
-              slidesPerView: 6,
               spaceBetween: 20,
             },
           }}
         >
-          {data.map((item: PopularAlbum) => {
+          {data.map((item) => {
             return (
               <SwiperSlide
                 style={conditionalStyles}

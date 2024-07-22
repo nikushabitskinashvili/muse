@@ -25,7 +25,7 @@
 .text{
     font-size: 14px;
     font-weight: 400;
-    color: #050505;
+    color: $secondaryBlack;
     line-height: 20px;
 
 }
@@ -37,7 +37,7 @@
 
 .secondDiv {
     width: 50%;
-    background-color: #050505;
+    background-color: $secondaryBlack;
     background-image: url('./../../../public/images/objects.png'); 
     background-size: cover;
     background-position: center;
@@ -63,14 +63,14 @@
     margin-top: 8px;
   }
   .secondDiv h2{
-    color: #FFFFFF;
+    color: $textWhite;
     font-size: 24px;
     line-height: 28px;
     font-weight: 600;
     margin-bottom: 16px;
   }
   .secondDiv p{
-    color: #FFFFFF;
+    color: $textWhite;
     font-size: 20px;
     line-height: 24.2px;
     font-weight: 400;

@@ -8,7 +8,7 @@ export const ArtistCard = ({ title, item }: { title: string; item: any }) => {
       ? { backgroundColor: "#1C1C1C", padding: "23px", borderRadius: "12px" }
       : {};
   return (
-    <div>
+    <div className={styles.artistCardContainer}>
       <Image
         src={item.img}
         width={176}

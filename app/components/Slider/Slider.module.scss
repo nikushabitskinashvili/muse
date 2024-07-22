@@ -1,7 +1,13 @@
 @import 'app/styles/colors.scss';
 
 .carouselSection{
-    padding: 20px 6.8%;
+    padding: 20px 132px;
+    @media (max-width: 1024px) {
+        padding: 24px;
+       }
+    @media (max-width: 667px) {
+        padding: 16px;
+       }
 }
 
 
@@ -15,5 +21,6 @@
 }
 
 .sliderCard h3{
-    color: rgba(255, 255, 255, 0.41);
+    color: $textGray;
 }
+

@@ -15,7 +15,7 @@
 .text{
     font-size: 14px;
     font-weight: 400;
-    color: #050505;
+    color: $secondaryBlack;
     line-height: 20px;
 
 }
@@ -27,7 +27,7 @@
 
 .secondDiv {
     width: 50%;
-    background-color: #050505;
+    background-color: $secondaryBlack;
     background-image: url('./../../../public/images/objects.png'); 
     background-size: cover;
     background-position: center;

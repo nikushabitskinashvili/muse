@@ -16,8 +16,6 @@ export default function SignUp() {
     confirmPassword: "",
   });
 
-  console.log(errors);
-
   const handleEmailOrUsernameChange = (e: {
     target: { value: SetStateAction<string> };
   }) => {
