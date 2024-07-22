@@ -53,24 +53,6 @@
     }
 }
 
-.playPink{
-    background-color: $secondPrimaryPink;
-    color: $textWhite;
-
-    &:hover{
-        background-color: $playButtonPinkHover;
-        color: $textWhite;
-    }
-
-    &:active {
-        background-color: $playButtonPinkClick;
-        color: $textLightGray; 
-    }
-    &.icon {
-        color: $textWhite;
-    }
-}
-
 
 //shuffle button 
 
@@ -188,6 +170,25 @@
         color: $textLightGray;
     }
 
+}
+
+.playPink{
+    background-color: $secondPrimaryPink;
+    color: $textWhite;
+    border: none;
+
+    &:hover{
+        background-color: $playButtonPinkHover;
+        color: $textWhite;
+    }
+
+    &:active {
+        background-color: $playButtonPinkClick;
+        color: $textLightGray; 
+    }
+    &.icon {
+        color: $textWhite;
+    }
 }
 
 

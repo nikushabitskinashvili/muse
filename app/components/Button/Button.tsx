@@ -17,9 +17,9 @@ type Props = {
 
 export default (props : Props) => {
     const classes = [];
+    if(props.color == 'pink' ) classes.push(styles.playPink)
     if(props.className == 'container') classes.push(styles.container)
     else if(props.className == 'play') classes.push(styles.play)
-    if(props.color == 'pink' ) classes.push(styles.playPink)
     else if(props.className == 'shuffle') classes.push(styles.shuffle)
     else if(props.className == 'create') classes.push(styles.create)
     else if(props.className == 'delete') classes.push(styles.delete)
