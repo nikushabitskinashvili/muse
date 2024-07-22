@@ -1,0 +1,78 @@
+@import "/app/styles/colors.scss";
+
+.rightBlock{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 100vh;
+    @media (max-width: 1024px) {
+      width: 100%;;
+     }
+}
+
+.text{
+    font-size: 14px;
+    font-weight: 400;
+    color: $secondaryBlack;
+    line-height: 20px;
+
+}
+
+.linkTag{
+    color: #3580CA;
+    text-decoration: underline;
+}
+
+.secondDiv {
+    width: 50%;
+    background-color: $secondaryBlack;
+    background-image: url('./../../../public/images/objects.png'); 
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+    text-align: center;
+    @media (max-width: 1024px) {
+      display: none;
+     }
+  }
+
+  .form{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .error{
+    color: red;
+    font-weight: 300;
+    font-size: 14px;
+    width: 300px;
+    padding-left: 24px;
+    margin-bottom: 16px;
+    margin-top: 8px;
+  }
+  .secondDiv h2{
+    color: #FFFFFF;
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .secondDiv p{
+    color: #FFFFFF;
+    font-size: 20px;
+    line-height: 24.2px;
+    font-weight: 400;
+    width: 369px;
+    margin-bottom: 16px;
+
+  }
+
+  .inputDiv{
+    min-height: 74px;
+  }

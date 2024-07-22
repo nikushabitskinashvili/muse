@@ -1,0 +1,26 @@
+@import 'app/styles/colors.scss';
+
+.carouselSection{
+    padding: 20px 132px;
+    @media (max-width: 1024px) {
+        padding: 24px;
+       }
+    @media (max-width: 667px) {
+        padding: 16px;
+       }
+}
+
+
+
+.sliderCard h2{
+    color: $textWhite;
+    font-size: 16px;
+    line-height: 19.36px;
+    margin-top: 16px;
+    margin-bottom: 4px;
+}
+
+.sliderCard h3{
+    color: $textGray;
+}
+
