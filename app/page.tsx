@@ -8,7 +8,7 @@ import {Plaster} from "next/dist/compiled/@next/font/dist/google";
 export default function Home() {
     return (
         <main className={styles.main}>
-    
+
         </main>
     );
 }

@@ -1,0 +1,20 @@
+@import 'app/styles/colors.scss';
+
+.swiperTitleWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+
+.swiperTitleWrapper h4{
+    color: white;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 29.05px;
+}
+
+.swiperTitleWrapper img{
+    cursor: pointer;
+}

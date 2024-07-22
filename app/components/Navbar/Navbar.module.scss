@@ -35,9 +35,43 @@
     }
 }
 
+
 @media screen and (min-width : 768px) {
     
     
+.nav ul{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 32px;
+}
+
+.container{
+    background-color: $secondaryBlack;
+    width: 100%;
+}
+
+.wrapper{
+    display: flex;
+    align-items: center;
+    // margin: 0 auto;
+    justify-content: space-between;
+    // max-width: 1172px;
+    width: 100%;
+    gap: 40px;
+    padding: 14px 132px;
+    @media (max-width: 1024px) {
+        padding: 24px;
+       }
+    @media (max-width: 667px) {
+        padding: 16px;
+       }
+    
+}
+
+.navImg{
+    cursor: pointer;
+
 }
 
 
