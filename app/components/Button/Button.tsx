@@ -15,8 +15,14 @@ type Props = {
 
 }
 
-export default (props : Props) => {
+export const Button = (props : Props) => {
+
+
+
     const classes = [];
+
+    if(props.color === 'pink' ) classes.push(styles.playPink)
+
     if(props.className == 'container') classes.push(styles.container)
     else if(props.className == 'play') classes.push(styles.play)
     else if(props.className == 'shuffle') classes.push(styles.shuffle)
@@ -24,7 +30,7 @@ export default (props : Props) => {
     else if(props.className == 'delete') classes.push(styles.delete)
     else if(props.className == 'cancel') classes.push(styles.cancel)
 
-    if(props.color == 'pink' ) classes.push(styles.playPink)
+
 
     return(
         <button className={classes.join(' ')}>
