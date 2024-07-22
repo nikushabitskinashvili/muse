@@ -17,8 +17,6 @@ type Props = {
 
 export const Button = (props : Props) => {
 
-
-
     const classes = [];
 
     if(props.color === 'pink' ) classes.push(styles.playPink)
