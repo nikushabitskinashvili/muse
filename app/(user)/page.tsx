@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
-import { Slider } from "./components/Slider/Slider";
-import { artitsts, playlistData, popularAlbum } from "./data/CarouselData";
+import { Slider } from "../components/Slider/Slider";
+import { artitsts, playlistData, popularAlbum } from "../data/CarouselData";
 import styles from "./page.module.css";
 
 export default function Home() {
