@@ -9,13 +9,7 @@ import "swiper/css/pagination";
 import { SwiperTitle } from "../Swiper-Title/SwiperTitle";
 import { ArtistCard } from "../ArtistCard/ArtistCard";
 
-export const Slider = ({
-  data,
-  title,
-}: {
-  data: PopularAlbum[];
-  title: string;
-}) => {
+export const Slider = ({ data, title }: { data: any; title: string }) => {
   const [swiperReady, setSwiperReady] = useState(false);
   const [swiper, setSwiper] = useState(null);
 
@@ -55,7 +49,7 @@ export const Slider = ({
             },
           }}
         >
-          {data.map((item) => {
+          {data.map((item: any) => {
             return (
               <SwiperSlide
                 style={conditionalStyles}
