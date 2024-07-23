@@ -41,6 +41,7 @@
     justify-content: center;
     align-items: center;
     gap: 4px;
+    width: 150px;
 
     &:hover{
         background-color: $cyanButtonHover;
@@ -49,24 +50,6 @@
     &:active{
         background-color: $cyanButtonClick;
         color: $textBlackClicked;
-    }
-}
-
-.playPink{
-    background-color: $secondPrimaryPink;
-    color: $textWhite;
-
-    &:hover{
-        background-color: $playButtonPinkHover;
-        color: $textWhite;
-    }
-
-    &:active {
-        background-color: $playButtonPinkClick;
-        color: $textLightGray; 
-    }
-    &.icon {
-        color: $textWhite;
     }
 }
 
@@ -187,6 +170,25 @@
         color: $textLightGray;
     }
 
+}
+
+.playPink{
+    background-color: $secondPrimaryPink;
+    color: $textWhite;
+    border: none;
+
+    &:hover{
+        background-color: $playButtonPinkHover;
+        color: $textWhite;
+    }
+
+    &:active {
+        background-color: $playButtonPinkClick;
+        color: $textLightGray; 
+    }
+    &.icon {
+        color: $textWhite;
+    }
 }
 
 
