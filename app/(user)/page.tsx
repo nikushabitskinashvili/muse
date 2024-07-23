@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { Slider } from "../components/Slider/Slider";
-import { artitsts, playlistData, popularAlbum } from "../data/CarouselData";
+import { artists, playlistData, popularAlbum } from "../data/CarouselData";
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -15,7 +15,7 @@ export default function Home() {
       {isClient && (
         <>
           <Slider data={popularAlbum} title="Popular Album" />
-          <Slider data={artitsts} title="Artists" />
+          <Slider data={artists} title="Artists" />
           <Slider data={playlistData} title="My Playlists" />
         </>
       )}

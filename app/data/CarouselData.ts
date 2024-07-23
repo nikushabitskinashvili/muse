@@ -69,7 +69,7 @@ export const popularAlbum:PopularAlbum[] = [
 ]
 
 
-export const artitsts:Artists[] = [
+export const artists:Artists[] = [
     {
         id:1,
         img:artitst1,
