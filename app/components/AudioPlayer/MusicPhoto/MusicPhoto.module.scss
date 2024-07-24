@@ -1,0 +1,45 @@
+.musicPhoto {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.photo img {
+    border-radius: 50%;
+}
+
+.musicInfo {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 6px;
+}
+
+ .musicInfo .musicName {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    width: 43px;
+}
+
+ .musicInfo .artistName {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    width: 96px;
+}
+
+
+.musicInfoWrapper {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+@media screen and (max-width: 744px) {
+    .musicInfo {
+        display: flex;
+        gap: 6px;
+
+    }
+}

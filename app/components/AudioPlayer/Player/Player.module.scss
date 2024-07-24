@@ -1,0 +1,21 @@
+.musicMiddle img {
+    cursor: pointer;
+}
+
+.musicMiddle {
+    max-width: 1250px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+@media screen and (max-width: 744px) {
+
+    .musicMiddle {
+       display: flex;
+       align-items: flex-end;
+    }
+}

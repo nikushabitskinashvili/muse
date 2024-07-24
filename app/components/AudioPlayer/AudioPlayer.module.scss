@@ -1,0 +1,26 @@
+@import "/app/styles/colors.scss";
+
+.wrapper {
+    color: #fff;
+    width: 100%;
+}
+
+.container {
+    background: $primaryBackground;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 36px;
+}
+
+
+
+
+
+@media screen and (max-width: 744px) {
+    .wrapper {
+        color: #fff;
+        max-width: 100%;
+    }
+
+}

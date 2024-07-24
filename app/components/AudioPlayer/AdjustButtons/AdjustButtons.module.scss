@@ -1,0 +1,14 @@
+.adjustButtons {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 64px;
+}
+
+
+@media screen and (max-width: 744px) {
+   .adjustButton{
+        display: none;
+   }
+}

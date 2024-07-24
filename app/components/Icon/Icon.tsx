@@ -25,7 +25,8 @@ export enum IconEnum {
     SEARCH = "icons/search.svg",
     SHUFFLE = "icons/shuffle.svg",
     VECTOR = "icons/Vector.svg",
-    VOLUME_FULL = "icons/volumeFull.svg"
+    VOLUME_FULL = "icons/volumeFull.svg",
+    PLAY = "icons/play.svg"
 }
 
 interface Props {

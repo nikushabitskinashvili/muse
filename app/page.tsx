@@ -1,14 +1,15 @@
 'use client'
-import styles from "./page.module.css";
-import Navbar from "@/app/components/Navbar/Navbar";
-import {PlaylistItem} from "@/app/components/PlaylistItem/PlaylistItem";
-import {IconEnum} from "@/app/components/Icon/Icon";
-import {Plaster} from "next/dist/compiled/@next/font/dist/google";
+import songs from './array';
+import AudioPlayer from './components/AudioPlayer/AudioPlayer';
 
-export default function Home() {
-    return (
-        <main className={styles.main}>
-            <PlaylistItem icon={'dots'}/>
-        </main>
-    );
+
+const Exercise = () => {
+
+  return (
+    <>
+      <AudioPlayer songs={songs} />
+    </>
+  )
 }
+
+export default Exercise;

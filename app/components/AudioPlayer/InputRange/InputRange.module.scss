@@ -1,0 +1,17 @@
+.range {
+    overflow: hidden;
+    width: 100%;
+    cursor: pointer;
+    color: #3DDEED;
+}
+
+.range::-webkit-slider-thumb {
+    -webkit-appearance: #3DDEED;
+} 
+
+@media screen and (max-width: 744px) {
+    input.range{
+         display: none;
+    }
+ }
+ 

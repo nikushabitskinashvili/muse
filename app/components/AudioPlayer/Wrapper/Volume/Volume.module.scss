@@ -1,0 +1,18 @@
+.range {
+    -webkit-appearance: #3DDEED;
+    height: 5px;
+    overflow: hidden;
+    width: 100%;
+    cursor: pointer;
+    color: #3DDEED;
+}
+
+.range::-webkit-slider-thumb {
+    -webkit-appearance: #3DDEED;
+} 
+
+.container{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}

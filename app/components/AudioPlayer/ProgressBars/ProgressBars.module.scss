@@ -1,0 +1,29 @@
+.progressBar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    max-width: 900px;
+    width: 100%;
+}
+
+.progressBar input {
+    width: 100%;
+}
+
+
+.wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    gap: 20px;
+}
+
+
+
+@media screen and (max-width: 744px) {
+   .wrapper{
+    display: none;
+   }
+}
