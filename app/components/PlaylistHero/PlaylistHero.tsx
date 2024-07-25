@@ -43,7 +43,7 @@ export const PlaylistHero = (props: Props) => {
                     </div>
                     <div className={styles.buttons}>
                         <img className={styles.pause} src={IconEnum.PAUSE} alt={''}/>
-                        <Button title={'shuffle'} className={'shuffle'} Icon={'SHUFFLE'} color={'pink'}/>
+                        <Button title={'shuffle'} bg={'pink'} icon={'SHUFFLE'} hoverIcon={'SHUFFLE'} activeIcon={"SHUFFLE"}/>
                     </div>
                 </div>
             </div>
