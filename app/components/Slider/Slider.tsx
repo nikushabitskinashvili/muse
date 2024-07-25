@@ -10,13 +10,7 @@ import { SwiperTitle } from "../Swiper-Title/SwiperTitle";
 import { ArtistCard } from "../ArtistCard/ArtistCard";
 import {playlistData} from "@/app/data/CarouselData";
 
-export const Slider = ({
-  data,
-  title,
-}: {
-  data: any;
-  title: string;
-}) => {
+export const Slider = ({ data, title }: { data: any; title: string }) => {
   const [swiperReady, setSwiperReady] = useState(false);
   const [swiper, setSwiper] = useState(null);
 

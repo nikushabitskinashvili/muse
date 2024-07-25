@@ -17,7 +17,9 @@ export enum IconEnum {
     LEFT_ARROW = "/icons/leftArrow.svg",
     NEXT = "/icons/next.svg",
     PAUSE = "/icons/pause.svg",
+    PAUSESMALL="/icons/pauseSmall.svg",
     PEN = "/icons/pen.svg",
+    PLAYSMALL="icons/playSmall.svg",
     PLUS = "/icons/plus.svg",
     PREVOUS = "/icons/prevous.svg",
     PLAY = "/icons/play.svg",
@@ -26,6 +28,7 @@ export enum IconEnum {
     ROTATE = "/icons/rotate.svg",
     SEARCH = "/icons/search.svg",
     SHUFFLE = "/icons/shuffle.svg",
+    SHUFFLEHOVER= "/icons/shuffleHover.svg",
     VECTOR = "/icons/Vector.svg",
     VOLUME_FULL = "/icons/volumeFull.svg",
     WHITE_PLAY = "/icons/pinkPlayWhite.svg"

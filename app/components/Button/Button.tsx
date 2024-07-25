@@ -1,38 +1,78 @@
 "use client"
 
-import styles from './Button.module.scss';
-import { IconEnum } from '../../utils/Icon/Icon';
+import styles from './Button.module.scss'
+import {IconEnum} from "@/app/utils/Icon/Icon";
+import {useEffect, useState} from "react";
 
-
-type Props = {
-    title: string;
-    name: string;
-    disabled?: boolean;
-    Icon?: keyof typeof IconEnum;
-    color?: string;
-
-    onClick?: () => void
-
+interface Props {
+    bg: string
+    title: string
+    size?: 'normal' | 'big'
+    icon?: keyof typeof IconEnum;
+    hoverIcon?: keyof typeof IconEnum;
+    activeIcon?: keyof typeof IconEnum;
 }
 
-export const Button = (props : Props) => {
+export const Button = (props: Props) => {
 
-    const classes = [];
+    const [currentIcon, setCurrentIcon] = useState(props.icon);
+    const [isSmallScreen, setIsSmallScreen] = useState(false)
 
-    if(props.color === 'pink' ) classes.push(styles.playPink)
+    useEffect(() => {
+        const handleResize = () => {
+            setIsSmallScreen(window.innerWidth <= 767);
+        };
 
-    if(props.name == 'container') classes.push(styles.container)
-    else if(props.name == 'play') classes.push(styles.play)
-    else if(props.name == 'shuffle') classes.push(styles.shuffle)
-    else if(props.name == 'create') classes.push(styles.create)
-    else if(props.name == 'delete') classes.push(styles.delete)
-    else if(props.name == 'cancel') classes.push(styles.cancel)
+        handleResize();
+        window.addEventListener('resize', handleResize)
+
+        return () => {
+            window.removeEventListener('resize', handleResize)
+        };
+    }, []);
+
+    const handleMouseOver = () => {
+        setCurrentIcon(props.hoverIcon);
+    }
+
+    const handleMouseOut = () => {
+        setCurrentIcon(props.icon);
+
+    }
+
+    const handleMouseDown = () => {
+        setCurrentIcon(props.activeIcon);
+    }
+    console.log(currentIcon)
+
+    const handleMouseUp = () => {
+        setCurrentIcon(currentIcon);
+    }
 
 
+    const classes = [styles.container]
 
-    return(
-        <button className={classes.join(' ')}>
-            {props.title} {props.Icon && <img className={styles.icon} src={IconEnum[props.Icon]} alt='img' />} 
-        </button>
+
+    props.size === 'big' ? classes.push(styles.big) : classes.push('normal')
+
+    if (props.bg === 'blue') classes.push(styles.blue)
+    else if (props.bg === 'pink') classes.push(styles.pink)
+    else classes.push(styles.none)
+
+    const showTitle = () => {
+        const show = !(props.title == 'Shuffle' && isSmallScreen)
+        return show
+    }
+
+    return (
+        <button
+            className={classes.join(' ')}
+            onMouseOver={handleMouseOver}
+            onMouseOut={handleMouseOut}
+            onMouseDown={handleMouseDown}
+            onMouseUp={handleMouseUp}
+        >
+            {showTitle() && <span className={styles.title}>{props.title}</span>}
+            {currentIcon && <img className={styles.icon} src={IconEnum[currentIcon]} alt={''}/>}</button>
     )
 }
