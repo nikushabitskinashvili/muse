@@ -11,6 +11,14 @@
 }
 
 
+.artistsRoundedCard{
+  background-color: #1C1C1C;
+  padding: 23px;
+  border-radius: 12px;
+  @media (max-width: 667px) {
+    padding: 16px;
+   }
+}
 
 .sliderCard h2{
     color: $textWhite;
@@ -18,9 +26,28 @@
     line-height: 19.36px;
     margin-top: 16px;
     margin-bottom: 4px;
+    font-weight: 500;
+     @media (max-width: 667px) {
+        line-height: 16.94px;
+        font-size: 14px;
+        font-weight: 400;
+       }
 }
 
 .sliderCard h3{
     color: $textGray;
+    font-weight: 500;
+
+      @media (max-width: 667px) {
+        line-height: 14.52px;
+        font-size: 12px;
+        font-weight: 400;
+       }
+}
+
+@media (min-width: 1024px) {
+  .marginTopLargeScreen {
+    margin-top: -130px;
+  }
 }
 
