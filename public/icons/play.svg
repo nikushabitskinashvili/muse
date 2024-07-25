@@ -1,8 +1,8 @@
-<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="Group">
 <g id="Group_2">
-<path id="Path" d="M18.5 6.75V17.25" stroke="#050505" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-<path id="Path_2" fill-rule="evenodd" clip-rule="evenodd" d="M13.425 11.121L7.086 7.15898C6.396 6.72798 5.5 7.22398 5.5 8.03798V15.961C5.5 16.775 6.396 17.272 7.086 16.84L13.424 12.878C14.075 12.473 14.075 11.527 13.425 11.121V11.121Z" stroke="#050505" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Path" fill-rule="evenodd" clip-rule="evenodd" d="M35 20V20C35 28.285 28.285 35 20 35V35C11.715 35 5 28.285 5 20V20C5 11.715 11.715 5 20 5V5C28.285 5 35 11.715 35 20Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Path_2" fill-rule="evenodd" clip-rule="evenodd" d="M18.2343 15.097L24.7043 18.9237C25.5227 19.407 25.5227 20.592 24.7043 21.0754L18.2343 24.902C17.401 25.3954 16.3477 24.7937 16.3477 23.8254V16.1737C16.3477 15.2054 17.401 14.6037 18.2343 15.097V15.097Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
 </g>
 </svg>

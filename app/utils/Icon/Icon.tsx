@@ -21,6 +21,7 @@ export enum IconEnum {
     PLUS = "/icons/plus.svg",
     PREVOUS = "/icons/prevous.svg",
     PLAY = "/icons/play.svg",
+    PLAYMINI="/icons/playMini.svg",
     RIGHT_ARROW = "/icons/rightArrow.svg",
     ROTATE = "/icons/rotate.svg",
     SEARCH = "/icons/search.svg",

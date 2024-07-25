@@ -30,6 +30,7 @@
     background-color: $cyanButton;
     color: $textBlack;
     border: none;
+    width: 150px;
     padding: 8px 32px;
     border-radius: 35px;
     font-family: Inter;
@@ -134,7 +135,7 @@
     background-color: $secondPrimaryPink;
     color: $textWhite;
     display: flex;
-    width: 191px;
+    width: 192px;
     padding: 8px 70px;
     justify-content: center;
     align-items: center;
@@ -166,8 +167,6 @@
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-
-    border: none;
     display: flex;
     width: 191px;
     padding: 8px 70px;

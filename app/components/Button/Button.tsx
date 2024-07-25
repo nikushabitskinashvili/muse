@@ -6,7 +6,7 @@ import { IconEnum } from '../../utils/Icon/Icon';
 
 type Props = {
     title: string;
-    className: string;
+    name: string;
     disabled?: boolean;
     Icon?: keyof typeof IconEnum;
     color?: string;
@@ -21,12 +21,12 @@ export const Button = (props : Props) => {
 
     if(props.color === 'pink' ) classes.push(styles.playPink)
 
-    if(props.className == 'container') classes.push(styles.container)
-    else if(props.className == 'play') classes.push(styles.play)
-    else if(props.className == 'shuffle') classes.push(styles.shuffle)
-    else if(props.className == 'create') classes.push(styles.create)
-    else if(props.className == 'delete') classes.push(styles.delete)
-    else if(props.className == 'cancel') classes.push(styles.cancel)
+    if(props.name == 'container') classes.push(styles.container)
+    else if(props.name == 'play') classes.push(styles.play)
+    else if(props.name == 'shuffle') classes.push(styles.shuffle)
+    else if(props.name == 'create') classes.push(styles.create)
+    else if(props.name == 'delete') classes.push(styles.delete)
+    else if(props.name == 'cancel') classes.push(styles.cancel)
 
 
 
