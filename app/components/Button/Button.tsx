@@ -52,6 +52,7 @@ export const Button = (props: Props) => {
 
     const classes = [styles.container]
 
+
     props.size === 'big' ? classes.push(styles.big) : classes.push('normal')
 
     if (props.bg === 'blue') classes.push(styles.blue)

@@ -18,6 +18,8 @@ export enum IconEnum {
     NEXT = "icons/next.svg",
     PAUSE = "icons/pause.svg",
     PEN = "icons/pen.svg",
+    PLAY = "icons/play.svg",
+    PLAYMINI = "icons/playMini.svg",
     PLUS = "icons/plus.svg",
     PREVOUS = "icons/prevous.svg",
     RIGHT_ARROW = "icons/rightArrow.svg",
