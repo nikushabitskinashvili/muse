@@ -34,7 +34,10 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
+  max-width: 312px;
+  width: 100%;
 }
+
 
 .h3 {
   color: #FFF;
@@ -79,16 +82,6 @@
   font-style: normal;
   font-weight: 300;
   line-height: normal;
-}
-
-.button {
-  display: flex;
-  width: 150px;
-  height: 40px;
-  padding: 8px 32px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
 }
 
 @media only screen and (max-width: 1023px) {
