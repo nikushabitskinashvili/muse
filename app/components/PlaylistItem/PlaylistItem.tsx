@@ -14,9 +14,6 @@ interface Props {
 
 
 export const PlaylistItem = (props: Props) => {
-    // let icon
-    // if (props.icon === "dots") icon = IconEnum.DOTS;
-    // else if (props.icon === "bin") icon = IconEnum.BIN
 
     let icon =  props.icon === "bin"? IconEnum.BIN: IconEnum.DOTS
 
