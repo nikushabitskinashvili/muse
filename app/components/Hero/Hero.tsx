@@ -5,12 +5,15 @@ import Navbar from '../Navbar/Navbar';
 import {Button} from "@/app/components/Button/Button";
 import {IconEnum} from "@/app/utils/Icon/Icon";
 
-const Hero = () => {
+interface HeroProps {
+    className?: string
+}
+
+const Hero = ({className}: HeroProps) => {
 
 
     return (
         <section className={styles.section}>
-            <Navbar/>
             <div className={styles.content}>
                 <div className={styles.container}>
                     <div className={styles.wrapper}>

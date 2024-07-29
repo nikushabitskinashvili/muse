@@ -3,8 +3,11 @@ import { useEffect, useState } from "react";
 import { Slider } from "../components/Slider/Slider";
 import { artists, playlistData, popularAlbum } from "../data/CarouselData";
 import styles from "./page.module.css";
-import {IconEnum} from "@/app/utils/Icon/Icon";
 import Hero from "@/app/components/Hero/Hero";
+import {AlbumHero} from "@/app/components/AlbumHero/AlbumHero";
+import {ReusableModal} from "@/app/components/reusableModal/reusableModal";
+import {YourPlaylistModal} from "@/app/components/yourPlaylistModal/yourPlaylistModal";
+import {DeleteModal} from "@/app/components/deleteModal/deleteModal";
 
 export default function Home() {
   const [isClient, setIsClient] = useState(false);

@@ -1,0 +1,42 @@
+.page{
+  width: 100%;
+  background: #050505;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 72px;
+  padding-top: 32px;
+}
+
+.container{
+  display: flex;
+  max-width: 1176px;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+}
+
+.title{
+  color: #FFF;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.head{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list{
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}

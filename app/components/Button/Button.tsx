@@ -7,7 +7,8 @@ import {useEffect, useState} from "react";
 interface Props {
     bg: string
     title: string
-    size?: 'normal' | 'big'
+    type?: string
+    size?: 'normal' | 'big' | 'huge'
     icon?: keyof typeof IconEnum;
     hoverIcon?: keyof typeof IconEnum;
     activeIcon?: keyof typeof IconEnum;
@@ -53,7 +54,8 @@ export const Button = (props: Props) => {
     const classes = [styles.container]
 
 
-    props.size === 'big' ? classes.push(styles.big) : classes.push('normal')
+    if(props.size === 'huge') classes.push(styles.huge)
+    else if(props.size === 'big') classes.push(styles.big)
 
     if (props.bg === 'blue') classes.push(styles.blue)
     else if (props.bg === 'pink') classes.push(styles.pink)
