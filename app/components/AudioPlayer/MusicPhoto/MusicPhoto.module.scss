@@ -1,0 +1,61 @@
+@import 'app/styles/colors.scss';
+
+.musicPhoto{
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.photo img{
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.musicInfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+.musicInfoWrapper{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.musicName{
+    color: $textWhite;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 65px;
+}
+
+.artistName{
+    color: $textWhite;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  
+  
+}
+
+
+
+
+@media screen and (max-width:767px)  {
+    .musicInfo{
+        display: flex;
+        gap: 6px;
+        flex-direction: row;
+        align-items: center;
+    }
+   
+}
