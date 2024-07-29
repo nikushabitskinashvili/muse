@@ -111,13 +111,13 @@ export const useAudioPlayer = (songs: Song[]) => {
 
     const handleVolumeDown = () => {
         if (audioRef.current) {
-            audioRef.current.volume = Math.max(0, audioRef.current.volume - 0.2);
+            audioRef.current.volume = Math.max(0, audioRef.current.volume - 5);
         }
     };
 
     const handleVolumeUp = () => {
         if (audioRef.current) {
-            audioRef.current.volume = Math.min(1, audioRef.current.volume + 0.2);
+            audioRef.current.volume = Math.min(25, audioRef.current.volume + 5);
         }
     };
     

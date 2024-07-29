@@ -1,22 +1,22 @@
 
 const songs = [
     {
-        src: '/images/download.jpg',
-        music: "Baby",
-        artist: "Justin Bieber",
-        audioSrc: "/musics/baby.mp3",
+        src: "/images/barry.jpg",
+        music: "Love making music",
+        artist: "Barry White",
+        audioSrc: "/musics/Barry White - Love Making Music (1).mp3"
     },
     {
-        src: "/images/download.jpg",
-        music: "yvela tvali chemzeda",
-        artist: "ori faqi",
-        audioSrc: "/musics/2pac.mp3",
+        src: "/images/barry.jpg",
+        music: "Let the music play",
+        artist: "Barry white",
+        audioSrc: "/musics/Barry White - Let The Music Play (Official Music Video) (1).mp3"
     },
     {
-        src: '/images/download.jpg',
-        music: 'hipnozi',
-        artist: 'didi',
-        audioSrc: '/musics/big.mp3'
+        src: "/images/mefe.jpg",
+        music: 'me shentan moval',
+        artist: "mefe",
+        audioSrc: "/musics/ირაკლი ჩარკვიანი - მე შენთან მოვალ.mp3"
     }
 ]
 

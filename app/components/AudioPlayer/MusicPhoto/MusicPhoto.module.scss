@@ -1,45 +1,61 @@
-.musicPhoto {
+@import 'app/styles/colors.scss';
+
+.musicPhoto{
     display: flex;
     align-items: center;
     gap: 24px;
 }
 
-.photo img {
+.photo img{
     border-radius: 50%;
+    object-fit: cover;
 }
 
-.musicInfo {
+.musicInfo{
     display: flex;
-    justify-content: center;
     flex-direction: column;
+    justify-content: center;
     gap: 6px;
+    white-space: nowrap;
 }
 
- .musicInfo .musicName {
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 500;
-    width: 43px;
-}
-
- .musicInfo .artistName {
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    width: 96px;
-}
-
-
-.musicInfoWrapper {
+.musicInfoWrapper{
     display: flex;
     align-items: center;
     gap: 16px;
 }
 
-@media screen and (max-width: 744px) {
-    .musicInfo {
+.musicName{
+    color: $textWhite;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 65px;
+}
+
+.artistName{
+    color: $textWhite;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  
+  
+}
+
+
+
+
+@media screen and (max-width:767px)  {
+    .musicInfo{
         display: flex;
         gap: 6px;
-
+        flex-direction: row;
+        align-items: center;
     }
+   
 }

@@ -13,18 +13,17 @@ type ProgressBarsProps = {
 
 const ProgressBars: React.FC<ProgressBarsProps> = ({ currentTime, duration, onProgressChange, progressRef, ipadProgressRef }) => {
     return (
-        <div className={styles.wrapper}>
+        
             <div className={styles.progressBar}>
-                <p>{formatTime(currentTime)}</p>
                 <InputRange
                     defaultValue={String((currentTime / duration) * 100)}
                     onChange={onProgressChange}
                     progressRef={progressRef}
                 />
-                <p>{formatTime(duration)}</p>
+                <p className={styles.formatTxt}>{formatTime(duration)}</p>
             </div>
           
-        </div>
+       
     );
 };
 

@@ -1,26 +1,22 @@
 @import "/app/styles/colors.scss";
 
-.wrapper {
-    color: #fff;
-    width: 100%;
-}
 
 .container {
-    background: $primaryBackground;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 36px;
+   background: $primaryBackground;
+   width: 100%;
 }
 
+.containerWrapper{
+    max-width: 1300px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 20px 16px;
+    align-items: center;
+    gap: 54px;  
+}
 
-
-
-
-@media screen and (max-width: 744px) {
-    .wrapper {
-        color: #fff;
-        max-width: 100%;
-    }
-
+.containerWrapper audio{
+    display: none;
 }

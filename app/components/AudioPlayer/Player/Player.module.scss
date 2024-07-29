@@ -3,19 +3,19 @@
 }
 
 .musicMiddle {
-    max-width: 1250px;
+    max-width: 733px;
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    padding: 20px 0;
+    gap: 5px;
+    gap: 10px;
 }
 
-
-@media screen and (max-width: 744px) {
-
-    .musicMiddle {
-       display: flex;
-       align-items: flex-end;
+@media screen and (max-width: 767px) {
+    .musicMiddle{
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
     }
 }

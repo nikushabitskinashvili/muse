@@ -1,16 +1,15 @@
-.range {
-    overflow: hidden;
+@import 'app/styles/colors.scss';
+
+input.range {
     width: 100%;
     cursor: pointer;
-    color: #3DDEED;
+    color: $primaryCyan;
+    height: 3px;
 }
 
-.range::-webkit-slider-thumb {
-    -webkit-appearance: #3DDEED;
-} 
 
-@media screen and (max-width: 744px) {
-    input.range{
+@media screen and (max-width: 767px) {
+    .range{
          display: none;
     }
  }
