@@ -1,192 +1,83 @@
 @import "../../styles/colors.scss";
-//main button
+
 .container {
-    background-color: $textWhite;
-    border: none;
-    padding: 16px 24px;
-    color: $textBlack;
-    border-radius: 31px;
-    width: 345px;
-    font-family: Inter;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-
-    &:hover {
-        background-color: $mainButtonHover;
-        
-    }
-
-    &:active {
-        background-color: $secondPrimaryPink;
-        color: $textWhite;
-    }
-}
-
-// play button 
-
-.play {
-    background-color: $cyanButton;
-    color: $textBlack;
-    border: none;
-    padding: 8px 32px;
-    border-radius: 35px;
-    font-family: Inter;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 4px;
-
-    &:hover{
-        background-color: $cyanButtonHover;
-    }
-
-    &:active{
-        background-color: $cyanButtonClick;
-        color: $textBlackClicked;
-    }
-}
-
-.playPink{
-    background-color: $secondPrimaryPink;
-    color: $textWhite;
-
-    &:hover{
-        background-color: $playButtonPinkHover;
-        color: $textWhite;
-    }
-
-    &:active {
-        background-color: $playButtonPinkClick;
-        color: $textLightGray; 
-    }
-    &.icon {
-        color: $textWhite;
-    }
+  display: flex;
+  max-width: 150px;
+  width: 100%;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 35px;
+  border: none;
+  color: #050505;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
 
 
-//shuffle button 
-
-
-.shuffle {
-    background: transparent;
-    display: inline-flex;
-    padding: 8px 31px;
-    align-items: center;
-    gap: 10px;
-    border-radius: 35px;
-    border: 1px solid $textWhite;
-    color: $textWhite;
-    font-family: Inter;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-
-    &:hover {
-        background-color: $textWhite;
-        color: $textBlack;
-    }
-    &:active {
-        background: transparent;
-        color: $textLightGray;
-    }
+.big {
+  max-width: 190px;
+  width: 100%;
 }
 
+.pink {
+  background: #E82567;
+  color: #FFF;
+  font-weight: 400;
 
-//create button
+  &:hover {
+    background: $playButtonPinkHover;
+  }
 
-.create {
-    color: $textWhite;
-    font-family: Inter;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    display: inline-flex;
-    height: 40px;
-    padding: 8px 16px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    border: none;
-    border-radius: 30px;
-    background: $secondPrimaryPink;
-
-    &:hover {
-        background-color: $playButtonPinkHover;
-    }
-
-    &:active{
-        background-color: $playButtonPinkClick;
-    }
+  &:active {
+    background: $playButtonPinkClick;
+  }
 }
 
-//delete button
+.blue {
+  background: $cyanButton;
 
-.delete {
-    background-color: $secondPrimaryPink;
-    color: $textWhite;
-    display: flex;
-    width: 191px;
-    padding: 8px 70px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    border: none;
-    border-radius: 23px;
-    font-family: Inter;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
+  &:hover {
+    background: $cyanButtonHover;
+  }
 
-    &:hover {
-        background-color: $playButtonPinkHover;
-    }
-
-    &:active {
-        background-color: $playButtonPinkClick;
-    }
+  &:active {
+    background: $cyanButtonClick;
+  }
 }
 
+.none{
+  background: none;
+  color: #FFF;
+  border: 1px solid #FFF;
 
-//cancel button
+  &:hover{
+    color: #000000;
+  }
 
-.cancel {
-    background: transparent;
-    color: $textWhite;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
+  &:active{
+    color: #FFF;
+  }
+}
 
-    border: none;
-    display: flex;
-    width: 191px;
-    padding: 8px 70px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    border-radius: 23px;
-    border: 1px solid $textWhite;
-
-    &:hover {
-        background-color: $textWhite;
-        color: $textBlack;
-    }
-
-    &:active {
-        background: transparent;
-        color: $textLightGray;
-    }
+@media only screen and (max-width: 1023px) {
 
 }
 
 
+@media only screen and (max-width: 767px){
+  .container{
+    max-width: 124px;
+    height: 32px;
+    border: none
+  }
+
+  .icon{
+    width: 16px;
+    height: 16px;
+  }
+}
