@@ -21,7 +21,7 @@ export const AlbumHero = (props: Props) =>{
                             <Button title={'Play'} bg={'pink'}/>
                             <Button title={'Shuffle'} bg={'none'} icon={'SHUFFLE'} hoverIcon={'SHUFFLE'} activeIcon={'SHUFFLE'}/>
                         </div>
-                        <span className={styles.total}>{`${props.total} songs`}</span>
+                        <span className={styles.total}>{`${props.total} listeners`}</span>
                     </div>
                 </div>
             </div>
