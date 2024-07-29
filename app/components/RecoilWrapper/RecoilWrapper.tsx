@@ -1,12 +1,14 @@
 'use client'
 
-import { Children, ReactNode } from "react"
-import { RecoilRoot } from "recoil"
+import React, { ReactNode } from 'react'
+import { RecoilRoot } from 'recoil' // Import RecoilRoot from recoil
 
-export default (props: { children: ReactNode }) => {
+const RecoilWrapper = (props: { children: ReactNode }) => {
     return (
         <RecoilRoot>
             {props.children}
         </RecoilRoot>
     )
 }
+
+export default RecoilWrapper

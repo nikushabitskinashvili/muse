@@ -14,7 +14,7 @@ export const ReusableModal = (props: Props) => {
         <div className={styles.container}>
             <div className={styles.head}>
                 <span className={styles.title}>{props.title}</span>
-                <XButton/>
+                <XButton bg={true}/>
             </div>
             <form className={styles.form}>
                 <div className={styles.inputCont}>
