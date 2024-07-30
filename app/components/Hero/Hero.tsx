@@ -22,11 +22,7 @@ const Hero = ({className}: HeroProps) => {
                             past relationships with gratitude and moving
                             forward with confidence.
                         </p>
-                        <Button bg={'none'} title={'Shuffle'}
-                                icon={"SHUFFLE"}
-                                hoverIcon={"SHUFFLEHOVER"}
-                                activeIcon={'SHUFFLE'}
-                        ></Button>
+                        <Button bg={'blue'} title={'Play'}></Button>
                     </div>
                     <img src={'./images/ariana.png'} alt="img" width={265} height={392}/>
                 </div>
