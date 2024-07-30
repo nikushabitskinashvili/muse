@@ -14,7 +14,12 @@
 }
 
 .container{
-    background: none;
+    background: $secondaryBlack;
+    width: 100%;
+}
+
+.linearContainer{
+    background: $primaryBackground;
     width: 100%;
 }
 
