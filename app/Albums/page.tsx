@@ -67,6 +67,67 @@ const Albums = () => {
             image: '/images/1.png',
             name: 'eminem'
         },
+        {
+            id: 11,
+            title: 'dnckkkk',
+            image: '/images/1.png',
+            name: 'eminem'
+        },
+        {
+            id: 12,
+            title: 'dnckkkk',
+            image: '/images/1.png',
+            name: 'eminem'
+        },
+        {
+            id: 13,
+            title: 'dnckkkk',
+            image: '/images/1.png',
+            name: 'eminem'
+        },
+        {
+            id: 14,
+            title: 'dnckkkk',
+            image: '/images/1.png',
+            name: 'eminem'
+        },
+        {
+            id: 15,
+            title: 'dnckkkk',
+            image: '/images/1.png',
+            name: 'eminem'
+        },
+        {
+            id: 16,
+            title: 'dnckkkk',
+            image: '/images/1.png',
+            name: 'eminem'
+        },
+        {
+            id: 17,
+            title: 'dnckkkk',
+            image: '/images/1.png',
+            name: 'eminem'
+        },
+        {
+            id: 18,
+            title: 'dnckkkk',
+            image: '/images/1.png',
+            name: 'eminem'
+        },
+        {
+            id: 19,
+            title: 'dnckkkk',
+            image: '/images/1.png',
+            name: 'eminem'
+        },
+        {
+            id: 20,
+            title: 'dnckkkk',
+            image: '/images/1.png',
+            name: 'eminem'
+        },
+
 
     ]
     return (
