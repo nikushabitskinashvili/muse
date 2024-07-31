@@ -8,6 +8,7 @@ import {AlbumHero} from "@/app/components/AlbumHero/AlbumHero";
 import {ReusableModal} from "@/app/components/reusableModal/reusableModal";
 import {YourPlaylistModal} from "@/app/components/yourPlaylistModal/yourPlaylistModal";
 import {DeleteModal} from "@/app/components/deleteModal/deleteModal";
+import { title } from "process";
 
 export default function Home() {
   const [isClient, setIsClient] = useState(false);

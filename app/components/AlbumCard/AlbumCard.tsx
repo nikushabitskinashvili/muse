@@ -1,7 +1,7 @@
+// components/AlbumCard/AlbumCard.tsx
 'use client';
 import styles from "./AlbumCard.module.scss";
 import Link from "next/link";
-
 
 export interface Album {
     id: number;
@@ -14,15 +14,15 @@ export interface Album {
 
 const AlbumCard = (props: Album) => {
     return (
-            <Link href={`album/${props.id}`}>
-                <div className={styles.albumCard}>
-                    <img className={styles.albumImg} src={props.image} alt={props.title} />
-                    <div className={styles.albumName}>
-                        <span className={styles.albumTitle}>{props.title}</span>
-                        <span className={styles.artistName}>{props.name}</span>
-                    </div>
+        <Link href={`/album/${props.id}`}>
+            <div className={styles.albumCard}>
+                <img className={styles.albumImg} src={props.image} alt={props.title} />
+                <div className={styles.albumName}>
+                    <span className={styles.albumTitle}>{props.title}</span>
+                    <span className={styles.artistName}>{props.name}</span>
                 </div>
-            </Link>
+            </div>
+        </Link>
     );
 }
 
