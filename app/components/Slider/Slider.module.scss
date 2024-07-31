@@ -23,12 +23,12 @@
 .sliderCard h2{
     color: $textWhite;
     font-size: 16px;
-    line-height: 19.36px;
+    line-height: 19px;
     margin-top: 16px;
     margin-bottom: 4px;
     font-weight: 500;
      @media (max-width: 667px) {
-        line-height: 16.94px;
+        line-height: 17px;
         font-size: 14px;
         font-weight: 400;
        }
@@ -39,7 +39,7 @@
     font-weight: 500;
 
       @media (max-width: 667px) {
-        line-height: 14.52px;
+        line-height: 14px;
         font-size: 12px;
         font-weight: 400;
        }
@@ -47,7 +47,13 @@
 
 @media (min-width: 1024px) {
   .marginTopLargeScreen {
-    margin-top: -130px;
+      position: absolute;
+      bottom:-170px ;
+      width: 100%;
+      z-index: 1;
+  }
+  .artistMargin{
+    margin-top: 130px;
   }
 }
 

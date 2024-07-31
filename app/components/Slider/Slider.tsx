@@ -22,10 +22,15 @@ export const Slider = ({ data, title }: { data: any; title: string }) => {
 
   const conditionalStyle = title === "Artists" ? styles.artistsRoundedCard : "";
 
-  const sectionClass =
+  const popularSectionClass =
     title === "Popular Album" ? styles.marginTopLargeScreen : "";
+
+  const artistsSectionClass = title === "Artists" ? styles.artistMargin : "";
+
   return (
-    <section className={`${styles.carouselSection} ${sectionClass}`}>
+    <section
+      className={`${styles.carouselSection} ${popularSectionClass} ${artistsSectionClass}`}
+    >
       <SwiperTitle swiper={swiper} title={title} />
       <div className={styles.swiperContainer}>
         <Swiper
@@ -51,7 +56,6 @@ export const Slider = ({ data, title }: { data: any; title: string }) => {
           {data.map((item: any) => {
             return (
               <SwiperSlide
-                // style={conditionalStyles}
                 className={`${styles.sliderCard} ${conditionalStyle}`}
                 key={item.id}
               >
