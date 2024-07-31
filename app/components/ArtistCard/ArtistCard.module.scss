@@ -10,6 +10,10 @@
 .cardImage{
     width: 100%;
     object-fit: cover;
+    border-radius: 10px;
+     @media (max-width: 667px) {
+        height: 74px;
+       }
 }
 
 
@@ -19,4 +23,13 @@
     align-items: center;
     text-align: center;
 }
+
+.imageSize{
+    @media (max-width: 667px) {
+        height: 40px;
+       }
+}
+
+
+
 
