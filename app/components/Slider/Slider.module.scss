@@ -45,15 +45,11 @@
        }
 }
 
+
 @media (min-width: 1024px) {
   .marginTopLargeScreen {
-      position: absolute;
-      bottom:-170px ;
-      width: 100%;
-      z-index: 1;
+     margin-top: -130px;
   }
-  .artistMargin{
-    margin-top: 130px;
-  }
+  
 }
 
