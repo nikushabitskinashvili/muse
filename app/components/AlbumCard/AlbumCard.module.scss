@@ -41,3 +41,13 @@
     line-height: normal;
 }
 
+
+@media only screen and (max-width: 767px) {
+    .albumTitle{
+        font-size: 14px;
+    }
+
+    .albumCard{
+        gap: 4px;
+    }
+}

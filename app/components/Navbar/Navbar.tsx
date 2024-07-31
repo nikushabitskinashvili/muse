@@ -17,7 +17,7 @@ const Navbar = () => {
   console.log(pathName, "pathName");
 
   return (
-    <div className={styles.container}>
+    <div className={pathName === '/'? styles.linearContainer : styles.container }>
       <div className={styles.wrapper}>
         <div className={styles.nav}>
           <img

@@ -10,11 +10,11 @@
 }
 
 .defaultLink:hover {
-    color: #3DDEED;
+    color: $primaryCyan;
     text-decoration-line: underline;
 }
 
 .active {
-    color: #3DDEED;
+    color: $primaryCyan;
     text-decoration-line: underline;
 }
