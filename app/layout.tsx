@@ -1,9 +1,7 @@
 import type {Metadata} from "next";
 import {Inter} from "next/font/google";
-import "./globals.css";
-import Navbar from "./components/Navbar/Navbar";
 import RecoilWrapper from "./components/RecoilWrapper/RecoilWrapper";
-import "../app/globals.css";
+import "./globals.css";
 import React from "react";
 
 
