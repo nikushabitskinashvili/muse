@@ -1,12 +1,12 @@
-@import 'app/styles/colors.scss';
+@import 'app/styles/colors.scss' ;
 
-.nav {
+.nav{
     display: flex;
     align-items: center;
     gap: 32px;
 }
 
-.nav ul {
+.nav ul{
     display: flex;
     align-items: center;
     list-style: none;
@@ -14,20 +14,26 @@
 }
 
 .container{
-    background: none;
     width: 100%;
 }
 
-.wrapper {
+.wrapper{
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
     gap: 40px;
     padding: 14px 132px;
+    @media (max-width: 1024px) {
+        padding: 24px;
+       }
+    @media (max-width: 667px) {
+        padding: 16px;
+       }
+    
 }
 
-
-.navImg {
+.navImg{
     cursor: pointer;
 }
+
