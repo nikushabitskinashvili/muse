@@ -25,7 +25,7 @@ const AdjustButtons: React.FC<Props> = ({
                 <Image src={IconEnum.PREVOUS} alt='previousMusicButton' width={24} height={24} onClick={onPreviousSong} />
             </div>
             <div  className={styles.mainButton}>
-                <Image src={playing ? IconEnum.PLAY : IconEnum.PAUSE} alt='playbutton' width={24} height={24} onClick={onPlayMusic} />
+                <Image src={playing ? IconEnum.PAUSE : IconEnum.PLAY} alt='playbutton' width={24} height={24} onClick={onPlayMusic} />
             </div>
             <div className={styles.adjustButton}>
                 <Image src={IconEnum.NEXT} alt='nextMusicButton' width={24} height={24} onClick={onNextSong} />

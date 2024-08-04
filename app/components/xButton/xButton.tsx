@@ -3,6 +3,7 @@ import {IconEnum} from "@/app/utils/Icon/Icon";
 
 interface Props {
     bg: boolean
+    onClick?: () => void
 }
 
 export const XButton = (props: Props) => {
