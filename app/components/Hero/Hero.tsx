@@ -4,6 +4,7 @@ import styles from './Hero.module.scss';
 import Navbar from '../Navbar/Navbar';
 import {Button} from "@/app/components/Button/Button";
 import {IconEnum} from "@/app/utils/Icon/Icon";
+import Image from "next/image";
 
 interface HeroProps {
     className?: string
@@ -24,7 +25,7 @@ const Hero = ({className}: HeroProps) => {
                         </p>
                         <Button bg={'blue'} title={'Play'}></Button>
                     </div>
-                    <img src={'./images/ariana.png'} alt="img" width={265} height={392}/>
+                    <Image src={'/images/ariana.png'} alt="img" width={265} height={392}/>
                 </div>
             </div>
         </section>

@@ -9,7 +9,7 @@
 
 html,
 body {
-  max-width: 100vx;
+  min-width: 100vh;
   overflow-x: hidden;
   font-family: 'Inter',sans-serif;
 }
