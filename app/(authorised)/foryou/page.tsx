@@ -4,7 +4,7 @@ import { PlaylistItem } from "@/app/components/PlaylistItem/PlaylistItem";
 import { IconEnum } from "@/app/components/Icon/Icon";
 import { white } from "next/dist/lib/picocolors";
 import Navbar from "@/app/components/Navbar/Navbar";
-import { XButton } from '../components/xButton/xButton';
+import { XButton } from '../../components/xButton/xButton';
 
 const albums = [
     {

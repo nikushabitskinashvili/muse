@@ -25,12 +25,12 @@ const Navbar = () => {
         setIsOpen((open: boolean) => !open);
     }
 
-    const logOut = () => {
-        pathName = '/auth/login';
-    }
-
     let pathName = usePathname();
     console.log(pathName, "pathName");
+
+    const logOut = () => {
+        console.log("logout");
+    }
 
     const burgerClass = [styles.items];
 
@@ -40,7 +40,7 @@ const Navbar = () => {
 
     if (isOpen) wrapperclass.push(styles.navOpen);
 
-    console.log(isOpen)
+    // console.log(isOpen)
 
     return (
         <div className={pathName === '/' ? styles.linearContainer : styles.container}>
@@ -67,7 +67,7 @@ const Navbar = () => {
                 </div>
                 <div className={styles.search_log}>
                     <Input/>
-                    <Link href={pathName}><Image src={IconEnum.LOGOUT} className={styles.logOut} onClick={logOut}
+                    <Link href={'/auth/login'}><Image src={IconEnum.LOGOUT} className={styles.logOut} onClick={logOut}
                                                  alt={''} width={32} height={32}/></Link>
                 </div>
                 <div className={styles.burgerIcon} onClick={burgerMenu}><Image  src={isOpen ? IconEnum.DELETE : IconEnum.BURGER}  alt={''} width={44} height={44}/></div>
@@ -81,8 +81,8 @@ const Navbar = () => {
                         title={link.title}
                     />
                 ))}
-                <li className={styles.burger_logOut} onClick={logOut}><Image src={IconEnum.LOGOUT} alt={''} width={32}
-                                                                             height={32}/></li>
+                <li><Link className={styles.burger_logOut} href={'/auth/login'}><Image src={IconEnum.LOGOUT} alt={''} width={32}
+                height={32}/></Link></li>
             </ul>
         </div>
     );
