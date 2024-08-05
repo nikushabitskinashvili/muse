@@ -4,7 +4,6 @@ import RecoilWrapper from "./components/RecoilWrapper/RecoilWrapper";
 import "./globals.css";
 import React from "react";
 
-
 const inter = Inter({subsets: ["latin"]});
 
 export const metadata: Metadata = {
@@ -17,6 +16,8 @@ export default function RootLayout({
                                    }: Readonly<{
     children: React.ReactNode;
 }>) {
+
+
     return (
         <html lang="en">
         <body className={inter.className}>
