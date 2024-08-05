@@ -1,9 +1,10 @@
 import styles from './foryou.module.scss'
 // import {XButton} from "@/app/components/XButton/XButton";
-import {PlaylistItem} from "@/app/components/PlaylistItem/PlaylistItem";
-import {IconEnum} from "@/app/components/Icon/Icon";
-import {white} from "next/dist/lib/picocolors";
+import { PlaylistItem } from "@/app/components/PlaylistItem/PlaylistItem";
+import { IconEnum } from "@/app/components/Icon/Icon";
+import { white } from "next/dist/lib/picocolors";
 import Navbar from "@/app/components/Navbar/Navbar";
+import { XButton } from '../components/xButton/xButton';
 
 const albums = [
     {
@@ -82,13 +83,11 @@ const albums = [
 export default function ForYou() {
     return (
         <>
-            <Navbar/>
             <div className={styles.page}>
                 <div className={styles.container}>
                     <div className={styles.head}>
                         <span className={styles.title}>For you</span>
-                        {/*<XButton bg={false}/>*/}
-                        <span style={{color: 'white'}}>X</span>
+                        <XButton bg={false} />
                     </div>
                     <div className={styles.list}>
                         {albums.map(album => (
@@ -97,7 +96,7 @@ export default function ForYou() {
                                 title={album.title}
                                 image={album.image}
                                 price={album.price}
-                                icon={'dots'}/>
+                                icon={'dots'} />
                         ))}
                     </div>
                 </div>
