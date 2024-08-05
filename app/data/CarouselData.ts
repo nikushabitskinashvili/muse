@@ -72,42 +72,42 @@ export const popularAlbum:PopularAlbum[] = [
 export const artists:Artists[] = [
     {
         id:1,
-        img:artitst1,
+        img:'/images/image 325.png',
         title:"Lana Del Rey",
     },
     {
         id:2,
-        img:artitst2,
+        img:'/images/image 325.png',
         title:"Lana Del Rey",
     },
     {
         id:3,
-        img:artitst3,
+        img:'/images/image 325.png',
         title:"Lana Del Rey",
     },
     {
         id:4,
-        img:artitst4,
+        img:'/images/image 325.png',
         title:"Lana Del Rey",
     },
     {
         id:5,
-        img:artitst5,
+        img:'/images/image 325.png',
         title:"Lana Del Rey",
     },
     {
         id:6,
-        img:artitst1,
+        img:'/images/image 325.png',
         title:"Lana Del Rey",
     },
     {
         id:7,
-        img:artitst2,
+        img:'/images/image 325.png',
         title:"Lana Del Rey",
     },
     {
         id:8,
-        img:artitst4,
+        img:'/images/image 325.png',
         title:"Lana Del Rey",
     }
 ]

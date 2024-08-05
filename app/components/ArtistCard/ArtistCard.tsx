@@ -11,13 +11,13 @@ export const ArtistCard = ({ title, item }: { title: string; item: any }) => {
     <div className={styles.artistCardContainer}>
       <Image
         src={item.img}
-        width={176}
-        height={171}
+        width={100}
+        height={100}
         alt={item.title}
         className={styles.cardImage}
       />
       <div>
-        <h2>{item.title}</h2>
+        <h2 className={styles.title}>{item.title}</h2>
         <h3>{item.subTitle}</h3>
       </div>
     </div>
