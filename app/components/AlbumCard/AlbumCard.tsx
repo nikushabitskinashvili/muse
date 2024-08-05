@@ -1,25 +1,22 @@
-// components/AlbumCard/AlbumCard.tsx
-'use client';
-import styles from "./AlbumCard.module.scss";
+'use client'; 
 import Link from "next/link";
+import styles from "./AlbumCard.module.scss";
 
 export interface Album {
     id: number;
     title: string;
     image: string;
     name?: string;
-    className?: string;
-    onClick?: void;
 }
 
-const AlbumCard = (props: Album) => {
+const AlbumCard: React.FC<Album> = ({ id, title, image, name }) => {
     return (
-        <Link href={`/album/${props.id}`}>
+        <Link href={`/albums/${id}`}>
             <div className={styles.albumCard}>
-                <img className={styles.albumImg} src={props.image} alt={props.title} />
+                <img className={styles.albumImg} src={image} alt={title} />
                 <div className={styles.albumName}>
-                    <span className={styles.albumTitle}>{props.title}</span>
-                    <span className={styles.artistName}>{props.name}</span>
+                    <span className={styles.albumTitle}>{title}</span>
+                    <span className={styles.artistName}>{name}</span>
                 </div>
             </div>
         </Link>

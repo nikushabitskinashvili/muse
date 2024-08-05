@@ -1,7 +1,6 @@
 
-'use client'
-import AlbumCard from "../components/AlbumCard/AlbumCard";
-import styles from "./Albums.module.scss";
+import AlbumCard from '../components/AlbumCard/AlbumCard';
+import styles from './page.module.scss';
 
 const Albums = () => {
     const albums = [
@@ -24,7 +23,13 @@ const Albums = () => {
         { id: 17, title: 'dnckkkk', image: '/images/1.png', name: 'eminem' },
         { id: 18, title: 'dnckkkk', image: '/images/1.png', name: 'eminem' },
         { id: 19, title: 'dnckkkk', image: '/images/1.png', name: 'eminem' },
-        { id: 20, title: 'dnckkkk', image: '/images/1.png', name: 'eminem' }
+        { id: 20, title: 'dnckkkk', image: '/images/1.png', name: 'eminem' },
+        { id: 21, title: 'dnckkkk', image: '/images/1.png', name: 'eminem' },
+        { id: 22, title: 'dnckkkk', image: '/images/1.png', name: 'eminem' },
+        { id: 23, title: 'dnckkkk', image: '/images/1.png', name: 'eminem' },
+        { id: 24, title: 'dnckkkk', image: '/images/1.png', name: 'eminem' },
+        { id: 25, title: 'dnckkkk', image: '/images/1.png', name: 'eminem' }
+
     ];
 
     return (
@@ -40,7 +45,8 @@ const Albums = () => {
                             id={album.id}
                             title={album.title}
                             image={album.image}
-                            name={album.name} />
+                            name={album.name}
+                        />
                     ))}
                 </div>
             </div>

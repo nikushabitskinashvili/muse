@@ -1,3 +1,5 @@
+'use client'
+
 import styles from './AlbumHero.module.scss';
 import {Button} from '@/app/components/Button/Button';
 
