@@ -8,8 +8,6 @@ export default  function artist () {
 
     return(
         <div className={styles.main}>
-            <Navbar/>
-
             <div className={styles.container}>
                 <span className={styles.heading}>The Artists</span>
 
