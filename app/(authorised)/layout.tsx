@@ -12,7 +12,7 @@ type Props = {
 const AuthLayout = (props:Props) => {
     return (
         <>
-            <Navbar/>
+            {/*<Navbar/>*/}
             {props.children}
         </>
 
