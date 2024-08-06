@@ -1,6 +1,7 @@
+import Authorised from "./(authorised)/page";
 const Home = () => {
     return <>
-    <Home/>
+        <Authorised />
     </>
 }
 

@@ -11,6 +11,7 @@ const RecoilWrapper = (props: { children: ReactNode }) => {
 
     return (
         <RecoilRoot>
+            {pathName !== '/auth/login' && pathName !== '/auth/signup' && <Navbar/>}
             {props.children}
         </RecoilRoot>
     )
