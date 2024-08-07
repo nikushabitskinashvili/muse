@@ -109,6 +109,56 @@ export const artists:Artists[] = [
         id:8,
         img:'/images/image 325.png',
         title:"Lana Del Rey",
+    },
+    {
+        id:9,
+        img:'/images/image 325.png',
+        title:"Lana Del Rey",
+    },
+    {
+        id:10,
+        img:'/images/image 325.png',
+        title:"Lana Del Rey",
+    },
+    {
+        id:11,
+        img:'/images/image 325.png',
+        title:"Lana Del Rey",
+    },
+    {
+        id:12,
+        img:'/images/image 325.png',
+        title:"Lana Del Rey",
+    },
+    {
+        id:13,
+        img:'/images/image 325.png',
+        title:"Lana Del Rey",
+    },
+    {
+        id:14,
+        img:'/images/image 325.png',
+        title:"Lana Del Rey",
+    },
+    {
+        id:15,
+        img:'/images/image 325.png',
+        title:"Lana Del Rey",
+    },
+    {
+        id:16,
+        img:'/images/image 325.png',
+        title:"Lana Del Rey",
+    },
+    {
+        id:17,
+        img:'/images/image 325.png',
+        title:"Lana Del Rey",
+    },
+    {
+        id:18,
+        img:'/images/image 325.png',
+        title:"Lana Del Rey",
     }
 ]
 export const playlistData:PlaylistData[] = [
