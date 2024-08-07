@@ -8,6 +8,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { SwiperTitle } from "../Swiper-Title/SwiperTitle";
 import { ArtistCard } from "../ArtistCard/ArtistCard";
+import {playlistData} from "@/app/data/CarouselData";
 
 export const Slider = ({ data, title }: { data: any; title: string }) => {
   const [swiperReady, setSwiperReady] = useState(false);
@@ -20,13 +21,17 @@ export const Slider = ({ data, title }: { data: any; title: string }) => {
     }
   };
 
-  const conditionalStyles =
-    title === "Artists"
-      ? { backgroundColor: "#1C1C1C", padding: "23px", borderRadius: "12px" }
-      : {};
+  const conditionalStyle = title === "Artists" ? styles.artistsRoundedCard : "";
+
+  const popularSectionClass =
+    title === "Popular Album" ? styles.marginTopLargeScreen : "";
+
+  const artistsSectionClass = title === "Artists" ? styles.artistMargin : "";
 
   return (
-    <section className={styles.carouselSection}>
+    <section
+      className={`${styles.carouselSection} ${popularSectionClass} ${artistsSectionClass}`}
+    >
       <SwiperTitle swiper={swiper} title={title} />
       <div className={styles.swiperContainer}>
         <Swiper
@@ -36,11 +41,11 @@ export const Slider = ({ data, title }: { data: any; title: string }) => {
           modules={[Mousewheel, Keyboard]}
           breakpoints={{
             0: {
-              slidesPerView: 1,
+              slidesPerView: 4,
               spaceBetween: 10,
             },
             667: {
-              slidesPerView: 2,
+              slidesPerView: 4,
               spaceBetween: 15,
             },
             1024: {
@@ -52,8 +57,7 @@ export const Slider = ({ data, title }: { data: any; title: string }) => {
           {data.map((item: any) => {
             return (
               <SwiperSlide
-                style={conditionalStyles}
-                className={styles.sliderCard}
+                className={`${styles.sliderCard} ${conditionalStyle}`}
                 key={item.id}
               >
                 <ArtistCard title={title} item={item} />

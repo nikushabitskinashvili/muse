@@ -18,8 +18,14 @@
   line-height: normal;
 }
 
+
 .big {
   max-width: 190px;
+  width: 100%;
+}
+
+.huge {
+  max-width: 428px;
   width: 100%;
 }
 
@@ -47,37 +53,41 @@
   &:active {
     background: $cyanButtonClick;
   }
-
 }
 
-.none{
+.none {
   background: none;
   color: #FFF;
   border: 1px solid #FFF;
 
-  &:hover{
+  &:hover {
     color: #000000;
+    background: #FFF;
   }
 
-  &:active{
+  &:active {
     color: #FFF;
+    background: inherit;
   }
 }
 
-@media only screen and (max-width: 1023px) {
-
-}
-
-
-@media only screen and (max-width: 767px){
-  .container{
+@media only screen and (max-width: 767px) {
+  .container {
     max-width: 124px;
     height: 32px;
     border: none
   }
 
-  .icon{
+  .icon {
     width: 16px;
     height: 16px;
+  }
+
+  .big {
+    max-width: 124px;
+  }
+
+  .huge {
+    max-width: 294px;
   }
 }

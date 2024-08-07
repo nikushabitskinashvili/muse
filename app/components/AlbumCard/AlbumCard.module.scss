@@ -7,6 +7,7 @@
     align-items: center;
     max-width: 176px;
     gap: 16px;
+    width: 100%;
 }
 
 .albumName{
@@ -19,11 +20,6 @@
     border-radius: 10px;
     max-width: 100%;
     max-height: 100%;
-}
-
-.albumCardContainer{
-    display: flex;
-    gap: 26px;
 }
 
 .albumTitle{
@@ -41,3 +37,21 @@
     line-height: normal;
 }
 
+
+@media screen and (max-width: 1024px) and (min-width: 768px) {
+   .albumCard{
+    width: 159px;
+   }
+}
+
+
+@media only screen and (max-width: 767px) {
+    .albumTitle{
+        font-size: 14px;
+    }
+
+    .albumCard{
+        gap: 8px;
+        width: 74px;
+    }
+}

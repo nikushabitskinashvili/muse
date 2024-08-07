@@ -6,6 +6,7 @@ export enum IconEnum {
     BACKWARD = "icons/backward.svg",
     BIG_PAUSE = "icons/bigPause.svg",
     BIN = "icons/bin.svg",
+    BURGER= "/icons/burger.svg",
     CLOCK = "icons/clock.svg",
     DELETE = "icons/delete.svg",
     DOTS = "icons/dots.svg",
@@ -18,6 +19,8 @@ export enum IconEnum {
     NEXT = "icons/next.svg",
     PAUSE = "icons/pause.svg",
     PEN = "icons/pen.svg",
+    PLAY = "icons/play.svg",
+    PLAYMINI = "icons/playMini.svg",
     PLUS = "icons/plus.svg",
     PREVOUS = "icons/prevous.svg",
     RIGHT_ARROW = "icons/rightArrow.svg",
@@ -25,7 +28,7 @@ export enum IconEnum {
     SEARCH = "icons/search.svg",
     SHUFFLE = "icons/shuffle.svg",
     VECTOR = "icons/Vector.svg",
-    VOLUME_FULL = "icons/volumeFull.svg"
+    VOLUME_FULL = "icons/volumeFull.svg",
 }
 
 interface Props {

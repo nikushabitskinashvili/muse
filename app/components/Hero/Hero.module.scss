@@ -18,6 +18,9 @@
         font-weight: 300;
         line-height: normal;
     }
+    .wrapper{
+        padding: 0 16px;
+    }
 
     
 }
@@ -85,25 +88,25 @@
 @media screen and (min-width: 1024px){
     .section{
         width: 100%;
-        height: 465px;
+        height: 392px;
         background: $primaryBackground;
         display: flex;
         flex-direction: column;
         align-items: center;
-        
     }
+
     .content {
-        max-width: 1176px;
         width: 100%;
         display: flex;
         justify-content: space-between;
+        padding: 0 132px;
     }
 
     .container {
-        max-width: 1176px;
         width: 100%;
         display: flex;
         justify-content: space-between;
+        align-items: flex-start;
     }
 
     .wrapper {

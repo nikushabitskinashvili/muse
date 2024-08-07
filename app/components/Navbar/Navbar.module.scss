@@ -1,42 +1,122 @@
-@import 'app/styles/colors.scss' ;
+@import 'app/styles/colors.scss';
 
-.nav{
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.items {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 32px;
+}
+
+.linearContainer {
+  background: linear-gradient(92deg, #E82567 -8.96%, #3453EA 107.31%);
+}
+
+.container {
+  width: 100%;
+  background: #050505;
+}
+
+.search_log {
+  display: flex;
+  gap: 16px;
+  max-width: 515px;
+  width: 100%;
+  align-items: flex-end;
+}
+
+.burgerIcon {
+  display: none;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 14px 132px;
+}
+
+.navImg {
+  cursor: pointer;
+}
+
+.burger {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .wrapper {
+    padding: 24px;
+  }
+
+  .hiden {
+    display: none;
+  }
+
+  .items {
+    display: none;
+  }
+
+  //.navOpen {
+  //  opacity: 1;
+  //  transition: max-height 0.6s ease, opacity 0.5s ease;
+  //  background: #1C1C1C;
+  //}
+
+  .burger {
+    padding: 24px;
     display: flex;
-    align-items: center;
-    gap: 32px;
-}
+    flex-direction: column;
+    gap: 24px;
+    align-items: flex-start;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    animation-delay: 0.6s;
+    transition: max-height 0.6s ease, opacity 0.7s ease;
+  }
 
-.nav ul{
+  .isOpen {
+    background: #1C1C1C;
     display: flex;
-    align-items: center;
-    list-style: none;
-    gap: 32px;
+    flex-direction: column;
+    gap: 24px;
+    align-items: flex-start;
+    padding: 24px;
+    max-height: 300px;
+    opacity: 1;
+  }
+
+
+
+
+
+  .logOut {
+    display: none;
+  }
+
+  .burger_logOut {
+    display: block;
+  }
+
+  .burgerIcon {
+    display: block;
+  }
+
+  .linearContainer {
+    background: #050505;
+  }
 }
 
-.container{
-    background-color: $secondaryBlack;
-    width: 100%;
-}
-
-.wrapper{
-    display: flex;
-    align-items: center;
-    // margin: 0 auto;
-    justify-content: space-between;
-    // max-width: 1172px;
-    width: 100%;
-    gap: 40px;
-    padding: 14px 132px;
-    @media (max-width: 1024px) {
-        padding: 24px;
-       }
-    @media (max-width: 667px) {
-        padding: 16px;
-       }
-    
-}
-
-.navImg{
-    cursor: pointer;
+@media (max-width: 667px) {
+  .wrapper {
+    padding: 16px;
+  }
 }
 

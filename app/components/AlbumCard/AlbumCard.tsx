@@ -7,12 +7,13 @@ export interface Album {
     id: number;
     title: string;
     image: string;
-    name: string;
+    name?: string;
+    className?: string;
+    onClick?: void;
 }
 
 const AlbumCard = (props: Album) => {
     return (
-        <div className={styles.albumCardContainer}>
             <Link href={`album/${props.id}`}>
                 <div className={styles.albumCard}>
                     <img className={styles.albumImg} src={props.image} alt={props.title} />
@@ -22,7 +23,6 @@ const AlbumCard = (props: Album) => {
                     </div>
                 </div>
             </Link>
-        </div>
     );
 }
 

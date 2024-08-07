@@ -1,0 +1,22 @@
+@import "/app/styles/colors.scss";
+
+
+.container {
+  background: $primaryBackground;
+  width: 100%;
+}
+
+.containerWrapper {
+  max-width: 1300px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  align-items: center;
+  gap: 54px;
+  padding: 0 24px;
+}
+
+.containerWrapper audio {
+  display: none;
+}

@@ -203,3 +203,6 @@ export const playlistData:PlaylistData[] = [
         title:"Car music",
     }
 ]
+
+export class artitsts {
+}
