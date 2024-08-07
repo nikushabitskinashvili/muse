@@ -7,7 +7,7 @@ import Hero from "@/app/components/Hero/Hero";
 import AudioPlayer from "../components/AudioPlayer/AudioPlayer";
 import songs from "../array";
 
-export default function Home() {
+export default function Authorised() {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
