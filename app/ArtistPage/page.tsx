@@ -9,7 +9,7 @@ export default  function artist () {
     return(
         <div className={styles.main}>
             <div className={styles.container}>
-                <span className={styles.heading}>The Artists</span>
+                <span className={styles.title}>The Artists</span>
 
                 <div className={styles.wrapper}>
                     
