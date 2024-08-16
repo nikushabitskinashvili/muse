@@ -19,7 +19,7 @@ export const YourPlaylistModal = () => {
         <div className={styles.container}>
             <div className={styles.head}>
                 <span className={styles.title}>Your playlist</span>
-                <XButton/>
+                <XButton bg={false}/>
             </div>
             <div className={styles.cards}>
                 {albums.map(album => (

@@ -6,6 +6,7 @@ import styles from "./page.module.css";
 import Hero from "@/app/components/Hero/Hero";
 import AudioPlayer from "../components/AudioPlayer/AudioPlayer";
 import songs from "../array";
+import {YourPlaylistModal} from "@/app/components/yourPlaylistModal/yourPlaylistModal";
 
 export default function Authorised() {
   const [isClient, setIsClient] = useState(false);
@@ -22,6 +23,7 @@ export default function Authorised() {
           <Slider data={artists} title="Artists" />
           <Slider data={playlistData} title="My Playlists" />
           <AudioPlayer songs={songs}/>
+          <YourPlaylistModal/>
         </>
       )}
     </main>
