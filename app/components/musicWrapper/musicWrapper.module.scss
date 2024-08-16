@@ -1,0 +1,11 @@
+.list{
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.active{
+  background-color: #4A4A4A;
+}

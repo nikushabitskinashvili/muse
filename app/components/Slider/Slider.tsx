@@ -9,6 +9,7 @@ import "swiper/css/pagination";
 import { SwiperTitle } from "../Swiper-Title/SwiperTitle";
 import { ArtistCard } from "../ArtistCard/ArtistCard";
 import {playlistData} from "@/app/data/CarouselData";
+import AlbumCard from "@/app/components/AlbumCard/AlbumCard";
 
 export const Slider = ({ data, title }: { data: any; title: string }) => {
   const [swiperReady, setSwiperReady] = useState(false);
@@ -49,7 +50,7 @@ export const Slider = ({ data, title }: { data: any; title: string }) => {
               spaceBetween: 15,
             },
             1024: {
-              slidesPerView: 5,
+              slidesPerView: 6,
               spaceBetween: 20,
             },
           }}
@@ -60,7 +61,7 @@ export const Slider = ({ data, title }: { data: any; title: string }) => {
                 className={`${styles.sliderCard} ${conditionalStyle}`}
                 key={item.id}
               >
-                <ArtistCard title={title} item={item} />
+                <AlbumCard title={title} id={1} image={'/images/1.png'} />
               </SwiperSlide>
             );
           })}

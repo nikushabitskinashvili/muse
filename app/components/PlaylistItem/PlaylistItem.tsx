@@ -8,18 +8,28 @@ interface Props {
     category?: string,
     price: number,
     img?: IconEnum,
-    active?: boolean,
-    icon: 'dots' | 'bin'
+    id: number;
+    onClick?: () => void,
+    icon: 'dots' | 'bin',
+    className?: string;
+    setActiveId: (data: number | null) => void;
+    activeId: number | null;
 }
 
 
 export const PlaylistItem = (props: Props) => {
+    const isActive = props.activeId === props.id
 
-    let icon =  props.icon === "bin"? IconEnum.BIN: IconEnum.DOTS
+    const icon =  props.icon === "bin"? IconEnum.BIN: IconEnum.DOTS
+    const onClick = () => {
+        isActive ? props.setActiveId(null) : props.setActiveId(props.id);
+    }
+    const classNames = [styles.playlistItem];
+
+    if (isActive) classNames.push(styles.active);
 
     return (
-        <>
-            <div className={styles.playlistItem}>
+            <div className={classNames.join(' ').trim()} onClick={onClick}>
                 <div className={styles.leftSection}>
                     <div className={styles.imageSection}>
                         <img className={styles.icon} src={IconEnum.AUDIO} alt="audio"/>
@@ -38,6 +48,5 @@ export const PlaylistItem = (props: Props) => {
                     <img className={styles.dots} src={icon} alt={''}/>
                 </div>
             </div>
-            </>
     )
 }
