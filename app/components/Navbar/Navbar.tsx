@@ -46,13 +46,13 @@ const Navbar = () => {
         <div className={pathName === '/' ? styles.linearContainer : styles.container}>
             <div className={wrapperclass.join(' ')}>
                 <div className={styles.nav}>
-                    <Image
+                    <Link href={'/'}><Image
                         src={"/images/Logo.png"}
                         alt="Logo"
                         width={112}
                         height={44}
                         className={styles.navImg}
-                    />
+                    /></Link>
 
                     <ul className={`${styles.hiden} ${styles.items}`}>
                         {navLinks.map((link, idx) => (

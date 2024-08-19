@@ -20,49 +20,49 @@ import playlistsImage6 from "../../public/images/playlist6.png"
 export const popularAlbum:PopularAlbum[] = [
     {
         id:1,
-        img:albumCover1,
+        img:'/images/2.png',
         title:"Children of bodom",
         subTitle:"Children",
     },
     {
         id:2,
-        img:albumCover2,
+        img:'/images/1.png',
         title:"Children of bodom",
         subTitle:"Children",
     },
     {
         id:3,
-        img:albumCover3,
+        img:'/images/3.png',
         title:"Children of bodom",
         subTitle:"Children",
     },
     {
         id:4,
-        img:albumCover4,
+        img:'/images/4.png',
         title:"Children of bodom",
         subTitle:"Children",
     },
     {
         id:5,
-        img:albumCover3,
+        img:'/images/1.png',
         title:"Children of bodom",
         subTitle:"Children",
     },
     {
         id:6,
-        img:albumCover1,
+        img:'/images/2.png',
         title:"Children of bodom",
         subTitle:"Children",
     },
     {
         id:7,
-        img:albumCover2,
+        img:'/images/3.png',
         title:"Children of bodom",
         subTitle:"Children",
     },
     {
         id:8,
-        img:albumCover3,
+        img:'/images/4.png',
         title:"Children of bodom",
         subTitle:"Children",
     }
@@ -114,42 +114,42 @@ export const artists:Artists[] = [
 export const playlistData:PlaylistData[] = [
     {
         id:1,
-        img:playlistsImage1,
+        img:'/images/playlist1.png',
         title:"Summer",
     },
     {
         id:2,
-        img:playlistsImage2,
+        img:'/images/playlist2.png',
         title:"Car music",
     },
     {
         id:3,
-        img:playlistsImage3,
+        img:'/images/playlist3.png',
         title:"Relax",
     },
     {
         id:4,
-        img:playlistsImage4,
+        img:'/images/playlist4.png',
         title:"Life",
     },
     {
         id:5,
-        img:playlistsImage5,
+        img:'/images/playlist5.png',
         title:"Sleep",
     },
     {
         id:6,
-        img:playlistsImage6,
+        img:'/images/playlist6.png',
         title:"Techno",
     },
     {
         id:7,
-        img:playlistsImage1,
+        img:'/images/playlist1.png',
         title:"Summer",
     },
     {
         id:8,
-        img:playlistsImage2,
+        img:'/images/playlist2.png',
         title:"Car music",
     }
 ]

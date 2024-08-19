@@ -1,8 +1,19 @@
-
 .main {
-  position: relative;
+    background: #050505;
+    position: relative;
 }
 
 .heroContainer {
-  position: relative;
+    position: relative;
+}
+
+.content {
+    background: #050505;
+    @media (min-width: 1024px) {
+        margin-top: -132px;
+    }
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
 }
