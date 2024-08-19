@@ -1,72 +1,81 @@
 "use client";
-import React, { useState } from "react";
-import { Mousewheel, Keyboard } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
+import React, {useState} from "react";
+import {Mousewheel, Keyboard} from "swiper/modules";
+import {Swiper, SwiperSlide} from "swiper/react";
 import styles from "./Slider.module.scss";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { SwiperTitle } from "../Swiper-Title/SwiperTitle";
-import { ArtistCard } from "../ArtistCard/ArtistCard";
-import {playlistData} from "@/app/data/CarouselData";
+import {SwiperTitle} from "../Swiper-Title/SwiperTitle";
+import {ArtistCard} from "../ArtistCard/ArtistCard";
+import {artists, playlistData, popularAlbum} from "@/app/data/CarouselData";
 import AlbumCard from "@/app/components/AlbumCard/AlbumCard";
 
-export const Slider = ({ data, title }: { data: any; title: string }) => {
-  const [swiperReady, setSwiperReady] = useState(false);
-  const [swiper, setSwiper] = useState(null);
+export const Slider = ({data, title}: { data: any; title: string }) => {
+    const [swiperReady, setSwiperReady] = useState(false);
+    const [swiper, setSwiper] = useState(null);
 
-  const handleSwiper = (s: any) => {
-    if (!swiperReady) {
-      setSwiper(s);
-      setSwiperReady(true);
-    }
-  };
+    const handleSwiper = (s: any) => {
+        if (!swiperReady) {
+            setSwiper(s);
+            setSwiperReady(true);
+        }
+    };
 
-  const conditionalStyle = title === "Artists" ? styles.artistsRoundedCard : "";
+    const conditionalStyle = title === "Artists" ? styles.artistsRoundedCard : "";
 
-  const popularSectionClass =
-    title === "Popular Album" ? styles.marginTopLargeScreen : "";
+    const popularSectionClass =
+        title === "Popular Album" ? styles.marginTopLargeScreen : "";
 
-  const artistsSectionClass = title === "Artists" ? styles.artistMargin : "";
+    const artistsSectionClass = title === "Artists" ? styles.artistMargin : "";
 
-  return (
-    <section
-      className={`${styles.carouselSection} ${popularSectionClass} ${artistsSectionClass}`}
-    >
-      <SwiperTitle swiper={swiper} title={title} />
-      <div className={styles.swiperContainer}>
-        <Swiper
-          onSwiper={handleSwiper}
-          cssMode={true}
-          pagination={true}
-          modules={[Mousewheel, Keyboard]}
-          breakpoints={{
-            0: {
-              slidesPerView: 4,
-              spaceBetween: 10,
-            },
-            667: {
-              slidesPerView: 4,
-              spaceBetween: 15,
-            },
-            1024: {
-              slidesPerView: 6,
-              spaceBetween: 20,
-            },
-          }}
+    let info = artists
+
+    if (title === 'Popular Album') info = popularAlbum
+    else if (title === 'My Playlists') info = playlistData
+
+    return (
+        <section
+            className={`${styles.carouselSection} ${popularSectionClass} ${artistsSectionClass} ${title === "Popular Album" ? styles.marginTop : ''}`}
         >
-          {data.map((item: any) => {
-            return (
-              <SwiperSlide
-                className={`${styles.sliderCard} ${conditionalStyle}`}
-                key={item.id}
-              >
-                <AlbumCard title={title} id={1} image={'/images/1.png'} />
-              </SwiperSlide>
-            );
-          })}
-        </Swiper>
-      </div>
-    </section>
-  );
+            <SwiperTitle swiper={swiper} title={title}/>
+            <div className={styles.swiperContainer}>
+                <Swiper
+                    onSwiper={handleSwiper}
+                    cssMode={true}
+                    pagination={true}
+                    modules={[Mousewheel, Keyboard]}
+                    breakpoints={{
+                        0: {
+                            slidesPerView: 4,
+                            spaceBetween: 10,
+                        },
+                        667: {
+                            slidesPerView: 4,
+                            spaceBetween: 15,
+                        },
+                        1024: {
+                            slidesPerView: 6,
+                            spaceBetween: 20,
+                        },
+                    }}
+                >
+                    {info.map((item) => {
+                        return (
+                            <SwiperSlide
+                                className={`${styles.sliderCard} ${conditionalStyle} ${title === "Popular Album" ? styles.forSub : ''}`}
+                                key={item.id}
+                            >
+                                {title === "Artists" && <ArtistCard title={title} item={item}/>}
+                                {title === "Popular Album" &&
+                                    <AlbumCard item={item}/>}
+                                {title === "My Playlists" &&
+                                    <AlbumCard item={item}/>}
+                            </SwiperSlide>
+                        );
+                    })}
+                </Swiper>
+            </div>
+        </section>
+    );
 };

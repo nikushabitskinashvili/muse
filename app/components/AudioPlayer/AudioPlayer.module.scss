@@ -15,6 +15,10 @@
   align-items: center;
   gap: 54px;
   padding: 0 24px;
+
+  @media (max-width: 1024px){
+    max-width: 696px;
+  }
 }
 
 .containerWrapper audio {

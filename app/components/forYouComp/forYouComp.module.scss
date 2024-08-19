@@ -1,0 +1,48 @@
+.list{
+  padding: 0 24px;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.active{
+  background-color: #4A4A4A;
+}
+
+.container{
+  max-width: 1176px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  @media (max-width: 1024px){
+    max-width: 696px;
+  }
+}
+
+.head{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 24px;
+}
+
+.title{
+  color: #FFF;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.link{
+  color: #FFF;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}

@@ -8,8 +8,8 @@ export const ArtistCard = ({ title, item }: { title: string; item: any }) => {
     <div className={styles.artistCardContainer}>
       <Image
         src={item.img}
-        width={176}
-        height={171}
+        width={130}
+        height={126}
         alt={item.title}
         className={`${styles.cardImage} ${imageClass}`}
       />

@@ -17,6 +17,12 @@ const songs = [
         music: 'me shentan moval',
         artist: "mefe",
         audioSrc: "/musics/ირაკლი ჩარკვიანი - მე შენთან მოვალ.mp3"
+    },
+    {
+        src: "/images/monsterlobster.png",
+        music: 'ertoba da gartoba',
+        artist: "4D monster lobster",
+        audioSrc: "/musics/4D Monster Lobsters - ERTOBA & GARTOBA.mp3"
     }
 ]
 
