@@ -1,10 +1,12 @@
 import Image from "next/image";
 import React from "react";
 import styles from "./ArtistCard.module.scss";
+import Link from "next/link";
 
 export const ArtistCard = ({ title, item }: { title: string; item: any }) => {
   const imageClass = title === "Artists" ? styles.imageSize : "";
   return (
+      <Link href={`artists/${item.id}`}>
     <div className={styles.artistCardContainer}>
       <Image
         src={item.img}
@@ -18,5 +20,6 @@ export const ArtistCard = ({ title, item }: { title: string; item: any }) => {
         <h3>{item.subTitle}</h3>
       </div>
     </div>
+      </Link>
   );
 };
