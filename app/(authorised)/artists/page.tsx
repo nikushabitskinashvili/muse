@@ -1,9 +1,10 @@
 "use client"
 
 import styles from './ArtistPage.module.scss';
-import Navbar from '../components/Navbar/Navbar';
-import { ArtistCard } from '../components/ArtistCard/ArtistCard';
-import { artists } from '../data/CarouselData';
+import Navbar from '../../components/Navbar/Navbar';
+import { ArtistCard } from '../../components/ArtistCard/ArtistCard';
+import { artists } from '../../data/CarouselData';
+import { title } from 'process';
 export default  function artist () {
 
     return(
@@ -13,12 +14,9 @@ export default  function artist () {
 
                 <div className={styles.wrapper}>
                     
-                    {artists.map(artist => (
-                        <ArtistCard key={artist.id} title={"Artists"} item = {artist}/>
-                        
+                    {artists.map(item => (
+                        <ArtistCard title={title} item = {item}/>
                     ))}
-
-
                 </div>
             </div>
         </div>

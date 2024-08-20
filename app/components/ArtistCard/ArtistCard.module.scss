@@ -1,11 +1,37 @@
-.sliderCard {
+@import '../../styles/colors.scss';
+
+.artistCardContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   width: 176px;
   max-width: 100%;
+  background-color: #1C1C1C;
+  padding: 23px;
+  border-radius: 12px;
+  @media (max-width: 767px) {
+    height: 98px !important;
+    padding: 0 20px 20px 20px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+}
 
+
+.title {
+  color: $textWhite;
+  font-size: 16px;
+  line-height: 19px;
+  margin-top: 8px;
+  font-weight: 500;
+  @media (max-width: 667px) {
+    line-height: 17px;
+    font-size: 14px;
+    font-weight: 400;
+  }
 }
 
 .cardImage {
@@ -17,7 +43,6 @@
   }
 }
 
-
 .artistCardContainer {
   display: flex;
   flex-direction: column;
@@ -25,18 +50,15 @@
   text-align: center;
 }
 
-@media (max-width: 767px){
+@media (max-width: 767px) {
   .imageSize {
     width: 40px;
     height: 40px;
   }
 
-  .artistCardContainer{
+  .artistCardContainer {
     max-width: 74px;
     height: 78px;
     padding: 10px 5px;
   }
 }
-
-
-

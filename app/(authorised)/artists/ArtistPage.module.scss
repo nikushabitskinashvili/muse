@@ -1,4 +1,4 @@
-@import "../styles/colors.scss";
+@import '../../styles/colors.scss';
 
 
 .main {
@@ -13,6 +13,7 @@
 
 .container {
     display: flex;
+    padding: 0 24px;
     max-width: 1176px;
     width: 100%;
     flex-direction: column;
