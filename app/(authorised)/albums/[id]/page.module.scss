@@ -1,0 +1,15 @@
+
+.main{
+    background-color: black;
+    width: 100%;
+}
+
+.albumDetails{
+    display: flex;
+    flex-direction: column;
+    max-width: 1176px;
+    margin: 0 auto;
+    gap: 32px;
+    padding: 0 24px;
+}
+

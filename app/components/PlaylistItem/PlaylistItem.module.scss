@@ -80,77 +80,77 @@
 }
 
 
-@media only screen and (max-width: 1023px) {
+// @media only screen and (max-width: 1023px) {
 
-  .playlistItem {
-    max-width: 696px;
-  }
+//   .playlistItem {
+//     max-width: 696px;
+//   }
 
-  .leftSection {
-    gap: 20px;
-  }
+//   .leftSection {
+//     gap: 20px;
+//   }
 
-  .text {
-    max-width: 235px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    text-wrap: nowrap;
-  }
+//   .text {
+//     max-width: 235px;
+//     overflow: hidden;
+//     text-overflow: ellipsis;
+//     text-wrap: nowrap;
+//   }
 
-  .imageSection {
-    gap: 16px;
-  }
+//   .imageSection {
+//     gap: 16px;
+//   }
 
-  .rightSection {
-    gap: 16px;
-  }
+//   .rightSection {
+//     gap: 16px;
+//   }
 
-  .time {
-    gap: 8px;
-  }
-}
+//   .time {
+//     gap: 8px;
+//   }
+// }
 
-@media only screen and (max-width: 767px) {
+// @media only screen and (max-width: 767px) {
 
-  .playlistItem {
-    min-width: 343px;
-    max-height: 40px;
-  }
+//   .playlistItem {
+//     min-width: 343px;
+//     max-height: 40px;
+//   }
 
-  .icon {
-    width: 16px;
-    height: 16px;
-  }
+//   .icon {
+//     width: 16px;
+//     height: 16px;
+//   }
 
-  .image {
-    width: 32px;
-    height: 32px;
-  }
+//   .image {
+//     width: 32px;
+//     height: 32px;
+//   }
 
-  .leftSection {
-    gap: 12px;
-  }
+//   .leftSection {
+//     gap: 12px;
+//   }
 
-  .text {
-    font-size: 14px;
-    max-width: 108px;
-    text-wrap: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+//   .text {
+//     font-size: 14px;
+//     max-width: 108px;
+//     text-wrap: nowrap;
+//     overflow: hidden;
+//     text-overflow: ellipsis;
+//   }
 
-  .imageSection {
-    gap: 8px;
-  }
+//   .imageSection {
+//     gap: 8px;
+//   }
 
-  .time {
-    display: none;
-  }
+//   .time {
+//     display: none;
+//   }
 
-  .heart {
-    display: none;
-  }
-}
+//   .heart {
+//     display: none;
+//   }
+// }
 
 
 
