@@ -1,50 +1,42 @@
-@import "../../styles/colors.scss";
+.sliderCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 176px;
+  max-width: 100%;
 
-.sliderCard{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    max-width: 176px;
 }
 
-.cardImage{
+.cardImage {
+  border-radius: 10px;
+  @media (max-width: 767px) {
     object-fit: cover;
-    border-radius: 10px;
-     @media (max-width: 667px) {
-        height: 74px;
-       }
+    width: 40px;
+    height: 40px;
+  }
 }
 
 
-.artistCardContainer{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: 176px;
-    padding: 24px;
-    background-color: $secondaryDarkerGray;
-    border-radius: 12px;
-    gap: 12px;
+.artistCardContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
-.title {
-    color: $textWhite;
-    font-family: 'Inter';
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-}
+@media (max-width: 767px){
+  .imageSize {
+    width: 40px;
+    height: 40px;
+  }
 
-.imageSize{
-    @media (max-width: 667px) {
-        height: 40px;
-       }
+  .artistCardContainer{
+    max-width: 74px;
+    height: 78px;
+    padding: 10px 5px;
+  }
 }
-
 
 
 

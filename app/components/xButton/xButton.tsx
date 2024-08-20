@@ -1,5 +1,6 @@
 import styles from './xButton.module.scss'
 import {IconEnum} from "@/app/utils/Icon/Icon";
+import {useState} from "react";
 
 interface Props {
     bg: boolean
