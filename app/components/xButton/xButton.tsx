@@ -1,6 +1,7 @@
 import styles from './xButton.module.scss'
 import {IconEnum} from "@/app/utils/Icon/Icon";
 import {useState} from "react";
+import Image from "next/image";
 
 interface Props {
     bg: boolean
@@ -14,6 +15,6 @@ export const XButton = (props: Props) => {
     if (!props.bg) classes.push(styles.bgNone)
 
     return (
-        <button className={classes.join(' ')}><img src={IconEnum.DELETE}/></button>
+        <button className={classes.join(' ')}><Image alt={''} src={IconEnum.DELETE} width={24} height={24}/></button>
     )
 }

@@ -1,5 +1,6 @@
 import styles from "./Input.module.scss";
 import React, { useState } from 'react';
+import Image from "next/image";
 
 const Input: React.FC = () => {
 
@@ -12,7 +13,7 @@ const Input: React.FC = () => {
     return (
         <div className={styles.wrapper}>
             <div className={   styles.container}>
-                <img src={'/images/search.png'} alt="search" className={styles.searchIcon} />
+                <Image src={'/images/search.png'} alt="search" className={styles.searchIcon} width={15} height={15}/>
                 <input
                     type="text"
                     placeholder="Search albom"
