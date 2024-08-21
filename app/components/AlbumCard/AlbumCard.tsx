@@ -9,9 +9,9 @@ interface Props{
 
 const AlbumCard = ({item, className}: { item: any, className?: string }) => {
     return (
-            <Link className={styles.albumCard} href={`albums/${item.id}`}>
+            <Link className={`${styles.albumCard} ${className}`} href={`albums/${item.id}`}>
                 <div className={styles.albumCard}>
-                    <Image className={styles.albumImg} src={item.img} alt={item.title} width={176} height={171}/>
+                    <Image className={styles.albumImg} src={item.img} alt={item.title} width={150} height={146}/>
                     <div className={styles.albumName}>
                         <span className={styles.albumTitle}>{item.title}</span>
                         <span className={styles.artistName}>{item.subTitle}</span>
