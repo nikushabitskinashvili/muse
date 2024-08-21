@@ -47,10 +47,10 @@ export const Slider = ({data, title}: { data: any; title: string }) => {
                     modules={[Mousewheel, Keyboard]}
                     breakpoints={{
                         0: {
-                            slidesPerView: 4,
-                            spaceBetween: 10,
+                            slidesPerView: 5,
+                            spaceBetween: 50,
                         },
-                        667: {
+                        767: {
                             slidesPerView: 4,
                             spaceBetween: 15,
                         },
