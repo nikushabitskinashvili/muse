@@ -47,7 +47,7 @@ const Navbar = () => {
             <div className={wrapperclass.join(' ')}>
                 <div className={styles.nav}>
                     <Link href={'/'}><Image
-                        src={"/images/Logo.png"}
+                        src={"/images/logo.png"}
                         alt="Logo"
                         width={112}
                         height={44}
