@@ -5,7 +5,7 @@ import Image from "next/image";
 
 
 interface Props {
-    image?: string,
+    image: string,
     title?: string,
     category?: string,
     price: number,
@@ -35,7 +35,7 @@ export const PlaylistItem = (props: Props) => {
                 <div className={styles.leftSection}>
                     <div className={styles.imageSection}>
                         <Image className={styles.icon} src={IconEnum.AUDIO} alt="audio" width={24} height={24}/>
-                        <Image className={styles.image} src={'props.image'} alt={`album`} width={56} height={56}/>
+                        <Image className={styles.image} src={props.image} alt={`album`} width={56} height={56}/>
                     </div>
                     <div className={styles.text}>
                         <span>{`${props.title} - ${props.category}`}</span>
