@@ -1,8 +1,9 @@
 interface PopularAlbum{
     id:number,
     img: StaticImageData,
-    title:string,
-    subTitle:string
+    title?:string,
+    subTitle?:string,
+    total?:number
 }
 
 

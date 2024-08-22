@@ -4,7 +4,7 @@
     width: 100%;
     background-color: black;
     min-height: 100vh;
-    padding: 24px 0 24px 16px;
+    padding: 24px;
 }
 
 .mainWrapper {
@@ -14,7 +14,6 @@
     flex-direction: column;
     gap: 32px;
     margin: 0 auto;
-    padding: 0 24px;
 }
 
 .albumTxt span {
@@ -31,9 +30,10 @@
     flex-wrap: wrap;
 }
 
-@media screen and (max-width: 1024px) and (min-width: 768px) {
+@media screen and (max-width: 1024px) {
     .container{
      gap: 24px 20px;
+     overflow-y: scroll;
     }
  }
 
@@ -42,5 +42,8 @@
    .container{
     gap: 20px 16px;
     overflow-y: scroll;
+    width: 100%;
    }
+
+   
 }

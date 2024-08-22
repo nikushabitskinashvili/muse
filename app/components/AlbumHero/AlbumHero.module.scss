@@ -5,7 +5,6 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
-  background: #050505;
 }
 
 .main {
@@ -16,7 +15,6 @@
 
 .h2 {
   color: #FFF;
-  font-family: Inter;
   font-size: 24px;
   font-style: normal;
   font-weight: 500;
@@ -30,7 +28,7 @@
   object-fit: cover;
 }
 
-.about {
+.aboutWrapper {
   display: flex;
   flex-direction: column;
   gap: 32px;
@@ -84,60 +82,88 @@
   line-height: normal;
 }
 
-// @media only screen and (max-width: 1023px) {
-//   .container {
-//     max-width: 600px;
-//     height: 338px;
-//     gap: 24px;
-//   }
+.images{
+  display: none;
+}
 
-//   .main {
-//     gap: 24px;
-//   }
+.buttons button{
+  width: 150px;
+}
 
-//   .h2 {
-//     font-size: 20px;
-//   }
+@media  screen and (max-width: 1024px) {
+  .container {
+    gap: 24px;
+  }
 
-//   .img {
-//     width: 264px;
-//     height: 290px;
-//   }
+  .main {
+    gap: 24px;
+  }
 
-//   .total {
-//     font-size: 16px;
-//   }
-// }
+  .h2 {
+    font-size: 20px;
+  }
 
-// @media only screen and (max-width: 767px) {
-//   .container {
-//     height: 480px;
-//     max-width: 343px;
-//   }
+  .img {
+    width: 264px;
+    height: 290px;
+  }
 
-//   .h2{
-//     font-size: 16px;
-//   }
+  .total {
+    font-size: 16px;
+  }
+}
 
-//   .h3{
-//     font-size: 14px;
-//   }
+@media screen and (max-width: 767px) {
+  .container {
+    max-width: 767px;
+    height: 100%;
+    width: 100%;
+  }
 
-//   .total{
-//     font-size: 12px;
-//   }
+  .h2{
+    font-size: 16px;
+  }
 
-//   .main {
-//     flex-direction: column;
-//     gap: 16px;
-//     align-items: flex-start;
-//     justify-content: center;
-//   }
+  .h3{
+    font-size: 14px;
+  }
 
-//   .img{
-//     width: 100%;
-//     height: 190px;
-//     align-items: flex-start;
-//     justify-content: center;
-//   }
-// }
+  .total{
+    font-size: 12px;
+  }
+
+  .main {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .img{
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .buttons{
+    display: none;
+  }
+
+  .aboutWrapper{
+    gap: 8px;
+  }
+
+  .images{
+    display: block;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .about{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+}
