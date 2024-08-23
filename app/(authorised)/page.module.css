@@ -8,12 +8,24 @@
 }
 
 .content {
-    background: #050505;
-    @media (min-width: 1024px) {
-        margin-top: -132px;
-    }
+    position: relative;
+    max-width: 1224px;
+    width: 100%;
+    bottom: 132px;
     display: flex;
     flex-direction: column;
     gap: 32px;
     align-items: center;
+    margin-bottom: -132px;
+
+    @media (max-width: 1023px) {
+        top: 24px;
+    }
+}
+
+.bg {
+    background: #050505;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }

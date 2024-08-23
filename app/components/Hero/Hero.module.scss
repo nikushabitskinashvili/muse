@@ -33,144 +33,8 @@
 
   }
 
-  @media screen and (max-width: 1023px) {
-    .section {
-      background-color: $textBlack;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      height: 100%;
-      padding: 0 24px;
-    }
-
-    .content {
-      display: flex;
-      flex-direction: column-reverse;
-      align-items: center;
-      max-width: 696px;
-      width: 100%;
-      height: 665px;
-      gap: 32px;
-
-    }
-
-    .container {
-      max-width: 696px;
-      width: 100%;
-      height: 665px;
-      display: flex;
-      flex-direction: column-reverse;
-      align-items: center;
-      gap: 32px;
-    }
-
-    .wrapper {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-
-    .heroHeading {
-      color: $textWhite;
-      font-family: 'Inter', sans-serif;
-      font-size: 24px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: normal;
-    }
-
-    .heroText {
-      color: $textWhite;
-      font-family: 'Inter', sans-serif;
-      font-size: 24px;
-      font-style: normal;
-      font-weight: 300;
-      line-height: normal;
-    }
-
-
-  }
-
-  @media screen and (min-width: 1024px) {
-    .section {
-      width: 100%;
-      height: 392px;
-      background: $primaryBackground;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .content {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      padding: 0 132px;
-    }
-
-    .container {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-    }
-
-    .wrapper {
-      max-width: 587px;
-      width: 100%;
-      height: 201px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-top: 24px;
-
-    }
-
-    .heroHeading {
-      color: $textWhite;
-      font-family: 'Inter', sans-serif;
-      font-size: 24px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: normal;
-    }
-
-    .heroText {
-      color: $textWhite;
-      font-family: 'Inter', sans-serif;
-      font-size: 24px;
-      font-style: normal;
-      font-weight: 300;
-      line-height: normal;
-    }
-  }
-
-  .heroHeading {
-    color: $textWhite;
-    font-family: 'Inter', sans-serif;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal
-  }
-
-  .heroText {
-    color: $textWhite;
-    font-family: 'Inter', sans-serif;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 300;
-    line-height: normal;
-  }
-  .wrapper {
-    padding: 0 16px;
-  }
-
-
 }
-
+//planshet
 @media screen and (max-width: 1023px) {
   .section {
     background-color: $textBlack;
@@ -231,10 +95,10 @@
 
 }
 
+//desktop
 @media screen and (min-width: 1024px) {
   .section {
     width: 100%;
-    height: 524px;
     overflow: hidden;
     background: $primaryBackground;
     display: flex;
