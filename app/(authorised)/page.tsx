@@ -24,7 +24,6 @@ export default function Authorised() {
                         <Slider data={artists} title="Artists"/>
                         <ForYouComp/>
                         <Slider data={playlistData} title="My Playlists"/>
-                        <AudioPlayer songs={songs}/>
                     </div>
                 </>
             )}
