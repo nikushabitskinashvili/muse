@@ -7,6 +7,7 @@ interface Props {
     title: string,
     label: string,
     placeholder: string
+    closeModal: ()=>void
 }
 
 export const ReusableModal = (props: Props) => {
@@ -14,7 +15,7 @@ export const ReusableModal = (props: Props) => {
         <div className={styles.container}>
             <div className={styles.head}>
                 <span className={styles.title}>{props.title}</span>
-                <XButton bg={true}/>
+                <XButton closeModal={props.closeModal} bg={true}/>
             </div>
             <form className={styles.form}>
                 <div className={styles.inputCont}>
