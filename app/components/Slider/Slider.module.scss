@@ -1,10 +1,34 @@
 @import 'app/styles/colors.scss';
 
+.container{
+  max-width: 1224px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 0 24px;
+}
+
+.main{
+  max-width: 1224px;
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 24px;
+  overflow: scroll;
+  scroll-behavior: smooth;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+
+
 .carouselSection {
   margin: 0 auto;
   max-width: 1224px;
   width: 100%;
-  padding: 0 24px;
+  //padding: 0 24px;
   @media (max-width: 1024px) {
     padding: 0 24px;
     max-width: 696px;
@@ -14,14 +38,14 @@
   }
 }
 
-.marginTop {
-  margin-top: -132px;
-
-  @media (max-width: 1023px) {
-    margin-top: 24px;
-  }
-
-}
+//.marginTop {
+//  position: relative;
+//  bottom: 132px;
+//  @media (max-width: 1023px) {
+//    top: 24px
+//  }
+//
+//}
 
 .forSub {
   @media (max-width: 667px) {
@@ -31,19 +55,19 @@
   }
 }
 
-.artistsRoundedCard {
-  background-color: #1C1C1C;
-  padding: 23px;
-  border-radius: 12px;
-  @media (max-width: 767px) {
-    height: 98px !important;
-    padding: 0 20px 20px 20px !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-  }
-}
+//.artistsRoundedCard {
+//  background-color: #1C1C1C;
+//  padding: 23px;
+//  border-radius: 12px;
+//  @media (max-width: 767px) {
+//    height: 98px !important;
+//    padding: 0 20px 20px 20px !important;
+//    display: flex !important;
+//    flex-direction: column !important;
+//    align-items: center !important;
+//    justify-content: center !important;
+//  }
+//}
 
 .sliderCard h2 {
   color: $textWhite;
@@ -69,4 +93,49 @@
   }
 }
 
+@import 'app/styles/colors.scss';
 
+
+
+.swiperTitleWrapper h4{
+  color: white;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 29.05px;
+
+  @media(max-width: 767px){
+    font-size: 16px;
+  }
+}
+
+.swiperTitleWrapper img{
+  cursor: pointer;
+}
+
+@import 'app/styles/colors.scss';
+
+.swiperTitleWrapper{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @media(max-width: 767px){
+    margin-bottom: 0;
+  }
+}
+
+
+.swiperTitleWrapper h4{
+  color: white;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 29.05px;
+
+  @media(max-width: 767px){
+    font-size: 16px;
+  }
+}
+
+.swiperTitleWrapper img{
+  cursor: pointer;
+}

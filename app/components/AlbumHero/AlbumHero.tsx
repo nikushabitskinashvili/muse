@@ -1,5 +1,6 @@
 import styles from './AlbumHero.module.scss';
 import {Button} from '@/app/components/Button/Button';
+import Image from "next/image";
 
 
 interface Props {
@@ -13,7 +14,7 @@ export const AlbumHero = (props: Props) =>{
         <div className={styles.container}>
             <h2 className={styles.h2}>{props.title}</h2>
             <div className={styles.main}>
-                <img className={styles.img} src={props.image} alt={props.title} />
+                <Image className={styles.img} src={props.image} alt={props.title} width={265} height={398}/>
                 <div className={styles.about}>
                     <h3 className={styles.h3}>{props.title}<span>Album</span></h3>
                     <div className={styles.control}>
