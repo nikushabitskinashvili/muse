@@ -19,7 +19,13 @@
     margin-bottom: -132px;
 
     @media (max-width: 1023px) {
-        top: 24px;
+        margin-bottom: 0;
+        position: sticky;
+    }
+
+    @media (max-width: 767px) {
+        gap:24px;
+        margin-bottom: 24px;
     }
 }
 

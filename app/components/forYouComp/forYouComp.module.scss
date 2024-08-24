@@ -18,9 +18,6 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
-  @media (max-width: 1024px){
-    max-width: 696px;
-  }
 }
 
 .head{
@@ -41,7 +38,6 @@
 
 .link{
   color: #FFF;
-  font-family: Inter;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -52,6 +48,11 @@
   .title{
     font-size: 16px;
   }
+
+  .container{
+    gap: 12px;
+  }
+
 
   .link{
     font-size: 14px;

@@ -13,6 +13,7 @@ interface Props {
     icon?: keyof typeof IconEnum;
     hoverIcon?: keyof typeof IconEnum;
     activeIcon?: keyof typeof IconEnum;
+    onClick?: () => void;
 }
 
 export const Button = (props: Props) => {
@@ -45,7 +46,6 @@ export const Button = (props: Props) => {
     const handleMouseDown = () => {
         setCurrentIcon(props.activeIcon);
     }
-    console.log(currentIcon)
 
     const handleMouseUp = () => {
         setCurrentIcon(currentIcon);
