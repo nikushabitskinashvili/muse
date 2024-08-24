@@ -3,6 +3,8 @@ import {Inter} from "next/font/google";
 import RecoilWrapper from "./components/RecoilWrapper/RecoilWrapper";
 import "./globals.css";
 import React from "react";
+import Head from "next/head";
+
 
 const inter = Inter({subsets: ["latin"]});
 
@@ -20,6 +22,11 @@ export default function RootLayout({
 
     return (
         <html lang="en">
+        <Head>
+            <title>My Page Title</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <meta name="description" content="My page description" />
+        </Head>
         <body className={inter.className}>
         <RecoilWrapper>
             {children}
