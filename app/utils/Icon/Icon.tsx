@@ -21,7 +21,7 @@ export enum IconEnum {
     PAUSE = "/icons/pause.svg",
     PAUSESMALL = "/icons/pauseSmall.svg",
     PEN = "/icons/pen.svg",
-    PLAYSMALL = "/icons/playSmall.svg",
+    PLAYSMALL = "/icons/PlaySmall.svg",
     PLUS = "/icons/plus.svg",
     PREVOUS = "/icons/prevous.svg",
     PLAY = "/icons/play.svg",
