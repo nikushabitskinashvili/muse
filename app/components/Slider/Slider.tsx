@@ -27,14 +27,6 @@ export const Slider = ({data, title}: { data: any; title: string }) => {
         }
     };
 
-
-    const conditionalStyle = title === "Artists" ? styles.artistsRoundedCard : "";
-
-    const popularSectionClass =
-        title === "Popular Album" ? styles.marginTopLargeScreen : "";
-
-    const artistsSectionClass = title === "Artists" ? styles.artistMargin : "";
-
     let info = artists
 
     if (title === 'Popular Album') info = popularAlbum
@@ -44,7 +36,7 @@ export const Slider = ({data, title}: { data: any; title: string }) => {
         <div className={`${styles.container} ${title === "Popular Album" ? styles.marginTop : ''}`}>
             <div className={styles.swiperTitleWrapper}>
                 <h4>{title}</h4>
-                <div>
+                <div className={styles.arrows}>
                     <Image
                         src={leftArrow}
                         alt="arrow"
@@ -62,12 +54,12 @@ export const Slider = ({data, title}: { data: any; title: string }) => {
                 </div>
             </div>
             <section
-                className={`${styles.carouselSection} ${popularSectionClass} ${artistsSectionClass}`}>
+                className={styles.carouselSection}>
                 <div className={styles.main} ref={scrollRef}>
                     {info.map((item) => {
                         return (
                             <div
-                                className={`${styles.sliderCard} ${conditionalStyle} ${title === "Popular Album" ? styles.forSub : ''}`}
+                                className={`${styles.sliderCard} ${title === "Popular Album" ? styles.forSub : ''}`}
                                 key={item.id}
                             >
                                 {title === "Artists" && <ArtistCard title={title} item={item}/>}

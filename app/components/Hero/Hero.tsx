@@ -5,6 +5,7 @@ import Navbar from '../Navbar/Navbar';
 import {Button} from "@/app/components/Button/Button";
 import {IconEnum} from "@/app/utils/Icon/Icon";
 import Image from "next/image";
+import {useState} from "react";
 
 interface HeroProps {
     className?: string
@@ -12,6 +13,11 @@ interface HeroProps {
 
 const Hero = ({className}: HeroProps) => {
 
+    const [isPlaying, setIsPlaying] = useState(false);
+
+    const togglePlaying = () => {
+        setIsPlaying  (!isPlaying);
+    }
 
     return (
         <section className={styles.section}>
@@ -23,9 +29,9 @@ const Hero = ({className}: HeroProps) => {
                             past relationships with gratitude and moving
                             forward with confidence.
                         </p>
-                        <Button bg={'blue'} title={'Play'}></Button>
+                        <Button bg={'blue'} title={'Play'} icon={isPlaying ? 'PAUSESMALL' : 'PLAYSMALL'} hoverIcon={isPlaying ? 'PAUSESMALL' : 'PLAYSMALL'} onClick={togglePlaying}></Button>
                     </div>
-                    <Image src={'/images/ariana.png'} alt="img" width={265} height={392}/>
+                    <Image className={styles.heroImg} src={'/images/ariana.png'} alt="img" width={265} height={392}/>
                 </div>
             </div>
         </section>
