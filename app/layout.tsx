@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import type {Metadata} from "next";
+import {Inter} from "next/font/google";
 import RecoilWrapper from "./components/RecoilWrapper/RecoilWrapper";
 import "./globals.css";
 import React from "react";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({subsets: ["latin"]});
 
 export const metadata: Metadata = {
     title: "Muse",
@@ -12,19 +12,19 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-    children,
-}: Readonly<{
+                                       children,
+                                   }: Readonly<{
     children: React.ReactNode;
 }>) {
 
 
     return (
         <html lang="en">
-            <body className={inter.className}>
-                <RecoilWrapper>
-                    {children}
-                </RecoilWrapper>
-            </body>
+        <body className={inter.className}>
+        <RecoilWrapper>
+            {children}
+        </RecoilWrapper>
+        </body>
         </html>
     );
-}   
+}
