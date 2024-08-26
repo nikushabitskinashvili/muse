@@ -1,4 +1,5 @@
 'use client';
+
 import styles from './page.module.scss';
 import { AlbumHero } from '@/app/components/AlbumHero/AlbumHero';
 import { MusicWrapper } from '@/app/components/musicWrapper/musicWrapper';
@@ -6,12 +7,8 @@ import { popularAlbum } from '@/app/data/CarouselData';
 import { useParams } from 'next/navigation';
 
 const AlbumDetailsPage = () => {
-
-
     const { id } = useParams()
-
     const album = popularAlbum[id];
-
 
     return (
         <main className={styles.main}>

@@ -13,10 +13,10 @@ const Albums = () => {
                     <span>Popular albums</span>
                 </div>
                 <div className={styles.container}>
-                    {info.map((item)=> (
-                    <AlbumCard
-                        item={item}
-                    />
+                    {info.map((item) => (
+                        <AlbumCard
+                            item={item}
+                        />
                     ))}
                 </div>
             </div>
