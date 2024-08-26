@@ -1,20 +1,22 @@
-import type {Metadata} from "next";
-import {Inter} from "next/font/google";
-import React, {ReactNode} from "react";
-import Navbar from "@/app/components/Navbar/Navbar";
+import React, { ReactNode } from "react";
 import './layout.module.css'
+import Navbar from "../components/Navbar/Navbar";
+import RecoilWrapper from "../components/RecoilWrapper/RecoilWrapper";
 
 type Props = {
-    children:ReactNode;
+    children: ReactNode;
 }
 
-const AuthLayout = (props:Props) => {
+const AuthLayout = (props: Props) => {
     return (
         <>
-            {props.children}
+            <Navbar />
+            <RecoilWrapper>
+                {props.children}
+            </RecoilWrapper>
         </>
 
     )
 }
 
-export default  AuthLayout;
+export default AuthLayout;

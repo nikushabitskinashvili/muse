@@ -36,12 +36,6 @@
 }
 
 
-@media screen and (max-width: 1024px) {
-  .albumCard{
-    max-width: 146px;
-  }
-}
-
 
 @media only screen and (max-width: 767px) {
   .albumTitle {
@@ -50,14 +44,5 @@
     text-wrap: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-  }
-
-  .artistName{
-    font-size: 12px;
-  }
-
-  .albumCard {
-    width: 74px;
-    gap: 8px;
   }
 }
