@@ -7,8 +7,6 @@ import {IconEnum} from "@/app/utils/Icon/Icon";
 import {useState} from "react";
 import Link from "next/link";
 import Image from "next/image";
-import {XButton} from "@/app/components/xButton/xButton";
-
 
 const Navbar = () => {
     const navLinks = [
@@ -54,6 +52,22 @@ const Navbar = () => {
                         className={styles.navImg}
                     /></Link>
 
+                    <Link href={'/'}><Image
+                        src={"/icons/Muse-tablet.svg"}
+                        alt="Logo"
+                        width={74}
+                        height={29}
+                        className={styles.museTablet}
+                    /></Link>
+
+                    <Link href={'/'}><Image
+                        src={"/icons/Muse-phone.svg"}
+                        alt="Logo"
+                        width={55}
+                        height={22}
+                        className={styles.musePhone}
+                    /></Link>
+
                     <ul className={`${styles.hiden} ${styles.items}`}>
                         {navLinks.map((link, idx) => (
                             <NavbarItem
@@ -70,7 +84,7 @@ const Navbar = () => {
                     <Link href={'/auth/login'}><Image src={IconEnum.LOGOUT} className={styles.logOut} onClick={logOut}
                                                  alt={''} width={32} height={32}/></Link>
                 </div>
-                <div className={styles.burgerIcon} onClick={burgerMenu}><Image  src={isOpen ? IconEnum.DELETE : IconEnum.BURGER}  alt={''} width={44} height={44}/></div>
+                <div className={styles.burgerIcon} onClick={burgerMenu}><Image className={styles.burgerIcon} src={isOpen ? IconEnum.DELETE : IconEnum.BURGER}  alt={''} width={44} height={44}/></div>
             </div>
             <ul className={`${styles.burger} ${burgerClass.join(" ")}`}>
                 {navLinks.map((link, idx) => (
