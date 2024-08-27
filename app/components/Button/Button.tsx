@@ -2,7 +2,8 @@
 
 import styles from './Button.module.scss'
 import {IconEnum} from "@/app/utils/Icon/Icon";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
+import Image from "next/image";
 
 interface Props {
     bg: string
@@ -12,6 +13,7 @@ interface Props {
     icon?: keyof typeof IconEnum;
     hoverIcon?: keyof typeof IconEnum;
     activeIcon?: keyof typeof IconEnum;
+    onClick?: () => void;
 }
 
 export const Button = (props: Props) => {
@@ -44,7 +46,6 @@ export const Button = (props: Props) => {
     const handleMouseDown = () => {
         setCurrentIcon(props.activeIcon);
     }
-    console.log(currentIcon)
 
     const handleMouseUp = () => {
         setCurrentIcon(currentIcon);
@@ -62,8 +63,7 @@ export const Button = (props: Props) => {
     else classes.push(styles.none)
 
     const showTitle = () => {
-        const show = !(props.title == 'Shuffle' && isSmallScreen)
-        return show
+        return !(props.title == 'Shuffle' && isSmallScreen)
     }
 
     return (
@@ -75,6 +75,6 @@ export const Button = (props: Props) => {
             onMouseUp={handleMouseUp}
         >
             {showTitle() && <span className={styles.title}>{props.title}</span>}
-            {currentIcon && <img className={styles.icon} src={IconEnum[currentIcon]} alt={''}/>}</button>
+            {currentIcon && <Image className={styles.icon} src={IconEnum[currentIcon]} alt={''} width={24} height={24}/>}</button>
     )
 }

@@ -19,13 +19,14 @@ export default function Home() {
         <main className={styles.main}>
             {isClient && (
                 <>
-                    <Hero />
-                    <div className={styles.content}>
-                        <Slider data={popularAlbum} title="Popular Album" />
-                        <Slider data={artists} title="Artists" />
-                        <ForYouComp />
-                        <Slider data={playlistData} title="My Playlists" />
-                        <AudioPlayer songs={songs} />
+                    <Hero/>
+                    <div className={styles.bg}>
+                        <div className={styles.content}>
+                            <Slider data={popularAlbum} title="Popular Album"/>
+                            <Slider data={artists} title="Artists"/>
+                            <ForYouComp/>
+                            <Slider data={playlistData} title="My Playlists"/>
+                        </div>
                     </div>
                 </>
             )}

@@ -1,7 +1,7 @@
 import styles from './yourPlaylistModal.module.scss'
 import {XButton} from "@/app/components/xButton/xButton";
 import AlbumCard from "@/app/components/AlbumCard/AlbumCard";
-import {createStyleRegistry} from "styled-jsx";
+import {playlistData} from "@/app/data/CarouselData";
 
 const albums = [
     { id: 1, title: 'Album 1', image: '/images/playlist.png', name: 'Artist 1' },
@@ -22,13 +22,11 @@ export const YourPlaylistModal = () => {
                 <XButton bg={false}/>
             </div>
             <div className={styles.cards}>
-                {albums.map(album => (
+                {playlistData.map(item => (
                     <AlbumCard
                         className={styles.card}
-                        key={album.id}
-                        id={album.id}
-                        title={album.title}
-                        image={album.image}
+                        key={item.id}
+                        item={item}
                     />
                 ))}
             </div>

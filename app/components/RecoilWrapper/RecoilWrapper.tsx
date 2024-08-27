@@ -4,6 +4,8 @@ import React, { ReactNode } from 'react'
 import { RecoilRoot } from 'recoil'
 import Navbar from '../Navbar/Navbar'
 import { usePathname } from 'next/navigation';
+import AudioPlayer from "@/app/components/AudioPlayer/AudioPlayer";
+import songs from "@/app/array";
 
 const RecoilWrapper = (props: { children: ReactNode }) => {
 
@@ -11,7 +13,6 @@ const RecoilWrapper = (props: { children: ReactNode }) => {
 
     return (
         <RecoilRoot>
-            {/* {pathName !== '/auth/login' && pathName !== '/auth/signup' && <Navbar/>} */}
             {props.children}
         </RecoilRoot>
     )

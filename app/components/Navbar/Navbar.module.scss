@@ -49,13 +49,29 @@
   cursor: pointer;
 }
 
+.museTablet{
+  display: none;
+}
+
+.musePhone{
+  display: none;
+}
+
 .burger {
   display: none;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   .wrapper {
     padding: 24px 24px 0 24px;
+  }
+
+  .navImg{
+    display: none;
+  }
+
+  .museTablet{
+    display: block;
   }
 
   .hiden {
@@ -67,7 +83,6 @@
   }
 
   .burger {
-    padding: 24px;
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -107,9 +122,26 @@
   }
 }
 
-@media (max-width: 667px) {
+@media (max-width: 767px) {
   .wrapper {
     padding: 16px;
+  }
+
+  .nav{
+    gap: 0;
+  }
+
+  .burgerIcon{
+    width: 24px;
+    height: 24px;
+  }
+
+  .musePhone{
+    display: block;
+  }
+
+  .museTablet{
+    display: none;
   }
 }
 

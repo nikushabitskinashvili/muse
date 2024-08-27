@@ -9,6 +9,8 @@
 .photo img{
     border-radius: 50%;
     object-fit: cover;
+    width: 64px;
+    height: 64px;
 }
 
 .musicInfo{
@@ -48,6 +50,18 @@
 }
 
 
+@media screen and (min-width:767px) and (max-width: 1024px) {
+    .photo img{
+        width: 48px;
+        height: 48px;
+    }
+
+    .musicPhoto{
+        gap: 16px;
+    }
+}
+
+
 
 
 @media screen and (max-width:767px)  {
@@ -56,6 +70,32 @@
         gap: 6px;
         flex-direction: row;
         align-items: center;
+    }
+
+    .photo img{
+        width: 32px;
+        height: 32px;
+    }
+
+    .musicName{
+        font-size: 12px;
+    }
+    
+    .artistName{
+        font-size: 11px;      
+    }
+
+    .musicInfoWrapper img{
+        width: 19px;
+        height: 19px;
+    }
+
+    .musicInfoWrapper{
+        gap: 8px;
+    }
+
+    .musicPhoto{
+        gap: 8px;
     }
    
 }

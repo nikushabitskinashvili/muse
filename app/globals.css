@@ -7,7 +7,6 @@
 
 html,
 body {
-  min-width: 100vh;
   overflow-x: hidden;
   font-family: 'Inter',sans-serif;
 }

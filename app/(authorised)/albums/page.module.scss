@@ -33,6 +33,9 @@
 @media screen and (min-width : 768px) and (max-width: 1024px) {
     .container {
         gap: 24px 20px;
+    }
+
+    .main{
         overflow-y: scroll;
     }
 }
@@ -41,9 +44,12 @@
 @media only screen and (max-width: 767px) {
     .container {
         gap: 20px 16px;
-        overflow-y: scroll;
         width: 100%;
         align-items: center;
+    }
+
+    .main{
+        overflow-y: scroll;
     }
 
 }

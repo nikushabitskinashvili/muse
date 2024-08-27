@@ -1,6 +1,7 @@
 import styles from './PlaylistHero.module.scss'
 import {IconEnum} from "@/app/utils/Icon/Icon";
 import {Button} from "@/app/components/Button/Button";
+import Image from "next/image";
 
 
 interface Props {
@@ -29,20 +30,20 @@ export const PlaylistHero = (props: Props) => {
             <div className={styles.header}>
                 <h2 className={styles.h2}>Summer Vibe</h2>
                 <div className={styles.icons}>
-                    <img className={styles.icon} src={IconEnum.PEN} alt=""/>
-                    <img className={styles.icon} src={IconEnum.BIN} alt=""/>
+                    <Image className={styles.icon} src={IconEnum.PEN} alt="" width={24} height={24}/>
+                    <Image className={styles.icon} src={IconEnum.BIN} alt="" width={24} height={24}/>
                 </div>
             </div>
             <div className={styles.main}>
-                <img className={styles.image} src={props.image}/>
+                <Image className={styles.image} alt={''} src={props.image} width={435} height={394}/>
                 <div className={styles.control}>
                     <div className={styles.desc}>
                         <span className={styles.text}>Playlist</span>
                         <h3 className={styles.playlistName}>{props.playlistName}</h3>
-                        <span className={styles.about}>{props.totalTracks} tracks - <span className={styles.time}><img className={styles.clock} src={IconEnum.CLOCK}/> {time}</span></span>
+                        <span className={styles.about}>{props.totalTracks} tracks - <span className={styles.time}><Image className={styles.clock} alt={''} src={IconEnum.CLOCK} width={16} height={16}/> {time}</span></span>
                     </div>
                     <div className={styles.buttons}>
-                        <img className={styles.pause} src={IconEnum.PAUSE} alt={''}/>
+                        <Image className={styles.pause} src={IconEnum.PAUSE} alt={''} width={40} height={40}/>
                         <Button title={'shuffle'} bg={'pink'} icon={'SHUFFLE'} hoverIcon={'SHUFFLE'} activeIcon={"SHUFFLE"}/>
                     </div>
                 </div>

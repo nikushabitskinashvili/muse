@@ -1,10 +1,11 @@
 .list{
-  //padding: 0 24px;
+
   display: flex;
   width: 100%;
   flex-direction: column;
   align-items: center;
   gap: 12px;
+  padding: 0 24px;
 }
 
 .active{
@@ -17,9 +18,6 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
-  @media (max-width: 1024px){
-    max-width: 696px;
-  }
 }
 
 .head{
@@ -40,9 +38,23 @@
 
 .link{
   color: #FFF;
-  font-family: Inter;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+}
+
+@media (max-width: 767px){
+  .title{
+    font-size: 16px;
+  }
+
+  .container{
+    gap: 12px;
+  }
+
+
+  .link{
+    font-size: 14px;
+  }
 }

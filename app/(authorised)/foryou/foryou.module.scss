@@ -3,23 +3,24 @@
   background: #050505;
   display: flex;
   justify-content: center;
-  position: absolute;
-  top: 72px;
-  padding-top: 32px;
 }
 
 .container{
   display: flex;
-  max-width: 1176px;
+  max-width: 1224px;
+  padding: 24px;
   width: 100%;
   flex-direction: column;
   align-items: flex-start;
   gap: 32px;
+
+  @media (max-width: 1023px) {
+  padding: 0 24px 24px 24px;
+  }
 }
 
 .title{
   color: #FFF;
-  font-family: Inter;
   font-size: 24px;
   font-style: normal;
   font-weight: 500;

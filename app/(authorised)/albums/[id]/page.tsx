@@ -4,6 +4,7 @@ import styles from './page.module.scss';
 import { AlbumHero } from '@/app/components/AlbumHero/AlbumHero';
 import { MusicWrapper } from '@/app/components/musicWrapper/musicWrapper';
 import { popularAlbum } from '@/app/data/CarouselData';
+import { strict } from 'assert';
 import { useParams } from 'next/navigation';
 
 const AlbumDetailsPage = () => {
