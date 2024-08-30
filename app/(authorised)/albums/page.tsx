@@ -4,7 +4,6 @@ import AlbumCard from '@/app/components/AlbumCard/AlbumCard';
 
 const Albums = () => {
 
-    let info = popularAlbum
 
     return (
         <main className={styles.main}>
@@ -13,7 +12,7 @@ const Albums = () => {
                     <span>Popular albums</span>
                 </div>
                 <div className={styles.container}>
-                    {info.map((item) => (
+                    {popularAlbum.map((item) => (
                         <AlbumCard
                             item={item}
                         />

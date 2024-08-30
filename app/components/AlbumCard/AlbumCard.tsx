@@ -5,10 +5,10 @@ import Image from "next/image";
 
 const AlbumCard = ({item, className, playlist}: { item: any, className?: string, playlist?:boolean}) => {
 
-    let link
 
-    if(playlist) link = `playlists/${item.id}`
-    else link = `albums/${item.id}`
+    
+    const link = playlist ?  `playlists/${item.id}` : `albums/${item.id}`
+
 
     return (
             <Link className={`${styles.albumCard} ${className}`} href={`${link}`}>
