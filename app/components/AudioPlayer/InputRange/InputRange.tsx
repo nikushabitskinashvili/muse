@@ -12,7 +12,7 @@ const InputRange: React.FC<InputRangeProps> = ({ defaultValue, onChange, progres
         if (progressRef.current) {
             progressRef.current.value = String((audioPlayer.currentTime / audioPlayer.duration) * 100);
         }
-    }, [audioPlayer.currentTime, audioPlayer.duration]);
+    }, [audioPlayer.currentTime, audioPlayer.duration, setAudioPlayer]);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         onChange(e);

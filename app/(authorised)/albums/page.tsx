@@ -14,6 +14,7 @@ const Albums = () => {
                 <div className={styles.container}>
                     {popularAlbum.map((item) => (
                         <AlbumCard
+                            key={item.id}
                             item={item}
                         />
                     ))}
