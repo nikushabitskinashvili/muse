@@ -5,7 +5,6 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
-  background: #050505;
 }
 
 .main {
@@ -16,7 +15,6 @@
 
 .h2 {
   color: #FFF;
-  font-family: Inter;
   font-size: 24px;
   font-style: normal;
   font-weight: 500;
@@ -30,7 +28,7 @@
   object-fit: cover;
 }
 
-.about {
+.aboutWrapper {
   display: flex;
   flex-direction: column;
   gap: 32px;
@@ -84,10 +82,16 @@
   line-height: normal;
 }
 
-@media only screen and (max-width: 1023px) {
+.images{
+  display: none;
+}
+
+.buttons button{
+  width: 150px;
+}
+
+@media  screen and (max-width: 1024px) {
   .container {
-    max-width: 600px;
-    height: 338px;
     gap: 24px;
   }
 
@@ -109,10 +113,11 @@
   }
 }
 
-@media only screen and (max-width: 767px) {
+@media screen and (max-width: 767px) {
   .container {
-    height: 480px;
-    max-width: 343px;
+    max-width: 767px;
+    height: 100%;
+    width: 100%;
   }
 
   .h2{
@@ -135,9 +140,30 @@
   }
 
   .img{
-    width: 100%;
-    height: 190px;
     align-items: flex-start;
     justify-content: center;
+    width: 100%;
+  }
+
+  .buttons{
+    display: none;
+  }
+
+  .aboutWrapper{
+    gap: 8px;
+  }
+
+  .images{
+    display: block;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .about{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
   }
 }

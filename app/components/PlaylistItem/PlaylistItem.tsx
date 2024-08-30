@@ -7,8 +7,8 @@ import Image from "next/image";
 interface Props {
     image: string,
     title?: string,
-    category?: string,
-    price: number,
+    name?: string,
+    duration: number,
     img?: IconEnum,
     id: number;
     onClick?: () => void,
@@ -38,13 +38,13 @@ export const PlaylistItem = (props: Props) => {
                         <Image className={styles.image} src={props.image} alt={`album`} width={56} height={56}/>
                     </div>
                     <div className={styles.text}>
-                        <span>{`${props.title} - ${props.category}`}</span>
+                        <span>{`${props.title} - ${props.name}`}</span>
                     </div>
                 </div>
                 <div className={styles.rightSection}>
                     <div className={styles.time}>
                         <Image src={IconEnum.CLOCK} alt={''} width={24} height={24}/>
-                        <span className={styles.text}>{(props.price / 60).toFixed(2)}</span>
+                        <span className={styles.text}>{(props.duration / 60).toFixed(2)}</span>
                     </div>
                     <Image className={`${styles.icon} ${styles.heart}`} src={IconEnum.HEART} alt={''} width={24} height={24}/>
                     <Image className={styles.dots} src={icon} alt={''} width={24} height={24}/>

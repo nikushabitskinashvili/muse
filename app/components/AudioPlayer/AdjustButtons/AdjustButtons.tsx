@@ -19,19 +19,19 @@ const AdjustButtons: React.FC<Props> = ({
     return (
         <div className={styles.adjustButtons}>
             <div className={styles.adjustButton}>
-                <Image src={IconEnum.SHUFFLE} alt='shuffle' width={24} height={24} />
+                <img src={IconEnum.SHUFFLE} alt='shuffle' />
             </div>
             <div className={styles.adjustButton}>
-                <Image src={IconEnum.PREVOUS} alt='previousMusicButton' width={24} height={24} onClick={onPreviousSong} />
+                <img src={IconEnum.PREVOUS} alt='previousMusicButton'  onClick={onPreviousSong} />
             </div>
             <div  className={styles.mainButton}>
-                <Image src={playing ? IconEnum.PAUSE : IconEnum.PLAY} alt='playbutton' width={24} height={24} onClick={onPlayMusic} />
+                <img src={playing ? IconEnum.PAUSE : IconEnum.PLAY} alt='playbutton'  onClick={onPlayMusic} />
             </div>
             <div className={styles.adjustButton}>
-                <Image src={IconEnum.NEXT} alt='nextMusicButton' width={24} height={24} onClick={onNextSong} />
+                <img src={IconEnum.NEXT} alt='nextMusicButton' onClick={onNextSong} />
             </div>
             <div className={styles.adjustButton}>
-                <Image src={IconEnum.ROTATE} alt='loop' width={24} height={24} />
+                <img src={IconEnum.ROTATE} alt='loop'  />
             </div>
             
         </div>
