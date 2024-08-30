@@ -44,7 +44,7 @@ interface Props {
 }
 
 const Icon: FC<Props> = ({Icon, size, color,}) => {
-return (<Image src={`/icons/${IconEnum[Icon]}`} width ={44} height = {44} alt={''}/>)
+return (<Image src={`/icons/${IconEnum[Icon]}`} width ={44} height = {44} alt= ''/>)
 };
 
 export default Icon;
