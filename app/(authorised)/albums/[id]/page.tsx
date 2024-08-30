@@ -9,7 +9,8 @@ import { useParams } from 'next/navigation';
 
 const AlbumDetailsPage = () => {
     const { id } = useParams()
-    const album = popularAlbum[id];
+    
+    const album = popularAlbum[+id];
 
     return (
         <main className={styles.main}>
