@@ -2,6 +2,7 @@ import { useRef, useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import { audioPlayerState } from '@/app/atoms/states';
 import { Song } from '../Interfaces/Interfaces';
+
 export const useAudioPlayer = (songs: Song[]) => {
     const [audioPlayer, setAudioPlayer] = useRecoilState(audioPlayerState);
     const audioRef = useRef<HTMLAudioElement>(null);
@@ -11,8 +12,13 @@ export const useAudioPlayer = (songs: Song[]) => {
     useEffect(() => {
         const handleTimeUpdate = () => {
             if (audioRef.current) {
-                setAudioPlayer((prev) => ({ ...prev, currentTime: audioRef.current!.currentTime }));
-                const progressValue = String((audioRef.current.currentTime / audioRef.current.duration) * 100);
+                setAudioPlayer((prev) => ({
+                    ...prev,
+                    currentTime: audioRef.current!.currentTime,
+                }));
+                const progressValue = String(
+                    (audioRef.current.currentTime / audioRef.current.duration) * 100
+                );
                 if (progressRef.current) progressRef.current.value = progressValue;
                 if (ipadProgressRef.current) ipadProgressRef.current.value = progressValue;
             }
@@ -20,7 +26,10 @@ export const useAudioPlayer = (songs: Song[]) => {
 
         const handleLoadedMetadata = () => {
             if (audioRef.current) {
-                setAudioPlayer((prev) => ({ ...prev, duration: audioRef.current!.duration }));
+                setAudioPlayer((prev) => ({
+                    ...prev,
+                    duration: audioRef.current!.duration,
+                }));
             }
         };
 
@@ -43,15 +52,19 @@ export const useAudioPlayer = (songs: Song[]) => {
                 audio.removeEventListener('ended', handleEnded);
             };
         }
-    }, [audioPlayer.currentSongIndex, songs.length]);
+    }, [audioPlayer.currentSongIndex, songs.length, setAudioPlayer]);
 
     useEffect(() => {
         if (audioRef.current) {
             audioRef.current.pause();
             audioRef.current.load();
-            setAudioPlayer((prev) => ({ ...prev, currentTime: 0, duration: 0 }));
+            setAudioPlayer((prev) => ({
+                ...prev,
+                currentTime: 0,
+                duration: 0,
+            }));
         }
-    }, [audioPlayer.currentSongIndex]);
+    }, [audioPlayer.currentSongIndex, setAudioPlayer]);
 
     useEffect(() => {
         if (audioRef.current) {
@@ -63,7 +76,7 @@ export const useAudioPlayer = (songs: Song[]) => {
         if (audioRef.current) {
             audioRef.current.play();
         }
-    }, []);
+    }, [setAudioPlayer]);
 
     const handleProgressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (audioRef.current) {
@@ -86,12 +99,14 @@ export const useAudioPlayer = (songs: Song[]) => {
     const handleTenSecondsBack = () => {
         if (audioRef.current) {
             audioRef.current.currentTime -= 10;
-            setAudioPlayer((prev) => ({ ...prev, currentTime: audioRef.current!.currentTime }));
+            setAudioPlayer((prev) => ({
+                ...prev,
+                currentTime: audioRef.current!.currentTime,
+            }));
         }
     };
 
     const handleNextSong = () => {
-
         setAudioPlayer((prev) => ({
             ...prev,
             currentSongIndex: (prev.currentSongIndex + 1) % songs.length,
@@ -149,4 +164,3 @@ export const formatTime = (time: number) => {
     const seconds = Math.floor(time % 60);
     return `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 };
-
