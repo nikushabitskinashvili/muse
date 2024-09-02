@@ -19,53 +19,104 @@ import playlistsImage6 from "../../public/images/playlist6.png"
 
 export const popularAlbum:PopularAlbum[] = [
     {
+        id:0,
+        img:'/images/1.png',
+        title:"Children of bodom",
+        subTitle:"Children",
+        total:5000
+    },
+    {
         id:1,
         img:'/images/2.png',
         title:"Children of bodom",
         subTitle:"Children",
+        total:5000
     },
     {
         id:2,
-        img:'/images/1.png',
-        title:"Children of bodom",
-        subTitle:"Children",
-    },
-    {
-        id:3,
         img:'/images/3.png',
         title:"Children of bodom",
         subTitle:"Children",
+        total:5000
     },
     {
-        id:4,
+        id:3,
         img:'/images/4.png',
         title:"Children of bodom",
         subTitle:"Children",
+        total:5000
+    },
+    {
+        id:4,
+        img:'/images/1.png',
+        title:"Children of bodom",
+        subTitle:"Children",
+        total:5000
     },
     {
         id:5,
         img:'/images/1.png',
         title:"Children of bodom",
         subTitle:"Children",
+        total:5000
     },
     {
         id:6,
-        img:'/images/2.png',
+        img:'/images/1.png',
         title:"Children of bodom",
         subTitle:"Children",
+        total:5000
     },
     {
         id:7,
-        img:'/images/3.png',
+        img:'/images/1.png',
         title:"Children of bodom",
         subTitle:"Children",
+        total:5000
     },
     {
         id:8,
-        img:'/images/4.png',
+        img:'/images/1.png',
         title:"Children of bodom",
         subTitle:"Children",
+        total:5000
+    },
+    {
+        id:9,
+        img:'/images/1.png',
+        title:"Children of bodom",
+        subTitle:"Children",
+        total:5000
+    },
+    {
+        id:10,
+        img:'/images/1.png',
+        title:"Children of bodom",
+        subTitle:"Children",
+        total:5000
+    },
+    {
+        id:11,
+        img:'/images/1.png',
+        title:"Children of bodom",
+        subTitle:"Children",
+        total:5000
+    },
+    {
+        id:12,
+        img:'/images/1.png',
+        title:"Children of bodom",
+        subTitle:"Children",
+        total:5000
+    },
+    {
+        id:13,
+        img:'/images/1.png',
+        title:"Children of bodom",
+        subTitle:"Children",
+        total:5000
     }
+
 ]
 
 

@@ -1,18 +1,32 @@
 "use client";
-import React, {useRef} from "react";
+import React, { useRef } from "react";
 import styles from "./Slider.module.scss";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import {ArtistCard} from "../ArtistCard/ArtistCard";
-import {artists, playlistData, popularAlbum} from "@/app/data/CarouselData";
+import { ArtistCard } from "../ArtistCard/ArtistCard";
+import { artists, playlistData, popularAlbum } from "@/app/data/CarouselData";
 import AlbumCard from "@/app/components/AlbumCard/AlbumCard";
 import Image from "next/image";
 import leftArrow from "@/public/images/left-arrow.svg";
 import rightArrow from "@/public/images/Arrow.svg";
 
-export const Slider = ({data, title}: { data: any; title: string }) => {
+type Artist = {
+    id: number;
+    title: string;
+};
 
+type PopularAlbum = {
+    id: string;
+    title: string | undefined;
+};
+
+type Playlist = {
+    id: string;
+    title: string;
+};
+
+export const Slider = ({ data, title }: { data: any; title: string }) => {
     const scrollRef = useRef<HTMLDivElement>(null);
 
     const scrollLeft = () => {
@@ -27,10 +41,15 @@ export const Slider = ({data, title}: { data: any; title: string }) => {
         }
     };
 
-    let info = artists
+    let info: Artist[] | PopularAlbum[] | Playlist[];
 
-    if (title === 'Popular Album') info = popularAlbum
-    else if (title === 'My Playlists') info = playlistData
+    if (title === 'Popular Album') {
+        info = popularAlbum.filter((album) => album.title !== undefined) as unknown as PopularAlbum[];
+    } else if (title === 'My Playlists') {
+        info = playlistData;
+    } else {
+        info = artists;
+    }
 
     return (
         <div className={`${styles.container} ${title === "Popular Album" ? styles.marginTop : ''}`}>
@@ -53,26 +72,34 @@ export const Slider = ({data, title}: { data: any; title: string }) => {
                     />
                 </div>
             </div>
-            <section
-                className={styles.carouselSection}>
+            <section className={styles.carouselSection}>
                 <div className={styles.main} ref={scrollRef}>
                     {info.map((item) => {
-                        return (
-                            <div
-                                className={`${styles.sliderCard} ${title === "Popular Album" ? styles.forSub : ''}`}
-                                key={item.id}
-                            >
-                                {title === "Artists" && <ArtistCard title={title} item={item}/>}
-                                {title === "Popular Album" &&
-                                    <AlbumCard item={item}/>}
-                                {title === "My Playlists" &&
-                                    <AlbumCard playlist={true} item={item}/>}
-                            </div>
-                        );
+                        if (title === "Artists") {
+                            return (
+                                <div className={`${styles.sliderCard}`} key={item.id}>
+                                    <ArtistCard title={title} item={item as Artist} />
+                                </div>
+                            );
+                        }
+                        if (title === "Popular Album") {
+                            return (
+                                <div className={`${styles.sliderCard} ${styles.forSub}`} key={item.id}>
+                                    <AlbumCard item={item as PopularAlbum} />
+                                </div>
+                            );
+                        }
+                        if (title === "My Playlists") {
+                            return (
+                                <div className={`${styles.sliderCard}`} key={item.id}>
+                                    <AlbumCard playlist={true} item={item as Playlist} />
+                                </div>
+                            );
+                        }
+                        return null;
                     })}
                 </div>
             </section>
         </div>
-    )
-        ;
+    );
 };

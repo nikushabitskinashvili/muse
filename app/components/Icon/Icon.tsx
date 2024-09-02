@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { colorsEnum } from "@/app/utils/colors.enum";
+import Image from "next/image";
 
 export enum IconEnum {
     AUDIO = "/icons/audio.svg",
@@ -38,7 +39,7 @@ interface Props {
 }
 
 const Icon: FC<Props> = ({ Icon, size, color, }) => {
-    return ( <img src={`/icons/${IconEnum[Icon]}`} />)
+    return ( <Image src={`/icons/${IconEnum[Icon]}`} width={44} height={44} alt="" />)
 };
 
 export default Icon;

@@ -1,6 +1,5 @@
 'use client'
 import styles from './forYouComp.module.scss'
-// import styles from "@/app/(authorised)/foryou/foryou.module.scss";
 import {PlaylistItem} from "@/app/components/PlaylistItem/PlaylistItem";
 import {useState} from "react";
 import Link from "next/link";
@@ -99,8 +98,8 @@ export const ForYouComp = () => {
                         key={album.id}
                         title={album.title}
                         image={album.image}
-                        price={album.price}
-                        category={album.category}
+                        duration={album.price}
+                        name={album.category}
                         icon={'dots'}/>
                 ))}
             </div>

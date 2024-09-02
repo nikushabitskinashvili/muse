@@ -38,7 +38,6 @@ const Navbar = () => {
 
     if (isOpen) wrapperclass.push(styles.navOpen);
 
-    // console.log(isOpen)
 
     return (
         <div className={pathName === '/' ? styles.linearContainer : styles.container}>

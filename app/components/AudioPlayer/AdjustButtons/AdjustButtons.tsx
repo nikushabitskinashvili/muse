@@ -19,19 +19,19 @@ const AdjustButtons: React.FC<Props> = ({
     return (
         <div className={styles.adjustButtons}>
             <div className={styles.adjustButton}>
-                <Image src={IconEnum.SHUFFLE} alt='shuffle' width={24} height={24} />
+                <Image src={IconEnum.SHUFFLE} width={24} height={24} alt='shuffle' />
             </div>
             <div className={styles.adjustButton}>
-                <Image src={IconEnum.PREVOUS} alt='previousMusicButton' width={24} height={24} onClick={onPreviousSong} />
+                <Image src={IconEnum.PREVOUS} width={24} height={24} alt='previousMusicButton'  onClick={onPreviousSong} />
             </div>
             <div  className={styles.mainButton}>
-                <Image src={playing ? IconEnum.PAUSE : IconEnum.PLAY} alt='playbutton' width={24} height={24} onClick={onPlayMusic} />
+                <Image src={playing ? IconEnum.PAUSE : IconEnum.PLAY} width={24} height={24} alt='playbutton'  onClick={onPlayMusic} />
             </div>
             <div className={styles.adjustButton}>
-                <Image src={IconEnum.NEXT} alt='nextMusicButton' width={24} height={24} onClick={onNextSong} />
+                <Image src={IconEnum.NEXT} width={24} height={24} alt='nextMusicButton' onClick={onNextSong} />
             </div>
             <div className={styles.adjustButton}>
-                <Image src={IconEnum.ROTATE} alt='loop' width={24} height={24} />
+                <Image src={IconEnum.ROTATE} width={24} height={24} alt='loop'  />
             </div>
             
         </div>
