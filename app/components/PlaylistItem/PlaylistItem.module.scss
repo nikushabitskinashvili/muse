@@ -85,7 +85,7 @@
   }
 
   .text {
-    max-width: 235px;
+    width: 250px;
     overflow: hidden;
     text-overflow: ellipsis;
     text-wrap: nowrap;
@@ -119,12 +119,11 @@
 
   .text {
     font-size: 14px;
-    max-width: 246px;
-    text-wrap: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    width: 160px; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
   }
-
   .imageSection {
     gap: 8px;
   }
