@@ -14,12 +14,16 @@ const albums = [
     { id: 8, title: 'Album 8', image: '/images/3.png', name: 'Artist 8' },
 ];
 
-export const YourPlaylistModal = () => {
+interface Props{
+    onClose: () => void;
+}
+
+export const YourPlaylistModal = (props:Props) => {
     return (
         <div className={styles.container}>
             <div className={styles.head}>
                 <span className={styles.title}>Your playlist</span>
-                <XButton bg={false}/>
+                <XButton onClick={props.onClose} bg={false}/>
             </div>
             <div className={styles.cards}>
                 {playlistData.map(item => (
