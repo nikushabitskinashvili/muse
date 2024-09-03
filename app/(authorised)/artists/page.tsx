@@ -8,7 +8,7 @@ import { title } from 'process';
 export default  function artist () {
 
     return(
-        <div className={styles.main}>
+        <main className={styles.main}>
             <div className={styles.container}>
                 <span className={styles.title}>The Artists</span>
 
@@ -19,6 +19,6 @@ export default  function artist () {
                     ))}
                 </div>
             </div>
-        </div>
+        </main>
     )
 }
