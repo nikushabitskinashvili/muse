@@ -1,8 +1,7 @@
-"use client";
-import styles from "./forYouComp.module.scss";
-// import styles from "@/app/(authorised)/foryou/foryou.module.scss";
-import { PlaylistItem } from "@/app/components/PlaylistItem/PlaylistItem";
-import { useState } from "react";
+'use client'
+import styles from './forYouComp.module.scss'
+import {PlaylistItem} from "@/app/components/PlaylistItem/PlaylistItem";
+import {useState} from "react";
 import Link from "next/link";
 
 export const albums = [
@@ -79,31 +78,29 @@ export const albums = [
 ];
 
 export const ForYouComp = () => {
-  const [activeId, setActiveId] = useState<number | null>(null);
 
-  return (
-    <div className={styles.container}>
-      <div className={styles.head}>
-        <span className={styles.title}>For You</span>
-        <Link href={"/foryou"} className={styles.link}>
-          See all
-        </Link>
-      </div>
-      <div className={styles.list}>
-        {albums.slice(0, 3).map((album) => (
-          <PlaylistItem
-            id={album.id}
-            activeId={activeId}
-            setActiveId={setActiveId}
-            key={album.id}
-            title={album.title}
-            image={album.image}
-            price={album.price}
-            category={album.category}
-            icon={"dots"}
-          />
-        ))}
-      </div>
-    </div>
-  );
-};
+    const [activeId, setActiveId] = useState<number | null>(null)
+
+    return (
+        <div className={styles.container}>
+            <div className={styles.head}>
+                <span className={styles.title}>For You</span>
+                <Link href={"/foryou"} className={styles.link}>See all</Link>
+            </div>
+            <div className={styles.list}>
+                {albums.slice(0, 3).map(album => (
+                    <PlaylistItem
+                        id={album.id}
+                        activeId={activeId}
+                        setActiveId={setActiveId}
+                        key={album.id}
+                        title={album.title}
+                        image={album.image}
+                        duration={album.price}
+                        name={album.category}
+                        icon={'dots'}/>
+                ))}
+            </div>
+        </div>
+    )
+}

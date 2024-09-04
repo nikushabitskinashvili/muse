@@ -92,8 +92,8 @@ const  [activeId, setActiveId] = useState<number | null>(null)
                     key={album.id}
                     title={album.title}
                     image={album.image}
-                    price={album.price}
-                    category={album.category}
+                    duration={album.price}
+                    name={album.category}
                     icon={'dots'}/>
             ))}
         </div>

@@ -5,9 +5,24 @@
     justify-content: center;
 }
 
+@media screen and (min-width: 767px) and (max-width: 1024px) {
+    .adjustButtons{
+        gap: 14px;
+    }
+}
+
 
 @media screen and (max-width: 767px) {
-   .adjustButton{
-        display: none;
-   }
+    .adjustButtons{
+        gap: 8px;
+    }
+
+    .adjustButtons img{
+        width: 16px;
+        height: 16px;
+    }
 }
+
+
+
+
