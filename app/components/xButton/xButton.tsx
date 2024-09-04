@@ -4,8 +4,9 @@ import { useState } from "react";
 import Image from "next/image";
 
 interface Props {
-  bg: boolean;
-  closeModal: () => void;
+    bg: boolean;
+    onClick?: () => void;
+  closeModal?: () => void;
 }
 
 export const XButton = (props: Props) => {
@@ -13,9 +14,10 @@ export const XButton = (props: Props) => {
 
   if (!props.bg) classes.push(styles.bgNone);
 
-  return (
-    <button onClick={props.closeModal} className={classes.join(" ")}>
-      <Image alt={""} src={IconEnum.DELETE} width={24} height={24} />
-    </button>
-  );
-};
+    if (!props.bg) classes.push(styles.bgNone)
+
+    return (
+        <button className={classes.join(' ')} onClick={props.onClick}><Image alt={''} src={IconEnum.DELETE} width={24} height={24}/></button>
+    )
+}
+

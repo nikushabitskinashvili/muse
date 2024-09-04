@@ -24,6 +24,7 @@ export interface Song {
     music: string;
     artist: string;
     audioSrc: string;
+    duration: number;
 };
 
 
