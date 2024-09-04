@@ -5,7 +5,7 @@ import {useState} from "react";
 import Link from "next/link";
 import {Song} from "@/app/Interfaces/Interfaces";
 
-const albums = [
+export const albums = [
     {
         id: 1,
         title: "Happier Than Ever (Official Music Video)",
@@ -89,7 +89,6 @@ export const ForYouComp = () => {
     const handleSongClick = (song: Song) => {
         setSelectedSong(song);
     };
-
 
     return (
         <div className={styles.container}>

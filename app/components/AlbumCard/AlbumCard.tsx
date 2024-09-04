@@ -1,11 +1,18 @@
-'use client';
+"use client";
 import styles from "./AlbumCard.module.scss";
 import Link from "next/link";
 import Image from "next/image";
 
-const AlbumCard = ({item, className, playlist}: { item: any, className?: string, playlist?:boolean}) => {
-
-
+const AlbumCard = ({
+  item,
+  className,
+  playlist,
+}: {
+  item: any;
+  className?: string;
+  playlist?: boolean;
+}) => {
+  let link;
     
     const link = playlist ?  `playlists/${item.id}` : `albums/${item.id}`
 

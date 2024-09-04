@@ -8,8 +8,8 @@ interface Props {
     title: string,
     label: string,
     placeholder: string
-    // onClick: (event: React.MouseEvent) => void,
     onClose?: () => void;
+    closeModal?: ()=>void
 }
 
 export const ReusableModal = (props: Props) => {

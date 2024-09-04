@@ -16,5 +16,7 @@ interface Artists{
 interface PlaylistData{
     id:number,
     img: StaticImageData,
-    title:string
+    title:string,
+    totalTracks:number,
+    totalTime:number
 }

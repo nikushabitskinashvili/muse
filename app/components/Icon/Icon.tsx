@@ -3,6 +3,7 @@ import { colorsEnum } from "@/app/utils/colors.enum";
 import Image from "next/image";
 
 export enum IconEnum {
+
     AUDIO = "/icons/audio.svg",
     BACKWARD = "/icons/backward.svg",
     BIG_PAUSE = "/icons/bigPause.svg",
@@ -33,9 +34,9 @@ export enum IconEnum {
 }
 
 interface Props {
-    Icon : keyof typeof IconEnum;
-    size: string | number;
-    color?: keyof typeof colorsEnum;
+  Icon: keyof typeof IconEnum;
+  size: string | number;
+  color?: keyof typeof colorsEnum;
 }
 
 const Icon: FC<Props> = ({ Icon, size, color, }) => {
