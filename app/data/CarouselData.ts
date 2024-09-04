@@ -123,42 +123,92 @@ export const popularAlbum:PopularAlbum[] = [
 export const artists:Artists[] = [
     {
         id:1,
-        img:artitst1,
+        img:'/images/image 325.png',
         title:"Lana Del Rey",
     },
     {
         id:2,
-        img:artitst2,
+        img:'/images/image 325.png',
         title:"Lana Del Rey",
     },
     {
         id:3,
-        img:artitst3,
+        img:'/images/image 325.png',
         title:"Lana Del Rey",
     },
     {
         id:4,
-        img:artitst4,
+        img:'/images/image 325.png',
         title:"Lana Del Rey",
     },
     {
         id:5,
-        img:artitst5,
+        img:'/images/image 325.png',
         title:"Lana Del Rey",
     },
     {
         id:6,
-        img:artitst1,
+        img:'/images/image 325.png',
         title:"Lana Del Rey",
     },
     {
         id:7,
-        img:artitst2,
+        img:'/images/image 325.png',
         title:"Lana Del Rey",
     },
     {
         id:8,
-        img:artitst4,
+        img:'/images/image 325.png',
+        title:"Lana Del Rey",
+    },
+    {
+        id:9,
+        img:'/images/image 325.png',
+        title:"Lana Del Rey",
+    },
+    {
+        id:10,
+        img:'/images/image 325.png',
+        title:"Lana Del Rey",
+    },
+    {
+        id:11,
+        img:'/images/image 325.png',
+        title:"Lana Del Rey",
+    },
+    {
+        id:12,
+        img:'/images/image 325.png',
+        title:"Lana Del Rey",
+    },
+    {
+        id:13,
+        img:'/images/image 325.png',
+        title:"Lana Del Rey",
+    },
+    {
+        id:14,
+        img:'/images/image 325.png',
+        title:"Lana Del Rey",
+    },
+    {
+        id:15,
+        img:'/images/image 325.png',
+        title:"Lana Del Rey",
+    },
+    {
+        id:16,
+        img:'/images/image 325.png',
+        title:"Lana Del Rey",
+    },
+    {
+        id:17,
+        img:'/images/image 325.png',
+        title:"Lana Del Rey",
+    },
+    {
+        id:18,
+        img:'/images/image 325.png',
         title:"Lana Del Rey",
     }
 ]
