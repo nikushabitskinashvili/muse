@@ -16,8 +16,17 @@ const Hero = ({className}: HeroProps) => {
     const [isPlaying, setIsPlaying] = useState(false);
 
     const togglePlaying = () => {
-        setIsPlaying  (!isPlaying);
+        setIsPlaying(!isPlaying);
     }
+
+    // let playIcon
+    //
+    // if(isPlaying) {
+    //     playIcon = (IconEnum.PAUSESMALL)
+    // }else{
+    //     playIcon = (IconEnum.PLAYSMALL)
+    // }
+
 
     return (
         <section className={styles.section}>
@@ -29,7 +38,7 @@ const Hero = ({className}: HeroProps) => {
                             past relationships with gratitude and moving
                             forward with confidence.
                         </p>
-                        <Button bg={'blue'} title={'Play'} icon={isPlaying ? 'PAUSESMALL' : 'PLAYSMALL'} hoverIcon={isPlaying ? 'PAUSESMALL' : 'PLAYSMALL'} onClick={togglePlaying}></Button>
+                        <Button bg={'blue'} title={'Play'} icon={'PLAYSMALL'} hoverIcon={'PLAYSMALL'} activeIcon={'PLAYSMALL'}></Button>
                     </div>
                     <Image className={styles.heroImg} src={'/images/ariana.png'} alt="img" width={265} height={392}/>
                 </div>
