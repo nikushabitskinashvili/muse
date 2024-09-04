@@ -5,7 +5,7 @@ import Image from "next/image";
 
 interface Props {
   bg: boolean;
-  closeModal: () => void;
+  closeModal?: () => void;
 }
 
 export const XButton = (props: Props) => {
