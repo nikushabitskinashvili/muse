@@ -12,7 +12,6 @@ const AlbumCard = ({
   className?: string;
   playlist?: boolean;
 }) => {
-  let link;
     
     const link = playlist ?  `playlists/${item.id}` : `albums/${item.id}`
 
