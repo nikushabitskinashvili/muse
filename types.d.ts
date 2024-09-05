@@ -8,6 +8,7 @@ interface PopularAlbum{
 
 
 interface Artists{
+    name: string
     id:number,
     img: StaticImageData,
     title:string
