@@ -1,10 +1,13 @@
 import styles from "./Input.module.scss";
 import React, { useState } from 'react';
 import Image from "next/image";
+import { usePathname } from 'next/navigation';
 
 const Input: React.FC = () => {
     const [inputValue, setInputValue] = useState<string>('');
     const [filteredResults, setFilteredResults] = useState<string[]>([]);
+
+    const pathname = usePathname();
 
     const albumList = ["Abbey Road", "Back in Black", "Hotel California", "Dark Side of the Moon", "Rumours", "Sgt. Pepper", "Thriller", "The Wall", "Born to Run"];
 
@@ -18,7 +21,7 @@ const Input: React.FC = () => {
 
     return (
         <div className={styles.wrapper}>
-            <div className={inputValue? styles.inputTyping : styles.container }>
+            <div className={inputValue? styles.inputTyping : styles.container && pathname === "/" ? styles.homecontainer : styles.container }>
                 <Image src={'/images/search.png'} alt="search" className={styles.searchIcon} width={15} height={15} />
                 <input
                     type="text"
