@@ -10,7 +10,18 @@
     max-width: 467px;
     margin: auto;
     border-radius: 24px;
-    background-color: rgba(20, 7, 33, 0.15);
+    background: rgba(255, 255, 255, 0.20);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 10px 16px;
+}
+
+.homecontainer{
+    background: rgba(20, 7, 33, 0.15);
+    max-width: 467px;
+    margin: auto;
+    border-radius: 24px;
     display: flex;
     align-items: center;
     gap: 16px;
