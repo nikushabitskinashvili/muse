@@ -18,7 +18,7 @@ const Input: React.FC = () => {
 
     return (
         <div className={styles.wrapper}>
-            <div className={styles.container}>
+            <div className={inputValue? styles.inputTyping : styles.container }>
                 <Image src={'/images/search.png'} alt="search" className={styles.searchIcon} width={15} height={15} />
                 <input
                     type="text"

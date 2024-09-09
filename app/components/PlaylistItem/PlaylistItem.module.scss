@@ -113,7 +113,7 @@
 }
 
 
-@media only screen and (max-width: 1023px) {
+@media  screen and (max-width: 1023px) {
 
   .leftSection {
     gap: 20px;
@@ -123,7 +123,7 @@
     width: 250px;
     overflow: hidden;
     text-overflow: ellipsis;
-    text-wrap: nowrap;
+    white-space: nowrap;
   }
 
   .imageSection {
@@ -139,7 +139,7 @@
   }
 }
 
-@media only screen and (max-width: 767px) {
+@media  screen and (max-width: 767px) {
 
   .playlistItem {
     max-height: 40px;
@@ -166,8 +166,8 @@
 
   .text {
     font-size: 14px;
-    max-width: 108px;
-    text-wrap: nowrap;
+    width: 120px;
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
