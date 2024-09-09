@@ -1,11 +1,11 @@
 'use client'
 import styles from "./PlaylistItem.module.scss";
-import {IconEnum} from "@/app/components/Icon/Icon";
-import React, {useEffect, useState, useRef, Dispatch, SetStateAction} from "react";
+import { IconEnum } from "@/app/components/Icon/Icon";
+import React, { useEffect, useState, useRef, Dispatch, SetStateAction } from "react";
 import Image from "next/image";
-import {DotsPop} from "@/app/components/dotsPop/dotsPop";
-import {ReusableModal} from "@/app/components/reusableModal/reusableModal";
-import {YourPlaylistModal} from "@/app/components/yourPlaylistModal/yourPlaylistModal";
+import { DotsPop } from "@/app/components/dotsPop/dotsPop";
+import { ReusableModal } from "@/app/components/reusableModal/reusableModal";
+import { YourPlaylistModal } from "@/app/components/yourPlaylistModal/yourPlaylistModal";
 
 interface Props {
     image: string,
@@ -22,7 +22,7 @@ interface Props {
     activeId: number | null;
     current?: () => void
     dottedId: number | null;
-    setDottedId:(data: number | null) => void;
+    setDottedId: (data: number | null) => void;
 }
 
 export const PlaylistItem = (props: Props) => {
@@ -115,7 +115,7 @@ export const PlaylistItem = (props: Props) => {
             {addPop && (
                 <div className={styles.popBackground} onClick={closeAddPop}>
                     <div ref={addPopRef} onClick={clickOnPop} className={styles.popContainer}>
-                        <YourPlaylistModal onClose={closeAddPop}/>
+                        <YourPlaylistModal onClose={closeAddPop} />
                     </div>
                 </div>
             )}
@@ -124,7 +124,7 @@ export const PlaylistItem = (props: Props) => {
                 <div className={styles.popBackground} onClick={closeCreatePop}>
                     <div ref={createPopRef} onClick={clickOnPop} className={styles.popContainer}>
                         <ReusableModal title={'Create Playlist'} label={'Name'} onClose={closeCreatePop}
-                                       placeholder={'Playlist name'}/>
+                            placeholder={'Playlist name'} />
                     </div>
                 </div>
             )}
@@ -133,8 +133,8 @@ export const PlaylistItem = (props: Props) => {
             <div className={classNames.join(' ').trim()} onClick={onClick}>
                 <div className={styles.leftSection}>
                     <div className={styles.imageSection}>
-                        <Image className={styles.icon} src={IconEnum.AUDIO} alt="audio" width={24} height={24}/>
-                        <Image className={styles.image} src={props.image} alt={`album`} width={56} height={56}/>
+                        <Image className={styles.icon} src={IconEnum.AUDIO} alt="audio" width={24} height={24} />
+                        <Image className={styles.image} src={props.image} alt={`album`} width={56} height={56} />
                     </div>
                     <div className={styles.text}>
                         <span>{`${props.title} - ${props.name}`}</span>
@@ -142,7 +142,7 @@ export const PlaylistItem = (props: Props) => {
                 </div>
                 <div className={styles.rightSection}>
                     <div className={styles.time}>
-                        <Image src={IconEnum.CLOCK} alt={''} width={24} height={24}/>
+                        <Image src={IconEnum.CLOCK} alt={''} width={24} height={24} />
                         <span className={styles.text}>{(props.duration / 60).toFixed(2)}</span>
                     </div>
                     <Image
