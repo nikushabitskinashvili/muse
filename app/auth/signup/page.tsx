@@ -5,6 +5,7 @@ import AuthInput from "@/app/components/AuthInput/AuthInput";
 import AuthTitle from "@/app/components/AuthTitle/AuthTitle";
 import Link from "next/link";
 import styles from "./SingUp.module.scss";
+import axios from "axios";
 
 export default function SignUp() {
   const [emailOrUsername, setEmailOrUsername] = useState("");
@@ -63,12 +64,15 @@ export default function SignUp() {
     return valid;
   };
 
-  const handleSubmit = (e: { preventDefault: () => void }) => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     if (validateForm()) {
-      console.log("Email or Username:", emailOrUsername);
-      console.log("New Password:", newPassword);
-      console.log("Confirm Password:", confirmPassword);
+      const response = await axios.post("https://muse-back.onrender.com/user", {
+        email: emailOrUsername,
+        password: newPassword,
+        role: "user",
+      });
+      console.log(response.data);
     }
   };
 
