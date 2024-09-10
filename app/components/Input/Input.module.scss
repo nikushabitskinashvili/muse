@@ -45,8 +45,8 @@
     outline: none;
     border: none;
     background: none;
-    color: #fff;
     font-size: 16px;
+    color: #FFF;
 }
 
 .searchIcon {
@@ -55,7 +55,7 @@
     cursor: pointer;
 }
 
-.container input::placeholder {
+.input::placeholder {
     color: rgba(255, 255, 255, 0.60);
     font-size: 16px;
     font-style: normal;
@@ -114,6 +114,12 @@
         padding: 8px;
         gap: 8px;
         background: rgba(255, 255, 255, 0.20);
+    }
+
+    .homecontainer{
+        background: rgba(255, 255, 255, 0.20);
+        padding: 8px;
+        gap: 8px;
     }
 
     .searchIcon {
