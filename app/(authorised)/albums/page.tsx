@@ -6,7 +6,7 @@ const Albums = () => {
 
 
     return (
-        <main className={styles.main}>
+        <div className={styles.main}>
             <div className={styles.mainWrapper}>
                 <div className={styles.albumTxt}>
                     <span>Popular albums</span>
@@ -20,7 +20,7 @@ const Albums = () => {
                     ))}
                 </div>
             </div>
-        </main>
+        </div>
     );
 }
 

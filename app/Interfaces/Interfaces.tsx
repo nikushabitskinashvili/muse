@@ -20,6 +20,7 @@ export interface Player {
 };
 
 export interface Song {
+    id: number;
     src: string;
     music: string;
     artist: string;

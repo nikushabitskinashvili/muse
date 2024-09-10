@@ -168,12 +168,12 @@ export const artists:Artists[] = [
     {
         id:2,
         img:'/images/image 325.png',
-        title:"Lana Del Rey",
+        title:"gabo Del Rey",
     },
     {
         id:3,
         img:'/images/image 325.png',
-        title:"Lana Del Rey",
+        title:"nika Del Rey",
     },
     {
         id:4,
