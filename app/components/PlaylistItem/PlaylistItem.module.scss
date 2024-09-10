@@ -69,11 +69,13 @@
 .icon {
   width: 24px;
   height: 24px;
+  cursor: pointer;
 }
 
 .dots {
   width: 32px;
   height: 32px;
+  cursor: pointer;
 }
 
 .imageSection {
@@ -84,7 +86,6 @@
 
 .text {
   color: #FFF;
-  font-family: Inter;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;

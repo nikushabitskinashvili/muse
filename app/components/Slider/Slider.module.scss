@@ -1,6 +1,6 @@
 @import 'app/styles/colors.scss';
 
-.container{
+.container {
   max-width: 1224px;
   width: 100%;
   display: flex;
@@ -8,12 +8,12 @@
   gap: 24px;
   padding: 0 24px;
 
-  @media(max-width: 767px){
+  @media(max-width: 767px) {
     gap: 12px;
   }
 }
 
-.main{
+.main {
   max-width: 1224px;
   width: 100%;
   display: flex;
@@ -21,6 +21,7 @@
   gap: 24px;
   overflow: scroll;
   scroll-behavior: smooth;
+
   &::-webkit-scrollbar {
     display: none;
   }
@@ -52,53 +53,53 @@
   }
 }
 
-.swiperTitleWrapper h4{
+.swiperTitleWrapper h4 {
   color: white;
   font-size: 24px;
   font-weight: 500;
   line-height: 29.05px;
 
-  @media(max-width: 767px){
+  @media(max-width: 767px) {
     font-size: 16px;
   }
 }
 
-.swiperTitleWrapper img{
+.swiperTitleWrapper img {
   cursor: pointer;
 }
 
-.swiperTitleWrapper{
+.swiperTitleWrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  @media(max-width: 767px){
+  @media(max-width: 767px) {
     margin-bottom: 0;
   }
 }
 
 
-.swiperTitleWrapper h4{
+.swiperTitleWrapper h4 {
   color: white;
   font-size: 24px;
   font-weight: 500;
   line-height: 29.05px;
 
-    @media(max-width: 1023px){
-      font-size: 20px;
-    }
+  @media(max-width: 1023px) {
+    font-size: 20px;
+  }
 
-  @media(max-width: 767px){
+  @media(max-width: 767px) {
     font-size: 16px;
   }
 }
 
-.swiperTitleWrapper img{
+.swiperTitleWrapper img {
   cursor: pointer;
 }
 
-@media(max-width: 767px){
-  .arrows{
+@media(max-width: 767px) {
+  .arrows {
     display: none;
   }
 }
