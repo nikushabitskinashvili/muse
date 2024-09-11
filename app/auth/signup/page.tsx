@@ -67,7 +67,7 @@ export default function SignUp() {
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     if (validateForm()) {
-      const response = await axios.post("https://muse-back.onrender.com/user", {
+      const response = await axios.post("https://back.museappofficial.com/user", {
         email: emailOrUsername,
         password: newPassword,
         role: "user",
