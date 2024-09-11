@@ -77,15 +77,17 @@ const albums = [
 ];
 
 export const MusicWrapper =() =>{
+    const [dottedId, setDottedId] = useState<number | null>(null);
+    const [activeId, setActiveId] = useState<number | null>(null)
 
-
-const  [activeId, setActiveId] = useState<number | null>(null)
 
 
     return (
         <div className={styles.list}>
             {albums.map(album => (
                 <PlaylistItem
+                    dottedId={dottedId}
+                    setDottedId={setDottedId}
                     id={album.id}
                     activeId={activeId}
                     setActiveId={setActiveId}
