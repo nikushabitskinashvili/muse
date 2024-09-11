@@ -96,10 +96,8 @@ export const MusicWrapper =() =>{
                     image={album.image}
                     duration={album.price}
                     name={album.category}
-                    icon={'dots'} dottedId={null} setDottedId={function (data: number | null): void {
-                        throw new Error("Function not implemented.");
-                    } }/>
-            ))}
+                    icon={'dots'}
+            />))}
         </div>
     )
 }
