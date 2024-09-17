@@ -94,8 +94,9 @@ export const MusicWrapper = () => {
           image={album.image}
           duration={album.price}
           name={album.category}
-          icon={"dots"}
-        />
+          icon={"dots"} audioSrc={""} onClick={function (): void {
+            throw new Error("Function not implemented.");
+          } }        />
       ))}
     </div>
   );
