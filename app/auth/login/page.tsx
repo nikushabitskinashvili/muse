@@ -5,7 +5,7 @@ import AuthInput from "@/app/components/AuthInput/AuthInput";
 import styles from "./LoginPage.module.scss";
 import AuthTitle from "@/app/components/AuthTitle/AuthTitle";
 import Link from "next/link";
-import { fakeUsers } from "@/app/data/userData";
+import axios from "axios";
 
 export default function Login() {
   const [emailOrUsername, setEmailOrUsername] = useState("");
@@ -29,48 +29,17 @@ export default function Login() {
     setErrors({ ...errors, password: "" });
   };
 
-  const validateForm = () => {
-    let valid = true;
-    let errors = { emailOrUsername: "", password: "" };
-
-    if (emailOrUsername.trim() === "") {
-      errors.emailOrUsername = "Email or username cannot be empty";
-      valid = false;
-    }
-
-    if (password.length < 8) {
-      errors.password = "Password must be at least 8 characters long";
-      valid = false;
-    }
-
-    const user = fakeUsers.find(
-      (user) => user.email === emailOrUsername && user.password === password
-    );
-
-    if (!user) {
-      const userWithEmail = fakeUsers.find(
-        (user) => user.email === emailOrUsername
-      );
-
-      if (userWithEmail) {
-        errors.password = "Incorrect password.";
-      } else {
-        errors.emailOrUsername = "User does not exist. Please check your email";
-      }
-
-      valid = false;
-    }
-
-    setErrors(errors);
-    return valid;
-  };
-
-  const handleSubmit = (e: { preventDefault: () => void }) => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    if (validateForm()) {
-      console.log("Email", emailOrUsername);
-      console.log("Password:", password);
-    }
+    const response = await axios.post(
+      "https://muse-back.onrender.com/auth/login",
+      {
+        email: emailOrUsername,
+        password,
+        role: "user",
+      }
+    );
+    console.log(response.data.jwtToken);
   };
 
   return (

@@ -20,7 +20,7 @@ export default function Home() {
         <main className={styles.main}>
             {isClient && (
                 <>
-                    <Hero/>
+                    <Hero />
                     <div className={styles.bg}>
                         <div className={styles.content}>
                             <Slider data={popularAlbum} title="Popular Album"/>
@@ -29,6 +29,7 @@ export default function Home() {
                                 throw new Error("Function not implemented.");
                             } }/>
                             <Slider data={playlistData} title="My Playlists"/>
+
                         </div>
                     </div>
                 </>
