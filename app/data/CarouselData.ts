@@ -161,6 +161,13 @@ export const playlistData: PlaylistData[] = [
 
 export const artists:Artists[] = [
     {
+        id: 0,
+        img: '/images/image 325.png',
+        title: "Lana Del Rey",
+        name: ""
+    },
+    {
+
         id: 1,
         img: '/images/image 325.png',
         title: "Lana Del Rey",
@@ -258,12 +265,6 @@ export const artists:Artists[] = [
     },
     {
         id: 17,
-        img: '/images/image 325.png',
-        title: "Lana Del Rey",
-        name: ""
-    },
-    {
-        id: 18,
         img: '/images/image 325.png',
         title: "Lana Del Rey",
         name: ""

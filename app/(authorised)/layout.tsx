@@ -16,7 +16,7 @@ const AuthLayout = (props: Props) => {
             <RecoilWrapper>
                 {props.children}
             </RecoilWrapper>
-            <AudioPlayer songs={songs} />
+            {/* <AudioPlayer songs={songs} /> */}
         </>
 
     )

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styles from './ProgressBars.module.scss';
 import InputRange from '../InputRange/InputRange';
-import { formatTime } from "@/app/Helpers/Helpers";
+// import { formatTime } from "@/app/Helpers/Helpers";
 
 type ProgressBarsProps = {
     currentTime: number;
@@ -20,7 +20,7 @@ const ProgressBars: React.FC<ProgressBarsProps> = ({ currentTime, duration, onPr
                     onChange={onProgressChange}
                     progressRef={progressRef}
                 />
-                <p className={styles.formatTxt}>{formatTime(duration)}</p>
+                {/* <p className={styles.formatTxt}>{formatTime(duration)}</p> */}
             </div>
           
        

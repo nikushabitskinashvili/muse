@@ -8,6 +8,7 @@ import Hero from "@/app/components/Hero/Hero";
 import AudioPlayer from "../components/AudioPlayer/AudioPlayer";
 import songs from "../array";
 import { ForYouComp } from "@/app/components/forYouComp/forYouComp";
+import { Song } from "../Interfaces/Interfaces";
 
 export default function Home() {
     const [isClient, setIsClient] = useState(false);
@@ -22,10 +23,13 @@ export default function Home() {
                     <Hero />
                     <div className={styles.bg}>
                         <div className={styles.content}>
-                            <Slider data={popularAlbum} title="Popular Album" />
-                            <Slider data={artists} title="Artists" />
-                            <ForYouComp />
-                            <Slider data={playlistData} title="My Playlists" />
+                            <Slider data={popularAlbum} title="Popular Album"/>
+                            <Slider data={artists} title="Artists"/>
+                            <ForYouComp onSongSelect={function (song: Song): void {
+                                throw new Error("Function not implemented.");
+                            } }/>
+                            <Slider data={playlistData} title="My Playlists"/>
+
                         </div>
                     </div>
                 </>
