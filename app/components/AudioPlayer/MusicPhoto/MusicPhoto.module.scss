@@ -1,17 +1,17 @@
 @import 'app/styles/colors.scss';
 
-.musicPhoto{
+.musicPhoto {
     display: flex;
     align-items: center;
     gap: 24px;
 }
 
-.photo img{
+.photo img {
     border-radius: 50%;
     object-fit: cover;
 }
 
-.musicInfo{
+.musicInfo {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -19,13 +19,13 @@
     white-space: nowrap;
 }
 
-.musicInfoWrapper{
+.musicInfoWrapper {
     display: flex;
     align-items: center;
     gap: 16px;
 }
 
-.musicName{
+.musicName {
     color: $textWhite;
     font-size: 20px;
     font-style: normal;
@@ -37,24 +37,26 @@
     width: 65px;
 }
 
-.artistName{
+.artistName {
     color: $textWhite;
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-  
-  
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 80px;
 }
 
 
 @media screen and (min-width:767px) and (max-width: 1024px) {
-    .photo img{
+    .photo img {
         width: 48px;
         height: 48px;
     }
 
-    .musicPhoto{
+    .musicPhoto {
         gap: 16px;
     }
 }
@@ -62,38 +64,40 @@
 
 
 
-@media screen and (max-width:767px)  {
-    .musicInfo{
+@media screen and (max-width:767px) {
+    .musicInfo {
         display: flex;
+        flex-direction: row;
+        align-items: center;
         gap: 6px;
     }
 
-    .photo img{
+    .photo img {
         width: 32px;
         height: 32px;
     }
 
-    .musicName{
+    .musicName {
         font-size: 12px;
     }
-    
-    .artistName{
-        font-size: 11px;      
+
+    .artistName {
+        font-size: 11px;
     }
 
-    .musicInfoWrapper img{
+    .musicInfoWrapper img {
         width: 19px;
         height: 19px;
     }
 
-    .musicInfoWrapper{
+    .musicInfoWrapper {
         gap: 8px;
     }
 
-    .musicPhoto{
+    .musicPhoto {
         gap: 8px;
         justify-content: center;
         align-items: center;
     }
-   
+
 }

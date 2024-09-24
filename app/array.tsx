@@ -1,3 +1,4 @@
+
 const songs = [
   {
     id: 1 ,
@@ -22,5 +23,8 @@ const songs = [
     audioSrc: "/musics/ირაკლი ჩარკვიანი - მე შენთან მოვალ.mp3",
   },
 ];
+
+
+
 
 export default songs;

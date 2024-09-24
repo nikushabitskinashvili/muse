@@ -1,11 +1,14 @@
 "use client";
 import styles from "./PlaylistItem.module.scss";
 import { IconEnum } from "@/app/components/Icon/Icon";
-import React, { useEffect, useState, useRef } from "react";
+
+import React, { useEffect, useState, useRef, Dispatch, SetStateAction } from "react";
+
 import Image from "next/image";
 import { DotsPop } from "@/app/components/dotsPop/dotsPop";
 import { ReusableModal } from "@/app/components/reusableModal/reusableModal";
 import { YourPlaylistModal } from "@/app/components/yourPlaylistModal/yourPlaylistModal";
+
 import { PlaylistItemProps } from "@/app/Interfaces/Interfaces";
 
 export const PlaylistItem = (props: PlaylistItemProps) => {
@@ -21,6 +24,7 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
       document.documentElement.style.overflow = "hidden";
     } else {
       document.documentElement.style.overflow = "auto";
+
     }
     return () => {
       document.documentElement.style.overflow = "auto";
@@ -68,6 +72,7 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
     if (props.onClick) {
       props.onClick();
     }
+
   };
 
   const closeCreatePop = () => {
@@ -168,4 +173,7 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
       </div>
     </>
   );
+
+
+    
 };

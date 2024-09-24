@@ -161,94 +161,113 @@ export const playlistData: PlaylistData[] = [
 
 export const artists:Artists[] = [
     {
-        id:1,
-        img:'/images/image 325.png',
-        title:"Lana Del Rey",
+        id: 0,
+        img: '/images/image 325.png',
+        title: "Lana Del Rey",
+        name: ""
     },
     {
-        id:2,
-        img:'/images/image 325.png',
-        title:"gabo Del Rey",
+
+        id: 1,
+        img: '/images/image 325.png',
+        title: "Lana Del Rey",
+        name: ""
     },
     {
-        id:3,
-        img:'/images/image 325.png',
-        title:"nika Del Rey",
+        id: 2,
+        img: '/images/image 325.png',
+        title: "Lana Del Rey",
+        name: ""
     },
     {
-        id:4,
-        img:'/images/image 325.png',
-        title:"Lana Del Rey",
+        id: 3,
+        img: '/images/image 325.png',
+        title: "Lana Del Rey",
+        name: ""
     },
     {
-        id:5,
-        img:'/images/image 325.png',
-        title:"Lana Del Rey",
+        id: 4,
+        img: '/images/image 325.png',
+        title: "Lana Del Rey",
+        name: ""
     },
     {
-        id:6,
-        img:'/images/image 325.png',
-        title:"Lana Del Rey",
+        id: 5,
+        img: '/images/image 325.png',
+        title: "Lana Del Rey",
+        name: ""
     },
     {
-        id:7,
-        img:'/images/image 325.png',
-        title:"Lana Del Rey",
+        id: 6,
+        img: '/images/image 325.png',
+        title: "Lana Del Rey",
+        name: ""
     },
     {
-        id:8,
-        img:'/images/image 325.png',
-        title:"Lana Del Rey",
+        id: 7,
+        img: '/images/image 325.png',
+        title: "Lana Del Rey",
+        name: ""
     },
     {
-        id:9,
-        img:'/images/image 325.png',
-        title:"Lana Del Rey",
+        id: 8,
+        img: '/images/image 325.png',
+        title: "Lana Del Rey",
+        name: ""
     },
     {
-        id:10,
-        img:'/images/image 325.png',
-        title:"Lana Del Rey",
+        id: 9,
+        img: '/images/image 325.png',
+        title: "Lana Del Rey",
+        name: ""
     },
     {
-        id:11,
-        img:'/images/image 325.png',
-        title:"Lana Del Rey",
+        id: 10,
+        img: '/images/image 325.png',
+        title: "Lana Del Rey",
+        name: ""
     },
     {
-        id:12,
-        img:'/images/image 325.png',
-        title:"Lana Del Rey",
+        id: 11,
+        img: '/images/image 325.png',
+        title: "Lana Del Rey",
+        name: ""
     },
     {
-        id:13,
-        img:'/images/image 325.png',
-        title:"Lana Del Rey",
+        id: 12,
+        img: '/images/image 325.png',
+        title: "Lana Del Rey",
+        name: ""
     },
     {
-        id:14,
-        img:'/images/image 325.png',
-        title:"Lana Del Rey",
+        id: 13,
+        img: '/images/image 325.png',
+        title: "Lana Del Rey",
+        name: ""
     },
     {
-        id:15,
-        img:'/images/image 325.png',
-        title:"Lana Del Rey",
+        id: 14,
+        img: '/images/image 325.png',
+        title: "Lana Del Rey",
+        name: ""
     },
     {
-        id:16,
-        img:'/images/image 325.png',
-        title:"Lana Del Rey",
+        id: 15,
+        img: '/images/image 325.png',
+        title: "Lana Del Rey",
+        name: ""
     },
     {
-        id:17,
-        img:'/images/image 325.png',
-        title:"Lana Del Rey",
+        id: 16,
+        img: '/images/image 325.png',
+        title: "Lana Del Rey",
+        name: ""
     },
     {
-        id:18,
-        img:'/images/image 325.png',
-        title:"Lana Del Rey",
+        id: 17,
+        img: '/images/image 325.png',
+        title: "Lana Del Rey",
+        name: ""
     }
 ]
 
