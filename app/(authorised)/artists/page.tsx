@@ -1,6 +1,7 @@
 import styles from "./ArtistPage.module.scss";
 import { ArtistCard } from "../../components/ArtistCard/ArtistCard";
 import { artists } from "../../data/CarouselData";
+import { title } from "process";
 
 export default function Artist() {
   return (
