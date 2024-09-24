@@ -108,34 +108,34 @@ export const ForYouComp: React.FC<ForYouCompProps> = () => {
         </Link>
       </div>
       <div className={styles.list}>
-        {albums.slice(0, 3).map((album) => (
-          <PlaylistItem
-            image={album.image}
-            audioSrc={album.audioSrc}
-            title={album.title}
-            name={album.name}
-            duration={album.duration}
-            id={album.id}
-            icon="dots" // Ensure you are passing the icon prop
-            setActiveId={setActiveId}
-            activeId={activeId}
-            setDottedId={setDottedId}
-            dottedId={dottedId}
-            onClick={() =>
-              handleSongClick({
-                id: album.id,
-                title: album.title,
-                src: album.image,
-                music: album.name,
-                audioSrc: album.audioSrc,
-                duration: album.duration,
-                artist: album.name,
-              })
-            }
-          />
-        ))}
-        
-      </div>
+  {albums.slice(0, 3).map((album) => (
+    <PlaylistItem
+      key={album.id} // Add this line
+      image={album.image}
+      audioSrc={album.audioSrc}
+      title={album.title}
+      name={album.name}
+      duration={album.duration}
+      id={album.id}
+      icon="dots"
+      setActiveId={setActiveId}
+      activeId={activeId}
+      setDottedId={setDottedId}
+      dottedId={dottedId}
+      onClick={() =>
+        handleSongClick({
+          id: album.id,
+          title: album.title,
+          src: album.image,
+          music: album.name,
+          audioSrc: album.audioSrc,
+          duration: album.duration,
+          artist: album.name,
+        })
+      }
+    />
+  ))}
+</div>
       {selectedSong && (
         <AudioPlayer
           songs={[selectedSong]}
