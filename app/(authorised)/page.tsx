@@ -5,7 +5,6 @@ import { Slider } from "../components/Slider/Slider";
 import { artists, playlistData, popularAlbum } from "../data/CarouselData";
 import styles from "./page.module.css";
 import Hero from "@/app/components/Hero/Hero";
-import AudioPlayer from "../components/AudioPlayer/AudioPlayer";
 import songs from "../array";
 import { ForYouComp } from "@/app/components/forYouComp/forYouComp";
 import { Song } from "../Interfaces/Interfaces";
