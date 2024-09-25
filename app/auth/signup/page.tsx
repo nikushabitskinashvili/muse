@@ -67,10 +67,10 @@ export default function SignUp() {
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     if (validateForm()) {
-      const response = await axios.post("https://back.museappofficial.com/user", {
+      const response = await axios.post("http://10.10.51.12:3001/user", {
         email: emailOrUsername,
         password: newPassword,
-        role: "user",
+        confirmPassword
       });
       console.log(response.data);
     }
