@@ -6,6 +6,7 @@ import AuthTitle from "@/app/components/AuthTitle/AuthTitle";
 import Link from "next/link";
 import styles from "./SingUp.module.scss";
 import axios from "axios";
+import Axios from "@/app/Helpers/Axios";
 
 export default function SignUp() {
   const [emailOrUsername, setEmailOrUsername] = useState("");
@@ -67,7 +68,7 @@ export default function SignUp() {
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     if (validateForm()) {
-      const response = await axios.post("http://10.10.51.12:3001/user", {
+      const response = await Axios.post("/user", {
         email: emailOrUsername,
         password: newPassword,
         confirmPassword
