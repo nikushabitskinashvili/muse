@@ -124,7 +124,13 @@ const Navbar = () => {
         ))}
         <li>
           <Link className={styles.burger_logOut} href={"/auth/login"}>
-            <Image src={IconEnum.LOGOUT} alt={""} width={32} height={32} />
+            <Image
+              src={IconEnum.LOGOUT}
+              onClick={logOut}
+              alt={""}
+              width={32}
+              height={32}
+            />
           </Link>
         </li>
       </ul>
