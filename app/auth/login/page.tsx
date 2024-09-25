@@ -5,7 +5,8 @@ import AuthInput from "@/app/components/AuthInput/AuthInput";
 import styles from "./LoginPage.module.scss";
 import AuthTitle from "@/app/components/AuthTitle/AuthTitle";
 import Link from "next/link";
-import axios from "axios";
+import { handleLogin } from "@/app/scripts/Login";
+
 
 export default function Login() {
   const [emailOrUsername, setEmailOrUsername] = useState("");
@@ -31,15 +32,9 @@ export default function Login() {
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    const response = await axios.post(
-      "https://muse-back.onrender.com/auth/login",
-      {
-        email: emailOrUsername,
-        password,
-        role: "user",
-      }
-    );
-    console.log(response.data.jwtToken);
+    handleLogin(emailOrUsername, password).then(() => {
+      window.location.reload();
+    });
   };
 
   return (
