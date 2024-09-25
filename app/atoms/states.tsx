@@ -1,4 +1,8 @@
+'use client'
+
 import { atom } from "recoil";
+
+
 
 export const imageChangeState = atom({
   key: "imageChange",
@@ -15,10 +19,12 @@ export const audioPlayerState = atom({
   },
 });
 
+const isClient = typeof window !== 'undefined';
+
 export const forYouCompState = atom({
   key: "forYouCompState",
   default: {
-    currentAudio: new Audio(),
+    currentAudio: isClient ? new Audio() : null,
     currentIndex: 0,
   },
 });
