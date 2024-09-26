@@ -13,6 +13,8 @@ export default function PlaylistPage({
 }) {
   const [openPen, setOpenPen] = useState(false);
 
+  console.log(id);
+
   const handleCloseModal = () => {
     setOpenPen(false);
   };
@@ -49,6 +51,7 @@ export default function PlaylistPage({
           totalTracks={playlist.totalTracks}
           totalTime={playlist.totalTime}
           openModal={handleOpenModal}
+          id={id}
         />
         <div className={styles.playlistDetalForyou}>
           <MusicWrapper />
@@ -61,6 +64,7 @@ export default function PlaylistPage({
             label="Rename"
             placeholder="Playlist name"
             closeModal={handleCloseModal}
+            id={id}
           />
         </div>
       )}

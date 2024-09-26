@@ -2,7 +2,7 @@
 import styles from "./PlaylistItem.module.scss";
 import { IconEnum } from "@/app/components/Icon/Icon";
 
-import React, { useEffect, useState, useRef, Dispatch, SetStateAction } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 import Image from "next/image";
 import { DotsPop } from "@/app/components/dotsPop/dotsPop";
