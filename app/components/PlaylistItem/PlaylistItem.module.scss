@@ -121,7 +121,8 @@
   }
 
   .text {
-    width: 250px;
+    max-width: 250px;
+    width: 100% ;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
