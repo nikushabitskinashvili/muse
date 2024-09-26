@@ -1,3 +1,5 @@
+
+import { cookies } from "next/headers";
 import styles from "./ArtistHero.module.scss";
 
 interface Props {
@@ -6,6 +8,21 @@ interface Props {
   imgSrc: string;
   songsCount: number;
 }
+
+const fetchArtistBio = async (id: string) => {
+    const token = cookies()?.get(AUTH_COOKIE_KEY)?.value;
+  
+    try {
+      const response = await Axios.get(`/artist/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
 export const ArtistHero = (props: Props) => {
   const style = {

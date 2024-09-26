@@ -17,6 +17,7 @@ export default function Artist() {
           artistName={artist.title}
           imgSrc="/images/ArtistHero.png"
           songsCount={56000}
+          
         />
       </div>
       <div className={styles.MusicWrapper}>
