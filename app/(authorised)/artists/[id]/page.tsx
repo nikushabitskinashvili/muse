@@ -16,8 +16,11 @@ export default function Artist() {
         <ArtistHero
           artistName={artist.title}
           imgSrc="/images/ArtistHero.png"
-          songsCount={56000}
-          
+          monthlyListeners={56000}
+          artistBio={`Billie Eilish is an American singe r-songwriter
+            born on December 18, 2001, in Los Angeles. She gained fame with her
+            2015 hit "Ocean Eyes" and won multiple Grammy Awards for her debut
+            album, "When We All Fall Asleep, Where Do We Go?"`}
         />
       </div>
       <div className={styles.MusicWrapper}>
