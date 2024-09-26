@@ -37,16 +37,12 @@ export default async function Artist({
 
 
 
-export default function Artist() {
-  const { id } = useParams();
+
 
   const artist = artists[+id];
 
 
-
- 
-
-  return (
+return (
     <div className={styles.main}>
       <div className={styles.hero}>
         <ArtistHero
