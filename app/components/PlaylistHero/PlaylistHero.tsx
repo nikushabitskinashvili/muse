@@ -87,7 +87,7 @@ export const PlaylistHero = (props: Props) => {
             <span className={styles.text}>Playlist</span>
             <h3 className={styles.playlistName}>{props.playlistName}</h3>
             <span className={styles.about}>
-              {props.totalTracks} tracks -{" "}
+              {props.totalTracks} tracks -
               <span className={styles.time}>
                 <Image
                   className={styles.clock}
@@ -95,7 +95,7 @@ export const PlaylistHero = (props: Props) => {
                   src={IconEnum.CLOCK}
                   width={16}
                   height={16}
-                />{" "}
+                />
                 {time}
               </span>
             </span>

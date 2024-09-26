@@ -122,18 +122,17 @@ export const ForYouComp: React.FC<ForYouCompProps> = () => {
             activeId={activeId}
             setDottedId={setDottedId}
             dottedId={dottedId}
-            onClick={() =>
-              handleSongClick({
-                id: album.id,
-                title: album.title,
-                src: album.image,
-                music: album.name,
-                audioSrc: album.audioSrc,
-                duration: album.duration,
-                artist: album.name,
-              })
-            }
-          />
+            onClick={() => handleSongClick({
+              id: album.id,
+              title: album.title,
+              src: album.image,
+              music: album.name,
+              audioSrc: album.audioSrc,
+              duration: album.duration,
+              artist: album.name,
+            })} setOpenCreatePopId={function (arg0: null): void {
+              throw new Error("Function not implemented.");
+            } }          />
         ))}
       </div>
       {selectedSong && (

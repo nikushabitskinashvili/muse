@@ -4,9 +4,6 @@ import styles from "./Button.module.scss";
 import { IconEnum } from "@/app/utils/Icon/Icon";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import Axios from "@/app/Helpers/Axios";
-import { getClientCookie } from "@/app/Helpers/GetCookieValue";
-import { AUTH_COOKIE_KEY } from "@/app/constant";
 
 interface Props {
   bg: string;
@@ -16,7 +13,7 @@ interface Props {
   icon?: keyof typeof IconEnum;
   hoverIcon?: keyof typeof IconEnum;
   activeIcon?: keyof typeof IconEnum;
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   id?: string;
   name?: string;
 }
@@ -54,34 +51,6 @@ export const Button = (props: Props) => {
     setCurrentIcon(currentIcon);
   };
 
-  const handleUpdate = async (
-    e: React.MouseEvent<HTMLButtonElement>,
-    id: string | undefined
-  ) => {
-    e.preventDefault();
-
-    const token = getClientCookie(AUTH_COOKIE_KEY);
-
-    const data = {
-      name:props.name,
-    };
-
-    try {
-      const response = await Axios(`/playlist/${id}`, {
-        method: "PATCH",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-        data,
-      });
-
-      console.log("Update successful", response.data);
-    } catch (error) {
-      console.error("Error updating the playlist", error);
-    }
-  };
-
   const classes = [styles.container];
 
   if (props.size === "huge") classes.push(styles.huge);
@@ -102,7 +71,7 @@ export const Button = (props: Props) => {
       onMouseOut={handleMouseOut}
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
-      onClick={(e) => handleUpdate(e, props.id)}
+      onClick={props.onClick}
     >
       {showTitle() && <span className={styles.title}>{props.title}</span>}
       {currentIcon && (
