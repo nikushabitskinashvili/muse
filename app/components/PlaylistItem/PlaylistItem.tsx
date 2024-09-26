@@ -24,7 +24,6 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
       document.documentElement.style.overflow = "hidden";
     } else {
       document.documentElement.style.overflow = "auto";
-
     }
     return () => {
       document.documentElement.style.overflow = "auto";
@@ -72,7 +71,6 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
     if (props.onClick) {
       props.onClick();
     }
-
   };
 
   const closeCreatePop = () => {
@@ -160,8 +158,11 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
             alt={""}
             width={24}
             height={24}
-            onClick={dotsClick}
+            onClick={
+              props.icon === "dots" ? dotsClick : () => console.log("delete")
+            }
           />
+
           {dotsPop && (
             <DotsPop
               createNewPlaylist={toggleCreatePop}
@@ -173,7 +174,4 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
       </div>
     </>
   );
-
-
-    
 };

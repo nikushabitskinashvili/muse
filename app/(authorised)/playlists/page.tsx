@@ -3,12 +3,10 @@ import styles from "./playlists.module.scss";
 import AlbumCard from "@/app/components/AlbumCard/AlbumCard";
 import { cookies } from "next/headers";
 import { AUTH_COOKIE_KEY } from "@/app/constant";
-import Axios from "../../Helpers/Axios"
+import Axios from "../../Helpers/Axios";
 
 const fetchPlaylist = async () => {
   const token = cookies()?.get(AUTH_COOKIE_KEY)?.value;
-
-  console.log(`Token: ${token}`);
   try {
     const response = await Axios.get("/playlist", {
       headers: {
@@ -22,15 +20,16 @@ const fetchPlaylist = async () => {
 };
 
 export default async function page() {
+  const playlistD = await fetchPlaylist();
 
-  const playlistD = await fetchPlaylist()
+  console.log(playlistD);
 
   return (
     <main className={styles.playlistMainContainer}>
       <div className={styles.playlistWrapper}>
         <h1 className={styles.mainTitle}>Your Playlists</h1>
         <div className={styles.playlistItemContainer}>
-          {playlistData.map((item:any) => {
+          {playlistData.map((item: any) => {
             return <AlbumCard key={item.id} playlist={true} item={item} />;
           })}
         </div>

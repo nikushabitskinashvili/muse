@@ -5,6 +5,14 @@ import { playlistData } from "@/app/data/CarouselData";
 import { MusicWrapper } from "@/app/components/musicWrapper/musicWrapper";
 import { useEffect, useState } from "react";
 import { ReusableModal } from "@/app/components/reusableModal/reusableModal";
+import Axios from "@/app/Helpers/Axios";
+import { getClientCookie } from "@/app/Helpers/GetCookieValue";
+import { AUTH_COOKIE_KEY } from "@/app/constant";
+
+interface PlaylistDetail {
+  id: number;
+  name: string;
+}
 
 export default function PlaylistPage({
   params: { id },
@@ -12,8 +20,28 @@ export default function PlaylistPage({
   params: { id: string };
 }) {
   const [openPen, setOpenPen] = useState(false);
+  const [playlistDetail, setPlaylistDetail] = useState<PlaylistDetail | null>(
+    null
+  );
 
-  console.log(id);
+  useEffect(() => {
+    const fetchPlayListDetail = async () => {
+      const token = getClientCookie(AUTH_COOKIE_KEY);
+      try {
+        const response = await Axios.get(`/playlist/${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setPlaylistDetail(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchPlayListDetail();
+  }, []);
+
+  console.log(playlistDetail);
 
   const handleCloseModal = () => {
     setOpenPen(false);
@@ -62,7 +90,7 @@ export default function PlaylistPage({
           <ReusableModal
             title="Edit Playlist"
             label="Rename"
-            placeholder="Playlist name"
+            placeholder={playlistDetail?.name}
             closeModal={handleCloseModal}
             id={id}
           />

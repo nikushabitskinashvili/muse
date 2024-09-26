@@ -101,30 +101,29 @@ export const MusicWrapper = () => {
     <div className={styles.list}>
         {albums.slice(0, 10).map((album) => (
           <PlaylistItem
-            key={album.id} // Add this line
+            key={album.id}
             image={album.image}
             audioSrc={album.audioSrc}
             title={album.title}
             name={album.name}
             duration={album.duration}
             id={album.id}
-            icon="dots"
+            icon="bin"
             setActiveId={setActiveId}
             activeId={activeId}
             setDottedId={setDottedId}
             dottedId={dottedId}
-            onClick={() =>
-              handleSongClick({
-                id: album.id,
-                title: album.title,
-                src: album.image,
-                music: album.name,
-                audioSrc: album.audioSrc,
-                duration: album.duration,
-                artist: album.name,
-              })
-            }
-          />
+            onClick={() => handleSongClick({
+              id: album.id,
+              title: album.title,
+              src: album.image,
+              music: album.name,
+              audioSrc: album.audioSrc,
+              duration: album.duration,
+              artist: album.name,
+            })} setOpenCreatePopId={function (arg0: null): void {
+              throw new Error("Function not implemented.");
+            } }          />
         ))}
         {selectedSong && (
         <AudioPlayer
@@ -137,4 +136,3 @@ export const MusicWrapper = () => {
   
   );
 };
-
