@@ -5,7 +5,7 @@ import AuthInput from "@/app/components/AuthInput/AuthInput";
 import styles from "./LoginPage.module.scss";
 import AuthTitle from "@/app/components/AuthTitle/AuthTitle";
 import Link from "next/link";
-import axios from "axios";
+import { handleLogin } from "@/app/scripts/Login";
 
 export default function Login() {
   const [emailOrUsername, setEmailOrUsername] = useState("");
@@ -13,33 +13,47 @@ export default function Login() {
   const [errors, setErrors] = useState({
     emailOrUsername: "",
     password: "",
+    general: "",
   });
 
   const handleEmailOrUsernameChange = (e: {
     target: { value: SetStateAction<string> };
   }) => {
     setEmailOrUsername(e.target.value);
-    setErrors({ ...errors, emailOrUsername: "" });
+
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      emailOrUsername: "",
+      general: "",
+    }));
   };
 
   const handlePasswordChange = (e: {
     target: { value: SetStateAction<string> };
   }) => {
     setPassword(e.target.value);
-    setErrors({ ...errors, password: "" });
+
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      password: "",
+      general: "",
+    }));
   };
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    const response = await axios.post(
-      "https://muse-back.onrender.com/auth/login",
-      {
-        email: emailOrUsername,
-        password,
-        role: "user",
-      }
-    );
-    console.log(response.data.jwtToken);
+
+    const result = await handleLogin(emailOrUsername, password);
+
+    if (result.success) {
+      window.location.reload();
+    } else {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        general:
+          result.errorMessage || "An error occurred. Please try again later.",
+      }));
+    }
   };
 
   return (
@@ -66,7 +80,7 @@ export default function Login() {
               value={emailOrUsername}
               onChange={handleEmailOrUsernameChange}
             />
-            {errors.emailOrUsername !== "" && (
+            {errors.emailOrUsername && (
               <p className={styles.error}>{errors.emailOrUsername}</p>
             )}
           </div>
@@ -81,6 +95,7 @@ export default function Login() {
               <p className={styles.error}>{errors.password}</p>
             )}
           </div>
+          {errors.general && <p className={styles.error}>{errors.general}</p>}
           <AuthButton
             bgColor="#E82567"
             titleColor="#FFFFFF"

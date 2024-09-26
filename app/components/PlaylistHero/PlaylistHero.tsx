@@ -4,6 +4,10 @@ import { IconEnum } from "@/app/utils/Icon/Icon";
 import { Button } from "@/app/components/Button/Button";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import Axios from "@/app/Helpers/Axios";
+import { cookies } from "next/headers";
+import { AUTH_COOKIE_KEY } from "@/app/constant";
+import { getClientCookie } from "@/app/Helpers/GetCookieValue";
 
 interface Props {
   image: string;
@@ -11,6 +15,7 @@ interface Props {
   totalTracks: number;
   totalTime: number;
   openModal: () => void;
+  id?: string;
 }
 
 export const PlaylistHero = (props: Props) => {
@@ -24,6 +29,27 @@ export const PlaylistHero = (props: Props) => {
   } else {
     time = `${minutes}:${seconds}`;
   }
+  const handleDelete = async (id: string | undefined) => {
+    const cookie = getClientCookie(AUTH_COOKIE_KEY);
+    console.log(cookie);
+
+    try {
+      const response = await Axios(`/playlist/${id}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${cookie}`,
+        },
+      });
+
+      if (response.status === 200) {
+        console.log(`Playlist with ID ${id} was successfully deleted.`);
+      } else {
+        console.error("Failed to delete playlist:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error deleting playlist:", error);
+    }
+  };
 
   return (
     <div className={styles.container}>
@@ -44,6 +70,7 @@ export const PlaylistHero = (props: Props) => {
             alt=""
             width={24}
             height={24}
+            onClick={() => handleDelete(props.id)}
           />
         </div>
       </div>
