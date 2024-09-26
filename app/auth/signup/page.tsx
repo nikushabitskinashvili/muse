@@ -6,6 +6,7 @@ import AuthTitle from "@/app/components/AuthTitle/AuthTitle";
 import Link from "next/link";
 import styles from "./SingUp.module.scss";
 import Axios from "@/app/Helpers/Axios";
+import { useRouter } from "next/navigation";
 
 export default function SignUp() {
   const [emailOrUsername, setEmailOrUsername] = useState("");
@@ -18,6 +19,7 @@ export default function SignUp() {
   });
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const router = useRouter();
 
   const handleEmailOrUsernameChange = (e: {
     target: { value: SetStateAction<string> };
@@ -68,8 +70,8 @@ export default function SignUp() {
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    setErrorMessage(null); 
-    setSuccessMessage(null); 
+    setErrorMessage(null);
+    setSuccessMessage(null);
 
     if (validateForm()) {
       try {
@@ -83,7 +85,8 @@ export default function SignUp() {
           setSuccessMessage(
             "Account created successfully! You can now log in."
           );
-          setErrorMessage(null); 
+          setErrorMessage(null);
+          router.push("/auth/login");
         } else {
           throw new Error("Something went wrong. Please try again.");
         }
@@ -92,7 +95,7 @@ export default function SignUp() {
           error.response?.data?.message ||
             "An error occurred. Please try again."
         );
-        setSuccessMessage(null); 
+        setSuccessMessage(null);
       }
     }
   };

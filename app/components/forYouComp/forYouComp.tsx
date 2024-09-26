@@ -110,7 +110,7 @@ export const ForYouComp: React.FC<ForYouCompProps> = () => {
       <div className={styles.list}>
         {albums.slice(0, 3).map((album) => (
           <PlaylistItem
-            key={album.id} // Add this line
+            key={album.id}
             image={album.image}
             audioSrc={album.audioSrc}
             title={album.title}
