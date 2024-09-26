@@ -13,14 +13,14 @@ const AlbumDetailsPage = () => {
     const album = popularAlbum[+id];
 
     return (
-        <main className={styles.main}>
+        <div className={styles.main}>
             <div className={styles.albumDetails}>
                 <AlbumHero title={album.title} img={album.img} total={album.total} />
                 <div className={styles.list}>
                     <MusicWrapper />
                 </div>
             </div>
-        </main>
+        </div>
     );
 };
 

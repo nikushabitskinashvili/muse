@@ -38,7 +38,7 @@ const Hero = ({className}: HeroProps) => {
                             past relationships with gratitude and moving
                             forward with confidence.
                         </p>
-                        <Button bg={'blue'} title={'Play'} icon={'PLAYSMALL'} hoverIcon={'PLAYSMALL'} activeIcon={'PLAYSMALL'}></Button>
+                        <Button bg={'blue'} title={'Play'} icon={'BLACK_PLAY'} hoverIcon={'BLACK_PLAY'} activeIcon={'BLACK_PLAY'}></Button>
                     </div>
                     <Image className={styles.heroImg} src={'/images/ariana.png'} alt="img" width={265} height={392}/>
                 </div>

@@ -6,18 +6,19 @@ import { artists } from "@/app/data/CarouselData";
 import { useParams } from "next/navigation";
 
 export default function Artist() {
+  const { id } = useParams();
 
-  const { id } = useParams()
-
-  const artist = artists[+id]
+  const artist = artists[+id];
 
   return (
     <div className={styles.main}>
-      <ArtistHero
-        artistName={artist.title}
-        imgSrc="/images/ArtistHero.png"
-        songsCount={56000}
-      />
+      <div className={styles.hero}>
+        <ArtistHero
+          artistName={artist.title}
+          imgSrc="/images/ArtistHero.png"
+          songsCount={56000}
+        />
+      </div>
       <div className={styles.MusicWrapper}>
         <MusicWrapper />
       </div>
