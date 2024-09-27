@@ -1,14 +1,11 @@
 "use client";
+import React, { useEffect, useState, useRef } from "react";
+import Image from "next/image";
 import styles from "./PlaylistItem.module.scss";
 import { IconEnum } from "@/app/components/Icon/Icon";
-
-import React, { useEffect, useState, useRef } from "react";
-
-import Image from "next/image";
 import { DotsPop } from "@/app/components/dotsPop/dotsPop";
 import { ReusableModal } from "@/app/components/reusableModal/reusableModal";
 import { YourPlaylistModal } from "@/app/components/yourPlaylistModal/yourPlaylistModal";
-
 import { PlaylistItemProps } from "@/app/Interfaces/Interfaces";
 
 export const PlaylistItem = (props: PlaylistItemProps) => {
@@ -16,6 +13,7 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
   const [liked, setLiked] = useState(false);
   const [createPop, setCreatePop] = useState(false);
   const [addPop, setAddPop] = useState(false);
+  const dotsPopRef = useRef<HTMLDivElement>(null);
   const createPopRef = useRef<HTMLDivElement>(null);
   const addPopRef = useRef<HTMLDivElement>(null);
 
@@ -30,9 +28,28 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
     };
   }, [addPop, createPop]);
 
-  const closeDotsPop = () => {
-    setDotsPop(!dotsPop);
-  };
+  // Close DotsPop when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dotsPopRef.current &&
+        !dotsPopRef.current.contains(event.target as Node)
+      ) {
+        setDotsPop(false);
+        props.setDottedId(null);
+      }
+    };
+
+    if (dotsPop) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [dotsPop, props]);
 
   const toggleCreatePop = (event: React.MouseEvent) => {
     event.stopPropagation();
@@ -49,24 +66,23 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
     setLiked(!liked);
   };
 
-  const isDotted = props.dottedId === props.id;
-
   const dotsClick = (event: React.MouseEvent) => {
     event.stopPropagation();
     setDotsPop(!dotsPop);
-    if (dotsPop)
-      isDotted ? props.setDottedId(null) : props.setDottedId(props.id);
+    if (!dotsPop) {
+      props.setDottedId(props.id); // Set this one active
+    } else {
+      props.setDottedId(null); // Close when clicked again
+    }
   };
-
-  const clickOnPop = (event: React.MouseEvent) => {
-    event.stopPropagation();
-  };
-
-  const isActive = props.activeId === props.id;
-  const icon = props.icon === "bin" ? IconEnum.BIN : IconEnum.DOTS;
 
   const handleClick = () => {
-    isActive ? props.setActiveId(null) : props.setActiveId(props.id);
+    const isActive = props.activeId === props.id;
+    if (isActive) {
+      props.setActiveId(null);
+    } else {
+      props.setActiveId(props.id);
+    }
 
     if (props.onClick) {
       props.onClick();
@@ -82,7 +98,7 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
   };
 
   const classNames = [styles.playlistItem];
-  if (isActive) classNames.push(styles.active);
+  if (props.activeId === props.id) classNames.push(styles.active);
 
   return (
     <>
@@ -90,7 +106,7 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
         <div className={styles.popBackground} onClick={closeAddPop}>
           <div
             ref={addPopRef}
-            onClick={clickOnPop}
+            onClick={(event) => event.stopPropagation()}
             className={styles.popContainer}
           >
             <YourPlaylistModal onClose={closeAddPop} />
@@ -102,7 +118,7 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
         <div className={styles.popBackground} onClick={closeCreatePop}>
           <div
             ref={createPopRef}
-            onClick={clickOnPop}
+            onClick={(event) => event.stopPropagation()}
             className={styles.popContainer}
           >
             <ReusableModal
@@ -153,24 +169,25 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
             height={24}
             onClick={toggleLike}
           />
-          <Image
-            className={styles.dots}
-            src={icon}
-            alt={""}
-            width={24}
-            height={24}
-            onClick={
-              props.icon === "dots" ? dotsClick : () => console.log("delete")
-            }
-          />
-
-          {dotsPop && (
-            <DotsPop
-              createNewPlaylist={toggleCreatePop}
-              addToPlaylist={toggleAddPop}
-              className={styles.dotspop}
+          <div ref={dotsPopRef}>
+            <Image
+              className={styles.dots}
+              src={props.icon === "bin" ? IconEnum.BIN : IconEnum.DOTS}
+              alt={""}
+              width={24}
+              height={24}
+              onClick={
+                props.icon === "dots" ? dotsClick : () => console.log("delete")
+              }
             />
-          )}
+            {dotsPop && (
+              <DotsPop
+                createNewPlaylist={toggleCreatePop}
+                addToPlaylist={toggleAddPop}
+                className={styles.dotspop}
+              />
+            )}
+          </div>
         </div>
       </div>
     </>

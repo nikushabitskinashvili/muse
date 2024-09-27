@@ -27,6 +27,10 @@ const Navbar = () => {
     setIsOpen((open: boolean) => !open);
   };
 
+  const closeBurger = () =>{
+    setIsOpen(false)
+  }
+
   let pathName = usePathname();
   console.log(pathName, "pathName");
 
@@ -120,6 +124,7 @@ const Navbar = () => {
             active={pathName === link.key}
             pathname={link.pathname}
             title={link.title}
+            onClose={closeBurger}
           />
         ))}
         <li>
