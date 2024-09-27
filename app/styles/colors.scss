@@ -10,6 +10,7 @@ $primaryCyan: #3DDEED;
 $cyanButton: #1DD5E6;
 $cyanButtonHover: #00FFFF;
 $cyanButtonClick: #13ACAC99;
+$mainButtonHover: #FFFFFFB2;
 
 
 //SECONDARY COLORS
@@ -22,6 +23,12 @@ $secondaryGray: #14072126;
 $secondaryLightGray: #FFFFFF33;
 
 
+//X BUTTON
+
+$xButton :#747474;
+$xButtonHover: #B7B7B7; 
+$xButtonActive: #545454;
+
 
 
 //TEXT COLORS
@@ -30,6 +37,12 @@ $textBlack: #050505;
 $textBlackClicked: #050505CC;
 $textSecondary: #9F9F9F;
 $textGray: #A8A8A8;
-$mainButtonHover: #FFFFFFB2;
 $textLightGray: #FFFFFFB3;
 $textWhite: #FFFFFF;
+
+//backgrounds
+
+$playlistItemBackground: #1C1C1C;
+$playlistItemHover: #4A4A4A;
+$popupBackground:  rgba(0, 0, 0, 0.74);
+

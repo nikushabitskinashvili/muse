@@ -1,3 +1,5 @@
+@import '../../styles/colors.scss';
+
 .playlistItem {
   display: flex;
   max-width: 1176px;
@@ -7,7 +9,7 @@
   justify-content: space-between;
   align-items: center;
   border-radius: 12px;
-  background: #1C1C1C;
+  background: $secondaryDarkerGray;
 }
 
 .popBackground {
@@ -20,7 +22,7 @@
   align-items: center;
   justify-content: center;
   z-index: 1001;
-  background: rgba(0, 0, 0, 0.74);
+  background: $popupBackground;
 }
 
 .popContainer {
@@ -39,20 +41,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(0, 0, 0, 0.74);
+  background: $popupBackground;
   z-index: 1001;
 }
 
 .active{
-  background-color: #4A4A4A;
+  background-color: $playlistItemHover;
 }
 
 .playlistItem:hover {
-  background: #4A4A4A;
+  background: $playlistItemHover;
 }
 
 .playlistItem:active {
-  background: #1C1C1C;
+  background: $secondaryDarkerGray;
 }
 
 .leftSection {
@@ -85,7 +87,7 @@
 }
 
 .text {
-  color: #FFF;
+  color: $textWhite;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -110,7 +112,7 @@
 }
 
 .heart {
-  fill: white;
+  fill: $textWhite;
 }
 
 
