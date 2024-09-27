@@ -1,24 +1,26 @@
+@import '../../styles/colors.scss';
+
 .x {
   width: 32px;
   height: 32px;
   display: flex;
   padding: 4px;
-  border: 1px solid #747474;
+  border: 1px solid $xButton;
   align-items: center;
   gap: 10px;
   border-radius: 4px;
-  background: #747474;
+  background: $xButton;
   justify-content: center;
   cursor: pointer;
 
   &:hover {
-    background: #B7B7B7;
-    border: 1px solid #B7B7B7;
+    background: $xButtonHover;
+    border: 1px solid $xButtonHover;
   }
 
   &:active {
-    background: #545454;
-    border: 1px solid #545454;
+    background: $xButtonActive;
+    border: 1px solid $xButtonActive;
   }
 }
 
