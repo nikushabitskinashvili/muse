@@ -72,6 +72,7 @@ export const Button = (props: Props) => {
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
       onClick={props.onClick}
+      style={props.title === "Cancel" ? { marginRight: "8px" } : {marginRight:""}}
     >
       {showTitle() && <span className={styles.title}>{props.title}</span>}
       {currentIcon && (

@@ -16,6 +16,7 @@ interface Props {
   totalTime: number;
   openModal: () => void;
   id?: string;
+  openDeleteModal?:()=>void
 }
 
 export const PlaylistHero = (props: Props) => {
@@ -29,27 +30,7 @@ export const PlaylistHero = (props: Props) => {
   } else {
     time = `${minutes}:${seconds}`;
   }
-  const handleDelete = async (id: string | undefined) => {
-    const cookie = getClientCookie(AUTH_COOKIE_KEY);
-    console.log(cookie);
-
-    try {
-      const response = await Axios(`/playlist/${id}`, {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${cookie}`,
-        },
-      });
-
-      if (response.status === 200) {
-        console.log(`Playlist with ID ${id} was successfully deleted.`);
-      } else {
-        console.error("Failed to delete playlist:", response.statusText);
-      }
-    } catch (error) {
-      console.error("Error deleting playlist:", error);
-    }
-  };
+  
 
   return (
     <div className={styles.container}>
@@ -70,7 +51,7 @@ export const PlaylistHero = (props: Props) => {
             alt=""
             width={24}
             height={24}
-            onClick={() => handleDelete(props.id)}
+            onClick={props.openDeleteModal}
           />
         </div>
       </div>

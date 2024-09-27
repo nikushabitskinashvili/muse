@@ -14,10 +14,38 @@ interface Props {
   onClose?: () => void;
   closeModal?: () => void;
   id?: string;
+  text?: string;
+  delete?: boolean;
 }
 
 export const ReusableModal = (props: Props) => {
   const [inputText, setInputText] = useState<string>("");
+
+  const handleDelete = async (
+    e: React.MouseEvent<HTMLButtonElement>,
+    id: string | undefined
+  ) => {
+    e.preventDefault();
+
+    const cookie = getClientCookie(AUTH_COOKIE_KEY);
+
+    try {
+      const response = await Axios(`/playlist/${id}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${cookie}`,
+        },
+      });
+
+      if (response.status === 200) {
+        console.log(`Playlist with ID ${id} was successfully deleted.`);
+      } else {
+        console.error("Failed to delete playlist:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error deleting playlist:", error);
+    }
+  };
 
   const handleUpdate = async (
     e: React.MouseEvent<HTMLButtonElement>,
@@ -47,9 +75,8 @@ export const ReusableModal = (props: Props) => {
     }
   };
 
-
   const handleCreatePlaylist = async (
-    e: React.MouseEvent<HTMLButtonElement>,
+    e: React.MouseEvent<HTMLButtonElement>
   ) => {
     e.preventDefault();
 
@@ -76,42 +103,69 @@ export const ReusableModal = (props: Props) => {
   };
   return (
     <div className={styles.container}>
-      <div className={styles.head}>
-        <span className={styles.title}>{props.title}</span>
-        <XButton onClick={props.onClose} bg={true} />
-      </div>
-      <form className={styles.form}>
-        <div className={styles.inputCont}>
-          <label className={styles.label} htmlFor={props.label}>
-            {props.label}
-          </label>
-          <input
-            value={inputText}
-            onChange={(e) => setInputText(e.target.value)}
-            className={styles.input}
-            type="text"
-            id={props.label}
-            placeholder={props.placeholder}
-          />
+      {!props.delete && (
+        <div className={styles.head}>
+          <span className={styles.title}>{props.title}</span>
+          <XButton onClick={props.closeModal} bg={true} />
         </div>
-        {props.title === "Create Playlist" ? (
-          <Button
-            id={props.id}
-            bg={"pink"}
-            title={props.title}
-            size={"huge"}
-            onClick={(e) => handleCreatePlaylist(e)}
-          />
-        ) : (
-          <Button
-            id={props.id}
-            bg={"pink"}
-            title={props.title}
-            size={"huge"}
-            onClick={(e) => handleUpdate(e, props.id)}
-          />
-        )}
-      </form>
+      )}
+
+      {props.delete && (
+        <div className={styles.deleteContainer}>
+          <h4 className={styles.deleteTitle}>Delete playlist ?</h4>
+          <p className={styles.deleteText}>{props.text}</p>
+          <div style={{ display: "flex", width: "100%" }}>
+            <Button
+              id={props.id}
+              bg={"white"}
+              title={"Cancel"}
+              size={"huge"}
+              onClick={props.closeModal}
+            />
+            <Button
+              id={props.id}
+              bg={"pink"}
+              title={"Delete"}
+              size={"huge"}
+              onClick={(e) => handleDelete(e, props.id)}
+            />
+          </div>
+        </div>
+      )}
+      {!props.delete && (
+        <form className={styles.form}>
+          <div className={styles.inputCont}>
+            <label className={styles.label} htmlFor={props.label}>
+              {props.label}
+            </label>
+            <input
+              value={inputText}
+              onChange={(e) => setInputText(e.target.value)}
+              className={styles.input}
+              type="text"
+              id={props.label}
+              placeholder={props.placeholder}
+            />
+          </div>
+          {props.title === "Create Playlist" ? (
+            <Button
+              id={props.id}
+              bg={"pink"}
+              title={props.title}
+              size={"huge"}
+              onClick={(e) => handleCreatePlaylist(e)}
+            />
+          ) : (
+            <Button
+              id={props.id}
+              bg={"pink"}
+              title={props.title}
+              size={"huge"}
+              onClick={(e) => handleUpdate(e, props.id)}
+            />
+          )}
+        </form>
+      )}
     </div>
   );
 };

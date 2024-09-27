@@ -110,6 +110,7 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
               label={"Name"}
               onClose={closeCreatePop}
               placeholder={"Playlist name"}
+              closeModal={closeCreatePop}
             />
           </div>
         </div>
