@@ -20,6 +20,7 @@ export default function PlaylistPage({
   params: { id: string };
 }) {
   const [openPen, setOpenPen] = useState(false);
+  const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [playlistDetail, setPlaylistDetail] = useState<PlaylistDetail | null>(
     null
   );
@@ -50,6 +51,13 @@ export default function PlaylistPage({
     setOpenPen(true);
   };
 
+  const handleCloseDeleteModal = () => {
+    setOpenDeleteModal(false);
+  };
+
+  const handleOpenDeleteModal = () => {
+    setOpenDeleteModal(true);
+  };
   useEffect(() => {
     if (openPen) {
       document.body.style.overflow = "hidden";
@@ -79,12 +87,27 @@ export default function PlaylistPage({
           totalTracks={playlist.totalTracks}
           totalTime={playlist.totalTime}
           openModal={handleOpenModal}
+          openDeleteModal={handleOpenDeleteModal}
           id={id}
         />
         <div className={styles.playlistDetalForyou}>
           <MusicWrapper />
         </div>
       </div>
+      {openDeleteModal && (
+        <div className={styles.modalOverlay}>
+          <ReusableModal
+            title="Delete Playlist"
+            label="Rename"
+            placeholder={playlistDetail?.name}
+            closeModal={handleCloseDeleteModal}
+            id={id}
+            text="Lorem ipsum dolor sit amet consectetur.
+ipsum dolor sit amet consectetur. "
+            delete={true}
+          />
+        </div>
+      )}
       {openPen && (
         <div className={styles.modalOverlay}>
           <ReusableModal
