@@ -2,18 +2,18 @@
 
 import React from "react";
 import styles from "./AudioPlayer.module.scss";
-import { Song } from "@/app/Interfaces/Interfaces";
+import { Music } from "@/app/Interfaces/Interfaces";
 import { useAudioPlayer } from "@/app/Helpers/Helpers";
 import MusicPhoto from "./MusicPhoto/MusicPhoto";
 import Player from "./Player/Player";
 import VolumeControl from "./VolumeControl/VolumeControl";
 
 type Props = {
-  songs: Song[];
-  // onPlaylistItemClick: (index: number) => void;
+  musics: Music[];
+  // selectedSongIndex: number;
 };
 
-const AudioPlayer = ({ songs }: Props) => {
+const AudioPlayer = ({ musics }: Props) => {
   const {
     audioRef,
     progressRef,
@@ -23,23 +23,22 @@ const AudioPlayer = ({ songs }: Props) => {
     PlayMusic,
     handleNextSong,
     handlePreviousSong,
-  } = useAudioPlayer(songs);
+  } = useAudioPlayer(musics);
 
   const isPlaying = audioRef.current ? !audioRef.current.paused : false;
-  
 
   return (
     <div className={styles.container}>
       <div className={styles.containerWrapper}>
         <audio
           ref={audioRef}
-          src={songs[audioPlayer.currentSongIndex].audioSrc}
+          src={musics[audioPlayer.currentMusicIndex]?.audioSrc}
           controls
         ></audio>
         <MusicPhoto
-          src={songs[audioPlayer.currentSongIndex].src}
-          music={songs[audioPlayer.currentSongIndex].music}
-          artist={songs[audioPlayer.currentSongIndex].artist}
+          src={musics[audioPlayer.currentMusicIndex]?.src}
+          music={musics[audioPlayer.currentMusicIndex]?.music}
+          artist={musics[audioPlayer.currentMusicIndex]?.artist}
         />
         <Player
           playing={isPlaying}

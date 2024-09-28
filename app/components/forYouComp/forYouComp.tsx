@@ -3,100 +3,137 @@ import styles from "./forYouComp.module.scss";
 import { PlaylistItem } from "@/app/components/PlaylistItem/PlaylistItem";
 import { useState } from "react";
 import Link from "next/link";
-import { ForYouCompProps, Song } from "@/app/Interfaces/Interfaces";
+import { ForYouCompProps, Music } from "@/app/Interfaces/Interfaces";
 import AudioPlayer from "../AudioPlayer/AudioPlayer";
+import { audioPlayerState } from "@/app/atoms/states";
+import { useRecoilState } from "recoil";
 
-export const albums = [
+export const musics: Music[] = [
   {
-    id: 1,
+    id: 0,
     title: "Happier Than Ever (Official Music Video)",
     image: "/images/foryou.png",
     name: "Billie Eilish",
     audioSrc: "musics/ირაკლი ჩარკვიანი - მე შენთან მოვალ.mp3",
     duration: 202,
+    src: "",
+    music: "",
+    artist: "",
   },
   {
-    id: 2,
+    id: 1,
     title: "Bad Guy",
     image: "/images/foryou.png",
     name: "Billie Eilish",
     audioSrc:
       "musics/Barry White - Let The Music Play (Official Music Video) (1).mp3",
     duration: 202,
+    src: "",
+    music: "",
+    artist: "",
   },
   {
-    id: 3,
+    id: 2,
     title: "Therefore I Am",
     image: "/images/foryou.png",
     name: "Billie Eilish",
     audioSrc: "musics/ირაკლი ჩარკვიანი - მე შენთან მოვალ.mp3",
     duration: 202,
+    src: "",
+    music: "",
+    artist: "",
   },
   {
-    id: 4,
+    id: 3,
     title: "Everything I Wanted",
     image: "/images/foryou.png",
     name: "Billie Eilish",
     audioSrc: "musics/ირაკლი ჩარკვიანი - მე შენთან მოვალ.mp3",
     duration: 202,
+    src: "",
+    music: "",
+    artist: "",
   },
   {
-    id: 5,
+    id: 4,
     title: "Lovely",
     image: "/images/foryou.png",
     name: "Billie Eilish",
     audioSrc: "musics/ირაკლი ჩარკვიანი - მე შენთან მოვალ.mp3",
     duration: 202,
+    src: "",
+    music: "",
+    artist: "",
   },
   {
-    id: 6,
+    id: 5,
     title: "Ocean Eyes",
     image: "/images/foryou.png",
     name: "Billie Eilish",
     audioSrc: "musics/ირაკლი ჩარკვიანი - მე შენთან მოვალ.mp3",
     duration: 202,
+    src: "",
+    music: "",
+    artist: "",
   },
   {
-    id: 7,
+    id: 6,
     title: "When The Party's Over",
     image: "/images/foryou.png",
     name: "Billie Eilish",
     audioSrc: "musics/ირაკლი ჩარკვიანი - მე შენთან მოვალ.mp3",
     duration: 202,
+    src: "",
+    music: "",
+    artist: "",
   },
   {
-    id: 8,
+    id: 7,
     title: "You Should See Me In A Crown",
     image: "/images/foryou.png",
     name: "Billie Eilish",
     audioSrc: "musics/ირაკლი ჩარკვიანი - მე შენთან მოვალ.mp3",
     duration: 202,
+    src: "",
+    music: "",
+    artist: "",
   },
   {
-    id: 9,
+    id: 8,
     title: "Bury A Friend",
     image: "/images/foryou.png",
     name: "Billie Eilish",
-    audioSrc: "musics/ირაკლი ჩარკვიანი - მე შენთან მოვალ.mp3",
+    audioSrc:
+      "musics/Barry White - Let The Music Play (Official Music Video) (1).mp3",
     duration: 202,
+    src: "",
+    music: "",
+    artist: "",
   },
   {
-    id: 10,
+    id: 9,
     title: "No Time To Die",
     image: "/images/foryou.png",
     name: "Billie Eilish",
     audioSrc: "musics/ირაკლი ჩარკვიანი - მე შენთან მოვალ.mp3",
     duration: 202,
+    src: "",
+    music: "",
+    artist: "",
   },
 ];
 
 export const ForYouComp: React.FC<ForYouCompProps> = () => {
   const [dottedId, setDottedId] = useState<number | null>(null);
   const [activeId, setActiveId] = useState<number | null>(null);
-  const [selectedSong, setSelectedSong] = useState<Song | null>(null);
+  // const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [currentIndex, setCurrentIndex] = useRecoilState(audioPlayerState);
 
-  const handleSongClick = (song: Song) => {
-    setSelectedSong(song);
+  const handleSongClick = (index: number) => {
+    setCurrentIndex((prevState) => ({
+      ...prevState,
+      currentMusicIndex: index,
+    }));
   };
 
   return (
@@ -108,39 +145,29 @@ export const ForYouComp: React.FC<ForYouCompProps> = () => {
         </Link>
       </div>
       <div className={styles.list}>
-        {albums.slice(0, 3).map((album) => (
+        {musics.slice(0, 3).map((music) => (
           <PlaylistItem
-            key={album.id}
-            image={album.image}
-            audioSrc={album.audioSrc}
-            title={album.title}
-            name={album.name}
-            duration={album.duration}
-            id={album.id}
+            key={music.id}
+            image={music.image}
+            audioSrc={music.audioSrc}
+            title={music.title}
+            name={music.name}
+            duration={music.duration}
+            id={music.id}
             icon="dots"
             setActiveId={setActiveId}
             activeId={activeId}
             setDottedId={setDottedId}
             dottedId={dottedId}
-            onClick={() => handleSongClick({
-              id: album.id,
-              title: album.title,
-              src: album.image,
-              music: album.name,
-              audioSrc: album.audioSrc,
-              duration: album.duration,
-              artist: album.name,
-            })} setOpenCreatePopId={function (arg0: null): void {
+            onClick={() => handleSongClick(music.id)}
+            setOpenCreatePopId={function (): void {
               throw new Error("Function not implemented.");
-            } }          />
+            }}
+          />
         ))}
       </div>
-      {selectedSong && (
-        <AudioPlayer
-          songs={[selectedSong]}
-          // onPlaylistItemClick={(index) => {}}
-        />
-      )}
+      {currentIndex && <AudioPlayer musics={musics} />}
     </div>
   );
 };
+
