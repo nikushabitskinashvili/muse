@@ -1,3 +1,5 @@
+@import '../../styles/colors.scss';
+
 .container {
   max-width: 1224px;
   width: 100%;
@@ -5,7 +7,7 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
-  background: #050505;
+  background: $textBlack;
   position: relative;
 }
 
@@ -17,7 +19,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.74);
+  background: $popupBackground;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -29,7 +31,8 @@
 }
 
 .h2 {
-  color: #FFF;
+  color: $textWhite
+;
   font-family: Inter;
   font-size: 24px;
   font-style: normal;
@@ -79,7 +82,7 @@
 }
 
 .text {
-  color: #FFF;
+  color: $textWhite;
   font-family: Inter;
   font-size: 16px;
   font-style: normal;
@@ -88,7 +91,7 @@
 }
 
 .playlistName {
-  color: #FFF;
+  color: $textWhite;
   font-family: Inter;
   font-size: 32px;
   font-style: normal;
@@ -110,7 +113,7 @@
 .about {
   display: flex;
   align-items: center;
-  color: #FFF;
+  color: $textWhite;
   font-family: Inter;
   font-size: 16px;
   font-style: normal;

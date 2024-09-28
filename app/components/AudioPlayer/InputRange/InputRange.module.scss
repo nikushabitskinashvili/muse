@@ -1,16 +1,14 @@
-@import 'app/styles/colors.scss';
+@import "../../../styles/colors.scss";
 
 input.range {
-    width: 100%;
-    cursor: pointer;
-    color: $primaryCyan;
-    height: 3px;
+  width: 100%;
+  cursor: pointer;
+  color: $primaryCyan;
+  height: 3px;
 }
 
-
 @media screen and (max-width: 767px) {
-    .range{
-         display: none;
-        }
- }
- 
+  .range {
+    display: none;
+  }
+}

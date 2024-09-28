@@ -1,4 +1,4 @@
-@import "/app/styles/colors.scss";
+@import "../../../styles/colors.scss";
 
 .container {
     display: flex;
@@ -15,7 +15,7 @@
 .range {
     border-radius: 2px;
     width: 100%;
-    -webkit-appearance: none;
+    appearance: none;
     cursor: pointer;
     height: 3px;
     overflow: hidden;

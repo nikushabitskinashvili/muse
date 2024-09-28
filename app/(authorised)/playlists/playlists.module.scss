@@ -1,3 +1,5 @@
+@import '../../styles/colors.scss';
+
 .playlistMainContainer{
     background-color: black;
     min-height: 100vh;
@@ -10,7 +12,8 @@
 }
 .mainTitle{
     font-size: 20px;
-    color: #ffffff;
+    color: $textWhite
+fff;
     line-height: 24px;
     font-weight: 600;
     padding: 32px 0;

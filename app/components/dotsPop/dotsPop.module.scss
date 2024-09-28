@@ -1,77 +1,79 @@
-.container{
+@import '../../styles/colors.scss';
+
+.container {
   position: absolute;
-  transform: translateX(-60px);
+  transform: translateX(-230px);
   display: flex;
   flex-direction: column;
   border-radius: 16px;
-  background: #3C3C3C;
+  background: #3c3c3c;
   max-width: 260px;
   width: 100%;
   padding: 22px 0;
-  gap:16px;
+  gap: 16px;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
 }
 
-.line{
+.line {
   width: 100%;
   height: 1px;
-  background: #FFF;
+  background: $textWhite;
 }
 
-.add{
+.add {
   display: flex;
   gap: 2px;
   align-items: center;
 }
 
-.text{
-  color: #FFF;
+.text {
+  color: $textWhite;
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 }
 
-.plus{
+.plus {
   width: 16px;
   height: 16px;
 }
 
 @media (max-width: 1023px) {
-  .container{
+  .container {
     max-width: 216px;
     height: 102px;
     padding: 14px 0;
-
+    transform: translateX(-185px);
   }
 
-  .text{
+  .text {
     font-size: 16px;
   }
 
-  .plus{
+  .plus {
     width: 14px;
     height: 14px;
   }
 }
 
 @media (max-width: 767px) {
-  .container{
+  .container {
     max-width: 136px;
     height: 62px;
     gap: 8px;
     padding: 8px 0;
-    transform: translateY(40px) translateX(-60px);
+    transform: translateY(-8px) translateX(-105px);
     border-radius: 8px;
   }
 
-  .text{
+  .text {
     font-size: 11px;
   }
 
-  .plus{
+  .plus {
     width: 10px;
     height: 10px;
   }

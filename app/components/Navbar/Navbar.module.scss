@@ -1,4 +1,4 @@
-@import 'app/styles/colors.scss';
+@import '../../styles/colors.scss';
 
 .nav {
   display: flex;
@@ -14,12 +14,12 @@
 }
 
 .linearContainer {
-  background: linear-gradient(92deg, #E82567 -8.96%, #3453EA 107.31%);
+  background: $primaryBackground;
 }
 
 .container {
   width: 100%;
-  background: #050505;
+  background: $textBlack;
 }
 
 .search_log {
