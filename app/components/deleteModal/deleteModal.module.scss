@@ -8,7 +8,7 @@
   flex-direction: column;
   gap: 33px;
   border-radius: 24px;
-  background: #2A2A2A;
+  background: $secondaryDarkGray;
 }
 
 .head {
@@ -20,7 +20,7 @@
 }
 
 .title {
-  color: #FFF;
+  color: $textWhite;
   font-family: Inter;
   font-size: 24px;
   font-style: normal;
@@ -29,7 +29,7 @@
 }
 
 .text {
-  color: #9F9F9F;
+  color: $textSecondary;
   font-family: Inter;
   font-size: 16px;
   font-style: normal;
@@ -45,7 +45,6 @@
 }
 
 @media only screen and (max-width: 767px) {
-
   .container {
     max-width: 343px;
     height: 165px;
@@ -69,5 +68,4 @@
     gap: 9px;
     max-width: 257px;
   }
-
 }

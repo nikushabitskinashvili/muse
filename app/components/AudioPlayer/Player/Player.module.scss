@@ -1,21 +1,23 @@
+@import "../../../styles/colors.scss";
+
 .musicMiddle img {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .musicMiddle {
-    max-width: 733px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    padding: 20px 0;
-    gap: 5px;
-    gap: 10px;
+  max-width: 733px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+  gap: 5px;
+  gap: 10px;
 }
 
 @media screen and (max-width: 767px) {
-    .musicMiddle{
-        display: flex;
-        align-items: flex-end;
-        justify-content: center;
-    }
+  .musicMiddle {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
 }

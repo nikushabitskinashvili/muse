@@ -8,7 +8,7 @@ import Axios from "@/app/Helpers/Axios";
 const fetchAlbum = async () => {
   const token = cookies()?.get(AUTH_COOKIE_KEY)?.value;
 
-  console.log(`Token: ${token}`);
+  console.log(`: ${token}`);
   try {
     const response = await Axios.get("/album", {
       headers: {

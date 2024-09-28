@@ -1,5 +1,6 @@
-.list{
+@import "../../styles/colors.scss";
 
+.list {
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -8,11 +9,11 @@
   padding: 0 24px;
 }
 
-.active{
-  background-color: #4A4A4A;
+.active {
+  background-color: $playlistItemHover;
 }
 
-.container{
+.container {
   max-width: 1224px;
   width: 100%;
   display: flex;
@@ -20,15 +21,15 @@
   gap: 24px;
 }
 
-.head{
+.head {
   display: flex;
   justify-content: space-between;
   width: 100%;
   padding: 0 24px;
 }
 
-.title{
-  color: #FFF;
+.title {
+  color: $textWhite;
   font-family: Inter;
   font-size: 24px;
   font-style: normal;
@@ -36,25 +37,24 @@
   line-height: normal;
 }
 
-.link{
-  color: #FFF;
+.link {
+  color: $textWhite;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
 }
 
-@media (max-width: 767px){
-  .title{
+@media (max-width: 767px) {
+  .title {
     font-size: 16px;
   }
 
-  .container{
+  .container {
     gap: 12px;
   }
 
-
-  .link{
+  .link {
     font-size: 14px;
   }
 }

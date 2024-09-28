@@ -10,7 +10,7 @@
   gap: 10px;
   border-radius: 35px;
   border: none;
-  color: #050505;
+  color: $textBlack;
   font-family: Inter;
   font-size: 16px;
   font-style: normal;
@@ -30,8 +30,9 @@
 }
 
 .pink {
-  background: #E82567;
-  color: #FFF;
+  background: $secondPrimaryPink;
+  color: $textWhite
+;
   font-weight: 400;
 
   &:hover {
@@ -57,16 +58,20 @@
 
 .none {
   background: none;
-  color: #FFF;
-  border: 1px solid #FFF;
+  color: $textWhite
+;
+  border: 1px solid $textWhite
+;
 
   &:hover {
-    color: #000000;
-    background: #FFF;
+    color: $textBlack;
+    background: $textWhite
+;
   }
 
   &:active {
-    color: #FFF;
+    color: $textWhite
+;
     background: inherit;
   }
 }
