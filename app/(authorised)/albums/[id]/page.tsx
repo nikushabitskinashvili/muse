@@ -35,7 +35,7 @@ const AlbumDetailsPage = async ({ params }: { params: { id: string } }) => {
       <div className={styles.albumDetails}>
         <AlbumHero title={album.title} img={album.img} total={album.total} />
         <div className={styles.list}>
-          <MusicWrapper  />
+          <MusicWrapper />
         </div>
       </div>
     </div>

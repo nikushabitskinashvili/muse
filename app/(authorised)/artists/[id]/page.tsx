@@ -6,8 +6,7 @@ import Axios from "@/app/Helpers/Axios";
 import { cookies } from "next/headers";
 import { AUTH_COOKIE_KEY } from "@/app/constant";
 import { Music } from "@/app/Interfaces/Interfaces";
-
-
+import { ArtistBio } from "@/app/components/ArtistBio/ArtistBio";
 
 const fetchArtist = async (id: string) => {
   const token = cookies()?.get(AUTH_COOKIE_KEY)?.value;
@@ -24,36 +23,27 @@ const fetchArtist = async (id: string) => {
   }
 };
 
-
-
-export default async function Artist({
-  params,
-}: {
-  params: { id: string };
-}) {
+export default async function Artist({ params }: { params: { id: string } }) {
   const { id } = params;
 
-  const artistData = await fetchArtist("5")
-  console.log(artistData)
-
-
-
-
+  const artistData = await fetchArtist("5");
+  console.log(artistData);
 
   const artist = artists[+id];
 
-
-return (
+  return (
     <div className={styles.main}>
       <div className={styles.hero}>
         <ArtistHero
           artistName={artist.title}
           imgSrc="/images/ArtistHero.png"
           monthlyListeners={56000}
-          artistBio={`Billie Eilish is an American singe r-songwriter
-            born on December 18, 2001, in Los Angeles. She gained fame with her
-            2015 hit "Ocean Eyes" and won multiple Grammy Awards for her debut
-            album, "When We All Fall Asleep, Where Do We Go?"`}
+        />
+      </div>
+      <div className={styles.bio}>
+        <ArtistBio
+          heading={`Artist Biography`}
+          bio={`Billie Eilish is an American singer-songwriter born on December 18, 2001, in Los Angeles. She gained fame with her 2015 hit "Ocean Eyes" and won multiple Grammy Awards for her debut album, "When We All Fall Asleep, Where Do We Go?"`}
         />
       </div>
       <div className={styles.MusicWrapper}>

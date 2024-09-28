@@ -1,0 +1,25 @@
+@import "../../styles/colors.scss";
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.bioHeading {
+  color: $textWhite;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.bio {
+  color: $textWhite;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
