@@ -24,6 +24,7 @@ export enum colorsEnum {
     TEXT_WHITE = "#FFFFFF",
     X_BUTTON = '#747474',
     X_BUTTON_HOVER = '#B7B7B7',
-    X_BUTTON_ACTIVE = '#545454'
+    X_BUTTON_ACTIVE = '#545454',
+    AUDIO_PLAYER = 'linear-gradient(90deg, rgba(232, 37, 103, 0.90) 0%, rgba(52, 83, 234, 0.90) 100%)'
     
 }

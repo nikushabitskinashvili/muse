@@ -1,8 +1,8 @@
-@import "/app/styles/colors.scss";
+@import "../../styles/colors.scss";
 
 
 .container {
-  background: $primaryBackground;
+  background: $audioPlayer;
   width: 100%;
   position: fixed;
   bottom: 0;

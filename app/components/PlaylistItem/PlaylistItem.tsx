@@ -28,7 +28,6 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
     };
   }, [addPop, createPop]);
 
-  // Close DotsPop when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (

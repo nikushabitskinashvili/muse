@@ -1,9 +1,11 @@
 import { useRef, useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import { audioPlayerState } from '@/app/atoms/states';
-import { Song } from '../Interfaces/Interfaces';
+import { Music } from '../Interfaces/Interfaces';
+import { musics } from '../components/forYouComp/forYouComp';
 
-export const useAudioPlayer = (songs: Song[]) => {
+
+export const useAudioPlayer = (songs: Music[]) => {
     const [audioPlayer, setAudioPlayer] = useRecoilState(audioPlayerState);
     const audioRef = useRef<HTMLAudioElement>(null);
     const progressRef = useRef<HTMLInputElement>(null);
@@ -36,7 +38,7 @@ export const useAudioPlayer = (songs: Song[]) => {
         const handleEnded = () => {
             setAudioPlayer((prev) => ({
                 ...prev,
-                currentSongIndex: (prev.currentSongIndex + 1) % songs.length,
+                currentSongIndex: (prev.currentMusicIndex + 1) % songs.length,
                 currentTime: 0,
             }));
         };
@@ -52,7 +54,7 @@ export const useAudioPlayer = (songs: Song[]) => {
                 audio.removeEventListener('ended', handleEnded);
             };
         }
-    }, [audioPlayer.currentSongIndex, songs.length, setAudioPlayer]);
+    }, [audioPlayer.currentMusicIndex, songs.length, setAudioPlayer]);
 
     useEffect(() => {
         if (audioRef.current) {
@@ -64,13 +66,13 @@ export const useAudioPlayer = (songs: Song[]) => {
                 duration: 0,
             }));
         }
-    }, [audioPlayer.currentSongIndex, setAudioPlayer]);
+    }, [audioPlayer.currentMusicIndex, setAudioPlayer]);
 
     useEffect(() => {
         if (audioRef.current) {
             audioRef.current.play();
         }
-    }, [audioPlayer.currentSongIndex]);
+    }, [audioPlayer.currentMusicIndex]);
 
     useEffect(() => {
         if (audioRef.current) {
@@ -109,7 +111,7 @@ export const useAudioPlayer = (songs: Song[]) => {
     const handleNextSong = () => {
         setAudioPlayer((prev) => ({
             ...prev,
-            currentSongIndex: (prev.currentSongIndex + 1) % songs.length,
+            currentMusicIndex: (prev.currentMusicIndex + 1) % songs.length,
             currentTime: 0,
             duration: 0,
         }));
@@ -118,7 +120,7 @@ export const useAudioPlayer = (songs: Song[]) => {
     const handlePreviousSong = () => {
         setAudioPlayer((prev) => ({
             ...prev,
-            currentSongIndex: (prev.currentSongIndex - 1 + songs.length) % songs.length,
+            currentMusicIndex: (prev.currentMusicIndex - 1 + songs.length) % songs.length,
             currentTime: 0,
             duration: 0,
         }));

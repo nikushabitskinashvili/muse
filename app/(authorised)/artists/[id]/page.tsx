@@ -5,6 +5,7 @@ import { artists } from "@/app/data/CarouselData";
 import Axios from "@/app/Helpers/Axios";
 import { cookies } from "next/headers";
 import { AUTH_COOKIE_KEY } from "@/app/constant";
+import { Music } from "@/app/Interfaces/Interfaces";
 
 
 

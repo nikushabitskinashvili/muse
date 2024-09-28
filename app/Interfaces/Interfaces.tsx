@@ -21,14 +21,16 @@ export interface Player {
   onPlayMusic: () => void;
 }
 
-export interface Song {
+export interface Music {
   id: number;
   src: string;
   music: string;
+  image: string;
   artist: string;
   audioSrc: string;
   duration: number;
   title: string;
+  name: string;
 }
 
 export interface InputRangeProps {
@@ -37,12 +39,13 @@ export interface InputRangeProps {
   progressRef: React.RefObject<HTMLInputElement>;
 }
 
-export interface SongsProps {
-  songs: Song[];
+export interface AudioPlayerProps {
+  musics: Music[];
+  selectedSongIndex: number;
 }
 
 export interface ForYouCompProps {
-  onSongSelect: (song: Song) => void;
+  onSongSelect: (music: Music) => void;
 }
 
 export interface PlaylistItemProps {
