@@ -14,7 +14,8 @@ export async function handleLogin(email: string, password: string) {
 
     if (response.status === 201) {
       const cookieStore = cookies();
-      cookieStore.set(AUTH_COOKIE_KEY, response.data.jwtToken);
+      cookieStore.set(AUTH_COOKIE_KEY, response.data.access_token);
+      // console.log(response.data)
       return { success: true };
     } else {
       return { success: false, errorMessage: "Failed to login" };

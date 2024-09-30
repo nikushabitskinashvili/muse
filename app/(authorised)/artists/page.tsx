@@ -24,12 +24,14 @@ const fetchArtists = async () => {
 export default async function Artist() {
   const artistsData = await fetchArtists();
 
+  console.log(artistsData);
+
   return (
     <div className={styles.main}>
       <div className={styles.container}>
         <span className={styles.title}>The Artists</span>
         <div className={styles.wrapper}>
-          {artists.map((item) => (
+          {artistsData.map((item:any) => (
             <ArtistCard title={title} key={item.id} item={item} />
           ))}
         </div>

@@ -1,9 +1,10 @@
 @import "../../styles/colors.scss";
 
 .cardImage {
-  border-radius: 10px;
   width: 128px;
   height: 126px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .title {
@@ -37,6 +38,7 @@
     object-fit: cover;
     width: 40px;
     height: 40px;
+    border-radius: 50%;
   }
 
   .artistCardContainer {
