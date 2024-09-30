@@ -31,6 +31,7 @@ export enum IconEnum {
     SHUFFLE = "/icons/shuffle.svg",
     VECTOR = "/icons/Vector.svg",
     VOLUME_FULL = "/icons/volumeFull.svg",
+    SHUFFLE_ACTIVE = "/icons/activeshuffle.svg",
 }
 
 interface Props {

@@ -7,6 +7,7 @@ import styles from "./page.module.css";
 import Hero from "@/app/components/Hero/Hero";
 import { ForYouComp } from "@/app/components/forYouComp/forYouComp";
 import { Music } from "../Interfaces/Interfaces";
+import { getCurrentSong } from "../utils/currentMusic";
 
 const useClient = () => {
   const [isClient, setIsClient] = useState(false);
@@ -28,9 +29,10 @@ export default function Home() {
             <div className={styles.content}>
               <Slider data={popularAlbum} title="Popular Album" />
               <Slider data={artists} title="Artists" />
-              <ForYouComp onSongSelect={function (music: Music): void {
-                throw new Error("Function not implemented.");
-              } } />
+              <ForYouComp onSongSelect={(music : Music) =>{
+              
+              }}
+                />
               <Slider data={playlistData} title="My Playlists" />
             </div>
           </div>
