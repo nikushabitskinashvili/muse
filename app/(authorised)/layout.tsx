@@ -11,10 +11,9 @@ const AuthLayout = (props: Props) => {
     return (
         <>
             <Navbar />
-            <RecoilWrapper>
+            <RecoilWrapper >
                 {props.children}
             </RecoilWrapper>
-            {/* <AudioPlayer songs={songs} /> */}
         </>
 
     )
