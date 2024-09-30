@@ -4,7 +4,6 @@ import { MusicWrapper } from "@/app/components/musicWrapper/musicWrapper";
 import { AUTH_COOKIE_KEY } from "@/app/constant";
 import { popularAlbum } from "@/app/data/CarouselData";
 import Axios from "@/app/Helpers/Axios";
-import { Music } from "@/app/Interfaces/Interfaces";
 import { cookies } from "next/headers";
 
 const fetchAlbum = async (id: string) => {
@@ -33,7 +32,11 @@ const AlbumDetailsPage = async ({ params }: { params: { id: string } }) => {
   return (
     <div className={styles.main}>
       <div className={styles.albumDetails}>
-        <AlbumHero title={album.title} img={album.img} total={album.total} />
+        <AlbumHero
+          title={albumDetail.title}
+          img={albumDetail.albumImg}
+          // total={album.total}
+        />
         <div className={styles.list}>
           <MusicWrapper />
         </div>

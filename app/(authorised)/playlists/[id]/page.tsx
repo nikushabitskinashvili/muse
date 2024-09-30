@@ -21,7 +21,12 @@ export default function PlaylistPage({
 }) {
   const [openPen, setOpenPen] = useState(false);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
+
   const [playlistDetail, setPlaylistDetail] = useState<PlaylistDetail | null>(null);
+  const [playlistDetail, setPlaylistDetail] = useState<any>(null);
+
+
+
 
   useEffect(() => {
     const fetchPlayListDetail = async () => {
@@ -38,7 +43,11 @@ export default function PlaylistPage({
       }
     };
     fetchPlayListDetail();
+
   }, [id]);
+
+  }, []);
+
 
   const handleCloseModal = () => {
     setOpenPen(false);
@@ -79,7 +88,7 @@ export default function PlaylistPage({
       <div className={styles.playlistDetailWrapper}>
         <PlaylistHero
           image={playlist.img}
-          playlistName={playlist.title}
+          playlistName={playlistDetail?.name}
           totalTracks={playlist.totalTracks}
           totalTime={playlist.totalTime}
           openModal={handleOpenModal}
