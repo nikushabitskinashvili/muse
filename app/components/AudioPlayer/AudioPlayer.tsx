@@ -24,19 +24,13 @@ const AudioPlayer = ({ musics }: Props) => {
     handleShuffleClick,
   } = useAudioPlayer(musics);
 
-
-  
-
-
   useEffect(() => {
     if (audioRef.current) {
-
       audioRef.current.pause();
       setIsPlaying(false);
-
       PlayMusic();
     }
-  }, [audioPlayer.currentMusicIndex]);
+  }, [audioPlayer.currentMusicIndex, PlayMusic, audioRef]); 
 
   const handlePlayMusic = () => {
     setIsPlaying((prev) => !prev);
@@ -44,9 +38,7 @@ const AudioPlayer = ({ musics }: Props) => {
   };
 
   return (
-  
     <>
-   
       <div className={styles.container}>
         <div className={styles.containerWrapper}>
           <audio
@@ -75,10 +67,7 @@ const AudioPlayer = ({ musics }: Props) => {
           <VolumeControl audioRef={audioRef} />
         </div>
       </div>
-    
     </>
-    
-
   );
 };
 

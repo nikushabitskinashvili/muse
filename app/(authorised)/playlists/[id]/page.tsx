@@ -21,9 +21,12 @@ export default function PlaylistPage({
 }) {
   const [openPen, setOpenPen] = useState(false);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
+
+  const [playlistDetail, setPlaylistDetail] = useState<PlaylistDetail | null>(null);
   const [playlistDetail, setPlaylistDetail] = useState<any>(null);
 
-  console.log(playlistDetail);
+
+
 
   useEffect(() => {
     const fetchPlayListDetail = async () => {
@@ -40,11 +43,16 @@ export default function PlaylistPage({
       }
     };
     fetchPlayListDetail();
+
+  }, [id]);
+
   }, []);
+
 
   const handleCloseModal = () => {
     setOpenPen(false);
   };
+
   const handleOpenModal = () => {
     setOpenPen(true);
   };
@@ -56,6 +64,7 @@ export default function PlaylistPage({
   const handleOpenDeleteModal = () => {
     setOpenDeleteModal(true);
   };
+
   useEffect(() => {
     if (openPen) {
       document.body.style.overflow = "hidden";
@@ -68,9 +77,7 @@ export default function PlaylistPage({
     };
   }, [openPen]);
 
-  const playlistId = parseInt(id);
-
-  const playlist = playlistData.find((p) => p.id === playlistId);
+  const playlist = playlistData.find((p) => p.id === parseInt(id));
 
   if (!playlist) {
     return <div className={styles.playlistNotFound}>Playlist not found</div>;
@@ -100,8 +107,7 @@ export default function PlaylistPage({
             placeholder={playlistDetail?.name}
             closeModal={handleCloseDeleteModal}
             id={id}
-            text="Lorem ipsum dolor sit amet consectetur.
-ipsum dolor sit amet consectetur. "
+            text="Lorem ipsum dolor sit amet consectetur. ipsum dolor sit amet consectetur."
             delete={true}
           />
         </div>
