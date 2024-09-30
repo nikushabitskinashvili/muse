@@ -26,7 +26,7 @@ const fetchArtist = async (id: string) => {
 export default async function Artist({ params }: { params: { id: string } }) {
   const { id } = params;
 
-  const artistData = await fetchArtist("5");
+  const artistData = await fetchArtist(id);
   console.log(artistData);
 
   const artist = artists[+id];
@@ -35,15 +35,15 @@ export default async function Artist({ params }: { params: { id: string } }) {
     <div className={styles.main}>
       <div className={styles.hero}>
         <ArtistHero
-          artistName={artist.title}
-          imgSrc="/images/ArtistHero.png"
+          artistName={artistData.name}
+          imgSrc={artistData.cover}
           monthlyListeners={56000}
         />
       </div>
       <div className={styles.bio}>
         <ArtistBio
-          heading={`Artist Biography`}
-          bio={`Billie Eilish is an American singer-songwriter born on December 18, 2001, in Los Angeles. She gained fame with her 2015 hit "Ocean Eyes" and won multiple Grammy Awards for her debut album, "When We All Fall Asleep, Where Do We Go?"`}
+          heading={`${artistData.name} Biography`}
+          bio={artistData.biography}
         />
       </div>
       <div className={styles.MusicWrapper}>
