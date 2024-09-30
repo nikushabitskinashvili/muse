@@ -9,7 +9,7 @@ type Props = {
     onPlayMusic: () => void;
     playing: boolean;
     toggleShuffle: () => void;
-    isShuffleActive: boolean; 
+    isShuffleActive: boolean;
 };
 
 const AdjustButtons: React.FC<Props> = ({
@@ -18,13 +18,13 @@ const AdjustButtons: React.FC<Props> = ({
     onPlayMusic,
     playing,
     toggleShuffle,
-    isShuffleActive, 
+    isShuffleActive,
 }) => {
     return (
         <div className={styles.adjustButtons}>
             <div className={styles.adjustButton}>
                 <Image
-                    src={isShuffleActive ? IconEnum.SHUFFLE_ACTIVE : IconEnum.SHUFFLE} 
+                    src={isShuffleActive ? IconEnum.SHUFFLE_ACTIVE : IconEnum.SHUFFLE}
                     width={24}
                     height={24}
                     alt='shuffle'
@@ -32,19 +32,31 @@ const AdjustButtons: React.FC<Props> = ({
                 />
             </div>
             <div className={styles.adjustButton}>
-                <Image src={IconEnum.PREVOUS} width={24} height={24} alt='previousMusicButton' onClick={onPreviousSong} />
+                <Image 
+                    src={IconEnum.PREVOUS} 
+                    width={24} 
+                    height={24} 
+                    alt='previousMusicButton' 
+                    onClick={onPreviousSong} 
+                />
             </div>
             <div className={styles.mainButton}>
                 <Image
-                    src={playing ? IconEnum.PAUSE : IconEnum.PLAY}
-                    width={24}
-                    height={24}
-                    alt='playbutton'
+                    src={playing ? IconEnum.PLAY : IconEnum.PAUSE}
+                    width={30} 
+                    height={30} 
+                    alt='play/pause button'
                     onClick={onPlayMusic}
                 />
             </div>
             <div className={styles.adjustButton}>
-                <Image src={IconEnum.NEXT} width={24} height={24} alt='nextMusicButton' onClick={onNextSong} />
+                <Image 
+                    src={IconEnum.NEXT} 
+                    width={24} 
+                    height={24} 
+                    alt='nextMusicButton' 
+                    onClick={onNextSong} 
+                />
             </div>
             <div className={styles.adjustButton}>
                 <Image src={IconEnum.ROTATE} width={24} height={24} alt='loop' />

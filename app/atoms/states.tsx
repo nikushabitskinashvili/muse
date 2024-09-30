@@ -14,7 +14,7 @@ export const audioPlayerState = atom({
   default: {
     currentTime: 0,
     duration: 0,
-    currentMusicIndex: 0,
+    currentMusicIndex: "" || 0,
     loop: false,
     shuffle: false
   },
