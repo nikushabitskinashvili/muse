@@ -29,7 +29,7 @@ export default async function page() {
       <div className={styles.playlistWrapper}>
         <h1 className={styles.mainTitle}>Your Playlists</h1>
         <div className={styles.playlistItemContainer}>
-          {playlistData.map((item: any) => {
+          {playlistD.map((item: any) => {
             return <AlbumCard key={item.id} playlist={true} item={item} />;
           })}
         </div>
