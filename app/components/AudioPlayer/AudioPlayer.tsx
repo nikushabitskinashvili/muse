@@ -10,7 +10,6 @@ import VolumeControl from "./VolumeControl/VolumeControl";
 
 type Props = {
   musics: Music[];
-  // selectedSongIndex: number;
 };
 
 const AudioPlayer = ({ musics }: Props) => {
@@ -23,6 +22,7 @@ const AudioPlayer = ({ musics }: Props) => {
     PlayMusic,
     handleNextSong,
     handlePreviousSong,
+    handleShuffleClick,
   } = useAudioPlayer(musics);
 
   const isPlaying = audioRef.current ? !audioRef.current.paused : false;
@@ -50,7 +50,10 @@ const AudioPlayer = ({ musics }: Props) => {
           onPreviousSong={handlePreviousSong}
           onNextSong={handleNextSong}
           onPlayMusic={PlayMusic}
+          toggleShuffle={handleShuffleClick}
+          isShuffleActive={audioPlayer.shuffle}
         />
+
         <VolumeControl audioRef={audioRef} />
       </div>
     </div>

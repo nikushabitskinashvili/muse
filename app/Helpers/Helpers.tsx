@@ -2,14 +2,22 @@ import { useRef, useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import { audioPlayerState } from '@/app/atoms/states';
 import { Music } from '../Interfaces/Interfaces';
-import { musics } from '../components/forYouComp/forYouComp';
-
 
 export const useAudioPlayer = (songs: Music[]) => {
     const [audioPlayer, setAudioPlayer] = useRecoilState(audioPlayerState);
     const audioRef = useRef<HTMLAudioElement>(null);
     const progressRef = useRef<HTMLInputElement>(null);
     const ipadProgressRef = useRef<HTMLInputElement>(null);
+    const shuffledSongsRef = useRef<Music[]>([]);
+
+    const shuffleArray = (array: Music[]) => {
+        let shuffledArray = [...array];
+        for (let i = shuffledArray.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+        }
+        return shuffledArray;
+    };
 
     useEffect(() => {
         const handleTimeUpdate = () => {
@@ -36,11 +44,7 @@ export const useAudioPlayer = (songs: Music[]) => {
         };
 
         const handleEnded = () => {
-            setAudioPlayer((prev) => ({
-                ...prev,
-                currentSongIndex: (prev.currentMusicIndex + 1) % songs.length,
-                currentTime: 0,
-            }));
+            handleNextSong();
         };
 
         if (audioRef.current) {
@@ -109,22 +113,35 @@ export const useAudioPlayer = (songs: Music[]) => {
     };
 
     const handleNextSong = () => {
-        setAudioPlayer((prev) => ({
-            ...prev,
-            currentMusicIndex: (prev.currentMusicIndex + 1) % songs.length,
-            currentTime: 0,
-            duration: 0,
-        }));
+        setAudioPlayer((prev) => {
+            const nextIndex = prev.shuffle
+                ? Math.floor(Math.random() * songs.length)
+                : (prev.currentMusicIndex + 1) % songs.length;
+            return {
+                ...prev,
+                currentMusicIndex: nextIndex,
+                currentTime: 0,
+                duration: 0,
+            };
+        });
     };
 
+
     const handlePreviousSong = () => {
-        setAudioPlayer((prev) => ({
-            ...prev,
-            currentMusicIndex: (prev.currentMusicIndex - 1 + songs.length) % songs.length,
-            currentTime: 0,
-            duration: 0,
-        }));
+        setAudioPlayer((prev) => {
+            const prevIndex = prev.shuffle
+                ? (prev.currentMusicIndex - 1 + shuffledSongsRef.current.length) % shuffledSongsRef.current.length
+                : (prev.currentMusicIndex - 1 + songs.length) % songs.length;
+    
+            return {
+                ...prev,
+                currentMusicIndex: prevIndex,
+                currentTime: 0,
+                duration: 0,
+            };
+        });
     };
+    
 
     const handleVolumeDown = () => {
         if (audioRef.current) {
@@ -137,7 +154,16 @@ export const useAudioPlayer = (songs: Music[]) => {
             audioRef.current.volume = Math.min(25, audioRef.current.volume + 5);
         }
     };
-    
+
+    const handleShuffleClick = () => {
+        setAudioPlayer((prev) => {
+            if (!prev.shuffle) {
+                shuffledSongsRef.current = shuffleArray(songs);
+            }
+            return { ...prev, shuffle: !prev.shuffle };
+        });
+    };
+
     const toggleLoop = () => {
         setAudioPlayer((prev) => ({ ...prev, loop: !prev.loop }));
         if (audioRef.current) {
@@ -157,6 +183,7 @@ export const useAudioPlayer = (songs: Music[]) => {
         handlePreviousSong,
         handleVolumeDown,
         handleVolumeUp,
+        handleShuffleClick,
         toggleLoop,
     };
 };

@@ -16,6 +16,7 @@ export const audioPlayerState = atom({
     duration: 0,
     currentMusicIndex: 0,
     loop: false,
+    shuffle: false
   },
 });
 

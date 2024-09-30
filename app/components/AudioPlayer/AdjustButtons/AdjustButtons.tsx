@@ -8,6 +8,8 @@ type Props = {
     onNextSong: () => void;
     onPlayMusic: () => void;
     playing: boolean;
+    toggleShuffle: () => void;
+    isShuffleActive: boolean; 
 };
 
 const AdjustButtons: React.FC<Props> = ({
@@ -15,25 +17,38 @@ const AdjustButtons: React.FC<Props> = ({
     onNextSong,
     onPlayMusic,
     playing,
+    toggleShuffle,
+    isShuffleActive, 
 }) => {
     return (
         <div className={styles.adjustButtons}>
             <div className={styles.adjustButton}>
-                <Image src={IconEnum.SHUFFLE} width={24} height={24} alt='shuffle' />
+                <Image
+                    src={isShuffleActive ? IconEnum.SHUFFLE_ACTIVE : IconEnum.SHUFFLE} 
+                    width={24}
+                    height={24}
+                    alt='shuffle'
+                    onClick={toggleShuffle}
+                />
             </div>
             <div className={styles.adjustButton}>
-                <Image src={IconEnum.PREVOUS} width={24} height={24} alt='previousMusicButton'  onClick={onPreviousSong} />
+                <Image src={IconEnum.PREVOUS} width={24} height={24} alt='previousMusicButton' onClick={onPreviousSong} />
             </div>
-            <div  className={styles.mainButton}>
-                <Image src={playing ? IconEnum.PAUSE : IconEnum.PLAY} width={24} height={24} alt='playbutton'  onClick={onPlayMusic} />
+            <div className={styles.mainButton}>
+                <Image
+                    src={playing ? IconEnum.PAUSE : IconEnum.PLAY}
+                    width={24}
+                    height={24}
+                    alt='playbutton'
+                    onClick={onPlayMusic}
+                />
             </div>
             <div className={styles.adjustButton}>
                 <Image src={IconEnum.NEXT} width={24} height={24} alt='nextMusicButton' onClick={onNextSong} />
             </div>
             <div className={styles.adjustButton}>
-                <Image src={IconEnum.ROTATE} width={24} height={24} alt='loop'  />
+                <Image src={IconEnum.ROTATE} width={24} height={24} alt='loop' />
             </div>
-            
         </div>
     );
 };
