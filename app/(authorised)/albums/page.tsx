@@ -23,7 +23,8 @@ const fetchAlbum = async () => {
 
 const Albums = async () => {
   const albumData = await fetchAlbum();
-  
+
+  console.log(albumData);
 
   return (
     <div className={styles.main}>
@@ -32,7 +33,7 @@ const Albums = async () => {
           <span>Popular albums</span>
         </div>
         <div className={styles.container}>
-          {popularAlbum.map((item) => (
+          {albumData.map((item: any) => (
             <AlbumCard key={item.id} item={item} />
           ))}
         </div>
