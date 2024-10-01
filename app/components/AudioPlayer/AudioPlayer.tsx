@@ -63,7 +63,7 @@ const AudioPlayer = ({ musics }: Props) => {
         <VolumeControl audioRef={audioRef} />
 
       </div>
-    </>
+    </div>
   );
 };
 
