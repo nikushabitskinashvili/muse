@@ -13,13 +13,14 @@ export const MusicWrapper = () => {
   const [activeId, setActiveId] = useState<number | null>(null);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [currentIndex, setCurrentIndex] = useRecoilState(audioPlayerState);
-
+  const [renderAudio, setRenderudio] = useState <boolean>(false)
   const handleSongClick = (index: number) => {
 
     setCurrentIndex((prevState) => ({
       ...prevState,
       currentMusicIndex: index,
     }));
+    setRenderudio(true);
   };
   return (
     <div className={styles.list}>
@@ -43,7 +44,7 @@ export const MusicWrapper = () => {
           }}
         />
       ))}
-      {currentIndex && <AudioPlayer musics={musics} />}
+      {renderAudio && <AudioPlayer musics={musics} />}
     </div>
   );
 };
