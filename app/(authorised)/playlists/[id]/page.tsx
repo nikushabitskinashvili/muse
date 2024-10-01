@@ -9,11 +9,6 @@ import Axios from "@/app/Helpers/Axios";
 import { getClientCookie } from "@/app/Helpers/GetCookieValue";
 import { AUTH_COOKIE_KEY } from "@/app/constant";
 
-interface PlaylistDetail {
-  id: number;
-  name: string;
-}
-
 export default function PlaylistPage({
   params: { id },
 }: {
@@ -23,28 +18,35 @@ export default function PlaylistPage({
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [playlistDetail, setPlaylistDetail] = useState<any>(null);
 
-  console.log(playlistDetail);
+  const fetchPlayListDetail = async () => {
+    const token = getClientCookie(AUTH_COOKIE_KEY);
+    try {
+      const response = await Axios.get(`/playlist/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setPlaylistDetail(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
-    const fetchPlayListDetail = async () => {
-      const token = getClientCookie(AUTH_COOKIE_KEY);
-      try {
-        const response = await Axios.get(`/playlist/${id}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        setPlaylistDetail(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
     fetchPlayListDetail();
   }, []);
+
+  const handleSuccessUpdate = (newName: string) => {
+    setPlaylistDetail((prevState: any) => ({
+      ...prevState,
+      name: newName, 
+    }));
+  };
 
   const handleCloseModal = () => {
     setOpenPen(false);
   };
+
   const handleOpenModal = () => {
     setOpenPen(true);
   };
@@ -56,6 +58,7 @@ export default function PlaylistPage({
   const handleOpenDeleteModal = () => {
     setOpenDeleteModal(true);
   };
+
   useEffect(() => {
     if (openPen) {
       document.body.style.overflow = "hidden";
@@ -69,7 +72,6 @@ export default function PlaylistPage({
   }, [openPen]);
 
   const playlistId = parseInt(id);
-
   const playlist = playlistData.find((p) => p.id === playlistId);
 
   if (!playlist) {
@@ -81,7 +83,7 @@ export default function PlaylistPage({
       <div className={styles.playlistDetailWrapper}>
         <PlaylistHero
           image={playlist.img}
-          playlistName={playlistDetail?.name}
+          playlistName={playlistDetail?.name} 
           totalTracks={playlist.totalTracks}
           totalTime={playlist.totalTime}
           openModal={handleOpenModal}
@@ -100,8 +102,7 @@ export default function PlaylistPage({
             placeholder={playlistDetail?.name}
             closeModal={handleCloseDeleteModal}
             id={id}
-            text="Lorem ipsum dolor sit amet consectetur.
-ipsum dolor sit amet consectetur. "
+            text="Lorem ipsum dolor sit amet consectetur."
             delete={true}
           />
         </div>
@@ -114,6 +115,7 @@ ipsum dolor sit amet consectetur. "
             placeholder={playlistDetail?.name}
             closeModal={handleCloseModal}
             id={id}
+            onSuccessUpdate={handleSuccessUpdate}
           />
         </div>
       )}
