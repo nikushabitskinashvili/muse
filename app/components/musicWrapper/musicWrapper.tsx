@@ -11,7 +11,7 @@ import { audioPlayerState } from "@/app/atoms/states";
 export const MusicWrapper = () => {
   const [dottedId, setDottedId] = useState<number | null>(null);
   const [activeId, setActiveId] = useState<number | null>(null);
-  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  // const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [currentIndex, setCurrentIndex] = useRecoilState(audioPlayerState);
   const [renderAudio, setRenderudio] = useState <boolean>(false)
   const handleSongClick = (index: number) => {
