@@ -42,7 +42,7 @@ const AdjustButtons: React.FC<Props> = ({
             </div>
             <div className={styles.mainButton}>
                 <Image
-                    src={playing ? IconEnum.PLAY : IconEnum.PAUSE}
+                    src={playing ? IconEnum.PAUSE : IconEnum.PLAY}
                     width={30} 
                     height={30} 
                     alt='play/pause button'

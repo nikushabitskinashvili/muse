@@ -140,7 +140,7 @@ export const ForYouComp: React.FC<ForYouCompProps> = () => {
   };
 
 
-  
+
   
   return (
     <div className={styles.container}>
@@ -172,6 +172,7 @@ export const ForYouComp: React.FC<ForYouCompProps> = () => {
           />
         ))}
       </div>
+    
       {renderAudio && <AudioPlayer musics={musics} />}
     </div>
   );
