@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export default axios.create({
-    baseURL:`https://back.museappofficial.com`
+    baseURL:`http://192.168.0.102:3001`
 });
