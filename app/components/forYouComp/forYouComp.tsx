@@ -140,7 +140,7 @@ export const ForYouComp: React.FC<ForYouCompProps> = () => {
   };
 
 
-
+  
   
   return (
     <div className={styles.container}>

@@ -1,6 +1,4 @@
-"use client";
-
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./AudioPlayer.module.scss";
 import { Music } from "@/app/Interfaces/Interfaces";
 import { useAudioPlayer } from "@/app/Helpers/Helpers";
@@ -13,6 +11,7 @@ type Props = {
 };
 
 const AudioPlayer = ({ musics }: Props) => {
+  const [isPlaying, setIsPlaying] = useState<boolean>(true);
   const {
     audioRef,
     progressRef,
@@ -25,7 +24,14 @@ const AudioPlayer = ({ musics }: Props) => {
     handleShuffleClick,
   } = useAudioPlayer(musics);
 
-  const isPlaying = audioRef.current ? !audioRef.current.paused : false;
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+      setIsPlaying(false);
+      PlayMusic();
+    }
+  }, [audioPlayer.currentMusicIndex, PlayMusic, audioRef]); 
+
 
   return (
     <div className={styles.container}>
@@ -55,8 +61,9 @@ const AudioPlayer = ({ musics }: Props) => {
         />
         
         <VolumeControl audioRef={audioRef} />
+
       </div>
-    </div>
+    </>
   );
 };
 
