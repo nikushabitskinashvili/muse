@@ -126,6 +126,7 @@ export const musics: Music[] = [
 export const ForYouComp: React.FC<ForYouCompProps> = () => {
   const [dottedId, setDottedId] = useState<number | null>(null);
   const [activeId, setActiveId] = useState<number | null>(null);
+  const [renderAudio, setRenderudio] = useState <boolean>(false)
   // const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [currentIndex, setCurrentIndex] = useRecoilState(audioPlayerState);
 
@@ -134,8 +135,13 @@ export const ForYouComp: React.FC<ForYouCompProps> = () => {
       ...prevState,
       currentMusicIndex: index,
     }));
+
+    setRenderudio(true);
   };
 
+
+
+  
   return (
     <div className={styles.container}>
       <div className={styles.head}>
@@ -166,8 +172,7 @@ export const ForYouComp: React.FC<ForYouCompProps> = () => {
           />
         ))}
       </div>
-      {currentIndex && <AudioPlayer musics={musics} />}
+      {renderAudio && <AudioPlayer musics={musics} />}
     </div>
   );
 };
-

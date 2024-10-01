@@ -53,7 +53,7 @@ const AudioPlayer = ({ musics }: Props) => {
           toggleShuffle={handleShuffleClick}
           isShuffleActive={audioPlayer.shuffle}
         />
-
+        
         <VolumeControl audioRef={audioRef} />
       </div>
     </div>
