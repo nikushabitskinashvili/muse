@@ -25,6 +25,8 @@ export default function Home() {
   const [artists, setArtists] = useState([]);
   const [playlist, setPlaylist] = useState([]);
 
+  
+
   console.log(albums);
   console.log(artists);
 

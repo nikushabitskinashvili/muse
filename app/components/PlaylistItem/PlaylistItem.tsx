@@ -16,6 +16,12 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
   const dotsPopRef = useRef<HTMLDivElement>(null);
   const createPopRef = useRef<HTMLDivElement>(null);
   const addPopRef = useRef<HTMLDivElement>(null);
+  const [playlistName, setPlaylistName] = useState<string>("My Playlist");
+
+  const handleSuccessUpdate = (newName: string) => {
+    setPlaylistName(newName); 
+  };
+
 
   useEffect(() => {
     if (addPop || createPop) {
@@ -126,6 +132,7 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
               onClose={closeCreatePop}
               placeholder={"Playlist name"}
               closeModal={closeCreatePop}
+              onSuccessUpdate={handleSuccessUpdate} 
             />
           </div>
         </div>
