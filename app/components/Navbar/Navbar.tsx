@@ -16,7 +16,6 @@ const Navbar = () => {
     { title: "Albums", pathname: "/albums", key: "/albums" },
     { title: "Artists", pathname: "/artists", key: "/artists" },
     { title: "Playlists", pathname: "/playlists", key: "/playlists" },
-    { title: "Favorites", pathname: "/favorites", key: "favorites" },
   ];
 
   const [isOpen, setIsOpen] = useState(false);
