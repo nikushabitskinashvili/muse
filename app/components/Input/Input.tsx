@@ -28,7 +28,7 @@ const Input: React.FC = () => {
                 musics: response.data.musics || [],
             });
         } catch (error) {
-            alert('Error fetching data.');
+           throw new Error('Error')
         }
     }, [inputValue]);
 
