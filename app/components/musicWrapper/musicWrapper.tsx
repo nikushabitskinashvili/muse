@@ -15,43 +15,52 @@ export const MusicWrapper = () => {
   // const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [currentIndex, setCurrentIndex] = useRecoilState(audioPlayerState);
   const [renderAudio, setRenderudio] = useState<boolean>(false);
-  const [data, setData] = useState<Music[]>([]);
+  const [musics, setMusics] = useState<Music[]>([]);
+  const [dataLength, setDataLength] = useState<any>();
   const handleSongClick = (index: number) => {
     setCurrentIndex((prevState) => ({
       ...prevState,
       currentMusicIndex: index,
     }));
+
     setRenderudio(true);
   };
-
-  useEffect(() => {
-    Axios.get('/music').then((response) => {
-      setData(response.data);
+   useEffect(() => {
+    Axios.get("/music").then((response) => {
+      setMusics(response.data);
+      setDataLength(response.data.length)
     });
   }, []);
-
+  if(currentIndex == dataLength) {
+    setCurrentIndex((prevState) => ({
+      ...prevState,
+      currentMusicIndex: 0,
+    }));
+    setRenderudio(true);
+  }
   return (
     <div className={styles.list}>
-      {data.map((music) => (
+      {musics.map((music, idx) => (
         <PlaylistItem
           key={music.id}
           image={music.image}
           musicSrc={music.musicSrc}
-          title={music.title}
+          title={music.name}
           name={music.name}
           duration={music.duration}
           id={music.id}
           icon="dots"
+          isPlaying={currentIndex.currentMusicIndex === music.id}
           setActiveId={setActiveId}
           activeId={activeId}
           setDottedId={setDottedId}
           dottedId={dottedId}
-          onClick={() => handleSongClick(music.id)}
+          onClick={() => handleSongClick(idx)}
           setOpenCreatePopId={function (): void {
             throw new Error('Function not implemented.');
-          } } isPlaying={false}        />
+          } }    />
       ))}
-      {renderAudio && <AudioPlayer musics={data} />}
+      {renderAudio && <AudioPlayer musics={musics} />}
     </div>
   );
 };

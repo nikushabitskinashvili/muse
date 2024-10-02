@@ -137,7 +137,7 @@ export const useAudioPlayer = (songs: Music[]) => {
         ? (prev.currentMusicIndex - 1 + shuffledSongsRef.current.length) %
           shuffledSongsRef.current.length
         : (prev.currentMusicIndex - 1 + songs.length) % songs.length;
-
+      
       return {
         ...prev,
         currentMusicIndex: prevIndex,

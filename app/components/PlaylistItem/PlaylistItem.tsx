@@ -17,11 +17,11 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
   const createPopRef = useRef<HTMLDivElement>(null);
   const addPopRef = useRef<HTMLDivElement>(null);
   const [playlistName, setPlaylistName] = useState<string>("My Playlist");
+  const [albumImage, setAlbumImage] = useState<string>(props.albumImg || "");
 
   const handleSuccessUpdate = (newName: string) => {
-    setPlaylistName(newName); 
+    setPlaylistName(newName);
   };
-
 
   useEffect(() => {
     if (addPop || createPop) {
@@ -36,10 +36,7 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (
-        dotsPopRef.current &&
-        !dotsPopRef.current.contains(event.target as Node)
-      ) {
+      if (dotsPopRef.current && !dotsPopRef.current.contains(event.target as Node)) {
         setDotsPop(false);
         props.setDottedId(null);
       }
@@ -75,9 +72,9 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
     event.stopPropagation();
     setDotsPop(!dotsPop);
     if (!dotsPop) {
-      props.setDottedId(props.id); // Set this one active
+      props.setDottedId(props.id);
     } else {
-      props.setDottedId(null); // Close when clicked again
+      props.setDottedId(null);
     }
   };
 
@@ -87,6 +84,10 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
       props.setActiveId(null);
     } else {
       props.setActiveId(props.id);
+    }
+
+    if (props.albumImg) {
+      setAlbumImage(props.albumImg);
     }
 
     if (props.onClick) {
@@ -109,11 +110,7 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
     <>
       {addPop && (
         <div className={styles.popBackground} onClick={closeAddPop}>
-          <div
-            ref={addPopRef}
-            onClick={(event) => event.stopPropagation()}
-            className={styles.popContainer}
-          >
+          <div ref={addPopRef} onClick={(event) => event.stopPropagation()} className={styles.popContainer}>
             <YourPlaylistModal onClose={closeAddPop} />
           </div>
         </div>
@@ -121,18 +118,14 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
 
       {createPop && (
         <div className={styles.popBackground} onClick={closeCreatePop}>
-          <div
-            ref={createPopRef}
-            onClick={(event) => event.stopPropagation()}
-            className={styles.popContainer}
-          >
+          <div ref={createPopRef} onClick={(event) => event.stopPropagation()} className={styles.popContainer}>
             <ReusableModal
               title={"Create Playlist"}
               label={"Name"}
               onClose={closeCreatePop}
               placeholder={"Playlist name"}
               closeModal={closeCreatePop}
-              onSuccessUpdate={handleSuccessUpdate} 
+              onSuccessUpdate={handleSuccessUpdate}
             />
           </div>
         </div>
@@ -141,20 +134,8 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
       <div className={classNames.join(" ").trim()} onClick={handleClick}>
         <div className={styles.leftSection}>
           <div className={styles.imageSection}>
-            <Image
-              className={styles.icon}
-              src={IconEnum.AUDIO}
-              alt="audio"
-              width={24}
-              height={24}
-            />
-            <Image
-              className={styles.image}
-              src={props.image!}
-              alt={`album`}
-              width={56}
-              height={56}
-            />
+            <Image className={styles.icon} src={IconEnum.AUDIO} alt="audio" width={24} height={24} />
+            <Image className={styles.image} src={albumImage} alt={`album`} width={56} height={56} />
           </div>
           <div className={styles.text}>
             <span>{`${props.title} - ${props.name}`}</span>
@@ -163,9 +144,6 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
         <div className={styles.rightSection}>
           <div className={styles.time}>
             <Image src={IconEnum.CLOCK} alt={""} width={24} height={24} />
-            {/* <span className={styles.text}>
-              {(props.duration / 60).toFixed(2)}
-            </span> */}
           </div>
           <Image
             className={`${styles.icon} ${styles.heart}`}
@@ -182,16 +160,10 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
               alt={""}
               width={24}
               height={24}
-              onClick={
-                props.icon === "dots" ? dotsClick : () => console.log("delete")
-              }
+              onClick={props.icon === "dots" ? dotsClick : () => console.log("delete")}
             />
             {dotsPop && (
-              <DotsPop
-                createNewPlaylist={toggleCreatePop}
-                addToPlaylist={toggleAddPop}
-                className={styles.dotspop}
-              />
+              <DotsPop createNewPlaylist={toggleCreatePop} addToPlaylist={toggleAddPop} className={styles.dotspop} />
             )}
           </div>
         </div>

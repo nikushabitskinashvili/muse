@@ -63,8 +63,9 @@ export interface PlaylistItemProps {
   setDottedId: (id: number | null) => void;
   dottedId: number | null;
   onClick: () => void;
-  
+  albumImg?: string; // Added for dynamic album image
 }
+
 
 export interface albumInterface {
   id: string;

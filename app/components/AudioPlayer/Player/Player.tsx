@@ -31,8 +31,6 @@ const Player = ({
   toggleShuffle,
   isShuffleActive, 
 }: Props) => {
-  console.log('akac');
-  
   return (
     <div className={styles.musicMiddle}>
       <AdjustButtons
