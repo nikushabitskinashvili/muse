@@ -4,7 +4,6 @@ import Image from "next/image";
 import { usePathname, useRouter } from 'next/navigation';
 import { albumInterface, artistInterface, musicInterface } from "@/app/Interfaces/Interfaces";
 import Axios from "@/app/Helpers/Axios";
-import { MusicWrapper } from "../musicWrapper/musicWrapper";
 
 const Input: React.FC = () => {
     const [inputValue, setInputValue] = useState<string>('');
@@ -45,6 +44,11 @@ const Input: React.FC = () => {
     const handleArtistClick = (artistId: string) => {
         setIsActive(false);
         router.push(`/artists/${artistId}`);
+        setInputValue('');
+    };
+
+    const handleMusicClick = (music: musicInterface) => {
+        setIsActive(false);
         setInputValue('');
     };
 
@@ -101,7 +105,16 @@ const Input: React.FC = () => {
                     ))}
 
                     {data.musics.map((music) => (
-                        <MusicWrapper key={music.id} />
+                        <li
+                            key={music.id}
+                            className={styles.musicLiStyle}
+                            onClick={() => handleMusicClick(music)}
+                        >
+                            <p className={styles.musicParagraphStyle}>
+                                <span className={styles.musicStyle}>Music: </span>
+                                {music.name}
+                            </p>
+                        </li>
                     ))}
                 </ul>
             )}
