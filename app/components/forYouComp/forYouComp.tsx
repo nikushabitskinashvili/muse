@@ -18,10 +18,8 @@ export const ForYouComp: React.FC<ForYouCompProps> = () => {
   // const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [currentIndex, setCurrentIndex] = useRecoilState(audioPlayerState);
   const [musics, setMusics] = useState<Music[]>([]);
-
+  const [dataLength, setDataLength] = useState<any>();
   const handleSongClick = (index: number) => {
-    console.log(index, "fafa");
-    console.log(currentIndex, "kaka");
     setCurrentIndex((prevState) => ({
       ...prevState,
       currentMusicIndex: index,
@@ -29,13 +27,20 @@ export const ForYouComp: React.FC<ForYouCompProps> = () => {
 
     setRenderudio(true);
   };
-  console.log(currentIndex, "sasasa");
+
   useEffect(() => {
     Axios.get("/music").then((response) => {
       setMusics(response.data);
+      setDataLength(response.data.length)
     });
   }, []);
-
+    if(currentIndex == dataLength) {
+      setCurrentIndex((prevState) => ({
+        ...prevState,
+        currentMusicIndex: 0,
+      }));
+      setRenderudio(true);
+    }
   return (
     <div className={styles.container}>
       <div className={styles.head}>
@@ -50,6 +55,7 @@ export const ForYouComp: React.FC<ForYouCompProps> = () => {
             key={music.id}
             musicSrc={music.musicSrc}
             title={music.name}
+            // albumImg={music.albumImg}
             name={music.name}
             isPlaying={currentIndex.currentMusicIndex === music.id}
             id={music.id}
