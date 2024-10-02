@@ -51,7 +51,8 @@ export interface ForYouCompProps {
 export interface PlaylistItemProps {
   setOpenCreatePopId(arg0: null): void;
   image?: string;
-  audioSrc: string;
+  musicSrc: string;
+  isPlaying: boolean;
   title?: string;
   name: string;
   duration?: number;
