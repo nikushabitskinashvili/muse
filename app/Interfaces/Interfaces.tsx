@@ -64,3 +64,18 @@ export interface PlaylistItemProps {
   onClick: () => void;
   
 }
+
+export interface albumInterface {
+  id: string;
+  title: string;
+}
+
+export interface artistInterface {
+  id: string;
+  name: string;
+}
+
+export interface musicInterface {
+  id: string;
+  name: string;
+}
