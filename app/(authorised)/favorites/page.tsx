@@ -31,7 +31,7 @@ export default function FavoritesPage() {
           totalTime={favorites?.totalTime || 0}
         />
         <div className={styles.favoritesForyou}>
-          
+          <MusicWrapper/>
         </div>
       </div>
     </div>
