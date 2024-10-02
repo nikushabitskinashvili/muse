@@ -1,34 +1,42 @@
-"use client";
-import styles from "@/app/(authorised)/foryou/foryou.module.scss";
-import { PlaylistItem } from "@/app/components/PlaylistItem/PlaylistItem";
-import { useState } from "react";
-import AudioPlayer from "../AudioPlayer/AudioPlayer";
-import { musics, ForYouComp } from "../forYouComp/forYouComp";
-import { ForYouCompProps } from "@/app/Interfaces/Interfaces";
-import { useRecoilState } from "recoil";
-import { audioPlayerState } from "@/app/atoms/states";
+'use client';
+import styles from '@/app/(authorised)/foryou/foryou.module.scss';
+import { PlaylistItem } from '@/app/components/PlaylistItem/PlaylistItem';
+import { useEffect, useState } from 'react';
+import AudioPlayer from '../AudioPlayer/AudioPlayer';
+import { ForYouCompProps, Music } from '@/app/Interfaces/Interfaces';
+import { useRecoilState } from 'recoil';
+import { audioPlayerState } from '@/app/atoms/states';
+import axios from 'axios';
+import Axios from '@/app/Helpers/Axios';
 
 export const MusicWrapper = () => {
   const [dottedId, setDottedId] = useState<number | null>(null);
   const [activeId, setActiveId] = useState<number | null>(null);
   // const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [currentIndex, setCurrentIndex] = useRecoilState(audioPlayerState);
-  const [renderAudio, setRenderudio] = useState <boolean>(false)
+  const [renderAudio, setRenderudio] = useState<boolean>(false);
+  const [data, setData] = useState<Music[]>([]);
   const handleSongClick = (index: number) => {
-
     setCurrentIndex((prevState) => ({
       ...prevState,
       currentMusicIndex: index,
     }));
     setRenderudio(true);
   };
+
+  useEffect(() => {
+    Axios.get('/music').then((response) => {
+      setData(response.data);
+    });
+  }, []);
+
   return (
     <div className={styles.list}>
-      {musics.map((music) => (
+      {data.map((music) => (
         <PlaylistItem
           key={music.id}
           image={music.image}
-          audioSrc={music.audioSrc}
+          audioSrc={music.musicSrc}
           title={music.title}
           name={music.name}
           duration={music.duration}
@@ -40,15 +48,12 @@ export const MusicWrapper = () => {
           dottedId={dottedId}
           onClick={() => handleSongClick(music.id)}
           setOpenCreatePopId={function (): void {
-            throw new Error("Function not implemented.");
+            throw new Error('Function not implemented.');
           }}
         />
       ))}
-      {renderAudio && <AudioPlayer musics={musics} />}
+      {renderAudio && <AudioPlayer musics={data} />}
     </div>
   );
 };
 
-function setSelectedIndex(index: number) {
-  throw new Error("Function not implemented.");
-}

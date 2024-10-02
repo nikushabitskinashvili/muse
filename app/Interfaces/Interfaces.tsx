@@ -27,9 +27,9 @@ export interface Music {
   music: string;
   image: string;
   artist: string;
-  audioSrc: string;
+  musicSrc: string;
   duration: number;
-  title: string;
+  title?: string;
   name: string;
 }
 
@@ -50,11 +50,11 @@ export interface ForYouCompProps {
 
 export interface PlaylistItemProps {
   setOpenCreatePopId(arg0: null): void;
-  image: string;
+  image?: string;
   audioSrc: string;
-  title: string;
+  title?: string;
   name: string;
-  duration: number;
+  duration?: number;
   id: number;
   icon: "dots" | "bin";
   setActiveId: (id: number | null) => void;

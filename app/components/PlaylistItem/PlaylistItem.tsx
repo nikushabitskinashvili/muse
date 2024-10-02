@@ -150,7 +150,7 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
             />
             <Image
               className={styles.image}
-              src={props.image}
+              src={props.image!}
               alt={`album`}
               width={56}
               height={56}
@@ -163,9 +163,9 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
         <div className={styles.rightSection}>
           <div className={styles.time}>
             <Image src={IconEnum.CLOCK} alt={""} width={24} height={24} />
-            <span className={styles.text}>
+            {/* <span className={styles.text}>
               {(props.duration / 60).toFixed(2)}
-            </span>
+            </span> */}
           </div>
           <Image
             className={`${styles.icon} ${styles.heart}`}

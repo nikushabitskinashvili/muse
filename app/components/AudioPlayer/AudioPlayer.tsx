@@ -32,7 +32,7 @@ const AudioPlayer = ({ musics }: Props) => {
       <div className={styles.containerWrapper}>
         <audio
           ref={audioRef}
-          src={musics[audioPlayer.currentMusicIndex]?.audioSrc}
+          src={musics[audioPlayer.currentMusicIndex]?.musicSrc}
           controls
         ></audio>
         <MusicPhoto
