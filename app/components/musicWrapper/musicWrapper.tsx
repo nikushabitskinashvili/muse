@@ -36,7 +36,7 @@ export const MusicWrapper = () => {
         <PlaylistItem
           key={music.id}
           image={music.image}
-          audioSrc={music.musicSrc}
+          musicSrc={music.musicSrc}
           title={music.title}
           name={music.name}
           duration={music.duration}
@@ -49,8 +49,7 @@ export const MusicWrapper = () => {
           onClick={() => handleSongClick(music.id)}
           setOpenCreatePopId={function (): void {
             throw new Error('Function not implemented.');
-          }}
-        />
+          } } isPlaying={false}        />
       ))}
       {renderAudio && <AudioPlayer musics={data} />}
     </div>
