@@ -2,7 +2,7 @@ import axios from 'axios';
 import getToken from './getToken';
 
 const Axios = axios.create({
-  baseURL: `https:back.museappofficial.com`,
+  baseURL: `https://back.museappofficial.com`,
 });
 
 Axios.interceptors.request.use(
