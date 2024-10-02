@@ -4,7 +4,7 @@ import { Button } from "@/app/components/Button/Button";
 import { XButton } from "@/app/components/xButton/xButton";
 import { getClientCookie } from "@/app/Helpers/GetCookieValue";
 import Axios from "./../../Helpers/Axios";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { AUTH_COOKIE_KEY } from "@/app/constant";
 
 interface Props {
@@ -16,10 +16,17 @@ interface Props {
   id?: string;
   text?: string;
   delete?: boolean;
+  onSuccessUpdate?: (newName: string) => void;
 }
 
 export const ReusableModal = (props: Props) => {
   const [inputText, setInputText] = useState<string>("");
+
+  useEffect(() => {
+    if (props.placeholder) {
+      setInputText(props.placeholder);
+    }
+  }, [props.placeholder]);
 
   const handleDelete = async (
     e: React.MouseEvent<HTMLButtonElement>,
@@ -39,6 +46,7 @@ export const ReusableModal = (props: Props) => {
 
       if (response.status === 200) {
         console.log(`Playlist with ID ${id} was successfully deleted.`);
+        if (props.onClose) props.onClose();
       } else {
         console.error("Failed to delete playlist:", response.statusText);
       }
@@ -47,10 +55,7 @@ export const ReusableModal = (props: Props) => {
     }
   };
 
-  const handleUpdate = async (
-    e: React.MouseEvent<HTMLButtonElement>,
-    id: string | undefined
-  ) => {
+  const handleUpdate = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
     const token = getClientCookie(AUTH_COOKIE_KEY);
@@ -60,7 +65,7 @@ export const ReusableModal = (props: Props) => {
     };
 
     try {
-      const response = await Axios(`/playlist/${id}`, {
+      const response = await Axios(`/playlist/${props.id}`, {
         method: "PATCH",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -69,7 +74,17 @@ export const ReusableModal = (props: Props) => {
         data,
       });
 
-      console.log("Update successful", response.data);
+      if (response.status === 200) {
+        console.log("Update successful", response.data);
+
+        if (props.onSuccessUpdate) {
+          props.onSuccessUpdate(inputText);
+        }
+
+        if (props.closeModal) {
+          props.closeModal();
+        }
+      }
     } catch (error) {
       console.error("Error updating the playlist", error);
     }
@@ -96,9 +111,19 @@ export const ReusableModal = (props: Props) => {
         data,
       });
 
-      console.log("Playlist create successful", response.data);
+      if (response.status === 201) {
+        console.log("Playlist created successfully", response.data);
+
+        if (props.onSuccessUpdate) {
+          props.onSuccessUpdate(inputText);
+        }
+
+        if (props.closeModal) {
+          props.closeModal();
+        }
+      }
     } catch (error) {
-      console.error("Error updating the playlist", error);
+      console.error("Error creating the playlist", error);
     }
   };
   return (
@@ -112,7 +137,7 @@ export const ReusableModal = (props: Props) => {
 
       {props.delete && (
         <div className={styles.deleteContainer}>
-          <h4 className={styles.deleteTitle}>Delete playlist ?</h4>
+          <h4 className={styles.deleteTitle}>Delete playlist?</h4>
           <p className={styles.deleteText}>{props.text}</p>
           <div style={{ display: "flex", width: "100%" }}>
             <Button
@@ -132,6 +157,7 @@ export const ReusableModal = (props: Props) => {
           </div>
         </div>
       )}
+
       {!props.delete && (
         <form className={styles.form}>
           <div className={styles.inputCont}>
@@ -153,7 +179,7 @@ export const ReusableModal = (props: Props) => {
               bg={"pink"}
               title={props.title}
               size={"huge"}
-              onClick={(e) => handleCreatePlaylist(e)}
+              onClick={handleCreatePlaylist}
             />
           ) : (
             <Button
@@ -161,7 +187,7 @@ export const ReusableModal = (props: Props) => {
               bg={"pink"}
               title={props.title}
               size={"huge"}
-              onClick={(e) => handleUpdate(e, props.id)}
+              onClick={handleUpdate}
             />
           )}
         </form>
