@@ -1,6 +1,7 @@
 "use client";
 
 import { atom } from "recoil";
+import { Music } from "../Interfaces/Interfaces";
 
 
 export const imageChangeState = atom({
@@ -30,4 +31,9 @@ export const forYouCompState = atom({
     currentAudio: isClient ? new Audio() : null, 
     currentIndex: 0,
   },
+});
+
+export const SongsState = atom<Music[]>({
+  key: 'endPoint',
+  default: [],
 });

@@ -1,46 +1,108 @@
 import styles from "./Input.module.scss";
-import React, { useState } from 'react';
+import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import Image from "next/image";
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import { albumInterface, artistInterface, musicInterface } from "@/app/Interfaces/Interfaces";
+import Axios from "@/app/Helpers/Axios";
+import { MusicWrapper } from "../musicWrapper/musicWrapper";
 
 const Input: React.FC = () => {
     const [inputValue, setInputValue] = useState<string>('');
-    const [filteredResults, setFilteredResults] = useState<string[]>([]);
+    const [isActive, setIsActive] = useState<boolean>(false);
+    const [data, setData] = useState<{
+        albums: albumInterface[];
+        artists: artistInterface[];
+        musics: musicInterface[];
+    }>({ albums: [], artists: [], musics: [] });
 
+    const router = useRouter();
     const pathname = usePathname();
 
-    const albumList = ["Abbey Road", "Back in Black", "Hotel California", "Dark Side of the Moon", "Rumours", "Sgt. Pepper", "Thriller", "The Wall", "Born to Run"];
+    const fetchData = useCallback(async () => {
+        if (!inputValue) return;
+        try {
+            const response = await Axios.get(`/search?value=${inputValue}`);
+            setData({
+                albums: response.data.albums || [],
+                artists: response.data.artists || [],
+                musics: response.data.musics || [],
+            });
+        } catch (error) {
+            alert('Error fetching data.');
+        }
+    }, [inputValue]);
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const searchQuery = event.target.value.toLowerCase();
-        setInputValue(searchQuery);
+    useEffect(() => {
+        fetchData();
+    }, [inputValue, fetchData]);
 
-        const filtered = albumList.filter(album => album.toLowerCase().startsWith(searchQuery));
-        setFilteredResults(filtered);
+    const handleAlbumClick = (albumId: string) => {
+        setIsActive(false);
+        router.push(`/albums/${albumId}`);
+        setInputValue('');
     };
+
+    const handleArtistClick = (artistId: string) => {
+        setIsActive(false);
+        router.push(`/artists/${artistId}`);
+        setInputValue('');
+    };
+
+    const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+        setInputValue(event.target.value);
+        setIsActive(event.target.value.length > 0);
+    };
+
+    const hasNoResults = data.albums.length === 0 && data.artists.length === 0 && data.musics.length === 0;
 
     return (
         <div className={styles.wrapper}>
-            <div className={inputValue? styles.inputTyping : styles.container && pathname === "/" ? styles.homecontainer : styles.container }>
+            <div className={`${inputValue ? styles.inputTyping : styles.container} ${pathname === "/" ? styles.homecontainer : ''}`}>
                 <Image src={'/images/search.png'} alt="search" className={styles.searchIcon} width={15} height={15} />
                 <input
                     type="text"
-                    placeholder="Search album"
+                    placeholder="Search album, artist, or music"
                     value={inputValue}
-                    onChange={handleChange}
+                    onChange={handleInputChange}
                     className={styles.input}
                 />
             </div>
-            
-            {inputValue && (
+
+            {isActive && (
                 <ul className={styles.results}>
-                    {filteredResults.length > 0 ? (
-                        filteredResults.map((album, index) => (
-                            <li key={index} className={styles.resultItem}>{album}</li>
-                        ))
-                    ) : (
+                    {hasNoResults && (
                         <li className={styles.noResults}>No results found</li>
                     )}
+
+                    {data.albums.map((album) => (
+                        <li
+                            key={album.id}
+                            className={styles.albumLiStyle}
+                            onClick={() => handleAlbumClick(album.id)}
+                        >
+                            <p className={styles.albumParagraphStyle}>
+                                <span className={styles.albumStyle}>Album: </span>
+                                {album.title}
+                            </p>
+                        </li>
+                    ))}
+
+                    {data.artists.map((artist) => (
+                        <li
+                            key={artist.id}
+                            className={styles.artistLiStyle}
+                            onClick={() => handleArtistClick(artist.id)}
+                        >
+                            <p className={styles.artistParagraphStyle}>
+                                <span className={styles.artistStyle}>Artist: </span>
+                                {artist.name}
+                            </p>
+                        </li>
+                    ))}
+
+                    {data.musics.map((music) => (
+                        <MusicWrapper key={music.id} />
+                    ))}
                 </ul>
             )}
         </div>
