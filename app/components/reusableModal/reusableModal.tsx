@@ -24,7 +24,7 @@ export const ReusableModal = (props: Props) => {
 
   useEffect(() => {
     if (props.placeholder) {
-      setInputText(props.placeholder); 
+      setInputText(props.placeholder);
     }
   }, [props.placeholder]);
 
@@ -78,11 +78,11 @@ export const ReusableModal = (props: Props) => {
         console.log("Update successful", response.data);
 
         if (props.onSuccessUpdate) {
-          props.onSuccessUpdate(inputText); 
+          props.onSuccessUpdate(inputText);
         }
 
         if (props.closeModal) {
-          props.closeModal(); 
+          props.closeModal();
         }
       }
     } catch (error) {
@@ -90,6 +90,42 @@ export const ReusableModal = (props: Props) => {
     }
   };
 
+  const handleCreatePlaylist = async (
+    e: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    e.preventDefault();
+
+    const token = getClientCookie(AUTH_COOKIE_KEY);
+
+    const data = {
+      name: inputText,
+    };
+
+    try {
+      const response = await Axios(`/playlist/`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        data,
+      });
+
+      if (response.status === 201) {
+        console.log("Playlist created successfully", response.data);
+
+        if (props.onSuccessUpdate) {
+          props.onSuccessUpdate(inputText);
+        }
+
+        if (props.closeModal) {
+          props.closeModal();
+        }
+      }
+    } catch (error) {
+      console.error("Error creating the playlist", error);
+    }
+  };
   return (
     <div className={styles.container}>
       {!props.delete && (
@@ -137,13 +173,23 @@ export const ReusableModal = (props: Props) => {
               placeholder={props.placeholder}
             />
           </div>
-          <Button
-            id={props.id}
-            bg={"pink"}
-            title={props.title}
-            size={"huge"}
-            onClick={handleUpdate}
-          />
+          {props.title === "Create Playlist" ? (
+            <Button
+              id={props.id}
+              bg={"pink"}
+              title={props.title}
+              size={"huge"}
+              onClick={handleCreatePlaylist}
+            />
+          ) : (
+            <Button
+              id={props.id}
+              bg={"pink"}
+              title={props.title}
+              size={"huge"}
+              onClick={handleUpdate}
+            />
+          )}
         </form>
       )}
     </div>
