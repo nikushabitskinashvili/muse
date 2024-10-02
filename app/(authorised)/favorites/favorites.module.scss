@@ -1,0 +1,15 @@
+@import "../../styles/colors.scss";
+
+.main {
+  background-color: $textBlack;
+  min-height: 100vh;
+}
+.favoritesWrapper{
+    max-width: 1224px;
+    padding: 32px 24px;
+    margin: 0 auto; 
+}
+
+.favoritesForyou{
+    margin-top: 32px;
+}

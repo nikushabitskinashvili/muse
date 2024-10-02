@@ -1,7 +1,6 @@
-.playlistDetailMain{
-        background-color: black;
-        min-height: 100vh;
-    
+.playlistDetailMain {
+  background-color: black;
+  min-height: 100vh;
 }
 
 .modalOverlay {
@@ -14,15 +13,33 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000; 
+  z-index: 1000;
 }
 
-.playlistDetailWrapper{
-    max-width: 1224px;
-    padding: 32px 24px;
-    margin: 0 auto; 
+
+
+.playlistDetailWrapper {
+  max-width: 1224px;
+  width: 100%;
+  padding: 32px 24px;
+  margin: 0 auto;
 }
 
-.playlistDetalForyou{
-    margin-top: 32px;
+.heroWrapper {
+  max-width: 1224px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.playlistDetalForyou {
+  margin-top: 32px;
+}
+
+@media screen and (max-width: 1023px) {
+  .heroWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
 }

@@ -79,17 +79,20 @@ export default function PlaylistPage({
   }
 
   return (
-    <main className={styles.playlistDetailMain}>
+    <div className={styles.playlistDetailMain}>
       <div className={styles.playlistDetailWrapper}>
-        <PlaylistHero
-          image={playlist.img}
-          playlistName={playlistDetail?.name} 
-          totalTracks={playlist.totalTracks}
-          totalTime={playlist.totalTime}
-          openModal={handleOpenModal}
-          openDeleteModal={handleOpenDeleteModal}
-          id={id}
-        />
+
+        <div className={styles.heroWrapper}>
+          <PlaylistHero
+            image={playlist.img}
+            playlistName={playlistDetail?.name}
+            totalTracks={playlist.totalTracks}
+            totalTime={playlist.totalTime}
+            openModal={handleOpenModal}
+            openDeleteModal={handleOpenDeleteModal}
+            id={id}
+          />
+        </div>
         <div className={styles.playlistDetalForyou}>
           <MusicWrapper />
         </div>
@@ -119,6 +122,6 @@ export default function PlaylistPage({
           />
         </div>
       )}
-    </main>
+    </div>
   );
 }
