@@ -31,7 +31,7 @@ export default function FavoritesPage() {
           totalTime={favorites?.totalTime || 0}
         />
         <div className={styles.favoritesForyou}>
-          //favoritesArray
+          
         </div>
       </div>
     </div>
