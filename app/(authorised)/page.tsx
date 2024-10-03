@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { Slider } from "../components/Slider/Slider";
-import { playlistData } from "../data/CarouselData";
 import styles from "./page.module.css";
 import Hero from "@/app/components/Hero/Hero";
 import { ForYouComp } from "@/app/components/forYouComp/forYouComp";
@@ -66,7 +65,6 @@ export default function Home() {
     const fetchPlaylists = async () => {
       const token = getClientCookie(AUTH_COOKIE_KEY);
 
-      // Check if token is null or undefined
       if (!token) {
         console.error("No token found");
         return;
@@ -108,6 +106,7 @@ export default function Home() {
               <Slider data={playlist} title="My Playlists" />
             </div>
           </div>
+          
         </>
       )}
     </main>

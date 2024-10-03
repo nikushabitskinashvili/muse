@@ -26,6 +26,8 @@ const AudioPlayer = ({ musics }: Props) => {
   } = useAudioPlayer(musics);
 
   const isPlaying = audioRef.current ? !audioRef.current.paused : false;
+  console.log(musics , 'music in playlist');
+  
 
   return (
     <div className={styles.container}>
