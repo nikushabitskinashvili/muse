@@ -15,7 +15,10 @@ const fetchAlbum = async () => {
         Authorization: `Bearer ${token}`,
       },
     });
+
+    console.log(response.data, 'albumdataaaaaaaaaaaaaaaaaaaaa')
     return response.data;
+
   } catch (error) {
     console.log(error);
   }

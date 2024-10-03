@@ -119,9 +119,17 @@ export const useAudioPlayer = (songs: Music[]) => {
 
   const handleNextSong = () => {
     setAudioPlayer((prev) => {
-      const nextIndex = prev.shuffle
+      let nextIndex: number = prev.shuffle
         ? Math.floor(Math.random() * songs.length)
         : (prev.currentMusicIndex + 1) % songs.length;
+      console.log(nextIndex, 'nextIndex')
+      console.log(prev.currentMusicIndex,'currentMusicIndex');
+      const cur = prev.currentMusicIndex;
+      if(nextIndex == cur && cur <= songs.length - 1) {
+        nextIndex += 1
+      }else if(nextIndex == cur && cur > songs.length - cur) {
+        nextIndex -= 1;
+      }
       return {
         ...prev,
         currentMusicIndex: nextIndex,

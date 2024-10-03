@@ -11,6 +11,7 @@ const AlbumCard = ({
   item: any;
   className?: string;
   playlist?: boolean;
+  title?: string;
 }) => {
   const link = playlist ? `playlists/${item.id}` : `albums/${item.id}`;
 

@@ -102,8 +102,8 @@ export const ReusableModal = (props: Props) => {
     };
 
     try {
-      const response = await Axios(`/playlist/`, {
-        method: "POST",
+      const response = await Axios.post(`/playlist/`, {
+        // method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
