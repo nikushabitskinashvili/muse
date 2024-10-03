@@ -37,8 +37,7 @@ export const ReusableModal = (props: Props) => {
     const cookie = getClientCookie(AUTH_COOKIE_KEY);
 
     try {
-      const response = await Axios(`/playlist/${id}`, {
-        method: "DELETE",
+      const response = await Axios.delete(`/playlist/${id}`, {
         headers: {
           Authorization: `Bearer ${cookie}`,
         },
@@ -65,8 +64,7 @@ export const ReusableModal = (props: Props) => {
     };
 
     try {
-      const response = await Axios(`/playlist/${props.id}`, {
-        method: "PATCH",
+      const response = await Axios.patch(`/playlist/${props.id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
@@ -102,13 +100,11 @@ export const ReusableModal = (props: Props) => {
     };
 
     try {
-      const response = await Axios(`/playlist/`, {
-        method: "POST",
+      const response = await Axios.post(`/playlist`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
-        data,
       });
 
       if (response.status === 201) {

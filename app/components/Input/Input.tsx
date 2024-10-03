@@ -1,9 +1,11 @@
-import styles from "./Input.module.scss";
 import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import Image from "next/image";
 import { usePathname, useRouter } from 'next/navigation';
+import { useRecoilState } from 'recoil';
 import { albumInterface, artistInterface, musicInterface } from "@/app/Interfaces/Interfaces";
 import Axios from "@/app/Helpers/Axios";
+import { audioPlayerState } from "@/app/atoms/states";
+import styles from "./Input.module.scss";
 
 const Input: React.FC = () => {
     const [inputValue, setInputValue] = useState<string>('');
@@ -14,6 +16,7 @@ const Input: React.FC = () => {
         musics: musicInterface[];
     }>({ albums: [], artists: [], musics: [] });
 
+    const [audioPlayer, setAudioPlayer] = useRecoilState(audioPlayerState);
     const router = useRouter();
     const pathname = usePathname();
 
@@ -50,6 +53,15 @@ const Input: React.FC = () => {
     const handleMusicClick = (music: musicInterface) => {
         setIsActive(false);
         setInputValue('');
+        
+        const musicIndex = data.musics.findIndex((m) => m.id === music.id);
+        if (musicIndex !== -1) {
+            setAudioPlayer((prev) => ({
+                ...prev,
+                currentMusicIndex: musicIndex,
+                playing: true,
+            }));
+        }
     };
 
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
