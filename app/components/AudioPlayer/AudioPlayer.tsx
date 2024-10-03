@@ -9,7 +9,7 @@ import Player from "./Player/Player";
 import VolumeControl from "./VolumeControl/VolumeControl";
 import { getClientCookie } from "@/app/Helpers/GetCookieValue";
 import { AUTH_COOKIE_KEY } from "@/app/constant";
-import  Axios  from "./../../Helpers/Axios";
+import Axios from "./../../Helpers/Axios";
 
 type Props = {
   musics: Music[];
@@ -28,15 +28,14 @@ const AudioPlayer = ({ musics }: Props) => {
     handleShuffleClick,
   } = useAudioPlayer(musics);
 
-  const [artist,setArtist]=useState<any>(null)
+  const [artist, setArtist] = useState<any>(null);
 
-  console.log(artist)
+  console.log(artist);
 
   const isPlaying = audioRef.current ? !audioRef.current.paused : false;
-  console.log(musics , 'music in playlist');
-  
+  console.log(musics, "music in playlist");
 
-  const id = musics[audioPlayer.currentMusicIndex].artistId
+  const id = musics.length > 0 && musics[audioPlayer.currentMusicIndex]?.artistId;
   useEffect(() => {
     if (id) {
       const fetchArtistName = async () => {
@@ -52,13 +51,12 @@ const AudioPlayer = ({ musics }: Props) => {
           console.log(error);
         }
       };
-  
+
       fetchArtistName();
     }
   }, [id]);
-  
 
-  console.log(musics[audioPlayer.currentMusicIndex])
+  console.log(musics[audioPlayer.currentMusicIndex]);
 
   return (
     <div className={styles.container}>

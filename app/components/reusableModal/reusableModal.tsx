@@ -37,13 +37,26 @@ export const ReusableModal = (props: Props) => {
   ) => {
     e.preventDefault();
 
-    const cookie = getClientCookie(AUTH_COOKIE_KEY);
+    const token = getClientCookie(AUTH_COOKIE_KEY);
+    // playlistId/userId
+
+    if (!token) {
+      console.error("No token found");
+      return;
+    }
+
+    const user = decodeJwt(token);
+
+    if (!user || !user.id) {
+      console.error("Invalid token payload");
+      return;
+    }
 
     try {
-      const response = await Axios(`/playlist/${id}`, {
+      const response = await Axios(`/playlist/${id}/${user.id}`, {
         method: "DELETE",
         headers: {
-          Authorization: `Bearer ${cookie}`,
+          Authorization: `Bearer ${token}`,
         },
       });
 
@@ -67,6 +80,7 @@ export const ReusableModal = (props: Props) => {
       console.error("No token found");
       return;
     }
+
     const user = decodeJwt(token);
 
     if (!user || !user.id) {
@@ -79,14 +93,16 @@ export const ReusableModal = (props: Props) => {
     };
 
     try {
-      const response = await Axios(`/playlist/${user.id}/${props.id}`, {
-        method: "PATCH",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
+      const response = await Axios.patch(
+        `/playlist/${user.id}/${props.id}`,
         data,
-      });
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       if (response.status === 200) {
         console.log("Update successful", response.data);
@@ -100,7 +116,7 @@ export const ReusableModal = (props: Props) => {
         }
       }
     } catch (error) {
-      console.error("Error updating the playlist", error);
+      console.log(error);
     }
   };
 
@@ -127,17 +143,13 @@ export const ReusableModal = (props: Props) => {
     };
 
     try {
-      const response = await Axios.post(
-        `/playlist/${user.id}`,
-        data,
-        {
-          // method: "POST",
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await Axios.post(`/playlist/${user.id}`, data, {
+        // method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
 
       if (response.status === 201) {
         console.log("Playlist created successfully", response.data);
