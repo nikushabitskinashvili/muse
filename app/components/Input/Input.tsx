@@ -13,7 +13,9 @@ import { MusicWrapper } from "../musicWrapper/musicWrapper";
 const Input: React.FC = () => {
   const [inputValue, setInputValue] = useState<string>("");
   const [isActive, setIsActive] = useState<boolean>(false);
+
   const [renderAudio, setRenderudio] = useState<boolean>(false);
+
 
   const [data, setData] = useState<{
     albums: albumInterface[];
@@ -21,7 +23,6 @@ const Input: React.FC = () => {
     musics: musicInterface[];
   }>({ albums: [], artists: [], musics: [] });
 
-  console.log(data);
 
   const router = useRouter();
   const pathname = usePathname();
@@ -33,7 +34,9 @@ const Input: React.FC = () => {
       setData({
         albums: response.data.albums || [],
         artists: response.data.artists || [],
+
         musics: response.data.music || [],
+
       });
     } catch (error) {
       throw new Error("Error");
@@ -57,6 +60,7 @@ const Input: React.FC = () => {
     setRenderudio(true);
     console.log(res.data);
   };
+
 
   const handleArtistClick = (artistId: string) => {
     setIsActive(false);
@@ -130,6 +134,7 @@ const Input: React.FC = () => {
           ))}
 
           {data.musics.map((music) => (
+
             <li
               key={music.id}
               className={styles.artistLiStyle}
@@ -140,6 +145,7 @@ const Input: React.FC = () => {
                 {music.name}
               </p>
             </li>
+
           ))}
         </ul>
       )}
