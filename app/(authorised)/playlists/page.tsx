@@ -4,11 +4,23 @@ import AlbumCard from "@/app/components/AlbumCard/AlbumCard";
 import { cookies } from "next/headers";
 import { AUTH_COOKIE_KEY } from "@/app/constant";
 import Axios from "../../Helpers/Axios";
+import { decodeJwt } from "jose";
 
 const fetchPlaylist = async () => {
   const token = cookies()?.get(AUTH_COOKIE_KEY)?.value;
+  if (!token) {
+    console.error("No token found");
+    return;
+  }
+
   try {
-    const response = await Axios.get("/playlist", {
+    const user = decodeJwt(token);
+
+    if (!user || !user.id) {
+      console.error("Invalid token payload");
+      return;
+    }
+    const response = await Axios.get(`/playlist/${user.id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -22,7 +34,7 @@ const fetchPlaylist = async () => {
 export default async function page() {
   const playlistD = await fetchPlaylist();
 
-  console.log(playlistD);
+  console.log(playlistD, "sadasd");
 
   return (
     <main className={styles.playlistMainContainer}>
