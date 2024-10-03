@@ -91,7 +91,7 @@ export const Slider = ({ data, title }: { data: any; title: string }) => {
                   className={`${styles.sliderCard} ${styles.forSub}`}
                   key={item.id}
                 >
-                  <AlbumCard title={title} item={item as PopularAlbum} />
+                  <AlbumCard item={item as PopularAlbum} />
                 </div>
               );
             }

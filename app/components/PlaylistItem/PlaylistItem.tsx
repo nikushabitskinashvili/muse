@@ -47,9 +47,8 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
   
 
   const handleSuccessUpdate = (newName: string) => {
-    setPlaylistName(newName); 
+    setPlaylistName(newName);
   };
-
 
   useEffect(() => {
     if (addPop || createPop) {
@@ -142,7 +141,7 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
             onClick={(event) => event.stopPropagation()}
             className={styles.popContainer}
           >
-            <YourPlaylistModal onClose={closeAddPop} />
+            <YourPlaylistModal onClose={closeAddPop} musicId={props.id} />
           </div>
         </div>
       )}
@@ -160,7 +159,7 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
               onClose={closeCreatePop}
               placeholder={"Playlist name"}
               closeModal={closeCreatePop}
-              onSuccessUpdate={handleSuccessUpdate} 
+              onSuccessUpdate={handleSuccessUpdate}
             />
           </div>
         </div>

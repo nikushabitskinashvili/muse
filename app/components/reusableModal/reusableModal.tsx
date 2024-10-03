@@ -6,6 +6,7 @@ import { getClientCookie } from "@/app/Helpers/GetCookieValue";
 import Axios from "./../../Helpers/Axios";
 import React, { useState, useEffect } from "react";
 import { AUTH_COOKIE_KEY } from "@/app/constant";
+import { decodeJwt } from "jose";
 
 interface Props {
   title: string;
@@ -22,6 +23,8 @@ interface Props {
 export const ReusableModal = (props: Props) => {
   const [inputText, setInputText] = useState<string>("");
 
+  console.log(inputText, "sadasd");
+
   useEffect(() => {
     if (props.placeholder) {
       setInputText(props.placeholder);
@@ -37,7 +40,8 @@ export const ReusableModal = (props: Props) => {
     const cookie = getClientCookie(AUTH_COOKIE_KEY);
 
     try {
-      const response = await Axios.delete(`/playlist/${id}`, {
+      const response = await Axios(`/playlist/${id}`, {
+        method: "DELETE",
         headers: {
           Authorization: `Bearer ${cookie}`,
         },
@@ -59,12 +63,24 @@ export const ReusableModal = (props: Props) => {
 
     const token = getClientCookie(AUTH_COOKIE_KEY);
 
+    if (!token) {
+      console.error("No token found");
+      return;
+    }
+    const user = decodeJwt(token);
+
+    if (!user || !user.id) {
+      console.error("Invalid token payload");
+      return;
+    }
+
     const data = {
       name: inputText,
     };
 
     try {
-      const response = await Axios.patch(`/playlist/${props.id}`, {
+      const response = await Axios(`/playlist/${user.id}/${props.id}`, {
+        method: "PATCH",
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
@@ -95,18 +111,33 @@ export const ReusableModal = (props: Props) => {
 
     const token = getClientCookie(AUTH_COOKIE_KEY);
 
+    if (!token) {
+      console.error("No token found");
+      return;
+    }
+    const user = decodeJwt(token);
+
+    if (!user || !user.id) {
+      console.error("Invalid token payload");
+      return;
+    }
+
     const data = {
       name: inputText,
     };
 
     try {
-
-      const response = await Axios.post(`/playlist`, data, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await Axios.post(
+        `/playlist/${user.id}`,
+        data,
+        {
+          // method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       if (response.status === 201) {
         console.log("Playlist created successfully", response.data);
