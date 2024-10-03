@@ -1,94 +1,112 @@
 "use client";
+import { useEffect, useState } from "react";
 import styles from "@/app/(authorised)/foryou/foryou.module.scss";
 import { PlaylistItem } from "@/app/components/PlaylistItem/PlaylistItem";
-import { useEffect, useState } from "react";
 import AudioPlayer from "../AudioPlayer/AudioPlayer";
-import { ForYouCompProps, Music } from "@/app/Interfaces/Interfaces";
 import { useRecoilState } from "recoil";
 import { audioPlayerState } from "@/app/atoms/states";
 import Axios from "@/app/Helpers/Axios";
 import { getClientCookie } from "@/app/Helpers/GetCookieValue";
 import { AUTH_COOKIE_KEY } from "@/app/constant";
 import { decodeJwt } from "jose";
+import { Music } from "@/app/Interfaces/Interfaces";
 
 export const MusicWrapper = ({
   text,
   id,
   isBin,
-  playlistId
+  playlistId,
 }: {
   text: string;
   id?: string;
   isBin?: boolean;
-  playlistId?:string
+  playlistId?: string;
 }) => {
   const [dottedId, setDottedId] = useState<number | null>(null);
   const [activeId, setActiveId] = useState<number | null>(null);
-  // const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [currentIndex, setCurrentIndex] = useRecoilState(audioPlayerState);
-  const [renderAudio, setRenderudio] = useState<boolean>(false);
+  const [renderAudio, setRenderAudio] = useState<boolean>(false);
   const [musics, setMusics] = useState<Music[]>([]);
-  const [dataLength, setDataLength] = useState<any>();
+  const [dataLength, setDataLength] = useState<number | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
   const handleSongClick = (index: number) => {
     setCurrentIndex((prevState) => ({
       ...prevState,
       currentMusicIndex: index,
     }));
-
-    setRenderudio(true);
+    setRenderAudio(true);
   };
-  useEffect(() => {
-    Axios.get("/music").then((response) => {
-      const filteredData = response.data.filter((item: any) => {
-        if (text === "artistId") {
-          return item.artistId.toString() === id;
-        }
-        if (text === "albumId") {
-          return item.albumId.toString() === id;
-        }
-        if (text === "all") {
-          return item;
-        }
-        return false;
-      });
 
-      setMusics(filteredData);
-      setDataLength(filteredData.length);
-    });
+  useEffect(() => {
+    if (text === "playlistId") return;
+
+    setIsLoading(true);
+    Axios.get("/music")
+      .then((response) => {
+        const filteredData = response.data.filter((item: any) => {
+          if (text === "artistId") return item.artistId.toString() === id;
+          if (text === "albumId") return item.albumId.toString() === id;
+          if (text === "all") return item;
+          return false;
+        });
+
+        setMusics(filteredData);
+        setDataLength(filteredData.length);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, [id, text]);
 
-    useEffect(() => {
-      const token = getClientCookie(AUTH_COOKIE_KEY);
+  useEffect(() => {
+    if (text !== "playlistId") return;
 
-      if (!token) {
-        console.error("No token found");
-        return;
-      }
+    const token = getClientCookie(AUTH_COOKIE_KEY);
+    if (!token) {
+      console.error("No token found");
+      return;
+    }
 
-      const user = decodeJwt(token);
+    const user = decodeJwt(token);
+    if (!user || !user.id) {
+      console.error("Invalid token payload");
+      return;
+    }
 
-      if (!user || !user.id) {
-        console.error("Invalid token payload");
-        return;
-      }
-      Axios.get(`/playlist/${user.id}`).then((response) => {
-        const filteredData = response.data;
+    setIsLoading(true); // Set loading to true before fetch
+    Axios.get(`/playlist/${user.id}`)
+      .then((response) => {
+        const playlistData = response.data;
 
-        console.log(filteredData);
-
-        setMusics(filteredData[0].music);
-        setDataLength(filteredData.length);
+        if (playlistData.length > 0 && playlistData[0].music) {
+          setMusics(playlistData[0].music); // Safely access music property
+          setDataLength(playlistData[0].music.length);
+        } else {
+          console.error("No music found in playlist data");
+        }
+      })
+      .finally(() => {
+        setIsLoading(false); // Turn off loading after fetch
       });
-    }, [id, text]);
-  
+  }, [text]);
 
-  if (currentIndex == dataLength) {
-    setCurrentIndex((prevState) => ({
-      ...prevState,
-      currentMusicIndex: 0,
-    }));
-    setRenderudio(true);
+  // Reset currentIndex when reaching dataLength
+  useEffect(() => {
+    if (currentIndex.currentMusicIndex === dataLength) {
+      setCurrentIndex((prevState) => ({
+        ...prevState,
+        currentMusicIndex: 0, // Reset the music index if it reaches the end
+      }));
+      setRenderAudio(true);
+    }
+  }, [currentIndex.currentMusicIndex, dataLength]);
+
+  // Show a loading indicator while fetching data
+  if (isLoading) {
+    return <div>Loading...</div>;
   }
+
   return (
     <div className={styles.list}>
       {musics.map((music, idx) => (
@@ -103,14 +121,14 @@ export const MusicWrapper = ({
           artistId={music.artistId}
           id={music.id}
           icon={isBin ? "bin" : "dots"}
-          isPlaying={currentIndex.currentMusicIndex === music.id}
+          isPlaying={currentIndex.currentMusicIndex === idx}
           setActiveId={setActiveId}
           activeId={activeId}
           setDottedId={setDottedId}
           dottedId={dottedId}
           onClick={() => handleSongClick(idx)}
-          setOpenCreatePopId={function (): void {
-            throw new Error("Function not implemented.");
+          setOpenCreatePopId={() => {
+            /* Define this function */
           }}
         />
       ))}
