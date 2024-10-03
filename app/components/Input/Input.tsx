@@ -175,6 +175,7 @@ const Input: React.FC = () => {
 
                     {data.musics.map((music, idx) => (
                         <MusicList
+                            key={music.id}
                             musicSrc={music.musicSrc}
                             isPlaying={currentIndex.currentMusicIndex === music.id}
                             name={music.name}
