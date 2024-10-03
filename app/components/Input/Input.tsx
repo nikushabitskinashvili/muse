@@ -13,11 +13,16 @@ import { MusicWrapper } from "../musicWrapper/musicWrapper";
 const Input: React.FC = () => {
   const [inputValue, setInputValue] = useState<string>("");
   const [isActive, setIsActive] = useState<boolean>(false);
+
+  const [renderAudio, setRenderudio] = useState<boolean>(false);
+
+
   const [data, setData] = useState<{
     albums: albumInterface[];
     artists: artistInterface[];
     musics: musicInterface[];
   }>({ albums: [], artists: [], musics: [] });
+
 
   const router = useRouter();
   const pathname = usePathname();
@@ -29,7 +34,9 @@ const Input: React.FC = () => {
       setData({
         albums: response.data.albums || [],
         artists: response.data.artists || [],
-        musics: response.data.musics || [],
+
+        musics: response.data.music || [],
+
       });
     } catch (error) {
       throw new Error("Error");
@@ -45,6 +52,15 @@ const Input: React.FC = () => {
     router.push(`/albums/${albumId}`);
     setInputValue("");
   };
+
+  const handleMusicClick = async (musicId: string) => {
+    setIsActive(false);
+    setInputValue("");
+    const res = await Axios.get(`music/${musicId}`);
+    setRenderudio(true);
+    console.log(res.data);
+  };
+
 
   const handleArtistClick = (artistId: string) => {
     setIsActive(false);
@@ -118,7 +134,18 @@ const Input: React.FC = () => {
           ))}
 
           {data.musics.map((music) => (
-            <MusicWrapper text="all" key={music.id} />
+
+            <li
+              key={music.id}
+              className={styles.artistLiStyle}
+              onClick={() => handleMusicClick(music.id)}
+            >
+              <p className={styles.artistParagraphStyle}>
+                <span className={styles.artistStyle}>Music: </span>
+                {music.name}
+              </p>
+            </li>
+
           ))}
         </ul>
       )}
