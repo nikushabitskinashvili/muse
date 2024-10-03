@@ -1,3 +1,4 @@
+
 import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import Image from "next/image";
 import { usePathname, useRouter } from 'next/navigation';
@@ -132,6 +133,7 @@ const Input: React.FC = () => {
             )}
         </div>
     );
+
 };
 
 export default Input;

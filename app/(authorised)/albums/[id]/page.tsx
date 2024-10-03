@@ -38,7 +38,7 @@ const AlbumDetailsPage = async ({ params }: { params: { id: string } }) => {
           // total={album.total}
         />
         <div className={styles.list}>
-          <MusicWrapper />
+          <MusicWrapper text={"albumId"} id={id} />
         </div>
       </div>
     </div>

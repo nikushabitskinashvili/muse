@@ -31,6 +31,7 @@ export interface Music {
   duration: number;
   title?: string;
   name: string;
+  artistId?: string;
 }
 
 export interface InputRangeProps {
@@ -51,7 +52,8 @@ export interface ForYouCompProps {
 export interface PlaylistItemProps {
   setOpenCreatePopId(arg0: null): void;
   image?: string;
-  audioSrc: string;
+  musicSrc: string;
+  isPlaying: boolean;
   title?: string;
   name: string;
   duration?: number;
@@ -62,7 +64,7 @@ export interface PlaylistItemProps {
   setDottedId: (id: number | null) => void;
   dottedId: number | null;
   onClick: () => void;
-  
+  albumImg?: string; // Added for dynamic album image
 }
 
 export interface albumInterface {

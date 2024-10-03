@@ -2,6 +2,7 @@ import React from "react";
 import AdjustButtons from "../AdjustButtons/AdjustButtons";
 import styles from "./Player.module.scss";
 import ProgressBars from "../ProgressBars/ProgressBars";
+import { log } from "console";
 
 type Props = {
   playing: boolean;

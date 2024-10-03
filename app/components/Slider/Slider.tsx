@@ -43,9 +43,7 @@ export const Slider = ({ data, title }: { data: any; title: string }) => {
   let info: Artist[] | PopularAlbum[] | Playlist[];
 
   if (title === "Popular Album") {
-    info = data.filter(
-      (album: any) => album.title !== undefined
-    ) as unknown as PopularAlbum[];
+    info = data;
   } else if (title === "My Playlists") {
     info = data;
   } else {
@@ -93,7 +91,7 @@ export const Slider = ({ data, title }: { data: any; title: string }) => {
                   className={`${styles.sliderCard} ${styles.forSub}`}
                   key={item.id}
                 >
-                  <AlbumCard item={item as PopularAlbum} />
+                  <AlbumCard title={title} item={item as PopularAlbum} />
                 </div>
               );
             }

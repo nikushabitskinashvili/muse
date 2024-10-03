@@ -8,6 +8,7 @@ import { ReusableModal } from "@/app/components/reusableModal/reusableModal";
 import Axios from "@/app/Helpers/Axios";
 import { getClientCookie } from "@/app/Helpers/GetCookieValue";
 import { AUTH_COOKIE_KEY } from "@/app/constant";
+import { decodeJwt } from "jose";
 
 export default function PlaylistPage({
   params: { id },
@@ -17,11 +18,22 @@ export default function PlaylistPage({
   const [openPen, setOpenPen] = useState(false);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [playlistDetail, setPlaylistDetail] = useState<any>(null);
+  console.log(playlistDetail);
 
   const fetchPlayListDetail = async () => {
     const token = getClientCookie(AUTH_COOKIE_KEY);
+    if (!token) {
+      console.error("No token found");
+      return;
+    }
+    const user = decodeJwt(token);
+
+    if (!user || !user.id) {
+      console.error("Invalid token payload");
+      return;
+    }
     try {
-      const response = await Axios.get(`/playlist/${id}`, {
+      const response = await Axios.get(`/playlist/${user.id}/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -39,7 +51,7 @@ export default function PlaylistPage({
   const handleSuccessUpdate = (newName: string) => {
     setPlaylistDetail((prevState: any) => ({
       ...prevState,
-      name: newName, 
+      name: newName,
     }));
   };
 
@@ -71,18 +83,17 @@ export default function PlaylistPage({
     };
   }, [openPen]);
 
-  const playlistId = parseInt(id);
-  const playlist = playlistData.find((p) => p.id === playlistId);
+  // const playlistId = parseInt(id);
+  // const playlist = playlistData.find((p) => p.id === playlistId);
 
-  if (!playlist) {
-    return <div className={styles.playlistNotFound}>Playlist not found</div>;
-  }
+  // if (!playlist) {
+  //   return <div className={styles.playlistNotFound}>Playlist not found</div>;
+  // }
 
   return (
     <div className={styles.playlistDetailMain}>
       <div className={styles.playlistDetailWrapper}>
-
-        <div className={styles.heroWrapper}>
+        {/* <div className={styles.heroWrapper}>
           <PlaylistHero
             image={playlist.img}
             playlistName={playlistDetail?.name}
@@ -92,9 +103,10 @@ export default function PlaylistPage({
             openDeleteModal={handleOpenDeleteModal}
             id={id}
           />
-        </div>
+        </div> */}
+        <p>{playlistDetail?.name}</p>
         <div className={styles.playlistDetalForyou}>
-          <MusicWrapper />
+          <MusicWrapper text="playlistId" id={id} />
         </div>
       </div>
       {openDeleteModal && (

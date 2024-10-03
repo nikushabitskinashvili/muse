@@ -11,6 +11,7 @@ const AlbumCard = ({
   item: any;
   className?: string;
   playlist?: boolean;
+  title?: string;
 }) => {
   const link = playlist ? `playlists/${item.id}` : `albums/${item.id}`;
 
@@ -18,7 +19,7 @@ const AlbumCard = ({
     <Link className={`${styles.albumCard} ${className}`} href={`${link}`}>
       <Image
         className={styles.albumImg}
-        src={item.album}
+        src={item.cover}
         alt={item.title}
         width={150}
         height={146}
