@@ -11,6 +11,7 @@ import Axios from "../Helpers/Axios";
 import { getClientCookie } from "../Helpers/GetCookieValue";
 import { AUTH_COOKIE_KEY } from "../constant";
 
+
 const useClient = () => {
   const [isClient, setIsClient] = useState(false);
   useEffect(() => {
@@ -44,7 +45,7 @@ export default function Home() {
         console.log(error);
       }
     };
-    fetchAlbums();
+    fetchAlbums(); 
   }, []);
 
   useEffect(() => {
@@ -80,6 +81,8 @@ export default function Home() {
     };
     fetchPlaylists();
   }, []);
+  console.log(albums , 'halo');
+  
   return (
     <main className={styles.main}>
       {isClient && (
