@@ -14,10 +14,19 @@
   gap: 10px;
 }
 
+@media screen and (max-width: 1023px) {
+  .musicMiddle{
+    max-width: 500px;
+    width: 100%
+  }
+}
+
 @media screen and (max-width: 767px) {
   .musicMiddle {
     display: flex;
     align-items: flex-end;
     justify-content: center;
+    max-width: 300px;
+    width: 100%;
   }
 }
