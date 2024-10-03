@@ -23,6 +23,8 @@ const fetchAlbum = async () => {
 
 const Albums = async () => {
   const albumData = await fetchAlbum();
+  console.log(albumData , 'album');
+  
 
   console.log(albumData);
 

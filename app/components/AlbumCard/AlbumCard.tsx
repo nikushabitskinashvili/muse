@@ -18,7 +18,7 @@ const AlbumCard = ({
     <Link className={`${styles.albumCard} ${className}`} href={`${link}`}>
       <Image
         className={styles.albumImg}
-        src={item.albumImg}
+        src={item.cover}
         alt={item.title}
         width={150}
         height={146}
