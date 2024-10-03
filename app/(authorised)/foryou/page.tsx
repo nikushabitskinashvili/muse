@@ -13,7 +13,7 @@ export default function Page() {
                         <span className={styles.title}>For you</span>
                         <Link href={'/'}><XButton bg={false}/></Link>
                     </div>
-                    <MusicWrapper/>
+                    <MusicWrapper text='all' />
                 </div>
             </div>
         </>
