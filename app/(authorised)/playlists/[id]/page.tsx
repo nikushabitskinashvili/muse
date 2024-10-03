@@ -20,33 +20,33 @@ export default function PlaylistPage({
   const [playlistDetail, setPlaylistDetail] = useState<any>(null);
   console.log(playlistDetail);
 
-  const fetchPlayListDetail = async () => {
-    const token = getClientCookie(AUTH_COOKIE_KEY);
-    if (!token) {
-      console.error("No token found");
-      return;
-    }
-    const user = decodeJwt(token);
-
-    if (!user || !user.id) {
-      console.error("Invalid token payload");
-      return;
-    }
-    try {
-      const response = await Axios.get(`/playlist/${user.id}/${id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      setPlaylistDetail(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   useEffect(() => {
+    const fetchPlayListDetail = async () => {
+      const token = getClientCookie(AUTH_COOKIE_KEY);
+      if (!token) {
+        console.error("No token found");
+        return;
+      }
+      const user = decodeJwt(token);
+  
+      if (!user || !user.id) {
+        console.error("Invalid token payload");
+        return;
+      }
+      try {
+        const response = await Axios.get(`/playlist/${user.id}/${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setPlaylistDetail(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+  
     fetchPlayListDetail();
-  }, []);
+  }, [id]);
 
   const handleSuccessUpdate = (newName: string) => {
     setPlaylistDetail((prevState: any) => ({
