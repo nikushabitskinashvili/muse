@@ -9,7 +9,7 @@ import { audioPlayerState } from "@/app/atoms/states";
 import axios from "axios";
 import Axios from "@/app/Helpers/Axios";
 
-export const MusicWrapper = ({ text, id }: { text: string; id: string }) => {
+export const MusicWrapper = ({ text, id }: { text: string; id?: string }) => {
   const [dottedId, setDottedId] = useState<number | null>(null);
   const [activeId, setActiveId] = useState<number | null>(null);
   // const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
@@ -33,6 +33,9 @@ export const MusicWrapper = ({ text, id }: { text: string; id: string }) => {
         }
         if (text === "albumId") {
           return item.albumId.toString() === id;
+        }
+        if (text === "all") {
+          return item;
         }
         return false;
       });
