@@ -6,7 +6,6 @@ import AudioPlayer from "../AudioPlayer/AudioPlayer";
 import { ForYouCompProps, Music } from "@/app/Interfaces/Interfaces";
 import { useRecoilState } from "recoil";
 import { audioPlayerState } from "@/app/atoms/states";
-import axios from "axios";
 import Axios from "@/app/Helpers/Axios";
 import { getClientCookie } from "@/app/Helpers/GetCookieValue";
 import { AUTH_COOKIE_KEY } from "@/app/constant";

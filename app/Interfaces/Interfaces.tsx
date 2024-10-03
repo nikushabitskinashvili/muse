@@ -67,7 +67,10 @@ export interface PlaylistItemProps {
   setDottedId: (id: number | null) => void;
   dottedId: number | null;
   onClick: () => void;
-  albumImg?: string; // Added for dynamic album image
+
+  albumImg?: string; 
+
+ 
   artistId?:string
   playlistId?:string
 }
@@ -83,6 +86,18 @@ export interface artistInterface {
 }
 
 export interface musicInterface {
-  id: string;
+  id: number;
   name: string;
+  music: string;
+  musicSrc: string;
+  duration: number;
+}
+
+export interface playerProps{
+  musicSrc: string;
+  isPlaying: boolean;
+  name: string;
+  onClick: () => void;
+  id: number;
+  duration: number;
 }

@@ -101,9 +101,9 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
     event.stopPropagation();
     setDotsPop(!dotsPop);
     if (!dotsPop) {
-      props.setDottedId(props.id); // Set this one active
+      props.setDottedId(props.id); 
     } else {
-      props.setDottedId(null); // Close when clicked again
+      props.setDottedId(null); 
     }
   };
 

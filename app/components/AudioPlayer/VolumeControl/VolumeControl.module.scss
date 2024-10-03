@@ -26,11 +26,7 @@
     box-shadow: -400px 0 0 400px $cyanButtonHover;
 }
 
-@media screen and (max-width: 1024px) and (min-width: 768px) {
-    .container {
-        display: none;
-    }
-}
+
 
 @media screen and (max-width: 768px) {
     .container {
