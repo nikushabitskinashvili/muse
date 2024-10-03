@@ -31,6 +31,7 @@ export interface Music {
   duration: number;
   title?: string;
   name: string;
+  artistId?: string;
 }
 
 export interface InputRangeProps {
@@ -65,7 +66,6 @@ export interface PlaylistItemProps {
   onClick: () => void;
   albumImg?: string; // Added for dynamic album image
 }
-
 
 export interface albumInterface {
   id: string;

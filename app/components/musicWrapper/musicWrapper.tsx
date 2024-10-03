@@ -1,15 +1,15 @@
-'use client';
-import styles from '@/app/(authorised)/foryou/foryou.module.scss';
-import { PlaylistItem } from '@/app/components/PlaylistItem/PlaylistItem';
-import { useEffect, useState } from 'react';
-import AudioPlayer from '../AudioPlayer/AudioPlayer';
-import { ForYouCompProps, Music } from '@/app/Interfaces/Interfaces';
-import { useRecoilState } from 'recoil';
-import { audioPlayerState } from '@/app/atoms/states';
-import axios from 'axios';
-import Axios from '@/app/Helpers/Axios';
+"use client";
+import styles from "@/app/(authorised)/foryou/foryou.module.scss";
+import { PlaylistItem } from "@/app/components/PlaylistItem/PlaylistItem";
+import { useEffect, useState } from "react";
+import AudioPlayer from "../AudioPlayer/AudioPlayer";
+import { ForYouCompProps, Music } from "@/app/Interfaces/Interfaces";
+import { useRecoilState } from "recoil";
+import { audioPlayerState } from "@/app/atoms/states";
+import axios from "axios";
+import Axios from "@/app/Helpers/Axios";
 
-export const MusicWrapper = () => {
+export const MusicWrapper = ({ text, id }: { text: string; id: string }) => {
   const [dottedId, setDottedId] = useState<number | null>(null);
   const [activeId, setActiveId] = useState<number | null>(null);
   // const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
@@ -25,13 +25,23 @@ export const MusicWrapper = () => {
 
     setRenderudio(true);
   };
-   useEffect(() => {
+  useEffect(() => {
     Axios.get("/music").then((response) => {
-      setMusics(response.data);
-      setDataLength(response.data.length)
+      const filteredData = response.data.filter((item: any) => {
+        if (text === "artistId") {
+          return item.artistId.toString() === id;
+        }
+        if (text === "albumId") {
+          return item.albumId.toString() === id;
+        }
+        return false;
+      });
+
+      setMusics(filteredData);
+      setDataLength(filteredData.length);
     });
-  }, []);
-  if(currentIndex == dataLength) {
+  }, [id, text]);
+  if (currentIndex == dataLength) {
     setCurrentIndex((prevState) => ({
       ...prevState,
       currentMusicIndex: 0,
@@ -57,11 +67,11 @@ export const MusicWrapper = () => {
           dottedId={dottedId}
           onClick={() => handleSongClick(idx)}
           setOpenCreatePopId={function (): void {
-            throw new Error('Function not implemented.');
-          } }    />
+            throw new Error("Function not implemented.");
+          }}
+        />
       ))}
       {renderAudio && <AudioPlayer musics={musics} />}
     </div>
   );
 };
-

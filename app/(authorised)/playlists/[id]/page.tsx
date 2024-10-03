@@ -39,7 +39,7 @@ export default function PlaylistPage({
   const handleSuccessUpdate = (newName: string) => {
     setPlaylistDetail((prevState: any) => ({
       ...prevState,
-      name: newName, 
+      name: newName,
     }));
   };
 
@@ -81,7 +81,6 @@ export default function PlaylistPage({
   return (
     <div className={styles.playlistDetailMain}>
       <div className={styles.playlistDetailWrapper}>
-
         <div className={styles.heroWrapper}>
           <PlaylistHero
             image={playlist.img}
@@ -94,7 +93,7 @@ export default function PlaylistPage({
           />
         </div>
         <div className={styles.playlistDetalForyou}>
-          <MusicWrapper />
+          <MusicWrapper text="playlistId" id={id} />
         </div>
       </div>
       {openDeleteModal && (

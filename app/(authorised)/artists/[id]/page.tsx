@@ -47,7 +47,7 @@ export default async function Artist({ params }: { params: { id: string } }) {
         />
       </div>
       <div className={styles.MusicWrapper}>
-        <MusicWrapper />
+        <MusicWrapper text={"artistId"} id={id} />
       </div>
     </div>
   );
