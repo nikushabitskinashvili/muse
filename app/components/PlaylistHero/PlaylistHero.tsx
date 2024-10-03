@@ -16,7 +16,7 @@ interface Props {
   totalTime: number;
   openModal: () => void;
   id?: string;
-  openDeleteModal?:()=>void
+  openDeleteModal?: () => void;
 }
 
 export const PlaylistHero = (props: Props) => {
@@ -30,7 +30,6 @@ export const PlaylistHero = (props: Props) => {
   } else {
     time = `${minutes}:${seconds}`;
   }
-  
 
   return (
     <div className={styles.container}>

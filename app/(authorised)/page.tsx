@@ -10,7 +10,7 @@ import { Music } from "../Interfaces/Interfaces";
 import Axios from "../Helpers/Axios";
 import { getClientCookie } from "../Helpers/GetCookieValue";
 import { AUTH_COOKIE_KEY } from "../constant";
-
+import { decodeJwt } from "jose";
 
 const useClient = () => {
   const [isClient, setIsClient] = useState(false);
@@ -26,10 +26,7 @@ export default function Home() {
   const [artists, setArtists] = useState([]);
   const [playlist, setPlaylist] = useState([]);
 
-  
-
-  console.log(albums);
-  console.log(artists);
+  console.log(albums, "sadasdas");
 
   useEffect(() => {
     const fetchAlbums = async () => {
@@ -45,11 +42,11 @@ export default function Home() {
         console.log(error);
       }
     };
-    fetchAlbums(); 
+    fetchAlbums();
   }, []);
 
   useEffect(() => {
-    const fetchAlbums = async () => {
+    const fetchArtist = async () => {
       const token = getClientCookie(AUTH_COOKIE_KEY);
       try {
         const response = await Axios.get(`/artist`, {
@@ -62,27 +59,42 @@ export default function Home() {
         console.log(error);
       }
     };
-    fetchAlbums();
+    fetchArtist();
   }, []);
 
   useEffect(() => {
     const fetchPlaylists = async () => {
       const token = getClientCookie(AUTH_COOKIE_KEY);
+
+      // Check if token is null or undefined
+      if (!token) {
+        console.error("No token found");
+        return;
+      }
+
       try {
-        const response = await Axios.get(`/playlist`, {
+        const user = decodeJwt(token);
+
+        if (!user || !user.id) {
+          console.error("Invalid token payload");
+          return;
+        }
+
+        const response = await Axios.get(`/playlist/${user.id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
+
         setPlaylist(response.data);
       } catch (error) {
-        console.log(error);
+        console.error("Error fetching playlist:", error);
       }
     };
+
     fetchPlaylists();
   }, []);
-  console.log(albums , 'halo');
-  
+
   return (
     <main className={styles.main}>
       {isClient && (
