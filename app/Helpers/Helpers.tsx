@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useCallback } from "react";
 import { useRecoilState } from "recoil";
 import { audioPlayerState } from "@/app/atoms/states";
 import { Music } from "../Interfaces/Interfaces";
@@ -9,8 +9,7 @@ export const useAudioPlayer = (songs: Music[]) => {
   const progressRef = useRef<HTMLInputElement>(null);
   const ipadProgressRef = useRef<HTMLInputElement>(null);
   const shuffledSongsRef = useRef<Music[]>([]);
-  console.log(audioPlayer , 'audio in audio');
-  
+
   const shuffleArray = (array: Music[]) => {
     let shuffledArray = [...array];
     for (let i = shuffledArray.length - 1; i > 0; i--) {
@@ -23,6 +22,26 @@ export const useAudioPlayer = (songs: Music[]) => {
     return shuffledArray;
   };
 
+  // Memoized handleNextSong to avoid recreation on every render
+  const handleNextSong = useCallback(() => {
+    setAudioPlayer((prev) => {
+      let nextIndex: number = prev.shuffle
+        ? Math.floor(Math.random() * songs.length)
+        : (prev.currentMusicIndex + 1) % songs.length;
+
+      if (nextIndex === prev.currentMusicIndex) {
+        nextIndex = (nextIndex + 1) % songs.length;
+      }
+
+      return {
+        ...prev,
+        currentMusicIndex: nextIndex,
+        currentTime: 0,
+        duration: 0,
+      };
+    });
+  }, [setAudioPlayer, songs.length]);
+
   useEffect(() => {
     const handleTimeUpdate = () => {
       if (audioRef.current) {
@@ -34,8 +53,7 @@ export const useAudioPlayer = (songs: Music[]) => {
           (audioRef.current.currentTime / audioRef.current.duration) * 100
         );
         if (progressRef.current) progressRef.current.value = progressValue;
-        if (ipadProgressRef.current)
-          ipadProgressRef.current.value = progressValue;
+        if (ipadProgressRef.current) ipadProgressRef.current.value = progressValue;
       }
     };
 
@@ -63,7 +81,7 @@ export const useAudioPlayer = (songs: Music[]) => {
         audio.removeEventListener("ended", handleEnded);
       };
     }
-  }, [audioPlayer.currentMusicIndex, songs.length, setAudioPlayer]);
+  }, [handleNextSong, setAudioPlayer]);
 
   useEffect(() => {
     if (audioRef.current) {
@@ -96,10 +114,7 @@ export const useAudioPlayer = (songs: Music[]) => {
     }
   };
 
-
   const PlayMusic = () => {
-    console.log('zd');
-    
     if (audioRef.current) {
       if (audioRef.current.paused) {
         audioRef.current.play().catch((error) => {
@@ -110,8 +125,6 @@ export const useAudioPlayer = (songs: Music[]) => {
       }
     }
   };
-  
-  
 
   const handleTenSecondsBack = () => {
     if (audioRef.current) {
@@ -123,33 +136,10 @@ export const useAudioPlayer = (songs: Music[]) => {
     }
   };
 
-  const handleNextSong = () => {
-    setAudioPlayer((prev) => {
-      let nextIndex: number = prev.shuffle
-        ? Math.floor(Math.random() * songs.length)
-        : (prev.currentMusicIndex + 1) % songs.length;
-      console.log(nextIndex, 'nextIndex')
-      console.log(prev.currentMusicIndex,'currentMusicIndex');
-      const cur = prev.currentMusicIndex;
-      if(nextIndex == cur && cur <= songs.length - 1) {
-        nextIndex += 1
-      }else if(nextIndex == cur && cur > songs.length - cur) {
-        nextIndex -= 1;
-      }
-      return {
-        ...prev,
-        currentMusicIndex: nextIndex,
-        currentTime: 0,
-        duration: 0,
-      };
-    });
-  };
-
   const handlePreviousSong = () => {
     setAudioPlayer((prev) => {
       const prevIndex = prev.shuffle
-        ? (prev.currentMusicIndex - 1 + shuffledSongsRef.current.length) %
-          shuffledSongsRef.current.length
+        ? (prev.currentMusicIndex - 1 + shuffledSongsRef.current.length) % shuffledSongsRef.current.length
         : (prev.currentMusicIndex - 1 + songs.length) % songs.length;
       
       return {
@@ -209,7 +199,5 @@ export const useAudioPlayer = (songs: Music[]) => {
 export const formatTime = (time: number) => {
   const minutes = Math.floor(time / 60);
   const seconds = Math.floor(time % 60);
-  return `${minutes < 10 ? "0" : ""}${minutes}:${
-    seconds < 10 ? "0" : ""
-  }${seconds}`;
+  return `${minutes < 10 ? "0" : ""}${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
 };

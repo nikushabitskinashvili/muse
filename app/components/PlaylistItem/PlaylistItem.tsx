@@ -101,9 +101,9 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
     event.stopPropagation();
     setDotsPop(!dotsPop);
     if (!dotsPop) {
-      props.setDottedId(props.id); 
+      props.setDottedId(props.id);
     } else {
-      props.setDottedId(null); 
+      props.setDottedId(null);
     }
   };
 
@@ -122,7 +122,7 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
         console.error("Invalid token payload");
         return;
       }
-      Axios.delete(`playlist/add/${props.playlistId}/${user.id}/${props.id}`);
+      Axios.delete(`playlist/add/${user.id}/${props.playlistId}/${props.id}`);
     } else {
       const isActive = props.activeId === props.id;
       if (isActive) {

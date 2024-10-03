@@ -57,7 +57,6 @@ export const MusicWrapper = ({
     });
   }, [id, text]);
 
-  if (text === "playlistId") {
     useEffect(() => {
       const token = getClientCookie(AUTH_COOKIE_KEY);
 
@@ -81,7 +80,7 @@ export const MusicWrapper = ({
         setDataLength(filteredData.length);
       });
     }, [id, text]);
-  }
+  
 
   if (currentIndex == dataLength) {
     setCurrentIndex((prevState) => ({
