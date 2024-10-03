@@ -1,11 +1,10 @@
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
-import { jwtVerify } from "jose"; // Import jose for decoding the token
+import { jwtVerify } from "jose"; 
 import { AUTH_COOKIE_KEY } from "./app/constant";
 
-// Utility function to decode and verify JWT
 async function verifyToken(token: string) {
-  const secret = new TextEncoder().encode("daculiparoli"); // Use your actual secret key
+  const secret = new TextEncoder().encode("daculiparoli"); 
   try {
     const { payload } = await jwtVerify(token, secret);
     return payload;

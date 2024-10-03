@@ -22,10 +22,6 @@ export const AlbumHero = (props: Props) => {
                     <div className={styles.aboutWrapper}>
                         <h3 className={styles.h3}>{props.title}<span> Album</span></h3>
                         <div className={styles.control}>
-                            <div className={styles.buttons}>
-                                <Button title={'Play'} bg={'pink'} icon={'WHITE_PLAY'} hoverIcon={'WHITE_PLAY'} activeIcon={'WHITE_PLAY'} />
-                                <Button title={'Shuffle'} bg={'none'} icon={'SHUFFLE'} hoverIcon={'SHUFFLEHOVER'} activeIcon={'SHUFFLEHOVER'} />
-                            </div>
                             <span className={styles.total}>{`${props.total} listeners`}</span>
                         </div>
                     </div>
