@@ -9,7 +9,8 @@ import { YourPlaylistModal } from "@/app/components/yourPlaylistModal/yourPlayli
 import { PlaylistItemProps } from "@/app/Interfaces/Interfaces";
 import { getClientCookie } from "@/app/Helpers/GetCookieValue";
 import { AUTH_COOKIE_KEY } from "@/app/constant";
-import Axios  from "../../Helpers/Axios";
+import Axios from "../../Helpers/Axios";
+import { decodeJwt } from "jose";
 
 export const PlaylistItem = (props: PlaylistItemProps) => {
   const [dotsPop, setDotsPop] = useState(false);
@@ -20,9 +21,9 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
   const createPopRef = useRef<HTMLDivElement>(null);
   const addPopRef = useRef<HTMLDivElement>(null);
   const [playlistName, setPlaylistName] = useState<string>("My Playlist");
-  const [artist,setArtist]=useState<any>(null)
+  const [artist, setArtist] = useState<any>(null);
 
-  console.log(artist)
+  console.log(artist);
 
   useEffect(() => {
     const fetchArtistName = async () => {
@@ -38,13 +39,11 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
         console.log(error);
       }
     };
-  
+
     if (props.artistId) {
       fetchArtistName();
     }
   }, [props.artistId]); // Change to props.artistId
-  
-  
 
   const handleSuccessUpdate = (newName: string) => {
     setPlaylistName(newName);
@@ -109,15 +108,32 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
   };
 
   const handleClick = () => {
-    const isActive = props.activeId === props.id;
-    if (isActive) {
-      props.setActiveId(null);
-    } else {
-      props.setActiveId(props.id);
-    }
+    if (props.icon === "bin") {
+      const token = getClientCookie(AUTH_COOKIE_KEY);
 
-    if (props.onClick) {
-      props.onClick();
+      // Check if token is null or undefined
+      if (!token) {
+        console.error("No token found");
+        return;
+      }
+      const user = decodeJwt(token);
+
+      if (!user || !user.id) {
+        console.error("Invalid token payload");
+        return;
+      }
+      Axios.delete(`playlist/add/${props.playlistId}/${user.id}/${props.id}`);
+    } else {
+      const isActive = props.activeId === props.id;
+      if (isActive) {
+        props.setActiveId(null);
+      } else {
+        props.setActiveId(props.id);
+      }
+
+      if (props.onClick) {
+        props.onClick();
+      }
     }
   };
 
@@ -189,19 +205,19 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
         </div>
         <div className={styles.rightSection}>
           <div className={styles.time}>
-            <Image src={IconEnum.CLOCK} alt={""} width={24} height={24} />
+            {/* <Image src={IconEnum.CLOCK} alt={""} width={24} height={24} /> */}
             {/* <span className={styles.text}>
               {(props.duration / 60).toFixed(2)}
             </span> */}
           </div>
-          <Image
+          {/* <Image
             className={`${styles.icon} ${styles.heart}`}
             src={liked ? IconEnum.FILLHEART : IconEnum.HEART}
             alt={""}
             width={24}
             height={24}
             onClick={toggleLike}
-          />
+          /> */}
           <div ref={dotsPopRef}>
             <Image
               className={styles.dots}

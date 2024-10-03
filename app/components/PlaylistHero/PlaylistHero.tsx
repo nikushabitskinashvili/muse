@@ -1,40 +1,34 @@
 "use client";
 import styles from "./PlaylistHero.module.scss";
 import { IconEnum } from "@/app/utils/Icon/Icon";
-import { Button } from "@/app/components/Button/Button";
 import Image from "next/image";
-import { useState, useEffect } from "react";
-import Axios from "@/app/Helpers/Axios";
-import { cookies } from "next/headers";
-import { AUTH_COOKIE_KEY } from "@/app/constant";
-import { getClientCookie } from "@/app/Helpers/GetCookieValue";
 
 interface Props {
   image: string;
   playlistName: string;
-  totalTracks: number;
-  totalTime: number;
-  openModal: () => void;
+  totalTracks?: number;
+  totalTime?: number;
+  openModal?: () => void;
   id?: string;
   openDeleteModal?: () => void;
 }
 
 export const PlaylistHero = (props: Props) => {
-  let time;
-  const hours = Math.floor(props.totalTime / 3600);
-  const minutes = Math.floor((props.totalTime % 3600) / 60);
-  const seconds = props.totalTime % 60;
+  //   let time;
+  //   const hours = Math.floor(props.totalTime / 3600);
+  //   const minutes = Math.floor((props.totalTime % 3600) / 60);
+  //   const seconds = props.totalTime % 60;
 
-  if (props.totalTime > 3600) {
-    time = `${hours}:${minutes}:${seconds}`;
-  } else {
-    time = `${minutes}:${seconds}`;
-  }
+  //   if (props.totalTime > 3600) {
+  //     time = `${hours}:${minutes}:${seconds}`;
+  //   } else {
+  //     time = `${minutes}:${seconds}`;
+  //   }
 
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <h2 className={styles.h2}>Summer Vibe</h2>
+        <h2 className={styles.h2}>{props.playlistName}</h2>
         <div className={styles.icons}>
           <Image
             className={styles.icon}
@@ -64,9 +58,9 @@ export const PlaylistHero = (props: Props) => {
         />
         <div className={styles.control}>
           <div className={styles.desc}>
-            <span className={styles.text}>Playlist</span>
-            <h3 className={styles.playlistName}>{props.playlistName}</h3>
-            <span className={styles.about}>
+            {/* <span className={styles.text}>Playlist</span>
+            <h3 className={styles.playlistName}>{props.playlistName}</h3> */}
+            {/* <span className={styles.about}>
               {props.totalTracks} tracks -
               <span className={styles.time}>
                 <Image
@@ -76,11 +70,10 @@ export const PlaylistHero = (props: Props) => {
                   width={16}
                   height={16}
                 />
-                {time}
               </span>
-            </span>
+            </span> */}
           </div>
-          <div className={styles.buttons}>
+          {/* <div className={styles.buttons}>
             <Image
               className={styles.pause}
               src={IconEnum.PAUSE}
@@ -95,7 +88,7 @@ export const PlaylistHero = (props: Props) => {
               hoverIcon={"SHUFFLE"}
               activeIcon={"SHUFFLE"}
             />
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

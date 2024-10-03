@@ -68,7 +68,11 @@ const AlbumCard = ({
     >
       <Image
         className={styles.albumImg}
-        src={item.cover}
+        src={
+          item.cover
+            ? item.cover
+            : "https://thewritepractice.com/wp-content/uploads/2019/08/Punctuating-Song-Titles.jpg"
+        }
         alt={item.title}
         width={150}
         height={146}
@@ -84,7 +88,11 @@ const AlbumCard = ({
     <Link className={`${styles.albumCard} ${className}`} href={`${link}`}>
       <Image
         className={styles.albumImg}
-        src={item.cover}
+        src={
+          item.cover
+            ? item.cover
+            : "https://thewritepractice.com/wp-content/uploads/2019/08/Punctuating-Song-Titles.jpg"
+        }
         alt={item.title}
         width={150}
         height={146}

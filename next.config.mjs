@@ -6,6 +6,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "mus-app.s3.eu-north-1.amazonaws.com",
       },
+      {
+        protocol: "https",
+        hostname: "thewritepractice.com",
+      },
     ],
   },
 };

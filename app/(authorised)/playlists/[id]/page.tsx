@@ -93,20 +93,21 @@ export default function PlaylistPage({
   return (
     <div className={styles.playlistDetailMain}>
       <div className={styles.playlistDetailWrapper}>
-        {/* <div className={styles.heroWrapper}>
+        <div className={styles.heroWrapper}>
           <PlaylistHero
-            image={playlist.img}
+            image={
+              "https://thewritepractice.com/wp-content/uploads/2019/08/Punctuating-Song-Titles.jpg"
+            }
             playlistName={playlistDetail?.name}
-            totalTracks={playlist.totalTracks}
-            totalTime={playlist.totalTime}
+            // totalTracks={playlist.totalTracks}
+            // totalTime={playlist.totalTime}
             openModal={handleOpenModal}
             openDeleteModal={handleOpenDeleteModal}
             id={id}
           />
-        </div> */}
-        <p>{playlistDetail?.name}</p>
+        </div>
         <div className={styles.playlistDetalForyou}>
-          <MusicWrapper text="playlistId" id={id} />
+          <MusicWrapper playlistId={id} isBin={true} text="playlistId" id={id} />
         </div>
       </div>
       {openDeleteModal && (

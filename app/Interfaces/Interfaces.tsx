@@ -69,6 +69,7 @@ export interface PlaylistItemProps {
   onClick: () => void;
   albumImg?: string; // Added for dynamic album image
   artistId?:string
+  playlistId?:string
 }
 
 export interface albumInterface {

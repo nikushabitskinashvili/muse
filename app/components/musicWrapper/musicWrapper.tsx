@@ -8,8 +8,21 @@ import { useRecoilState } from "recoil";
 import { audioPlayerState } from "@/app/atoms/states";
 import axios from "axios";
 import Axios from "@/app/Helpers/Axios";
+import { getClientCookie } from "@/app/Helpers/GetCookieValue";
+import { AUTH_COOKIE_KEY } from "@/app/constant";
+import { decodeJwt } from "jose";
 
-export const MusicWrapper = ({ text, id }: { text: string; id?: string }) => {
+export const MusicWrapper = ({
+  text,
+  id,
+  isBin,
+  playlistId
+}: {
+  text: string;
+  id?: string;
+  isBin?: boolean;
+  playlistId?:string
+}) => {
   const [dottedId, setDottedId] = useState<number | null>(null);
   const [activeId, setActiveId] = useState<number | null>(null);
   // const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
@@ -44,6 +57,33 @@ export const MusicWrapper = ({ text, id }: { text: string; id?: string }) => {
       setDataLength(filteredData.length);
     });
   }, [id, text]);
+
+  if (text === "playlistId") {
+    useEffect(() => {
+      const token = getClientCookie(AUTH_COOKIE_KEY);
+
+      if (!token) {
+        console.error("No token found");
+        return;
+      }
+
+      const user = decodeJwt(token);
+
+      if (!user || !user.id) {
+        console.error("Invalid token payload");
+        return;
+      }
+      Axios.get(`/playlist/${user.id}`).then((response) => {
+        const filteredData = response.data;
+
+        console.log(filteredData);
+
+        setMusics(filteredData[0].music);
+        setDataLength(filteredData.length);
+      });
+    }, [id, text]);
+  }
+
   if (currentIndex == dataLength) {
     setCurrentIndex((prevState) => ({
       ...prevState,
@@ -57,13 +97,14 @@ export const MusicWrapper = ({ text, id }: { text: string; id?: string }) => {
         <PlaylistItem
           key={music.id}
           image={music.image}
+          playlistId={playlistId}
           musicSrc={music.musicSrc}
           title={music.name}
           name={music.name}
           duration={music.duration}
           artistId={music.artistId}
           id={music.id}
-          icon="dots"
+          icon={isBin ? "bin" : "dots"}
           isPlaying={currentIndex.currentMusicIndex === music.id}
           setActiveId={setActiveId}
           activeId={activeId}
