@@ -63,9 +63,10 @@
 @media screen and (max-width: 767px) {
   .musicInfo {
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
     gap: 6px;
+    white-space: nowrap;
   }
 
   .photo img {

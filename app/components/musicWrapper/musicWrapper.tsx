@@ -60,6 +60,7 @@ export const MusicWrapper = ({ text, id }: { text: string; id?: string }) => {
           title={music.name}
           name={music.name}
           duration={music.duration}
+          artistId={music.artistId}
           id={music.id}
           icon="dots"
           isPlaying={currentIndex.currentMusicIndex === music.id}

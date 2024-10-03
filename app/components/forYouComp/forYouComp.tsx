@@ -31,6 +31,9 @@ export const ForYouComp: React.FC<ForYouCompProps> = () => {
       setDataLength(response.data.length)
     });
   }, []);
+
+
+  
     if(currentIndex == dataLength) {
       setCurrentIndex((prevState) => ({
         ...prevState,
@@ -53,6 +56,7 @@ export const ForYouComp: React.FC<ForYouCompProps> = () => {
             musicSrc={music.musicSrc}
             title={music.name}
             // albumImg={music.albumImg}
+            artistId={music.artistId}
             name={music.name}
             isPlaying={currentIndex.currentMusicIndex === music.id}
             id={music.id}

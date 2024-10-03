@@ -3,7 +3,9 @@ import { IconEnum } from "../utils/Icon/Icon";
 export interface MusicPhotoProps {
   src: string;
   music: string;
-  artist: string;
+  musicName: string;
+  artistName:string
+  artistImg:string
 }
 
 export interface Player {
@@ -32,6 +34,7 @@ export interface Music {
   title?: string;
   name: string;
   artistId?: string;
+  
 }
 
 export interface InputRangeProps {
@@ -64,7 +67,12 @@ export interface PlaylistItemProps {
   setDottedId: (id: number | null) => void;
   dottedId: number | null;
   onClick: () => void;
+
   albumImg?: string; 
+
+ 
+  artistId?:string
+
 }
 
 export interface albumInterface {
