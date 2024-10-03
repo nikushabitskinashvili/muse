@@ -33,6 +33,8 @@ const AudioPlayer = ({ musics }: Props) => {
   console.log(artist)
 
   const isPlaying = audioRef.current ? !audioRef.current.paused : false;
+  console.log(musics , 'music in playlist');
+  
 
   const id = musics[audioPlayer.currentMusicIndex].artistId
   useEffect(() => {

@@ -7,15 +7,12 @@ import { ForYouCompProps, Music } from "@/app/Interfaces/Interfaces";
 import AudioPlayer from "../AudioPlayer/AudioPlayer";
 import { audioPlayerState } from "@/app/atoms/states";
 import { useRecoilState } from "recoil";
-import axios from "axios";
-import { MusicForYou } from "./for-you-props.interface";
 import Axios from "@/app/Helpers/Axios";
 
 export const ForYouComp: React.FC<ForYouCompProps> = () => {
   const [dottedId, setDottedId] = useState<number | null>(null);
   const [activeId, setActiveId] = useState<number | null>(null);
   const [renderAudio, setRenderudio] = useState<boolean>(false);
-  // const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [currentIndex, setCurrentIndex] = useRecoilState(audioPlayerState);
   const [musics, setMusics] = useState<Music[]>([]);
   const [dataLength, setDataLength] = useState<any>();

@@ -9,7 +9,8 @@ export const useAudioPlayer = (songs: Music[]) => {
   const progressRef = useRef<HTMLInputElement>(null);
   const ipadProgressRef = useRef<HTMLInputElement>(null);
   const shuffledSongsRef = useRef<Music[]>([]);
-
+  console.log(audioPlayer , 'audio in audio');
+  
   const shuffleArray = (array: Music[]) => {
     let shuffledArray = [...array];
     for (let i = shuffledArray.length - 1; i > 0; i--) {
@@ -95,7 +96,10 @@ export const useAudioPlayer = (songs: Music[]) => {
     }
   };
 
+
   const PlayMusic = () => {
+    console.log('zd');
+    
     if (audioRef.current) {
       if (audioRef.current.paused) {
         audioRef.current.play().catch((error) => {
@@ -106,6 +110,8 @@ export const useAudioPlayer = (songs: Music[]) => {
       }
     }
   };
+  
+  
 
   const handleTenSecondsBack = () => {
     if (audioRef.current) {

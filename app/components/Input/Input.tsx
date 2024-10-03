@@ -1,23 +1,39 @@
-
-import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
-import Image from "next/image";
-import { usePathname, useRouter } from 'next/navigation';
-import { useRecoilState } from 'recoil';
-import { albumInterface, artistInterface, musicInterface } from "@/app/Interfaces/Interfaces";
-import Axios from "@/app/Helpers/Axios";
-import { audioPlayerState } from "@/app/atoms/states";
 import styles from "./Input.module.scss";
+import React, { ChangeEvent, useCallback, useEffect, useState } from "react";
+import Image from "next/image";
+import { usePathname, useRouter } from "next/navigation";
+import {
+    albumInterface,
+    artistInterface,
+    Music,
+    musicInterface,
+} from "@/app/Interfaces/Interfaces";
+import Axios from "@/app/Helpers/Axios";
+import { useRecoilState } from "recoil";
+import { audioPlayerState } from "@/app/atoms/states";
+import AudioPlayer from "../AudioPlayer/AudioPlayer";
+import MusicList from "./MusicList/MusicList";
 
 const Input: React.FC = () => {
-    const [inputValue, setInputValue] = useState<string>('');
+    const [inputValue, setInputValue] = useState<string>("");
     const [isActive, setIsActive] = useState<boolean>(false);
+    const [music, setMusic] = useState([])
+    const [musics, setMusics] = useState<Music[]>([]);
+
+    const [renderaudio, setRenderaudio] = useState<boolean>(false);
+    const [audio, setAudioPlayer] = useRecoilState(audioPlayerState);
+    const [currentSong, setCurrentSong] = useRecoilState(audioPlayerState);
+    const [currentIndex, setCurrentIndex] = useRecoilState(audioPlayerState);
+    const [dataLength, setDataLength] = useState<any>();
+
+
     const [data, setData] = useState<{
         albums: albumInterface[];
         artists: artistInterface[];
         musics: musicInterface[];
     }>({ albums: [], artists: [], musics: [] });
 
-    const [audioPlayer, setAudioPlayer] = useRecoilState(audioPlayerState);
+
     const router = useRouter();
     const pathname = usePathname();
 
@@ -28,12 +44,27 @@ const Input: React.FC = () => {
             setData({
                 albums: response.data.albums || [],
                 artists: response.data.artists || [],
-                musics: response.data.musics || [],
+                musics: response.data.music || [],
+
             });
         } catch (error) {
-            alert('Error fetching data.');
+            throw new Error("Error");
         }
     }, [inputValue]);
+
+    useEffect(() => {
+        Axios.get("/music").then((response) => {
+            setMusics(response.data);
+            setDataLength(response.data.length)
+        });
+    }, []);
+    if (currentIndex == dataLength) {
+        setCurrentIndex((prevState) => ({
+            ...prevState,
+            currentMusicIndex: 0,
+        }));
+        setRenderaudio(true);
+    }
 
     useEffect(() => {
         fetchData();
@@ -42,40 +73,65 @@ const Input: React.FC = () => {
     const handleAlbumClick = (albumId: string) => {
         setIsActive(false);
         router.push(`/albums/${albumId}`);
-        setInputValue('');
+        setInputValue("");
     };
+
+    const handleMusicClick = (id: number) => {
+        for (let i = 0; i < musics.length; i++){
+            if (musics[i].id == id) {
+                console.log(musics[i]);
+                
+                setCurrentIndex((prevState) => ({
+                    ...prevState,
+                    currentMusicIndex: i,
+                  }));
+                  setRenderaudio(true)
+                  break
+            }
+        }
+        
+        setCurrentSong((prevState) => ({
+            ...prevState,
+            currentSongId: id,
+        }));
+        
+        setInputValue('');
+        
+    };
+
+
+
 
     const handleArtistClick = (artistId: string) => {
         setIsActive(false);
         router.push(`/artists/${artistId}`);
-        setInputValue('');
+        setInputValue("");
     };
 
-    const handleMusicClick = (music: musicInterface) => {
-        setIsActive(false);
-        setInputValue('');
-        
-        const musicIndex = data.musics.findIndex((m) => m.id === music.id);
-        if (musicIndex !== -1) {
-            setAudioPlayer((prev) => ({
-                ...prev,
-                currentMusicIndex: musicIndex,
-                playing: true,
-            }));
-        }
-    };
 
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         setInputValue(event.target.value);
         setIsActive(event.target.value.length > 0);
     };
 
-    const hasNoResults = data.albums.length === 0 && data.artists.length === 0 && data.musics.length === 0;
+    const hasNoResults =
+        data.albums.length === 0 &&
+        data.artists.length === 0 &&
+        data.musics.length === 0;
 
     return (
         <div className={styles.wrapper}>
-            <div className={`${inputValue ? styles.inputTyping : styles.container} ${pathname === "/" ? styles.homecontainer : ''}`}>
-                <Image src={'/images/search.png'} alt="search" className={styles.searchIcon} width={15} height={15} />
+            <div
+                className={`${inputValue ? styles.inputTyping : styles.container} ${pathname === "/" ? styles.homecontainer : ""
+                    }`}
+            >
+                <Image
+                    src={"/images/search.png"}
+                    alt="search"
+                    className={styles.searchIcon}
+                    width={15}
+                    height={15}
+                />
                 <input
                     type="text"
                     placeholder="Search album, artist, or music"
@@ -117,23 +173,22 @@ const Input: React.FC = () => {
                         </li>
                     ))}
 
-                    {data.musics.map((music) => (
-                        <li
-                            key={music.id}
-                            className={styles.musicLiStyle}
-                            onClick={() => handleMusicClick(music)}
-                        >
-                            <p className={styles.musicParagraphStyle}>
-                                <span className={styles.musicStyle}>Music: </span>
-                                {music.name}
-                            </p>
-                        </li>
+                    {data.musics.map((music, idx) => (
+                        <MusicList
+                            musicSrc={music.musicSrc}
+                            isPlaying={currentIndex.currentMusicIndex === music.id}
+                            name={music.name}
+                            onClick={() => handleMusicClick(music.id)}
+                            id={music.id} 
+                            duration={music.duration} />
+
                     ))}
                 </ul>
             )}
+            {renderaudio && <AudioPlayer musics={musics} />}
         </div>
+        
     );
-
 };
 
 export default Input;
