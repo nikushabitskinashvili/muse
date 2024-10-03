@@ -5,7 +5,6 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { ArtistCard } from "../ArtistCard/ArtistCard";
-import { artists, playlistData, popularAlbum } from "@/app/data/CarouselData";
 import AlbumCard from "@/app/components/AlbumCard/AlbumCard";
 import Image from "next/image";
 import leftArrow from "@/public/images/left-arrow.svg";

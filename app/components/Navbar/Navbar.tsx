@@ -10,6 +10,7 @@ import Image from "next/image";
 import { handleLogout } from "@/app/scripts/Logout";
 import { useRouter } from "next/navigation";
 
+
 const Navbar = () => {
   const navLinks = [
     { title: "Home", pathname: "/", key: "/" },
@@ -94,7 +95,7 @@ const Navbar = () => {
           </ul>
         </div>
         <div className={styles.search_log}>
-          <Input />
+          <Input/>
           <Link href={"/auth/login"}>
             <Image
               src={IconEnum.LOGOUT}
