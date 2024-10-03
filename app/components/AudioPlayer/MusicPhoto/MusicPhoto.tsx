@@ -5,17 +5,18 @@ import  { IconEnum } from "../../Icon/Icon";
 
 
 
-const MusicPhoto: React.FC<MusicPhotoProps> = ({ src, music, artist }) => (
+const MusicPhoto: React.FC<MusicPhotoProps> = ({ src, artistImg, musicName,artistName }) => (
     <div className={styles.musicPhoto}>
         <div className={styles.photo}>
-            <Image src={src} width={64} height={64} alt='musicPhoto' />
+            <Image src={artistImg} width={64} height={64} alt='musicPhoto' />
         </div>
         <div className={styles.musicInfo}>
             <div className={styles.musicInfoWrapper}>
-            <span className={styles.musicName}>{music}</span>
+            <span className={styles.musicName}>{musicName}</span>
             <Image src={IconEnum.VECTOR} width={19} height={19}  alt='icon'/>
             </div>
-            <span className={styles.artistName}>{artist}</span>
+            
+            <span className={styles.artistName}>{artistName}</span>
         </div>
     </div>
 );

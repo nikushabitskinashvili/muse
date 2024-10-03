@@ -7,6 +7,9 @@ import { DotsPop } from "@/app/components/dotsPop/dotsPop";
 import { ReusableModal } from "@/app/components/reusableModal/reusableModal";
 import { YourPlaylistModal } from "@/app/components/yourPlaylistModal/yourPlaylistModal";
 import { PlaylistItemProps } from "@/app/Interfaces/Interfaces";
+import { getClientCookie } from "@/app/Helpers/GetCookieValue";
+import { AUTH_COOKIE_KEY } from "@/app/constant";
+import Axios  from "../../Helpers/Axios";
 
 export const PlaylistItem = (props: PlaylistItemProps) => {
   const [dotsPop, setDotsPop] = useState(false);
@@ -17,6 +20,31 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
   const createPopRef = useRef<HTMLDivElement>(null);
   const addPopRef = useRef<HTMLDivElement>(null);
   const [playlistName, setPlaylistName] = useState<string>("My Playlist");
+  const [artist,setArtist]=useState<any>(null)
+
+  console.log(artist)
+
+  useEffect(() => {
+    const fetchArtistName = async () => {
+      const token = getClientCookie(AUTH_COOKIE_KEY);
+      try {
+        const response = await Axios.get(`/artist/${props.artistId}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setArtist(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+  
+    if (props.artistId) {
+      fetchArtistName();
+    }
+  }, [props.artistId]); // Change to props.artistId
+  
+  
 
   const handleSuccessUpdate = (newName: string) => {
     setPlaylistName(newName); 
@@ -150,14 +178,14 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
             />
             <Image
               className={styles.image}
-              src={props.image!}
+              src={artist?.image}
               alt={`album`}
               width={56}
               height={56}
             />
           </div>
           <div className={styles.text}>
-            <span>{`${props.title} - ${props.name}`}</span>
+            <span>{`${props.name} - ${props.title}`}</span>
           </div>
         </div>
         <div className={styles.rightSection}>
