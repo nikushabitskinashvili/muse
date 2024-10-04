@@ -48,7 +48,7 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
 
   const handleSuccessUpdate = (newName: string) => {
     setPlaylistName(newName);
-    if (props.refreshFetch) props.refreshFetch(); 
+    if (props.refreshFetch) props.refreshFetch();
   };
 
   useEffect(() => {
@@ -98,7 +98,9 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
     }
   };
 
-  const handleClick = () => {
+  const deleteClick = (event: React.MouseEvent) => {
+    event.stopPropagation();
+
     if (props.icon === "bin") {
       const token = getClientCookie(AUTH_COOKIE_KEY);
 
@@ -115,24 +117,28 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
 
       Axios.delete(`playlist/add/${user.id}/${props.playlistId}/${props.id}`)
         .then(() => {
-          if (props.refreshFetch) props.refreshFetch(); 
+          if (props.refreshFetch) props.refreshFetch();
         })
         .catch((error) => {
           console.error("Error deleting item:", error);
         });
 
       router.push(`/playlists/${props.playlistId}`);
-    } else {
-      const isActive = props.activeId === props.id;
-      if (isActive) {
-        props.setActiveId(null);
-      } else {
-        props.setActiveId(props.id);
-      }
+    }
+  };
 
-      if (props.onClick) {
-        props.onClick();
-      }
+  const handleClick = (event: React.MouseEvent) => {
+    event.stopPropagation();
+
+    const isActive = props.activeId === props.id;
+    if (isActive) {
+      props.setActiveId(null);
+    } else {
+      props.setActiveId(props.id);
+    }
+
+    if (props.onClick) {
+      props.onClick(); // Calls the function to play the music
     }
   };
 
@@ -225,9 +231,7 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
               alt={""}
               width={24}
               height={24}
-              onClick={
-                props.icon === "dots" ? dotsClick : () => console.log("delete")
-              }
+              onClick={props.icon === "dots" ? dotsClick : deleteClick}
             />
             {dotsPop && (
               <DotsPop
