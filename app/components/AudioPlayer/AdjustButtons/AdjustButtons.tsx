@@ -58,9 +58,6 @@ const AdjustButtons: React.FC<Props> = ({
                     onClick={onNextSong} 
                 />
             </div>
-            <div className={styles.adjustButton}>
-                <Image src={IconEnum.ROTATE} width={24} height={24} alt='loop' />
-            </div>
         </div>
     );
 };
