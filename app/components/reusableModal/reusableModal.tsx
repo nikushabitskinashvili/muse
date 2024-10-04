@@ -7,6 +7,7 @@ import Axios from "./../../Helpers/Axios";
 import React, { useState, useEffect } from "react";
 import { AUTH_COOKIE_KEY } from "@/app/constant";
 import { decodeJwt } from "jose";
+import { useRouter } from "next/navigation";
 
 interface Props {
   title: string;
@@ -18,10 +19,13 @@ interface Props {
   text?: string;
   delete?: boolean;
   onSuccessUpdate?: (newName: string) => void;
+  refreshPlaylist?: () => void;
 }
 
 export const ReusableModal = (props: Props) => {
   const [inputText, setInputText] = useState<string>("");
+
+  const router = useRouter();
 
   console.log(inputText, "sadasd");
 
@@ -62,6 +66,7 @@ export const ReusableModal = (props: Props) => {
 
       if (response.status === 200) {
         console.log(`Playlist with ID ${id} was successfully deleted.`);
+        router.replace("/");
         if (props.onClose) props.onClose();
       } else {
         console.error("Failed to delete playlist:", response.statusText);
@@ -153,7 +158,7 @@ export const ReusableModal = (props: Props) => {
 
       if (response.status === 201) {
         console.log("Playlist created successfully", response.data);
-
+        if (props.refreshPlaylist) props.refreshPlaylist();
         if (props.onSuccessUpdate) {
           props.onSuccessUpdate(inputText);
         }

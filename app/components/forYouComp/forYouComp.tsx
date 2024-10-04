@@ -9,7 +9,7 @@ import { audioPlayerState } from "@/app/atoms/states";
 import { useRecoilState } from "recoil";
 import Axios from "@/app/Helpers/Axios";
 
-export const ForYouComp: React.FC<ForYouCompProps> = () => {
+export const ForYouComp: React.FC<ForYouCompProps> = (props) => {
   const [dottedId, setDottedId] = useState<number | null>(null);
   const [activeId, setActiveId] = useState<number | null>(null);
   const [renderAudio, setRenderudio] = useState<boolean>(false);
@@ -53,6 +53,7 @@ export const ForYouComp: React.FC<ForYouCompProps> = () => {
         {musics.slice(0, 3).map((music, idx) => (
           <PlaylistItem
             key={music.id}
+            refreshPlaylist={props.refreshPlaylist}
             musicSrc={music.musicSrc}
             title={music.name}
             // albumImg={music.albumImg}

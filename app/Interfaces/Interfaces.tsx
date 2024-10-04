@@ -50,6 +50,7 @@ export interface AudioPlayerProps {
 
 export interface ForYouCompProps {
   onSongSelect: (music: Music) => void;
+  refreshPlaylist?:()=>void
 }
 
 export interface PlaylistItemProps {
@@ -67,6 +68,8 @@ export interface PlaylistItemProps {
   setDottedId: (id: number | null) => void;
   dottedId: number | null;
   onClick: () => void;
+  refreshFetch?:()=>void;
+  refreshPlaylist?:()=>void;
 
   albumImg?: string; 
 

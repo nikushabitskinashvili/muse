@@ -25,7 +25,7 @@ type Playlist = {
   title: string;
 };
 
-export const Slider = ({ data, title }: { data: any; title: string }) => {
+export const Slider = ({ data, title, }: { data: any; title: string }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scrollLeft = () => {
