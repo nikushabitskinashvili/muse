@@ -10,8 +10,8 @@ import { AUTH_COOKIE_KEY } from "@/app/constant";
 import { decodeJwt } from "jose";
 
 export default function PlaylistPage({
-  params: { id },
-}: {
+                                       params: { id },
+                                     }: {
   params: { id: string };
 }) {
   const [openPen, setOpenPen] = useState(false);
@@ -27,7 +27,7 @@ export default function PlaylistPage({
         return;
       }
       const user = decodeJwt(token);
-  
+
       if (!user || !user.id) {
         console.error("Invalid token payload");
         return;
@@ -43,7 +43,7 @@ export default function PlaylistPage({
         console.log(error);
       }
     };
-  
+
     fetchPlayListDetail();
   }, [id]);
 
@@ -84,7 +84,7 @@ export default function PlaylistPage({
 
   // const playlistId = parseInt(id);
   // const playlist = playlistData.find((p) => p.id === playlistId);
-
+  //
   // if (!playlist) {
   //   return <div className={styles.playlistNotFound}>Playlist not found</div>;
   // }
@@ -98,8 +98,6 @@ export default function PlaylistPage({
               "https://thewritepractice.com/wp-content/uploads/2019/08/Punctuating-Song-Titles.jpg"
             }
             playlistName={playlistDetail?.name}
-            // totalTracks={playlist.totalTracks}
-            // totalTime={playlist.totalTime}
             openModal={handleOpenModal}
             openDeleteModal={handleOpenDeleteModal}
             id={id}

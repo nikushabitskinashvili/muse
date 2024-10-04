@@ -31,10 +31,12 @@ const fetchPlaylist = async () => {
   }
 };
 
+
+
 export default async function page() {
   const playlistD = await fetchPlaylist();
 
-  console.log(playlistD, "sadasd");
+  console.log(playlistD, "sadasdasdasdasdasdasd");
 
   return (
     <main className={styles.playlistMainContainer}>
