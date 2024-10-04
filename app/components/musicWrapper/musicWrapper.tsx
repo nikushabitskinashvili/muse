@@ -6,9 +6,6 @@ import AudioPlayer from "../AudioPlayer/AudioPlayer";
 import { useRecoilState } from "recoil";
 import { audioPlayerState } from "@/app/atoms/states";
 import Axios from "@/app/Helpers/Axios";
-import { getClientCookie } from "@/app/Helpers/GetCookieValue";
-import { AUTH_COOKIE_KEY } from "@/app/constant";
-import { decodeJwt } from "jose";
 import { Music } from "@/app/Interfaces/Interfaces";
 import { useSearchParams } from "next/navigation"; // Import useSearchParams
 
@@ -59,7 +56,7 @@ export const MusicWrapper = ({
         // Automatically play the music if the musicId is in the URL
         if (musicId) {
           const musicIndex = filteredData.findIndex(
-            (music:Music) => music.id.toString() === musicId
+            (music: Music) => music.id.toString() === musicId
           );
           if (musicIndex !== -1) {
             handleSongClick(musicIndex); // Set the current song
@@ -91,31 +88,35 @@ export const MusicWrapper = ({
 
   return (
     <div className={styles.list}>
-      {musics.map((music, idx) => (
-        <PlaylistItem
-          key={music.id}
-          image={music.image}
-          playlistId={playlistId}
-          musicSrc={music.musicSrc}
-          title={music.name}
-          name={music.name}
-          duration={music.duration}
-          artistId={music.artistId}
-          id={music.id}
-          icon={isBin ? "bin" : "dots"}
-          isPlaying={currentIndex.currentMusicIndex === idx}
-          setActiveId={setActiveId}
-          activeId={activeId}
-          setDottedId={setDottedId}
-          dottedId={dottedId}
-          onClick={() => handleSongClick(idx)}
-          setOpenCreatePopId={() => {
-            /* Define this function */
-          }}
-          refreshFetch={fetchMusics} 
-        />
-      ))}
-      {renderAudio && <AudioPlayer musics={musics} />}
+      {musics.length > 0 ? (
+        musics.map((music, idx) => (
+          <PlaylistItem
+            key={music.id}
+            image={music.image}
+            playlistId={playlistId}
+            musicSrc={music.musicSrc}
+            title={music.name}
+            name={music.name}
+            duration={music.duration}
+            artistId={music.artistId}
+            id={music.id}
+            icon={isBin ? "bin" : "dots"}
+            isPlaying={currentIndex.currentMusicIndex === idx}
+            setActiveId={setActiveId}
+            activeId={activeId}
+            setDottedId={setDottedId}
+            dottedId={dottedId}
+            onClick={() => handleSongClick(idx)}
+            setOpenCreatePopId={() => {
+              /* Define this function */
+            }}
+            refreshFetch={fetchMusics}
+          />
+        ))
+      ) : (
+        <p style={{color:"white"}}>No music available.</p> 
+      )}
+      {renderAudio && musics.length > 0 && <AudioPlayer musics={musics} />}
     </div>
   );
 };
