@@ -20,6 +20,8 @@ const VolumeControl: React.FC<VolumeControlProps> = ({ audioRef }) => {
     }
   }
 
+
+
   return (
     <div className={styles.container}>
       <Image src={IconEnum.VOLUME_FULL} alt="volume" width={24} height={24} />
