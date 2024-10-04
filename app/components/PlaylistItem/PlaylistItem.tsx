@@ -11,6 +11,7 @@ import { getClientCookie } from "@/app/Helpers/GetCookieValue";
 import { AUTH_COOKIE_KEY } from "@/app/constant";
 import Axios from "../../Helpers/Axios";
 import { decodeJwt } from "jose";
+import { useRouter } from "next/navigation";
 
 export const PlaylistItem = (props: PlaylistItemProps) => {
   const [dotsPop, setDotsPop] = useState(false);
@@ -23,7 +24,7 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
   const [playlistName, setPlaylistName] = useState<string>("My Playlist");
   const [artist, setArtist] = useState<any>(null);
 
-  console.log(artist);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchArtistName = async () => {
@@ -43,22 +44,12 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
     if (props.artistId) {
       fetchArtistName();
     }
-  }, [props.artistId]); // Change to props.artistId
+  }, [props.artistId]);
 
   const handleSuccessUpdate = (newName: string) => {
     setPlaylistName(newName);
+    if (props.refreshFetch) props.refreshFetch(); 
   };
-
-  useEffect(() => {
-    if (addPop || createPop) {
-      document.documentElement.style.overflow = "hidden";
-    } else {
-      document.documentElement.style.overflow = "auto";
-    }
-    return () => {
-      document.documentElement.style.overflow = "auto";
-    };
-  }, [addPop, createPop]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -111,7 +102,6 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
     if (props.icon === "bin") {
       const token = getClientCookie(AUTH_COOKIE_KEY);
 
-      // Check if token is null or undefined
       if (!token) {
         console.error("No token found");
         return;
@@ -122,7 +112,16 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
         console.error("Invalid token payload");
         return;
       }
-      Axios.delete(`playlist/add/${user.id}/${props.playlistId}/${props.id}`);
+
+      Axios.delete(`playlist/add/${user.id}/${props.playlistId}/${props.id}`)
+        .then(() => {
+          if (props.refreshFetch) props.refreshFetch(); 
+        })
+        .catch((error) => {
+          console.error("Error deleting item:", error);
+        });
+
+      router.push(`/playlists/${props.playlistId}`);
     } else {
       const isActive = props.activeId === props.id;
       if (isActive) {
@@ -176,6 +175,7 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
               placeholder={"Playlist name"}
               closeModal={closeCreatePop}
               onSuccessUpdate={handleSuccessUpdate}
+              refreshPlaylist={props.refreshPlaylist}
             />
           </div>
         </div>

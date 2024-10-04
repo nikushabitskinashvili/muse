@@ -25,8 +25,6 @@ export default function Home() {
   const [artists, setArtists] = useState([]);
   const [playlist, setPlaylist] = useState([]);
 
-  console.log(albums, "sadasdas");
-
   useEffect(() => {
     const fetchAlbums = async () => {
       const token = getClientCookie(AUTH_COOKIE_KEY);
@@ -61,36 +59,36 @@ export default function Home() {
     fetchArtist();
   }, []);
 
-  useEffect(() => {
-    const fetchPlaylists = async () => {
-      const token = getClientCookie(AUTH_COOKIE_KEY);
+  const refreshPlaylist = async () => {
+    const token = getClientCookie(AUTH_COOKIE_KEY);
 
-      if (!token) {
-        console.error("No token found");
+    if (!token) {
+      console.error("No token found");
+      return;
+    }
+
+    try {
+      const user = decodeJwt(token);
+
+      if (!user || !user.id) {
+        console.error("Invalid token payload");
         return;
       }
 
-      try {
-        const user = decodeJwt(token);
+      const response = await Axios.get(`/playlist/${user.id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
-        if (!user || !user.id) {
-          console.error("Invalid token payload");
-          return;
-        }
+      setPlaylist(response.data);
+    } catch (error) {
+      console.error("Error fetching playlist:", error);
+    }
+  };
 
-        const response = await Axios.get(`/playlist/${user.id}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-
-        setPlaylist(response.data);
-      } catch (error) {
-        console.error("Error fetching playlist:", error);
-      }
-    };
-
-    fetchPlaylists();
+  useEffect(() => {
+    refreshPlaylist(); // Fetch playlists on initial load
   }, []);
 
   return (
@@ -102,11 +100,14 @@ export default function Home() {
             <div className={styles.content}>
               <Slider data={albums} title="Popular Album" />
               <Slider data={artists} title="Artists" />
-              <ForYouComp onSongSelect={(music: Music) => {}} />
-              <Slider data={playlist} title="My Playlists" />
+              <ForYouComp                 refreshPlaylist={refreshPlaylist}
+ onSongSelect={(music: Music) => {}} />
+              <Slider
+                data={playlist}
+                title="My Playlists"
+              />
             </div>
           </div>
-          
         </>
       )}
     </main>

@@ -1,7 +1,6 @@
 "use client";
 import { PlaylistHero } from "@/app/components/PlaylistHero/PlaylistHero";
 import styles from "./playlistDetail.module.scss";
-import { playlistData } from "@/app/data/CarouselData";
 import { MusicWrapper } from "@/app/components/musicWrapper/musicWrapper";
 import { useEffect, useState } from "react";
 import { ReusableModal } from "@/app/components/reusableModal/reusableModal";
