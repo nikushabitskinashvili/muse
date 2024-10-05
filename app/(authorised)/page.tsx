@@ -10,7 +10,6 @@ import Axios from "../Helpers/Axios";
 import { getClientCookie } from "../Helpers/GetCookieValue";
 import { AUTH_COOKIE_KEY } from "../constant";
 import { decodeJwt } from "jose";
-import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const useClient = () => {
@@ -90,7 +89,7 @@ export default function Home() {
   };
 
   useEffect(() => {
-    refreshPlaylist(); // Fetch playlists on initial load
+    refreshPlaylist(); 
   }, []);
 
   return (

@@ -24,7 +24,8 @@
     "recoil": "^0.7.7",
     "sass": "^1.77.6",
     "slick-carousel": "^1.8.1",
-    "swiper": "^11.1.8"
+    "swiper": "^11.1.8",
+    "toast": "^0.5.4"
   },
   "devDependencies": {
     "@types/node": "^20",

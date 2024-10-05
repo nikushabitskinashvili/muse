@@ -13,7 +13,7 @@ const MusicPhoto: React.FC<MusicPhotoProps> = ({ src, artistImg, musicName,artis
         <div className={styles.musicInfo}>
             <div className={styles.musicInfoWrapper}>
             <span className={styles.musicName}>{musicName}</span>
-            <Image src={IconEnum.VECTOR} width={19} height={19}  alt='icon'/>
+            <Image src={IconEnum.VECTOR} width={20} height={20}  alt='icon'/>
             </div>
             
             <span className={styles.artistName}>{artistName}</span>
