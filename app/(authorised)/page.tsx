@@ -10,6 +10,8 @@ import Axios from "../Helpers/Axios";
 import { getClientCookie } from "../Helpers/GetCookieValue";
 import { AUTH_COOKIE_KEY } from "../constant";
 import { decodeJwt } from "jose";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const useClient = () => {
   const [isClient, setIsClient] = useState(false);
@@ -100,16 +102,16 @@ export default function Home() {
             <div className={styles.content}>
               <Slider data={albums} title="Popular Album" />
               <Slider data={artists} title="Artists" />
-              <ForYouComp                 refreshPlaylist={refreshPlaylist}
- onSongSelect={(music: Music) => {}} />
-              <Slider
-                data={playlist}
-                title="My Playlists"
+              <ForYouComp
+                refreshPlaylist={refreshPlaylist}
+                onSongSelect={(music: Music) => {}}
               />
+              <Slider data={playlist} title="My Playlists" />
             </div>
           </div>
         </>
       )}
+      
     </main>
   );
 }
