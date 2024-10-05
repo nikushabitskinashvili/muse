@@ -1,5 +1,5 @@
 "use client";
-import { SetStateAction, useEffect, useState } from "react";
+import { SetStateAction, useEffect, useState, Suspense } from "react";
 import AuthButton from "@/app/components/AuthButton/AuthButton";
 import AuthInput from "@/app/components/AuthInput/AuthInput";
 import styles from "./LoginPage.module.scss";
@@ -8,7 +8,15 @@ import Link from "next/link";
 import { handleLogin } from "@/app/scripts/Login";
 import { useSearchParams } from "next/navigation";
 
-export default function Login() {
+export default function LoginPageWrapper() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Login />
+    </Suspense>
+  );
+}
+
+function Login() {
   const [emailOrUsername, setEmailOrUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({
@@ -17,7 +25,7 @@ export default function Login() {
     general: "",
   });
 
-  const searchParams = useSearchParams();
+  const searchParams = useSearchParams(); // Client-side hook
   const error = searchParams.get("error");
 
   useEffect(() => {
@@ -37,7 +45,7 @@ export default function Login() {
     setErrors((prevErrors) => ({
       ...prevErrors,
       emailOrUsername: "",
-      general: "",
+      general: "", // Reset general error
     }));
   };
 
@@ -49,7 +57,7 @@ export default function Login() {
     setErrors((prevErrors) => ({
       ...prevErrors,
       password: "",
-      general: "",
+      general: "", // Reset general error
     }));
   };
 
