@@ -10,7 +10,6 @@ import Image from "next/image";
 import { handleLogout } from "@/app/scripts/Logout";
 import { useRouter } from "next/navigation";
 
-
 const Navbar = () => {
   const navLinks = [
     { title: "Home", pathname: "/", key: "/" },
@@ -27,9 +26,9 @@ const Navbar = () => {
     setIsOpen((open: boolean) => !open);
   };
 
-  const closeBurger = () =>{
-    setIsOpen(false)
-  }
+  const closeBurger = () => {
+    setIsOpen(false);
+  };
 
   let pathName = usePathname();
   console.log(pathName, "pathName");
@@ -95,17 +94,16 @@ const Navbar = () => {
           </ul>
         </div>
         <div className={styles.search_log}>
-          <Input/>
-          <Link href={"/auth/login"}>
-            <Image
-              src={IconEnum.LOGOUT}
-              className={styles.logOut}
-              onClick={logOut}
-              alt={""}
-              width={32}
-              height={32}
-            />
-          </Link>
+          <Input />
+          <Image
+            src={IconEnum.LOGOUT}
+            className={styles.logOut}
+            style={{ cursor: "pointer" }}
+            onClick={logOut}
+            alt={""}
+            width={32}
+            height={32}
+          />
         </div>
         <div className={styles.burgerIcon} onClick={burgerMenu}>
           <Image
@@ -128,15 +126,14 @@ const Navbar = () => {
           />
         ))}
         <li>
-          <Link className={styles.burger_logOut} href={"/auth/login"}>
-            <Image
-              src={IconEnum.LOGOUT}
-              onClick={logOut}
-              alt={""}
-              width={32}
-              height={32}
-            />
-          </Link>
+          <Image
+            style={{ cursor: "pointer" }}
+            src={IconEnum.LOGOUT}
+            onClick={logOut}
+            alt={""}
+            width={32}
+            height={32}
+          />
         </li>
       </ul>
     </div>
