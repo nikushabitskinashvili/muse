@@ -35,7 +35,8 @@ export enum IconEnum {
     VECTOR = "/icons/Vector.svg",
     VOLUME_FULL = "/icons/volumeFull.svg",
     WHITE_PLAY = "/icons/pinkPlayWhite.svg",
-    BLACK_PLAY = "/icons/playBlack.svg"
+    BLACK_PLAY = "/icons/playBlack.svg",
+    VOLUME_MUTED = "/icons/volumeOff.svg"
 }
 
 interface Props {
