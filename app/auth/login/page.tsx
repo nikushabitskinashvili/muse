@@ -1,11 +1,12 @@
 "use client";
-import { SetStateAction, useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 import AuthButton from "@/app/components/AuthButton/AuthButton";
 import AuthInput from "@/app/components/AuthInput/AuthInput";
 import styles from "./LoginPage.module.scss";
 import AuthTitle from "@/app/components/AuthTitle/AuthTitle";
 import Link from "next/link";
 import { handleLogin } from "@/app/scripts/Login";
+import { useSearchParams } from "next/navigation";
 
 export default function Login() {
   const [emailOrUsername, setEmailOrUsername] = useState("");
@@ -15,6 +16,18 @@ export default function Login() {
     password: "",
     general: "",
   });
+
+  const searchParams = useSearchParams();
+  const error = searchParams.get("error");
+
+  useEffect(() => {
+    if (error === "blocked") {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        general: "Your account has been blocked. Please contact support.",
+      }));
+    }
+  }, [error]);
 
   const handleEmailOrUsernameChange = (e: {
     target: { value: SetStateAction<string> };
@@ -104,7 +117,7 @@ export default function Login() {
           />
         </form>
         <p className={styles.text}>
-          Don’t you have a account?
+          Don’t you have an account?
           <Link className={styles.linkTag} href={"/auth/signup"}>
             Sign Up
           </Link>
