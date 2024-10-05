@@ -66,7 +66,8 @@ export const ReusableModal = (props: Props) => {
 
       if (response.status === 200) {
         console.log(`Playlist with ID ${id} was successfully deleted.`);
-        router.replace("/");
+        router.replace("/playlists");
+        if (props.refreshPlaylist) props.refreshPlaylist;
         if (props.onClose) props.onClose();
       } else {
         console.error("Failed to delete playlist:", response.statusText);
@@ -155,10 +156,10 @@ export const ReusableModal = (props: Props) => {
           "Content-Type": "application/json",
         },
       });
+      if (props.refreshPlaylist) props.refreshPlaylist();
 
       if (response.status === 201) {
         console.log("Playlist created successfully", response.data);
-        if (props.refreshPlaylist) props.refreshPlaylist();
         if (props.onSuccessUpdate) {
           props.onSuccessUpdate(inputText);
         }

@@ -1,13 +1,15 @@
-import { playlistData } from "@/app/data/CarouselData";
+"use client";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import styles from "./playlists.module.scss";
 import AlbumCard from "@/app/components/AlbumCard/AlbumCard";
-import { cookies } from "next/headers";
 import { AUTH_COOKIE_KEY } from "@/app/constant";
 import Axios from "../../Helpers/Axios";
 import { decodeJwt } from "jose";
+import { getClientCookie } from "@/app/Helpers/GetCookieValue";
 
 const fetchPlaylist = async () => {
-  const token = cookies()?.get(AUTH_COOKIE_KEY)?.value;
+  const token = getClientCookie(AUTH_COOKIE_KEY);
   if (!token) {
     console.error("No token found");
     return;
@@ -31,19 +33,25 @@ const fetchPlaylist = async () => {
   }
 };
 
+export default function Page() {
+  const [playlistData, setPlaylistData] = useState([]);
+  const router = useRouter();
 
+  const getData = async () => {
+    const data = await fetchPlaylist();
+    setPlaylistData(data || []);
+  };
 
-export default async function page() {
-  const playlistD = await fetchPlaylist();
-
-  console.log(playlistD, "sadasdasdasdasdasdasd");
+  useEffect(() => {
+    getData();
+  }, [router]);
 
   return (
     <main className={styles.playlistMainContainer}>
       <div className={styles.playlistWrapper}>
         <h1 className={styles.mainTitle}>Your Playlists</h1>
         <div className={styles.playlistItemContainer}>
-          {playlistD.map((item: any) => {
+          {playlistData.map((item: any) => {
             return <AlbumCard key={item.id} playlist={true} item={item} />;
           })}
         </div>
