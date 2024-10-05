@@ -8,6 +8,7 @@ import Axios from "../../Helpers/Axios";
 import { useEffect, useState } from "react";
 import { getClientCookie } from "@/app/Helpers/GetCookieValue";
 import { decodeJwt } from "jose";
+import { ToastContainer } from "react-toastify";
 
 interface Props {
   onClose: () => void;
@@ -59,9 +60,19 @@ export const YourPlaylistModal = (props: Props) => {
       </div>
       <div className={styles.cards}>
         {playlist.map((item: any) => (
-          <AlbumCard isModal={true} musicId={props.musicId}  className={styles.card} key={item.id} item={item} />
+          <AlbumCard onClose={props.onClose} isModal={true} musicId={props.musicId}  className={styles.card} key={item.id} item={item} />
         ))}
       </div>
+      <ToastContainer
+        position="bottom-right"
+        hideProgressBar={false}
+        autoClose={5000}
+        theme="colored"
+        newestOnTop={false}
+        draggable
+        pauseOnHover
+        closeOnClick
+      />
     </div>
   );
 };

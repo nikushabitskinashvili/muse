@@ -7,6 +7,8 @@ import { decodeJwt } from "jose";
 import { getClientCookie } from "@/app/Helpers/GetCookieValue";
 import { AUTH_COOKIE_KEY } from "@/app/constant";
 import { MouseEvent } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AlbumCard = ({
   item,
@@ -14,12 +16,14 @@ const AlbumCard = ({
   playlist,
   musicId,
   isModal,
+  onClose,
 }: {
   item: any;
   className?: string;
   playlist?: boolean;
   musicId?: number;
   isModal?: boolean;
+  onClose?: () => void;
 }) => {
   const link = playlist ? `playlists/${item.id}` : `albums/${item.id}`;
 
@@ -52,8 +56,19 @@ const AlbumCard = ({
         }
       );
 
-      if (response.status === 201) {
-        console.log("Music added to playlist successfully", response.data);
+      if (response.status === 200) {
+        toast.success("Music Successfully added to playlist", {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        setTimeout(() => {
+          onClose && onClose();
+        }, 2000);
       }
     } catch (error) {
       console.error("Error adding music to the playlist", error);
