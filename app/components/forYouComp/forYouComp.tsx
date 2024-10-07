@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ForYouCompProps, Music } from "@/app/Interfaces/Interfaces";
 import AudioPlayer from "../AudioPlayer/AudioPlayer";
-import { audioPlayerState } from "@/app/atoms/states";
+import {audioPlayerState, SongsState} from "@/app/atoms/states";
 import { useRecoilState } from "recoil";
 import Axios from "@/app/Helpers/Axios";
 
@@ -14,7 +14,7 @@ export const ForYouComp: React.FC<ForYouCompProps> = (props) => {
   const [activeId, setActiveId] = useState<number | null>(null);
   const [renderAudio, setRenderudio] = useState<boolean>(false);
   const [currentIndex, setCurrentIndex] = useRecoilState(audioPlayerState);
-  const [musics, setMusics] = useState<Music[]>([]);
+  const [songs, setSongs] = useRecoilState(SongsState);
   const [dataLength, setDataLength] = useState<any>();
   const handleSongClick = (index: number) => {
     setCurrentIndex((prevState) => ({
@@ -27,7 +27,7 @@ export const ForYouComp: React.FC<ForYouCompProps> = (props) => {
 
   useEffect(() => {
     Axios.get("/music").then((response) => {
-      setMusics(response.data);
+      setSongs(response.data);
       setDataLength(response.data.length)
     });
   }, []);
@@ -50,7 +50,7 @@ export const ForYouComp: React.FC<ForYouCompProps> = (props) => {
         </Link>
       </div>
       <div className={styles.list}>
-        {musics.slice(0, 3).map((music, idx) => (
+        {songs.slice(0, 3).map((music, idx) => (
           <PlaylistItem
             key={music.id}
             refreshPlaylist={props.refreshPlaylist}
@@ -74,7 +74,7 @@ export const ForYouComp: React.FC<ForYouCompProps> = (props) => {
         ))}
       </div>
 
-      {renderAudio && <AudioPlayer musics={musics} />}
+      {/*{renderAudio && <AudioPlayer musics={musics} />}*/}
     </div>
   );
 };

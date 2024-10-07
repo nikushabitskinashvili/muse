@@ -10,12 +10,14 @@ import VolumeControl from "./VolumeControl/VolumeControl";
 import { getClientCookie } from "@/app/Helpers/GetCookieValue";
 import { AUTH_COOKIE_KEY } from "@/app/constant";
 import Axios from "./../../Helpers/Axios";
+import {useRecoilState} from "recoil";
+import {SongsState} from "@/app/atoms/states";
 
 type Props = {
   musics: Music[];
 };
 
-const AudioPlayer = ({ musics }: Props) => {
+const AudioPlayer = () => {
   const {
     audioRef,
     progressRef,
@@ -26,16 +28,18 @@ const AudioPlayer = ({ musics }: Props) => {
     handleNextSong,
     handlePreviousSong,
     handleShuffleClick,
-  } = useAudioPlayer(musics);
+  } = useAudioPlayer();
+
+  const [ songs,] = useRecoilState(SongsState)
 
   const [artist, setArtist] = useState<any>(null);
 
   console.log(artist);
 
   const isPlaying = audioRef.current ? !audioRef.current.paused : false;
-  console.log(musics, "music in playlist");
+  console.log(songs, "music in playlist");
 
-  const id = musics.length > 0 && musics[audioPlayer.currentMusicIndex]?.artistId;
+  const id = songs.length > 0 && songs[audioPlayer.currentMusicIndex]?.artistId;
   useEffect(() => {
     if (id) {
       const fetchArtistName = async () => {
@@ -56,20 +60,20 @@ const AudioPlayer = ({ musics }: Props) => {
     }
   }, [id]);
 
-  console.log(musics[audioPlayer.currentMusicIndex]);
+  console.log(songs[audioPlayer.currentMusicIndex]);
 
   return (
     <div className={styles.container}>
       <div className={styles.containerWrapper}>
         <audio
           ref={audioRef}
-          src={musics[audioPlayer.currentMusicIndex]?.musicSrc}
+          src={songs[audioPlayer.currentMusicIndex]?.musicSrc}
           controls
         ></audio>
         <MusicPhoto
-          src={musics[audioPlayer.currentMusicIndex]?.src}
-          music={musics[audioPlayer.currentMusicIndex]?.music}
-          musicName={musics[audioPlayer.currentMusicIndex]?.name}
+          src={songs[audioPlayer.currentMusicIndex]?.src}
+          music={songs[audioPlayer.currentMusicIndex]?.music}
+          musicName={songs[audioPlayer.currentMusicIndex]?.name}
           artistName={artist?.name}
           artistImg={artist?.image}
         />

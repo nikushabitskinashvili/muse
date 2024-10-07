@@ -4,7 +4,7 @@ import styles from "@/app/(authorised)/foryou/foryou.module.scss";
 import { PlaylistItem } from "@/app/components/PlaylistItem/PlaylistItem";
 import AudioPlayer from "../AudioPlayer/AudioPlayer";
 import { useRecoilState } from "recoil";
-import { audioPlayerState } from "@/app/atoms/states";
+import {audioPlayerState, SongsState} from "@/app/atoms/states";
 import Axios from "@/app/Helpers/Axios";
 import { Music } from "@/app/Interfaces/Interfaces";
 import { useSearchParams } from "next/navigation"; // Import useSearchParams
@@ -30,7 +30,7 @@ export const MusicWrapper = ({
   const [activeId, setActiveId] = useState<number | null>(null);
   const [currentIndex, setCurrentIndex] = useRecoilState(audioPlayerState);
   const [renderAudio, setRenderAudio] = useState<boolean>(false);
-  const [musics, setMusics] = useState<Music[]>([]);
+  const [musics, setMusics] = useRecoilState(SongsState);
   const [dataLength, setDataLength] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
@@ -119,6 +119,9 @@ export const MusicWrapper = ({
     return <div>Loading...</div>;
   }
 
+  console.log(currentIndex, 'curentindex')
+  console.log(musics, 'musics')
+
   return (
     <div className={styles.list}>
       {musics.length > 0 ? (
@@ -149,7 +152,7 @@ export const MusicWrapper = ({
       ) : (
         <p style={{color:"white"}}>No music available.</p>
       )}
-      {renderAudio && musics.length > 0 && <AudioPlayer musics={musics} />}
+      {/*{renderAudio && musics.length > 0 && <AudioPlayer musics={musics} />}*/}
     </div>
   );
 };

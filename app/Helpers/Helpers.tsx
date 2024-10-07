@@ -1,9 +1,10 @@
 import { useRef, useEffect, useCallback } from "react";
 import { useRecoilState } from "recoil";
-import { audioPlayerState } from "@/app/atoms/states";
+import {audioPlayerState, SongsState} from "@/app/atoms/states";
 import { Music } from "../Interfaces/Interfaces";
 
-export const useAudioPlayer = (songs: Music[]) => {
+export const useAudioPlayer = () => {
+  const [songs,] = useRecoilState(SongsState);
   const [audioPlayer, setAudioPlayer] = useRecoilState(audioPlayerState);
   const audioRef = useRef<HTMLAudioElement>(null);
   const progressRef = useRef<HTMLInputElement>(null);
@@ -41,6 +42,8 @@ export const useAudioPlayer = (songs: Music[]) => {
       };
     });
   }, [setAudioPlayer, songs.length]);
+
+  console.log(audioPlayer, '1111111111111111111111111111111111111111111111111111111111111111111111')
 
   useEffect(() => {
     const handleTimeUpdate = () => {
